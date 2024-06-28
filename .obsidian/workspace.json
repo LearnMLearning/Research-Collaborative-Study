@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Machine Learning/Decision Tree/Algorithms/未命名.md",
+                "file": "Machine Learning/Decision Tree/Decision Tree.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Machine Learning/Decision Tree/Algorithms/未命名.md",
+                "file": "Machine Learning/Decision Tree/Decision Tree.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Machine Learning/Decision Tree/Algorithms/未命名.md",
+                "file": "Machine Learning/Decision Tree/Decision Tree.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Machine Learning/Decision Tree/Algorithms/未命名.md"
+                "file": "Machine Learning/Decision Tree/Decision Tree.md"
               }
             }
           }
@@ -148,14 +148,24 @@
   },
   "active": "5a641d196c0276b4",
   "lastOpenFiles": [
+    "Machine Learning/Decision Tree/Splitting/Classification Error.md",
+    "Machine Learning/Decision Tree/Splitting/Splitting.md",
+    "Machine Learning/Decision Tree/Decision Tree.md",
+    "Machine Learning/Decision Tree/Splitting/Gini Index.md",
+    "Machine Learning/Decision Tree/Splitting/Information Gain.md",
+    "Machine Learning/Decision Tree/Splitting/Entropy.md",
+    "Machine Learning/Decision Tree/Algorithms/C4.5.md",
+    "Machine Learning/Decision Tree/Algorithms/ID3.md",
+    "Machine Learning/Decision Tree/Algorithms/QUEST (Quick, Unbiased, Efficient, Statistical Tree).md",
+    "Machine Learning/Decision Tree/Algorithms/GUIDE.md",
+    "Machine Learning/Decision Tree/Algorithms/CRUISE.md",
+    "Machine Learning/Decision Tree/Algorithms/CHAID (Chi-Squared Automatic Interaction Detection).md",
+    "Machine Learning/Decision Tree/Algorithms/CART (Classification and Regression Trees).md",
     "Machine Learning/Decision Tree/Pruning/Chi-square tests.md",
-    "Machine Learning/Decision Tree/Algorithms/未命名.md",
     "Machine Learning/Decision Tree/Algorithms",
     "Machine Learning/Decision Tree/Pruning/Pruning.md",
-    "Machine Learning/Decision Tree/Decision Tree.md",
     "Machine Learning/Decision Tree/Splitting",
     "Machine Learning/Decision Tree/Pruning",
-    "Machine Learning/Decision Tree/Splitting/Splitting.md",
     "Machine Learning/Reinforcement Learning/Reinforcement Learning.md",
     "Machine Learning/Deep Learning/Deep Learning.md",
     "Machine Learning/Unsupervised learning/Unsupervised learning.md",
@@ -170,7 +180,6 @@
     "Machine Learning/数据结构/未命名.md",
     "Machine Learning/数据结构/决策树 (Decision Tree).md",
     "Machine Learning/数据结构",
-    "创建链接.md",
     "Machine Learning/Deep Learning",
     "Machine Learning/Reinforcement Learning",
     "Machine Learning/Unsupervised learning",

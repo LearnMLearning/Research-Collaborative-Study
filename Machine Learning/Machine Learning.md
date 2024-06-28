@@ -1,9 +1,9 @@
-[[监督学习]]
+[[Supervised Learning]]
 
-[[强化学习]]
+[[Reinforcement Learning]]
 
-[[深度学习]]
+[[Deep Learning]]
 
-[[无监督学习]]
+[[Unsupervised learning]]
 
 [[Decision Tree]]

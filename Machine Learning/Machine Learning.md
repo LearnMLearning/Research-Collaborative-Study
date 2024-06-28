@@ -7,3 +7,5 @@
 [[Unsupervised learning]]
 
 [[Decision Tree]]
+
+[[Training]]

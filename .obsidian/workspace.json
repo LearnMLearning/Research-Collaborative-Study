@@ -1,0 +1,166 @@
+{
+  "main": {
+    "id": "018df45953b89081",
+    "type": "split",
+    "children": [
+      {
+        "id": "c7f9e07d7ff373af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5a641d196c0276b4",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e0d20cdcf8a44dd6",
+    "type": "split",
+    "children": [
+      {
+        "id": "16acff09edb3e561",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5231ab7786ba6702",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "320c5e0a7db332e1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7bf9ae6eff77d7ee",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1af27a9e97c1caca",
+    "type": "split",
+    "children": [
+      {
+        "id": "4f9862b81d053326",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "89e429985dc903c2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f1cbde4bc48aa4ae",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6df942430378ab97",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "4ff0634335da331a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "5a641d196c0276b4",
+  "lastOpenFiles": [
+    "Machine Learning/深度学习/深度学习.md",
+    "Machine Learning/Machine Learning.md",
+    "Machine Learning/Deciision Tree/Splitting.md",
+    "Machine Learning/Deciision Tree/Decision Tree.md",
+    "Machine Learning/Deciision Tree",
+    "Gini index.md",
+    "Machine Learning/Cross-validation.md",
+    "Machine Learning/Normalization.md",
+    "Machine Learning/监督学习/监督学习.md",
+    "Machine Learning/强化学习/强化学习.md",
+    "Machine Learning/无监督学习/无监督学习.md",
+    "Machine Learning/决策树 (Machine Learning)/决策树.md",
+    "Machine Learning/决策树 (Machine Learning)",
+    "Machine Learning/数据结构/未命名.md",
+    "Machine Learning/数据结构/决策树 (Decision Tree).md",
+    "Machine Learning/数据结构",
+    "创建链接.md",
+    "Machine Learning/深度学习",
+    "Machine Learning/强化学习",
+    "Machine Learning/无监督学习",
+    "Machine Learning/监督学习",
+    "Machine Learning"
+  ]
+}

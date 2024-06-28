@@ -11,8 +11,12 @@
             "id": "5a641d196c0276b4",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Machine Learning/Decision Tree/DecTr Algorithms/DecTr Algorithms.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Machine Learning/Decision Tree/DecTr Algorithms/DecTr Algorithms.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Machine Learning/Decision Tree/DecTr Algorithms/DecTr Algorithms.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,14 +124,16 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Machine Learning/Decision Tree/DecTr Algorithms/DecTr Algorithms.md"
+              }
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -140,9 +148,14 @@
   },
   "active": "5a641d196c0276b4",
   "lastOpenFiles": [
+    "Machine Learning/Decision Tree/DecTr Algorithms/CRUISE.md",
+    "Machine Learning/Decision Tree/DecTr Algorithms/DecTr Algorithms.md",
+    "Machine Learning/Decision Tree/DecTr Algorithms/CART (Classification and Regression Trees).md",
+    "Machine Learning/Decision Tree/DecTr Algorithms/C4.5.md",
+    "Machine Learning/Decision Tree/Pruning/Pruning.md",
+    "Machine Learning/Decision Tree/Pruning/Chi-square tests.md",
     "Machine Learning/Machine Learning.md",
     "Machine Learning/Training/Training.md",
-    "Machine Learning/Decision Tree/DecTr Algorithms/DecTr Algorithms.md",
     "Machine Learning/Training",
     "Machine Learning/Decision Tree/Decision Tree.md",
     "Machine Learning/Decision Tree/Splitting/Classification Error.md",
@@ -150,16 +163,11 @@
     "Machine Learning/Decision Tree/Splitting/Gini Index.md",
     "Machine Learning/Decision Tree/Splitting/Information Gain.md",
     "Machine Learning/Decision Tree/Splitting/Entropy.md",
-    "Machine Learning/Decision Tree/DecTr Algorithms/C4.5.md",
     "Machine Learning/Decision Tree/DecTr Algorithms/ID3.md",
     "Machine Learning/Decision Tree/DecTr Algorithms/QUEST (Quick, Unbiased, Efficient, Statistical Tree).md",
     "Machine Learning/Decision Tree/DecTr Algorithms/GUIDE.md",
-    "Machine Learning/Decision Tree/DecTr Algorithms/CRUISE.md",
     "Machine Learning/Decision Tree/DecTr Algorithms/CHAID (Chi-Squared Automatic Interaction Detection).md",
-    "Machine Learning/Decision Tree/DecTr Algorithms/CART (Classification and Regression Trees).md",
-    "Machine Learning/Decision Tree/Pruning/Chi-square tests.md",
     "Machine Learning/Decision Tree/DecTr Algorithms",
-    "Machine Learning/Decision Tree/Pruning/Pruning.md",
     "Machine Learning/Decision Tree/Splitting",
     "Machine Learning/Decision Tree/Pruning",
     "Machine Learning/Reinforcement Learning/Reinforcement Learning.md",

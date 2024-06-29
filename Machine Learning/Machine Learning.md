@@ -6,6 +6,9 @@
 
 [[Unsupervised learning]]
 
-[[Decision Tree]]
+[[Machine Unlearning]]
 
 [[Training]]
+
+[[Generalization]]
+

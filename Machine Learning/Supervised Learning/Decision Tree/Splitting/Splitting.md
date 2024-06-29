@@ -6,7 +6,7 @@
 
 [[Information Gain]]
 
-[[Gain Ratio]]
+[[Information Gain Ratio]]
 
 [[Twoing Criteria]]
 

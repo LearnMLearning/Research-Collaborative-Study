@@ -1,3 +1,5 @@
+[[Bagging]]
+
 [[Decision Tree]]
 
 [[DaRe]]

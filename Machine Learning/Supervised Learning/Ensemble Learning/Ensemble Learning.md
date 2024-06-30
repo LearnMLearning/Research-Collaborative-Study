@@ -2,6 +2,4 @@
 
 [[Bootstrap Aggregating]]
 
-[[Random Forest]]
-
 [[Boosting]]

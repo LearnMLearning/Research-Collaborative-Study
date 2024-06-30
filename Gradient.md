@@ -1,2 +1,2 @@
-[[Public-Private Random Forest]]
+[[Public-Private]]
 

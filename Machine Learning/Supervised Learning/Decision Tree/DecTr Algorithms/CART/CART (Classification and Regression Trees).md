@@ -1,3 +1,6 @@
+[[Gini Index]]
+
+
 [[Classification Trees]]
 
 

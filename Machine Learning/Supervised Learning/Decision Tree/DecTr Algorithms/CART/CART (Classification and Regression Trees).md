@@ -38,10 +38,15 @@ $$
 R_1(j,s) = \{x | x^{(j)} \le s\} , R_2 (j,s) = \{x | x^{(j)} >s\}
 $$
 然后寻找最优切分变量 $j$ 和最优切分点 $s$。具体地，求解
-
 $$
-
+\mathop{\text{min}}_{j,s} \left[\mathop{\text{min}}_{c_1}\sum_{x_i \in R_1(j,s)} (y_i - c_1)^2 + \mathop{\text{min}}_{c_2}\sum_{x_i\in R_2(j,s)}(y_i - c_2)^2 \right]
 $$
+对固定输入变量 $j$ 可以找到最优切分点。
+$$
+\hat c_1 = \text{ave} (y_i | x_i \in R_1 (j,s)),\hat c_2 = \text{ave} (y_i|x_i \in R_2(j,s))
+$$
+遍历所有输入变量，找到最优的切分变量 $j$，构成一个对 $(j,s)$。依此将输入空间划分为两个 区域。接着，对每个区域重复上述划分过程，直到满足停止条件为止。这样就生成一棵回归 树。这样的回归树通常称为最小二乘回归树(least squaresregressiontre)，现将算法叙述如下。
+
 #### CART 剪枝
 由于CART生成算法是让生成的决策树自然生长，尽量大，所以容易造成过拟合，因此采取剪枝策略避免过拟合。
 

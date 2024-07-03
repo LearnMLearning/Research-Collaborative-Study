@@ -9,5 +9,3 @@
 [[Convex Optimization]]
 
 [[Differential Privacy]]
-
-[[SISA]]

@@ -1,9 +1,9 @@
 ![[Pasted image 20240703151514.png]]
 
-## [[Unlearning Scenarios]]
+[[Unlearning Scenarios]]
 
-## [[Unlearning Fundamental Requirements]]
+[[Unlearning Fundamental Requirements]]
 
-## [[Infrastructure Techniques]]
+[[Infrastructure Techniques]]
 
 [[Unlearning Taxonomy]]

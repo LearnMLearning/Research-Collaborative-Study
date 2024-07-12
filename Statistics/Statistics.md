@@ -1,1 +1,3 @@
 [[Bayes]]
+
+[[Distributions]]

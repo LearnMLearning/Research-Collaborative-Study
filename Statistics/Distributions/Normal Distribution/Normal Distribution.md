@@ -18,7 +18,10 @@ $$
 $$
 **非标准正态 转化 标准正态**
 对于一个 普通的 正态分布 $X\sim \mathrm N(\mu,\sigma^2)$ 可以转化为 $u = \frac{X-\mu}{\sigma}\sim \mathrm N(0,1)$ 是 **标准正态量**
-对于 CDF：$F_X(x) = \mathbb P(X\le x) = \mathbb P ()$
+对于 CDF：$F_X(x) = \mathbb P(X\le x) = \mathbb P (\frac{X-\mu}{\sigma} \le \frac{x-\mu}{\sigma}) = \mathbb P (U\le u) =\Phi(u)$
+
+
+
 
 
 [[Lognormal Distribution]]

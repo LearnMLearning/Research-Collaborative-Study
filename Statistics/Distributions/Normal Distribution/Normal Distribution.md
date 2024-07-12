@@ -17,7 +17,8 @@ $$
 \Phi(u) = \int_{-\infty}^u \frac{1}{\sqrt{2\pi}} e^{-\frac 12 s} \,ds = \mathbb P(U\le u)
 $$
 **非标准正态 转化 标准正态**
-对于一个 普通的 正态分布 $X\sim \mathrm N(\mu,\sigma^2)$
+对于一个 普通的 正态分布 $X\sim \mathrm N(\mu,\sigma^2)$ 可以转化为 $u = \frac{X-\mu}{\sigma}\sim \mathrm N(0,1)$ 是 **标准正态量**
+对于 CDF：$F_X(x) = \mathbb P(X\le x) = \mathbb P ()$
 
 
 [[Lognormal Distribution]]

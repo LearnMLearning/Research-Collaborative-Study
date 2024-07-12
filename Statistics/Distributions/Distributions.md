@@ -16,5 +16,5 @@
 
 [[Normal Distribution]]
 
-[[Lognormal Distribution]]
+
 

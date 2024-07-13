@@ -96,5 +96,32 @@ h_j^{(t)} = a \left(z_j^{(t)} \right) = a \left(\sum_{t=1}^n w_{ji}^{(t)}h_i^{(t
 $$
 这里 $h_i^{(t-1)},i=1,2,\cdots,n$，是第 $t-1$ 层的输出，设 $h_i^{(0)}=x_i,w_{ji}^{(t)},i=1,2,\cdots,n$，是权重，$b_j^{(t)}$ 是偏置，$z_j^{(t)}$ 是净输入，$a(\cdot)$ 是激活函数。第 $s$ 层是输出层。假设第 $s$ 层由 $l$ 个神经元组成，第 $s-1$ 层由 $m$ 个神经元组成，第 $s$ 层的第 $k$ 个神经元是
 $$
-y_k = g(z_k^{(s)}) = g \left( \right)
+y_k = g(z_k^{(s)}) = g \left(\sum_{j=1}^m w_{kj}^{(s)} h_j^{(s-1)} + b_k^{(s)} \right),k=1,2,\cdots,l
 $$
+这里 $h_j^{(s-1)},j=1,2,\cdots,m$，是第 $s-1$ 层的输出，$w_{kj}^{(s)},j=1,2,\cdots,m$，是权重，$b_k^{(s)}$ 是偏置，$z_k^{(s)}$ 是净输入，$g(\cdot)$ 是激活函数。神经网络整体是
+$$
+y_k = g \left\{\sum_{j=1}^m w_{kj}^{(s)} \cdots \left[a\left(\sum_{i=1}^{n}w_{ji}^{(1)}x_i + b_j^{(1)} \right) \right] \cdots+ b_k^{(s)}\right\},k=1,2,\cdots,l
+$$
+层数大于 2 时的前馈神经网络又称为 深度神经网络 DNN，通常情况是第 $s$ 层只有一个神经元，即 $l=1$。
+
+前馈神经网络的矩阵表示如下
+$$
+\begin{cases}
+&\mathbf h^{(1)} = f^{(1)}(\mathbf x) = a(\mathbf z^{(1)}) = a \left(\mathbf {W^{(1)}}^{\mathrm T} \mathbf x+\mathbf b^{(1)} \right)\\
+&\mathbf h^{(2)} = f^{(2)}(\mathbf h^{(1)}) = a(\mathbf z^{(2)}) = a \left(\mathbf {W^{(2)}}^{\mathrm T} \mathbf h^{(1)}+\mathbf b^{(2)} \right)\\
+&\vdots\\
+&\mathbf h^{(s-1)} = f^{(s-1)}(\mathbf h^{(s-1)}) = a(\mathbf z^{(s-1)}) = a \left(\mathbf {W^{(s-1)}}^{\mathrm T}\mathbf h^{(s-2)}+\mathbf b^{(s-1)} \right)
+\\
+&\mathbf y = \mathbf h^{(s)} = f^{(s)} (\mathbf h^{(s-1)}) = g(\mathbf z^{(s)}) = g \left({\mathbf W^{(s)}}^\mathrm T\mathbf h^{(s-1)} + \mathbf b^{(s)} \right)
+\end{cases}
+$$
+整体神经网络由复合函数 $f^{(s)} (\cdots f^{(2)} (f^{(1)}(\mathbf x))\cdots)$ 表示，也可以写作 $f(\mathbf x; \theta)$，其中 $\mathbf \theta$ 是所有参数组成的向量。
+
+但到目前为止考虑到是一个样本输入到神经网络的情况，这时输入由一个向量表示。也可以是多个样本批量同时输入到神经网络，这时输入样本由一个矩阵表示。可以用矩阵表示扩展，之后介绍。
+###### 3. 隐层到神经元
+隐层神经元函数由两部分组成：仿射函数和激活函数。这里介绍常用的隐层激活函数，包括 S 型函数、双曲正切函数、整流线形函数。一个神经网络通常采用一种隐层激活函数
+S 型函数 (sigmoid function) 又称为逻辑斯谛函数 (logistic function)，是定义式如下的非线性函数。
+$$
+a(z) = \sigma (z) = \frac{1}{1+e^{-z}}
+$$
+

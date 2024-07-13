@@ -131,4 +131,9 @@ S 型函数的导函数是
 $$
 a'(z) = a(z) (1-a(z))
 $$
-双曲正切函数 (hyperbolic tangent function) 是定义式如下的非线性函数
+双曲正切函数 (hyperbolic tangent function) 是定义式如下的非线性函数。
+$$
+a(z) = \tanh (z) = \frac{e^{z} - e^{-z}}{e^z + e^{-z}}
+$$
+其中，$z$ 是自变量或输入，$\tanh (z)$ 是因变量或输出。函数定义域为 $(-\infty,+\infty)$，值域为 $(-1,+1)$。
+![[Pasted image 20240713133953.png]]

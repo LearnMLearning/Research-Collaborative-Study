@@ -90,3 +90,4 @@ w_{m1}^{(2)} & \cdots & w_{ml}^{(2)}
 \end{bmatrix},\mathbf b^{(1)} = \begin{bmatrix}b_1^{(1)} \\ b_{2}^{(1)} \\ \vdots \\ b_{m}^{(1)} \end{bmatrix} ,\mathbf b^{(2)} = \begin{bmatrix}b_1^{(2)} \\ b_{2}^{(2)} \\ \vdots \\ b_{l}^{(2)} \end{bmatrix} 
 $$
 **定义 (多层前馈神经网络)**
+多层前馈神经网络或前馈神经网络是如下定义的非线性函数的复合函数。输入是 $x_i,i=1,2,\cdots,n$，输出是 $y_k,k=1,2,\cdots,l$。神经网络有 $s$ 层 ($s\ge 2$) 

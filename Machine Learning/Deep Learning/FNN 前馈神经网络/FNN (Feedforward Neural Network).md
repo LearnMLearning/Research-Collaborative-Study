@@ -48,4 +48,45 @@ $$
 前馈神经网络由多层神经元组成，层间的神经元相互连接，层内的神经元不连接，前一层神经元的输出是后一层神经元的输入。整体表示输入信号 (实数向量)到输出信号(实数向量)的多次非线性转换。数学上，前馈神经网络是以实数向量为输入、以实数向量为输出的非线性函数的复合函数(这里，函数都是以向量为输入输出的一般函数的扩展)。前馈神经网络最后的输出也可以是一个实数值，是实数向量的特殊情况。先给出二层前馈神经网络的定义。
 
 **定义 (二层前馈神经网络)**
-二层前馈神经网络是如下定义的非线性函数的复合函数。输入是 $x_i,i=1,2,\cdots,n$，输出是 $y_k,k=1,2,\cdots,l$。
+二层前馈神经网络是如下定义的非线性函数的复合函数。输入是 $x_i,i=1,2,\cdots,n$，输出是 $y_k,k=1,2,\cdots,l$。神经网络由两层。第一层由 $m$ 个神经元组成，其中第 $j$ 个神经元是
+$$
+h_j^{(1)} = a \left(z_j^{(1)}\right) = a\left(\sum_{i=1}^n w_{ji}^{(1)}x_i + b_j^{(1)} \right), j =1,2,\cdots,m
+$$
+这里 $x_i$ 是输入，$w_{ji}^{(1)}$ 是权重，$b_{j}^{(1)}$ 是偏置，$z_j^{(1)}$ 是净输入，$a(\cdot)$ 是激活函数。第二层由 $l$ 个神经元组成，其中第 $k$ 个神经元是
+$$
+y_k = g \left(z_k^{(2)}\right) = g \left(\sum_{j=1}^m w_{kj}^{(2)} h_j^{(1)} +b_k^{(2)} \right),k=1,2,\cdots,l
+$$
+这里 $h_j^{(1)}$ 是第一层神经元的输出，$w_{kj}^{(2)}$ 是权重，其中 $j=1,2,\cdots,m$，$b_k^{(2)}$ 是偏置，$z_k^{(2)}$ 是净输入，$g(\cdot)$ 是激活函数。神经网络整体是
+$$
+y_k = g \left [\sum_{j=1}^m w_{kj}^{(2)}a \left(\sum_{i=1}^n w_{ji}^{(1)}x_i + b_j ^{(1)} \right) + b_k^{(2)} \right],k=1,2,\cdots,l
+$$
+通常情况第二层只有一个神经元，即 $l=1$。
+
+第一层神经元从输入输出的角度不可见，称为隐层。第二层神经元称为输出层。有时把输入也看作是一层，称为输入层。隐层和输出层的激活函数 $a(·)$ 和 $g(·)$ 通常有不同的定义。这里考虑层间的全连接，即前一层的每一个神经元都和后一层的每一个神经元连接。部分连接网终是其特殊情况，相当于未连接边的权重为 0。
+
+![[Pasted image 20240713104510.png]]
+二层前馈神经网络也可以用矩阵来表示。
+$$
+\mathbf h^{(1)} = f^{(1)} (\mathbf x) = a(\mathbf z^{(1)}) = a \left(\mathbf W(1)^{\mathrm T} \mathbf x + \mathbf b^{(1)} \right)
+$$
+$$
+\mathbf y = f^{(2)} (\mathbf x) = a(\mathbf z^{(2)}) = g \left(\mathbf W(2)^{\mathrm T} \mathbf h^{(1)} + \mathbf b^{(2)} \right)
+$$
+其中
+$$
+\mathbf x = \begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix},\mathbf z^{(1)} = \begin{bmatrix}z_1^{(1)} \\ z_{2}^{(1)} \\ \vdots \\ z_{m}^{(1)} \end{bmatrix}, \mathbf h^{(1)} = \begin{bmatrix}h_1^{(1)} \\ h_2^{(1)} \\ \vdots \\ h_m^{(1)} \end{bmatrix},\mathbf z^{(2)} = \begin{bmatrix}z_1^{(2)} \\ z_{2}^{(2)} \\ \vdots \\ z_{l}^{(2)} \end{bmatrix} 
+$$
+$$
+\mathbf W^{(1)} = 
+\begin{bmatrix}
+w_{11}^{(1)} & \cdots & w_{1m}^{(1)}\\
+\vdots & & \vdots\\
+w_{n1}^{(1)} & \cdots & w_{nm}^{(1)}
+\end{bmatrix},\mathbf W^{(2)} = 
+\begin{bmatrix}
+w_{11}^{(2)} & \cdots & w_{1l}^{(2)}\\
+\vdots & & \vdots\\
+w_{m1}^{(2)} & \cdots & w_{ml}^{(2)}
+\end{bmatrix},\mathbf b^{(1)} = \begin{bmatrix}b_1^{(1)} \\ b_{2}^{(1)} \\ \vdots \\ b_{m}^{(1)} \end{bmatrix} ,\mathbf b^{(2)} = \begin{bmatrix}b_1^{(2)} \\ b_{2}^{(2)} \\ \vdots \\ b_{l}^{(2)} \end{bmatrix} 
+$$
+**定义 (多层前馈神经网络)**

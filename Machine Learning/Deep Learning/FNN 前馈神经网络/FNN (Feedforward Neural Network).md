@@ -155,3 +155,6 @@ $$
 $$
 a'(z) = \begin{cases} 1, &z>0\\ 0, &其他\end{cases}
 $$
+整流线性函数比 $S$ 型函数和双曲正切函数在计算机上的计算效率更高，其导函数也是如此。整流线形函数在当前深度学习中被广泛使用。
+
+对于激活函数 $a(z)$，当导数满足 $\lim_{z\rightarrow -\infty} a'(z) = 0$ 时，称为左饱和 (left saturating) 函数：当其导数满足 $\lim_{z \rightarrow +\infty} a'(z) = 0$ 时，

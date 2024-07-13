@@ -124,4 +124,11 @@ S 型函数 (sigmoid function) 又称为逻辑斯谛函数 (logistic function)�
 $$
 a(z) = \sigma (z) = \frac{1}{1+e^{-z}}
 $$
+其中，$z$ 是自变量或输入，$\sigma(z)$ 是因变量或输出。函数的定义域为 $(-\infty,+\infty)$，值域为 $(0,1)$。
+![[Pasted image 20240713133605.png]]
 
+S 型函数的导函数是
+$$
+a'(z) = a(z) (1-a(z))
+$$
+双曲正切函数 (hyperbolic tangent function) 是定义式如下的非线性函数

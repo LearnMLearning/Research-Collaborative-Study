@@ -1,4 +1,4 @@
-[[FNN]]
+[[FNN (Feedforward Neural Network)]]
 
 [[CNN]]
 

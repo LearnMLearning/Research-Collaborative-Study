@@ -167,4 +167,13 @@ $$
 0 < P(y=1 | \mathbf x) < 1, P(y=1|\mathbf x) + P(y=0 | \mathbf x) = 1
 $$
 预测时给定输入 $\mathbf x$，计算其属于类别 1 的概率。如果概率大于 0.5，则将输入分到类别 1，否则分到类别 0。
-(3) 用于多类分类 (multi-class classification)。神经网络的输出层只有一个神经元，神经元的输出是由 $l$ 个概率值组成的概率向量。神经网络表示为 
+(3) 用于多类分类 (multi-class classification)。神经网络的输出层只有一个神经元，神经元的输出是由 $l$ 个概率值组成的概率向量。神经网络表示为 $\mathbf p = [P(y_k = 1|\mathbf x)] = f(\mathbf x)$，其中 $y_k \in \{0,1\},k=1,2,\cdots,l$，满足条件
+$$
+\sum_{k=1}^i y_k =1,0<P(y_k=1|x) < 1,\sum_{k=1}^l P(y_k = 1|\mathbf x) = 1,k=1,2,\cdots ,l
+$$
+也就是说 $[y_1,y_2,\cdots,y_l]$ 是只有一个元素为 $1$，其他元素为 $0$ 的向量，这样的向量称为独热向量 (one-hot vector)，$[P(y_1=1|\mathbf x),P(y_2=1|\mathbf x),\cdots,P(y_l=1|\mathbf x)]$ 是定义在独热向量上的概率分布，表示输入 $\mathbf x$ 属于 $l$ 个类别的概率。预测时给定输入 $\mathbf x$，计算其属于各个类别的概率。将输入分到概率最大的类别，这时输入只可能被分到一个类别。
+(4) 用于多标签分类 (multi-label classification)。神经网络的输出层有 $l$ 个神经元，每个神经元的输出是一个概率值。神经网络表示为 $\mathbf p = [P(y_k=1)|\mathbf x]=f(\mathbf x)$，其中 $y_k \in \{0,1\},k=1,2,\cdots,l$ 满足条件
+$$
+0 < P(y_k = 1 | \mathbf x) < 1, P(y_k = 1 |\mathbf x) + P(y_k = 0 |\mathbf x)=1,k=1,2,\cdots,l
+$$
+$[P(y_1 = 1 | \mathbf x),\cdots,P(y_l=1|\mathbf x)]$ 表示输入 $\mathbf x$ 分别属于 $1$ 个类别的概率。预测时给定输入 $\mathbf x$，计算其属于各个类别的概率。将输入分到概率大于 $0.5$ 的所有类别，这时输入可以被分到

@@ -145,4 +145,13 @@ $$
 $$
 \tanh (z) = 2\sigma(2z) - 1
 $$
-整流线性函数 (rectified linear unit, ReLU) 是定义式如下的非线性函数
+整流线性函数 (rectified linear unit, ReLU) 是定义式如下的非线性函数。
+$$
+a(z) = \text{relu} (z) = \max(0,z)
+$$
+其中，$z$ 是自变量或输入，$\text{relu}(z)$ 是因变量或输出。函数定义域为 $(-\infty,+\infty)$，值域为 $(0,+\infty)$。
+![[Pasted image 20240713135812.png]]
+整流线形函数的导函数是
+$$
+a'(z) = \begin{cases} 1, &z>0\\ 0, &其他\end{cases}
+$$

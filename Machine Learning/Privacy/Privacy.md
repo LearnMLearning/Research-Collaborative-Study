@@ -1,4 +1,4 @@
-[[Membership Inference Attacks 2017]]
+[[MIA (Membership Inference Attacks) 2017]]
 
 [[Differential Privacy]]
 

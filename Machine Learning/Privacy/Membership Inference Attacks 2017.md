@@ -1,1 +1,0 @@
-Reza Shokri, Marco Stronati, Congzheng Song, and Vitaly Shmatikov. 2017. Membership inference attacks against machine learning models. In IEEE Symposium on Security and Privacy. IEEE Computer Society, 3–18. DOI:http://dx. doi.org/10.1109/SP.2017.41

@@ -386,7 +386,7 @@ $$
 
 ###### 2. 具体形式
 针对不同的问题，前馈神经网络学习的一般形式可以转化为不同的具体形式。
-当问题是回归时，模型的输入是实数向量 $\mathbf x$，输出是实数值 $y$。神经网络 $f(\mathbf x;\mathbf \theta)$ 决定输入给定条件下输出的条件概率分布 $P_{\mathbf \theta}(y|\mathbf x)$。假设条件概率分布 $P_{\mathbf \theta} (y|\mathbf x)$ 遵循高斯分布：
+当问题是**回归**时，模型的输入是实数向量 $\mathbf x$，输出是实数值 $y$。神经网络 $f(\mathbf x;\mathbf \theta)$ 决定输入给定条件下输出的条件概率分布 $P_{\mathbf \theta}(y|\mathbf x)$。假设条件概率分布 $P_{\mathbf \theta} (y|\mathbf x)$ 遵循高斯分布：
 $$
 P_{\mathbf \theta}(y|\mathbf x) \sim N (f(\mathbf x;\mathbf\theta),\sigma^2)
 $$
@@ -395,14 +395,24 @@ $$
 f_X(x;\mu,\sigma)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac 12\left(\frac{x-\mu}{\sigma} \right)^2} 
 $$
 $$\begin{aligned}
-\hat \theta &= \mathop{\mathrm{argmin}}_{\theta} \log\left[\frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac 12 \left(\frac{y-f(\mathbf x_i ; \theta)}{\sigma} \right)^2}  \right]\\
-&= \mathop{\mathrm{argmin}}_{\theta} \log \left( \right)
+\hat \theta &= \mathop{\mathrm{argmin}}_{\theta} -\sum_{i=1}^N\log\left[\frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac 12 \left(\frac{y_i-f(\mathbf x_i ; \theta)}{\sigma} \right)^2}  \right]\\
+&= \mathop{\mathrm{argmin}}_{\theta} \left[ \sum_{i=1}^N \frac{1}{2\sigma^2}(y_i - f(\mathbf x_i;\theta))^2 + \frac{N}{2}\log 2\pi + N\log \sigma\right]
 \end{aligned}$$
+假设方差 $\sigma^2$ 固定不变，有等价的优化问题：
+$$
+\hat \theta = \mathop{\mathrm{argmin}}_{\theta} \sum_{i=1}^N \frac12 (y_i - f(\mathbf x_i; \mathbf \theta))^2
+$$
+从另一个角度看，前馈神经网络用于回归时，使用平方损失(square loss) 作为损失函数， 学习进行的是平方损失的最小化。
 
+当问题是**二类分类**时，模型的输入是实数向量 $\mathbf x$，输出是类别 $y\in \{0,1\}$，神经网络 $f(\mathbf x; \mathbf \theta)$ 决定输入给定条件下类别的条件概率分布：
+$$
+p = P_{\theta} (y=1|\mathbf x) = f(\mathbf x; \mathbf \theta)
+$$
+假设条件概率分布 $P_{\theta} (y=1|\mathbf x)$ 遵循贝努利分布，学习问题 (极大似然估计) 变为优化问题：
 $$
 \hat {\theta} = \mathop{\mathrm{argmin}}_{\theta} \left\{-\sum_{i=1}^N [y_i \log f(\mathbf x;\mathbf \theta) + (1-y_i) \log (1-f(\mathbf x; \mathbf \theta))] \right\}
 $$
-这时损失函数是交叉熵 (cross entropy) 损失。
+这时损失函数是交叉熵 (cross entropy) 损失，
 #### 2.2 前馈神经网络学习的优化算法
 #### 2.3 反向传播算法
 #### 2.4 在计算图上的实现

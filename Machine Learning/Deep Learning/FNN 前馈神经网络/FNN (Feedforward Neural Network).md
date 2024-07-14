@@ -303,4 +303,14 @@ y = \begin{cases}+1, & \text{sign} (\mathbf w^{\mathrm T} \mathbf x + b) \ge 0\\
 $$
 所以，可以认为前馈神经网络是感知机的扩展。这也是前馈神经网络又被称为多层感知机的原因。
 
-对于
+对于二类分类的多层神经网络没当其输出层激活函数是双曲正切函数时，
+$$
+f(\mathbf x) = \tanh({\mathbf w^{(s)}}^{\mathrm T} \mathbf h^{(s-1)} + b^{(s)})
+$$
+$$
+\mathbf h^{(s-1)} = f^{(s-1)} [\cdots f^{(2)}(f^{(1)}(\mathbf x))\cdots]
+$$
+模型可以与非线性支持向量机对应。非线性支持向量机模型的定义是
+$$
+y = \begin{cases}+1, & \text{sign} (\mathbf w^{\mathrm T} \phi(x) + b) \end{cases}
+$$

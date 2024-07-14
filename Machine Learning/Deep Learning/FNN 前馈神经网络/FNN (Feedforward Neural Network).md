@@ -433,7 +433,24 @@ $$
 图 示意了神经网络的非凸优化问题。参数向量是 $(\theta_1,\theta_2)$，目标函数是 $L(\theta_1,\theta_2)$，全局最小点是深蓝色，局部最小点是浅蓝色。因为目标函数非凸，有许多局部最小点。
 
 ###### 2. 梯度下降法和随机梯度下降法
+深度学习包括 前馈神经网络学习，均使用迭代优化算法，包括梯度下降法(gradient descent)和随机梯度下降法 (stochastic gradient descent)，后者更为常用(附录A给出梯度下降法的一般介绍)。
+优化目标函数写作
+$$
+L(\mathbf \theta) = \frac 1N \sum_{i=1}^N L_i (\theta) = \frac 1N \sum_{i=1}^N L(f(\mathbf x_i;\mathbf \theta),y_i)
+$$
+其中，$L_i(\mathbf \theta)$ 是第 $i$ 个样本的损失函数
 
+梯度下降法首先随机初始化参数向量 $\mathbf \theta$；之后针对所有样本，通过以下公式更新参数向量 $\mathbf \theta$；不断迭代，直到收敛为止。
+$$
+\theta \leftarrow \theta - \eta \frac{\partial L(\theta)}{\partial \theta}
+$$
+或写作
+$$
+\theta \leftarrow \theta - \eta \frac 1N \sum_{i=1}^M \frac{\partial L_i(\theta)}{\partial \theta}
+$$
+其中，$\eta >0$ 是学习率，$\frac{\partial L(\theta)}{\partial \theta}$ 是所有样本的损失函数的梯度向量，$\frac{\partial L_i(\theta)}{\partial \theta}$ 是第 $i$ 个样本的损失函数的梯度向量。
+
+梯度下降的基本想法如下。由于负梯度方向 $-\frac{\partial L(\theta)}{\partial \theta}$ 是使函数值下降的方向，所以每一次迭代以负梯度更新参数向量 $\theta$ 的值，从而达到减少函数值 $L(\theta)$ 的目的，函数极小值满足 $\nabla L(\theta)= \mathbf  0$。在迭代过程中，梯度向量趋近 $\mathbf 0$ 向量，参数向量 $\mathbf \theta$ 也趋近极小点。学习率控制参数更新的幅度。学习率的大小需要适当，学习率过小，参数向量每次更新的幅度会过小，迭代的次数会增加;学习率过大，参数向量每次更新的幅度会过大，产生振荡，迭代的次数也会增加。图23.18 显示梯度下降的过程。
 
 #### 2.3 反向传播算法
 #### 2.4 在计算图上的实现

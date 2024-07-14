@@ -440,7 +440,7 @@ L(\mathbf \theta) = \frac 1N \sum_{i=1}^N L_i (\theta) = \frac 1N \sum_{i=1}^N L
 $$
 其中，$L_i(\mathbf \theta)$ 是第 $i$ 个样本的损失函数
 
-梯度下降法首先随机初始化参数向量 $\mathbf \theta$；之后针对所有样本，通过以下公式更新参数向量 $\mathbf \theta$；不断迭代，直到收敛为止。
+**梯度下降法**首先随机初始化参数向量 $\mathbf \theta$；之后针对所有样本，通过以下公式更新参数向量 $\mathbf \theta$；不断迭代，直到收敛为止。
 $$
 \theta \leftarrow \theta - \eta \frac{\partial L(\theta)}{\partial \theta}
 $$
@@ -452,10 +452,8 @@ $$
 
 梯度下降的基本想法如下。由于负梯度方向 $-\frac{\partial L(\theta)}{\partial \theta}$ 是使函数值下降的方向，所以每一次迭代以负梯度更新参数向量 $\theta$ 的值，从而达到减少函数值 $L(\theta)$ 的目的，函数极小值满足 $\nabla L(\theta)= \mathbf  0$。在迭代过程中，梯度向量趋近 $\mathbf 0$ 向量，参数向量 $\mathbf \theta$ 也趋近极小点。学习率控制参数更新的幅度。学习率的大小需要适当，学习率过小，参数向量每次更新的幅度会过小，迭代的次数会增加;学习率过大，参数向量每次更新的幅度会过大，产生振荡，迭代的次数也会增加。图23.18 显示梯度下降的过程。
 
-**算法 23.1 (梯度下降法)**
-输入：网络架构 $f(\mathbf x;\mathbf \theta)$，训练数据集 $\mathcal T$。
-输出：神经网络参数向量 $\hat {\mathbf \theta}$。
-超参数：学习率 $\eta$
+![[Pasted image 20240714171717.png]]
+
 
 #### 2.3 反向传播算法
 

@@ -414,7 +414,15 @@ $$
 $$
 这时损失函数是交叉熵 (cross entropy) 损失。离散分布的交叉熵的一般定义是 $-\sum_{k=1}^l P_k \log Q_k$，表示经验分布和预测分布的差异，其中 $Q_k$ 是预测分布的概率，$P_k$ 是经验分布的概率。
 
-当问题是 **多类分类** 时，模型的输入是实数向量 $\mathbf x$，输出类别是 $y_k \in \{0,1\},k=1,2,\cdots,l,\sum_{k=1}^ly_k=1$，
+当问题是 **多类分类** 时，模型的输入是实数向量 $\mathbf x$，输出类别是 $y_k \in \{0,1\},k=1,2,\cdots,l,\sum_{k=1}^ly_k=1$，神经网络 $f(\mathbf x;\mathbf \theta)$ 表示输入给定条件下类别的条件概率分布
+$$
+\mathbf p = P_\theta(y_k = 1|\mathbf x) = f(x;\mathbf \theta)
+$$
+假设条件概率分布 $P_{\mathbf \theta}(y_k=1|\mathbf x)$ 遵循类别分布 (categorical distribution)，学习问题变为优化问题：
+$$
+\hat {\mathbf \theta} = \mathop{\text{argmin}}_{\theta} \left\{-\sum_{i=1}^N \left[\sum_{k=1}^l y_{ik}\log f(\mathbf x;\mathbf \theta) \right] \right\}
+$$
+其中，$y_{ik} \in \{0,1\},\sum_{k=1}^l y_{ik}=1,k=1,2,\cdots,l,i=1,2,\cdots,N$。所以
 #### 2.2 前馈神经网络学习的优化算法
 #### 2.3 反向传播算法
 #### 2.4 在计算图上的实现

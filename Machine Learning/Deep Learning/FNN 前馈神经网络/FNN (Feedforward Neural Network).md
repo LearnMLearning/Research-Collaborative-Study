@@ -322,3 +322,17 @@ $$
 **2. 函数近似能力**
 前馈神经网络具有强大的函数近似能力。通用近似定理 (universal approximation theorem) 指出，存在一个二层前馈神经网络，具有一个线性输出层和一个隐层，其中隐层含有充分数量的神经元，激活函数为挤压函数，这个网络可以以任意精度近似任意一个在紧的定义域上连续函数。从这个意义上，前馈神经网络的函数近似能力是通用的。
 
+设有实函数 $G(x):\mathcal R \rightarrow[0,1]$，如果 $G(x)$ 是非减函数，且满足 $\lim_{x\rightarrow -\infty} G(x) = 0,\lim_{x\rightarrow +\infty} G(x) = 1$，则称函数 $G(x)$ 为挤压函数 (squashing function)。S 型函数是一种挤压函数。
+
+后续理论研究发现，定理的条件可以放宽，当激活函数是多项式函数以外的其他函数时，或者当被近似函数是波莱尔可测函数时，定理的结论依然成立。波莱尔可测函数包括连续函数、分段连续函数、阶梯函数。
+
+下面的定理是通用近似定理的一个具体形式。
+
+**定理** 对任意连续函数 $h:[0,1]^n \rightarrow \mathcal R$ 和任意 $\varepsilon >0$，存在一个二层前馈神经网络；
+$$\begin{aligned}
+f(\mathbf x) &= \mathbf \alpha^{\mathrm T} \sigma (\mathbf W^{\mathrm T}\mathbf x + \mathbf b)\\
+&= \sum_{j} \alpha_j \sigma \left(\sum_{i} w_{ji}x_i + b_j \right)
+\end{aligned}$$
+使得对于任意 $x\in [0,1]^n$，有 $|\mathbf h(x)-f(\mathbf x)|<\varepsilon$ 成立。这里隐层的激活函数是 S 型函数。
+
+下面给出定理的直观解释

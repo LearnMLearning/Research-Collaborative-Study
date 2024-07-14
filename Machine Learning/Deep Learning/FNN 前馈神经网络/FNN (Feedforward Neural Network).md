@@ -412,7 +412,9 @@ $$
 $$
 \hat {\theta} = \mathop{\mathrm{argmin}}_{\theta} \left\{-\sum_{i=1}^N [y_i \log f(\mathbf x;\mathbf \theta) + (1-y_i) \log (1-f(\mathbf x; \mathbf \theta))] \right\}
 $$
-这时损失函数是交叉熵 (cross entropy) 损失，
+这时损失函数是交叉熵 (cross entropy) 损失。离散分布的交叉熵的一般定义是 $-\sum_{k=1}^l P_k \log Q_k$，表示经验分布和预测分布的差异，其中 $Q_k$ 是预测分布的概率，$P_k$ 是经验分布的概率。
+
+当问题是 **多类分类** 时，模型的输入是实数向量 $\mathbf x$，输出类别是 $y_k \in \{0,1\},k=1,2,\cdots,l,\sum_{k=1}^ly_k=1$，
 #### 2.2 前馈神经网络学习的优化算法
 #### 2.3 反向传播算法
 #### 2.4 在计算图上的实现

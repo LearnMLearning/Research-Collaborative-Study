@@ -264,3 +264,21 @@ $$
 \mathbf W^{(2)} = \begin{bmatrix}1\\-2 \end{bmatrix},\mathbf b^{(2)} = [0]
 $$
 
+用矩阵表示四种可能的输入：
+$$
+\mathbf X = \begin{bmatrix}0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 \end{bmatrix}
+$$
+代表批量处理。代入神经网络，第一层输出是
+$$\begin{aligned}
+\mathbf H^{(1)} &= \text{relu} \left({\mathbf W^{(1)}}^{\mathrm T} \mathbf X + \mathbf B^{(1)}\right)\\
+&= \text{relu}\left(\begin{bmatrix}1 & 1 \\ 1 & 1 \end{bmatrix}\begin{bmatrix} 0 & 0 & 1 & 1\\ 0 & 1 & 0 & 1\end{bmatrix} + \begin{bmatrix}0 & 0 & 0 & 0 \\ -1 & -1 & -1 & -1\end{bmatrix}\right)\\
+&= \text{relu}\left(\begin{bmatrix}0 & 1 & 1 & 2 \\ -1 & 0 & 0 & 1 \end{bmatrix} \right)\\
+&= \begin{bmatrix}0 & 1 & 1 & 2\\ 0 & 0 & 0 & 1 \end{bmatrix}
+\end{aligned}$$
+其中 relu 计算对矩阵的每一个元素进行。第二层输出是
+$$\begin{aligned}
+\mathbf H^{(2)} &= {\mathbf W^{(2)}}^{\mathrm T} \mathbf H^{(1)} + \mathbf B^{(2)}\\
+&= \begin{bmatrix}1 & -2 \end{bmatrix} \begin{bmatrix}0 & 1 & 1 & 2 \\ -1 & 0 & 0 & 1 \end{bmatrix} + \begin{bmatrix}0 & 0 & 0 & 0 \end{bmatrix}\\
+&= \begin{bmatrix}0 & 1 & 1 &0 \end{bmatrix}
+\end{aligned}$$
+作为线性模型的感知机不能实现 XOR 是众所周知的事实，而作为非线性模型的前馈神经网络可以实现 XOR，并且以很简单的方式实现。

@@ -294,5 +294,13 @@ $$
 
 对于二类分类的一层神经网络，当其输出层激活函数是双曲正切函数时，
 $$
-f(\mathbf x) = \tanh (\mathbf w)
+f(\mathbf x) = \tanh ({\mathbf w^{(1)}}^{\mathrm T} + b^{(1)})
 $$
+模型可以与感知机对应。感知机模型的定义是
+$$
+y = \begin{cases}+1, & \text{sign} (\mathbf w^{\mathrm T} \mathbf x + b) \ge 0\\
+-1, & 其他\end{cases}
+$$
+所以，可以认为前馈神经网络是感知机的扩展。这也是前馈神经网络又被称为多层感知机的原因。
+
+对于

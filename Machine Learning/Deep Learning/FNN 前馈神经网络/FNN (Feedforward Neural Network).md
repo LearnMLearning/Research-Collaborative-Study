@@ -335,4 +335,13 @@ f(\mathbf x) &= \mathbf \alpha^{\mathrm T} \sigma (\mathbf W^{\mathrm T}\mathbf 
 \end{aligned}$$
 使得对于任意 $x\in [0,1]^n$，有 $|\mathbf h(x)-f(\mathbf x)|<\varepsilon$ 成立。这里隐层的激活函数是 S 型函数。
 
-下面给出定理的直观解释
+下面给出定理的直观解释。假设 $h(x)$ 是一个连续函数，定义域是区间 $[0,1]$，值域是区间 $[0,1]$，可以用二层前馈神经网络 $f(x)$ 以任意精度近似 $h(x)$。（为了简单，这里假设 $h(x)$ 取正值，也可以取负值）
+![[Pasted image 20240714110020.png]]
+如图 23.15 所示，可以用阶梯函数以仁义精度近似函数 $h(x)$。如图 (b) 所示，假设阶梯函数第 $i$ 个分段函数是
+$$
+s_i(x) = \begin{cases}\alpha_i, &x_{i-1} < x \le x_i \\ 0, &其他 \end{cases}
+$$
+则该分段函数可以由以下二层神经网络近似。
+$$
+f_i(x) = \alpha_i
+$$

@@ -378,7 +378,25 @@ $$
 $$
 \hat {\mathbf \theta} = \mathop{\text{argmin}}_{\mathbf \theta} \left[\sum_{i=1}^{N} L(f(\mathbf x_i; \mathbf\theta),y_i) + \lambda \cdot \Omega(f)\right]
 $$
-其中，$L(\cdot)$ 是损失函数，$\Omega(\cdot)$ 是正则项，$\lambda \ge 0$ 是系数
+其中，$L(\cdot)$ 是损失函数，$\Omega(\cdot)$ 是正则项，$\lambda \ge 0$ 是系数。当损失函数是对数损失函数、没有正则化时，问题变成极大似然估计。这时前馈神经网络学习的一般形式。
+$$
+\hat {\mathbf \theta} = \mathop{\text{argmin}}_{\mathbf \theta} \left[-\sum_{i=1}^N \log P_\theta (y_i|\mathbf x_i) \right]
+$$
+这里 $P_{\mathbf \theta}(y|\mathbf x)$ 表示输入 $\mathbf x$ 给定条件下输出 $y$ 的条件概率，由神经网络决定：$\mathbf \theta$ 是神经网络的参数。
+
+###### 2. 具体形式
+针对不同的问题，前馈神经网络学习的一般形式可以转化为不同的具体形式。
+当问题是回归时，模型的输入是实数向量 $\mathbf x$，输出是实数值 $y$。神经网络 $f(\mathbf x;\mathbf \theta)$ 决定输入给定条件下输出的条件概率分布 $P_{\mathbf \theta}(y|\mathbf x)$。假设条件概率分布 $P_{\mathbf \theta} (y|\mathbf x)$ 遵循高斯分布：
+$$
+P_{\mathbf \theta}(y|\mathbf x) \sim N (f(\mathbf x;\mathbf\theta),\sigma^2)
+$$
+其中，$y\in(-\infty,+\infty)$，$f(\mathbf x;\mathbf \theta)$ 是均值，$\sigma^2$ 是方差。学习问题 (极大似然估计) 变为优化问题：
+
+
+$$
+\hat {\theta} = \mathop{\mathrm{argmin}}_{\theta} \left\{-\sum_{i=1}^N [y_i \log f(\mathbf x;\mathbf \theta) + (1-y_i) \log (1-f(\mathbf x; \mathbf \theta))] \right\}
+$$
+这时损失函数是交叉熵 (cross entropy) 损失。
 #### 2.2 前馈神经网络学习的优化算法
 #### 2.3 反向传播算法
 #### 2.4 在计算图上的实现

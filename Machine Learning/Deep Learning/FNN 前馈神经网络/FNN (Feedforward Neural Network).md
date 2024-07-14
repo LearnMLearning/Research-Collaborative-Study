@@ -391,7 +391,13 @@ $$
 P_{\mathbf \theta}(y|\mathbf x) \sim N (f(\mathbf x;\mathbf\theta),\sigma^2)
 $$
 其中，$y\in(-\infty,+\infty)$，$f(\mathbf x;\mathbf \theta)$ 是均值，$\sigma^2$ 是方差。学习问题 (极大似然估计) 变为优化问题：
-
+$$
+f_X(x;\mu,\sigma)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac 12\left(\frac{x-\mu}{\sigma} \right)^2} 
+$$
+$$\begin{aligned}
+\hat \theta &= \mathop{\mathrm{argmin}}_{\theta} \log\left[\frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac 12 \left(\frac{y-f(\mathbf x_i ; \theta)}{\sigma} \right)^2}  \right]\\
+&= \mathop{\mathrm{argmin}}_{\theta} \log \left( \right)
+\end{aligned}$$
 
 $$
 \hat {\theta} = \mathop{\mathrm{argmin}}_{\theta} \left\{-\sum_{i=1}^N [y_i \log f(\mathbf x;\mathbf \theta) + (1-y_i) \log (1-f(\mathbf x; \mathbf \theta))] \right\}

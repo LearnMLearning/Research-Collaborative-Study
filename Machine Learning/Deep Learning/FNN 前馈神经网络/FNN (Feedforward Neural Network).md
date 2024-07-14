@@ -365,6 +365,20 @@ $$
 
 ## 2 前馈神经网络的学习算法
 #### 2.1 前馈神经网络学习
+###### 1. 一般形式
+前馈神经网络的学习和预测时如下的监督学习问题。给定训练数据集
+$$
+\mathcal T = \{ (\mathbf x_1,y_1),(\mathbf x_2,y_2),\cdots,(\mathbf x_N,y_N)\}
+$$
+其中，$(\mathbf x_i,y_i),i=1,2,\cdots,N$，表示样本，由输入 $\mathbf x_i$ 与输出 $y_i$ 的对组成：$N$ 表示样本容量。学习一个前馈神经网络模型 $f(\mathbf x; \hat {\mathbf \theta})$，其中 $\hat{\mathbf \theta}$ 是估计的神经网络的参数向量。用学到的模型对新的输入 $\mathbf x_{N+1}$ 给出新的输出 $y_{N+1}$。
+
+学习时通常假设神经网络的架构已经确定，包括网络的层数、每层的神经元数、神经元激活函数的类型。所以网络的参数已确定，需要从数据中学习或估计的是参数值。
+
+学习问题可以形式化为以下的优化问题:
+$$
+\hat {\mathbf \theta} = \mathop{\text{argmin}}_{\mathbf \theta} \left[\sum_{i=1}^{N} L(f(\mathbf x_i; \mathbf\theta),y_i) + \lambda \cdot \Omega(f)\right]
+$$
+其中，$L(\cdot)$ 是损失函数，$\Omega(\cdot)$ 是正则项，$\lambda \ge 0$ 是系数
 #### 2.2 前馈神经网络学习的优化算法
 #### 2.3 反向传播算法
 #### 2.4 在计算图上的实现

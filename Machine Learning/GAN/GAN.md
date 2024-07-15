@@ -19,9 +19,21 @@ $$
 $$
 \mathop{\min}_{\theta} \{E_{\mathbf z\sim P_{\text{seed}(\mathbf z)}}[\log (1-D(G(\mathbf z;\mathbf \theta);\bar {\mathbf \varphi}))] \}
 $$
+判别网络和生成网络形成博弈关系，可以定义以下的极大极小问题，也就是 GAN 的学习目标函数。
+$$
+\min_{\mathbf \theta} \mathop{\max}_{\varphi}\{E_{\mathbf x \sim P_{\text{data}(\mathbf x)}}[\log D(\mathbf x;\varphi)] + E_{\mathbf z\sim P_{\text{seed}(\mathbf z)}} [\log(1-D(G(\mathbf z;\mathbf \theta);\varphi))] \}
+$$
+后续定理证明这个极小极大问题的解 $\varphi^*$ 和 $\theta^*$存在，也就是纳什均衡存在。GAN的学习算法就是求极小极大值的最优解方法。
+
+可以对 GAN 做这样一个比喻。生成网络是仿造者，判别网络是鉴别者。仿造者制作赝品;鉴别者既得到真品又得到赝品，判断作品的真伪。仿造者与鉴别者之间展开博弈，各自不断提高自己的能力，最终仿造者制作出的赝品真假难辨，鉴别者无法判断作品的真伪。注意在这个过程中鉴别者间接地把自己的判别方法告诉了仿造者，所以两者之间既有对抗关系又有“合作”关系。
 
 #### 1.2 学习算法
+**GAN 学习算法**
+![[Pasted image 20240716005005.png]]
 
+这里不进行 $\log(1 - D(G(\mathbf z; \mathbf \theta); \mathbf \varphi))$ 的最小化，而是进行 $\log(D(G(\mathbf z;\theta);\varphi)$ 的最大化。这是因为在学习的初始阶段，生成网络较弱，判别网络很容易区分训练数据和生成数据，最小化 $\log(1 - D(G(\mathbf z; \mathbf \theta);\mathbf \phi))$ 会使学习很难进行下去。因此，判别网络和生成网络的学习都使用梯度上升法。
+
+判别网络训练时从训练数据和生成数据中同采样 $M$ 个样本，也就是各以 $0.5$ 的概率选取训练数据和生成数据。判别网络学习迭代 $S$ 次后，生成网络学习迭代 $1$次。这样可以保证训练判别网络有足够能力时再训练生成网络。$M$ 和 $S$ 是超参数，要在具体应用中调节。
 #### 1.3 理论分析
 ## 2. 图像生成中的应用
 #### 2.1 转置卷积

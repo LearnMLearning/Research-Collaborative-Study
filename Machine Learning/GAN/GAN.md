@@ -11,6 +11,14 @@ GAN 由一个生成网络(generator)和一个判别网络(discriminator)组成�
 图 28.1 显示 GAN 的框架。假设已给训练数据 $\mathcal D$ 遵循分布 $P_\text{data}(\mathbf x)$，其中 $a$ 是样本。生成网络用 $\mathbf x = G(\mathbf z;\mathbf \theta)$ 表示, 其中 $\mathbf z$ 是输入向量(种子), $\mathbf x$ 是输出向量(生成数据),$\mathbf \theta$ 是网络参数。判别网络是一个二类分类器，用 $P(1|\mathbf x)= D(\mathbf x;\varphi)$表示，其中 $\mathbf x$ 是输入向量, $P(1|\mathbf x)$ 和 $1- P(1|\mathbf x)$ 是输出概率，分别表示输入 $\mathbf x$ 来自训练数据和生成数据的概率，$\mathbf \varphi$ 是网络参数。种子 $\mathbf z$ 遵循分布 Pseed(z)，如标准正态分布或均匀分布。生成网络生成的数据分布表示为 $P_\text{gen}(\mathbf x)$，由 $P_{\text{seed}}(\mathbf z)$ 和 $x=G(\mathbf z;\mathbf \theta)$ 决定。
 
 ![[Pasted image 20240716003623.png]]
+如果生成网络参数 $\mathbf \theta$ 固定，可以通过最大化以下目标函数学习判别网络参数 $\mathbf \varphi$，使其具备判别真假数据的能力。
+$$
+\mathop{\max}_{\varphi}\{E_{\mathbf x \sim P_{\text{data}(\mathbf x)}}[\log D(\mathbf x;\varphi)] + E_{\mathbf z\sim P_{\text{seed}(\mathbf z)}} [\log(1-D(G(\mathbf z;\mathbf \theta);\bar \varphi))] \}
+$$
+如果判别网络参数 $\varphi$ 固定，那么可以通过最小化以下目标函数学习生成网络参数 $\mathbf \theta$，使其具备以假乱真地生成数据的能力。
+$$
+\mathop{\min}_{\theta} \{E_{\mathbf z\sim P_{\text{seed}(\mathbf z)}}[\log (1-D(G(\mathbf z;\mathbf \theta);\bar {\mathbf \varphi}))] \}
+$$
 
 #### 1.2 学习算法
 

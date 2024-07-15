@@ -473,10 +473,46 @@ z_j^{(t)} = \sum_{i=1}^n w_{ji}^{(t)}h_i^{(t-1)} + b_j^{(t)}
 $$
 第 $t+1$ 层 (隐层) 的神经元定义如下：
 $$
-h_k^{(t+1)} = a ()
+h_k^{(t+1)} = a \left(z_k^{(t)} \right),k = 1,2,\cdots,l
 $$
+$$
+z_k^{(t)} = \sum_{j=1}^m w_{kj}^{(t+1)}h_{j}^{(t)} + b_k^{(t+1)}
+$$
+![[Pasted image 20240715175248.png]]
+![[Pasted image 20240715180349.png]]
+![[Pasted image 20240715180402.png]]
+![[Pasted image 20240715180410.png]]
+![[Pasted image 20240715180419.png]]
+![[Pasted image 20240715180429.png]]
+
 #### 2.4 在计算图上的实现
+![[Pasted image 20240715180444.png]]
+![[Pasted image 20240715180455.png]]
+![[Pasted image 20240715180507.png]]
+![[Pasted image 20240715180516.png]]
+![[Pasted image 20240715180524.png]]
+
+
 #### 2.5 算法的实现技巧
+![[Pasted image 20240715180622.png]]
+
+###### 1. 梯度消失与梯度爆炸
+![[Pasted image 20240715180631.png]]
+![[Pasted image 20240715180640.png]]
+
+
+###### 2. 批量归一化
+![[Pasted image 20240715180655.png]]
+![[Pasted image 20240715180705.png]]
+![[Pasted image 20240715180717.png]]
+![[Pasted image 20240715180735.png]]
+
+
+###### 3. 层归一化
+![[Pasted image 20240715180747.png]]
+![[Pasted image 20240715180756.png]]
+
+
 
 ## 3 前馈神经网络学习的正则化
 

@@ -1,4 +1,4 @@
 [[MAP, 2012]]
 
 
-[[VAE]]
+[[VAE (Variational Autoencoders)]]

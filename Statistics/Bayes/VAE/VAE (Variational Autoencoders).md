@@ -68,6 +68,24 @@ VAE 向多方向拓展
 ## Appendix
 #### A.1 Notation and definitions
 ###### A.1.1 Notation
+
+| Example(s)                                            | Description                                                                                                                            |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| $\mathbf x,\mathbf y,\mathbf z$                       | With characters in bold we typically denote random *vectors*. We also use this notation for collections of random variables variables. |
+| $x,y,z$                                               | With characters in italic we typically denote random *scalars*, i.e. single real-valued numbers.                                       |
+| $\mathbf X,\mathbf Y,\mathbf Z$                       | With bold and capitalized letters we typically denote random *matrices*.                                                               |
+| $Pa(\mathbf z)$                                       | The parents of random variable $\mathbf z$ in a directed graph.                                                                        |
+| $\mathrm{diag}(\mathbf x)$                            | Diagonal matrix, with the values of vector $\mathbf x$ on the diagonal.                                                                |
+| $\mathbf x$                                           |                                                                                                                                        |
+| $\theta$                                              |                                                                                                                                        |
+| $\phi$                                                |                                                                                                                                        |
+| $p(\mathbf x),p(\mathbf z)$                           |                                                                                                                                        |
+| $p(\mathbf x,\mathbf y,\mathbf z)$                    |                                                                                                                                        |
+| $p(\mathbf x$\|$\mathbf z)$                           |                                                                                                                                        |
+| $p(\cdot;\theta),p_{\theta}(\mathbf x)$               |                                                                                                                                        |
+| $p(\mathbf x = \mathbf a),p(\mathbf x \le \mathbf a)$ |                                                                                                                                        |
+|                                                       |                                                                                                                                        |
+
 ![[Pasted image 20240717103424.png|]]
 ![[Pasted image 20240717103448.png]]
 

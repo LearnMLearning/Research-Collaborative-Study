@@ -84,13 +84,18 @@ VAE 向多方向拓展
 | $p(\mathbf x$\|$\mathbf z)$                           |                                                                                                                                        |
 | $p(\cdot;\theta),p_{\theta}(\mathbf x)$               |                                                                                                                                        |
 | $p(\mathbf x = \mathbf a),p(\mathbf x \le \mathbf a)$ |                                                                                                                                        |
-|                                                       |                                                                                                                                        |
-
-![[Pasted image 20240717103424.png|]]
-![[Pasted image 20240717103448.png]]
+| $p(\cdot),q(\cdot)$                                   |                                                                                                                                        |
 
 ###### A.1.2 Definitions
+| Term                                   | Description                                                                                                                        |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Probability density func- tion (PDF)   | A function that assigns a probability *density* to each possible value of given *continuous* random variables.                     |
+| Cumulative distribution function (CDF) | A function that assigns a cumulative probability density to each possible value of given univariate *continuous* random variables. |
+| Probability mass function (PMF)        | A function that assigns a probability *mass* to given *discrete* random variable.                                                  |
+
+
 ###### A.1.3 Distributions
+
 ###### A.1.4 Bayesian Inference
 #### A.2 Alternative methods for learning in DLVMs
 ###### A.2.1 Maximum A Posteriori

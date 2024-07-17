@@ -119,21 +119,55 @@ $$
 p_{\theta} (\mathbf x) = \int p_\theta (\mathbf x, \mathbf z) \, \mathrm d \mathbf z
 $$
 当作为 $\theta$ 的函数时，这也称为(单数据点)边际似然 *marginal likelihood* 或模型证据 *model evidence*。
-
+这种关于 $\mathbf x$ 的隐式分布是非常灵活的。如果 $\mathbf z$ 是离散的，且 $p_{\theta}(\mathbf x|\mathbf z)$ 是高斯分布，则 $p_{\theta}(\mathbf x)$ 是混合高斯分布。对于连续的 $\mathbf z$, $p_{\theta}(\mathbf x)$可以看作是一个无限的混合，它比离散的混合可能更强大。这种边际分布也称为**复合概率分布**。
 ###### 1.7.2 Deep Latent Variable Models
-###### 1.7.3 Example DLVM for multivariate Bernuolli data
-#### 1.8 Intractabilities
+我们使用术语深潜变量模型 *deep latent variable model* (DLVM)来表示其分布由神经网络参数化的潜在变量模型 $p_{\theta}(\mathbf x,\mathbf z)$。这样的模型可以以某些上下文为条件，如$p_{\theta}(\mathbf x,\mathbf z|\mathbf y)$。DLVM 的一个重要优点是，即使有向模型中的每个因素(先验分布或条件分布)相对简单(例如条件高斯分布)，边际分布 $p_{\theta}(\mathbf x)$ 也可以非常复杂，即包含几乎任意的依赖关系。这种表达性使得深层潜变量模型对于近似复杂的底层分布 $p^*(\mathbf x)$具有吸引力。 
 
+也许最简单、最常见的DLVM是一个被指定为分解的DLVM，它的结构如下:
+$$
+p_{\theta} (\mathbf x,\mathbf z) = p_{\theta} (\mathbf z) p_{\theta} (\mathbf x|\mathbf z)
+$$
+其中 $p_{\theta}(\mathbf z)$ 和/或 $p_{\theta}(\mathbf x|\mathbf z)$是指定的。分布 $p(\mathbf z)$ 通常被称为 $\mathbf z$ 上的先验分布，因为它不以任何观测值为条件。
+###### 1.7.3 Example DLVM for multivariate Bernuolli data
+(Kingma and Welling, 2014)中使用的二元数据 $\mathbf x$ 的简单示例DLVM具有球形高斯潜在空间和因式伯努利观测模型:
+$$\begin{aligned}
+p(\mathbf z) &= \mathcal N(\mathbf z;0,\mathbf I)\\
+\mathbf p &= \mathrm{DecoderNeural Net}_{\theta}(\mathbf z)\\
+\log p(\mathbf x | \mathbf z) &= \sum_{j=1}^D \log p (x_j | \mathbf z) = \sum_{j=1}^D \log \mathrm{Bernoulli} (x_j;p_j)\\
+&= \sum_{j=1} x_j \log p_j + (1-x_j)\log (1-p_j)
+\end{aligned}$$
+其中$\forall p_j \in \mathbf p: 0\le p_j \le 1$ (例如通过 sigmoid 非线性作为DecoderNeuralNetθ(.)的最后一层来实现)，其中 $D$ 是 $\mathbf x$ 的维数，而伯努利 $(.;p)$ 为伯努利分布的概率质量函数(PMF)。
+#### 1.8 Intractabilities 棘手之处
+DLVM 中最大似然学习的**主要困难**是模型下数据的**边际概率通常难以处理**。这是由于计算边际似然(或模型证据)的方程 $p_{\theta} (\mathbf x) = \int p_{\theta} (\mathbf x, \mathbf z) \, d \mathbf z$ 中的积分，没有解析解或有效估计量。由于这种难处，我们不能区分它的**参数和优化**它，因为我们可以与充分观察模型。
+$p_{\theta}(\mathbf x)$的难处理性与后验分布 $p_{\theta}(\mathbf z|\mathbf x)$ 的难处理性有关。注意，联合分布 $p_{\theta}(\mathbf x, \mathbf z)$ 的计算效率很高，密度是通过基本恒等式联系起来的:
+$$
+p_{\theta} (\mathbf z | \mathbf x) = \frac{p_{\theta} (\mathbf x,\mathbf z)}{p_{\theta} (\mathbf x)}
+$$
+ 由于 $p_{\theta}(\mathbf x,\mathbf z)$ 是易于计算的，一个易于处理的边际似然 $p_{\theta}(\mathbf x)$ 导致一个易于处理的后验 $p_{\theta} (\mathbf z|\mathbf x)$，反之亦然。这两个问题在 DLVM 中都很难解决。
+ 
+近似推理技术 (参见A.2节) 允许我们在 DLVM 中近似后验 $p_{\theta}(\mathbf z|\mathbf x)$ 和边际似然$p_{\theta}(\mathbf x)$。传统的推理方法相对昂贵。例如，这种方法通常需要每个数据点的**优化循环**，或者产生不好的后验近似值。我们不想做这种昂贵的步骤。
+
+同样，神经网络参数化的(有向模型) $p(\theta |\mathcal D)$ 的后验通常难以精确计算，需要近似推理技术。
 ## 2 Variational Autoencoders
 #### 2.1 Encoder or Approximate Posterior
+
+
 #### 2.2 Evidence Lower Bound (ELBO)
+
+
 ###### 2.2.1 Two for One
 
+
 #### 2.3 Stochastic Gradient-Based Optimization of the ELBO
+
 #### 2.4 Reparameterization Trick
+
 ###### 2.4.1 Change of variables
+
 ###### 2.4.2 Gradient of expectation under change of variable
+
 ###### 2.4.3 Gradient of ELBO
+
 ###### 2.4.4 Computation of $\log_{q_{\phi}}(\mathbf z|\mathbf x)$
 
 #### 2.5 Factorized Gaussian posteriors

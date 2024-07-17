@@ -177,8 +177,10 @@ q_{\phi} (\mathbf z|\mathbf x) & = \mathcal N(\mathbf z;\mathbf \mu ;\mathrm{dia
 $$\begin{aligned}
 \log p_{\theta} (\mathbf x) &= \log \int  p_{\theta} (\mathbf x,\mathbf z) \,d \mathbf z\\
 &= \log \int \frac{p_{\theta}(\mathbf x,\mathbf z)q_{\phi}(\mathbf z| \mathbf x)}{q_{\phi}(\mathbf z| \mathbf x)} \, d \mathbf z\\
-
+&= \log \mathbb E_{q_{\phi}(\mathbf z |\mathbf x)}\left[ \frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)}\right]\\
+&\ge  \mathbb E_{q_{\phi}(\mathbf z|\mathbf x) }\left[\log\left[\frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)} \right ]\right]\\
 \end{aligned}$$
+
 ###### 2.2.1 Two for One
 
 

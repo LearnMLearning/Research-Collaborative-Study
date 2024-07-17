@@ -96,12 +96,35 @@ VAE 向多方向拓展
 ###### A.1.3 Distributions
 We overload the notation of distributions (e.g. $p(x) = \mathcal N (\mathbf x; \mathbf \mu, \mathbf \Sigma)$) with two meanings: (1) a distribution from which we can sample, and (2) the probability density function (PDF) of that distribution.
 
-| Term                                   | Description                                                                      |
-| -------------------------------------- | -------------------------------------------------------------------------------- |
-| $\mathrm{Categorical}(x;\mathbf p)$    | Categorical distribution, with parameter $\mathbf p$ such that $\sum_i p_i = 1$. |
-| $\mathrm{Bernuo}(\mathbf x;\mathbf p)$ |                                                                                  |
+| Term                                                                                                      | Description                                                                               |
+| --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| $\mathrm{Categorical}(x;\mathbf p)$                                                                       | Categorical distribution, with parameter $\mathbf p$ such that $\sum_i p_i = 1$.          |
+| $\mathrm{Bernuolli}(\mathbf x;\mathbf p)$                                                                 | Multivariate distribution of independent Bernoulli.                                       |
+| $\mathrm{Normal}(\mathbf x;\mathbf \mu, \mathbf \Sigma)=\mathcal N(\mathbf x;\mathbf \mu,\mathbf \Sigma)$ | Multivariate Normal distribution with mean $\mathbf \mu$ and covariance $\mathbf \Sigma$. |
+**Chain Rule of Probability**
+$$
+p(\mathbf a,\mathbf b) = p(\mathbf a) p(\mathbf b|\mathbf a)
+$$
+**Bayes' Rule**
+$$
+p(\mathbf a|\mathbf b) = \frac{p(\mathbf b|\mathbf a )p(\mathbf a)}{p(\mathbf b)}
+$$
 
 ###### A.1.4 Bayesian Inference
+Let $p(\theta)$ be a chosen marginal distribution over its parameters $\theta$, called a prior distribution. Let $\mathcal D$ be observed data, $p(\mathcal D|\theta) \equiv p_{\theta}(\mathcal D)$ be the probability assigned to the data under the model with parameters $\theta$. Recall the chain rule in probability:
+$$
+p(\theta,\mathcal D) = p(\theta|\mathcal D) p(\mathcal D) = p(\theta) p(\mathcal D|\theta)
+$$
+Simply re-arranging terms above, the posterior distribution over the parameters $\theta$, taking into account the data $\mathcal D$, is:
+$$
+p(\theta|\mathcal D) = \frac{p(\mathcal D | \theta)p(\theta)}{p(\mathcal D)} \varpropto p(\mathcal D|\theta)p(\theta)
+$$
+where the proportionality ($\varpropto$) holds since $p(\mathcal D)$ is a constant that is not dependent on parameters $\theta$. The formula above is known as Bayes’ rule, a fundamental formula in machine learning and statistics, and is of special importance to this work.
+
+A principal application of Bayes’ rule is that it allows us to make predictions about future data $\mathbf x'$, that are optimal as long as the prior $p(\theta)$ and model class $p_{\theta}(\mathbf x)$ are correct:
+$$
+p(\mathbf x = \mathbf x' | \mathcal D) = \int p_{\theta} (\mathbf x = \mathbf x') p (\theta | \mathcal D)\, d \theta
+$$
 #### A.2 Alternative methods for learning in DLVMs
 ###### A.2.1 Maximum A Posteriori
 ###### A.2.2 Variational EM with local variational parameters

@@ -255,9 +255,9 @@ $$
 (\mathbf z | \mathbf x) ||p_{\mathbf \theta}(\mathbf z |\mathbf x))
 \end{aligned}
 $$
-因此，e步明显地最小化了qφ(z|x)与真实后验的KL散度。
+因此，E 步明显地最小化了 $q_{\phi}(\mathbf z|\mathbf x)$ 与真实后验的KL散度。
 
-
+其次，请注意，如果 $q_{\phi}(\mathbf z|\mathbf x)$ 等于 $p_{\theta}(\mathbf z|\mathbf x)$，则 ELBO 等于边际似然，但对于 $q_{\phi}(\mathbf z|\mathbf x)$ 的任何选择，M步 优化边际似然的边界。该界的紧性由 $D_{KL}(q_{\phi}(\mathbf z|\mathbf x)||p_\theta(\mathbf z|\mathbf x))$ 定义。
 
 
 ###### A.2.3 MCMC-EM

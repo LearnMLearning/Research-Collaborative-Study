@@ -183,7 +183,7 @@ $$\begin{aligned}
 &= \log \mathbb E_{q_{\phi}(\mathbf z |\mathbf x)}\left[ \frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)}\right]\\
 &\ge  \mathbb E_{q_{\phi}(\mathbf z|\mathbf x) }\left[\log\left[\frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)} \right ]\right] (\mathrm{Jessen's \, inequality} ) = \mathcal L_{\theta,\phi}(\mathbf x)\, (\text{ELBO})\\
 \end{aligned}$$
-
+通过最大化这个下界，我们可以逼近对数似然 $\log p_{\theta} (\mathbf x)$
 ###### 2.2.1 Two for One
 
 

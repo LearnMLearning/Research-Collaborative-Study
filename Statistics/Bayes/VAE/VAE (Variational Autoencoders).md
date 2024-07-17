@@ -174,11 +174,14 @@ q_{\phi} (\mathbf z|\mathbf x) & = \mathcal N(\mathbf z;\mathbf \mu ;\mathrm{dia
 与其他变分方法一样，变分自编码器的优化目标是**证据下界** *Evidence Lower Bound* ，简称为ELBO。这个目标的另一个术语是**变分下界** *variational lower bound*。典型地，ELBO是通过 Jensen 不等式推导出来的。这里，我们将使用另一种推导方法，避免使用 Jensen 不等式，从而更深入地了解它的**紧密性**。
 
 对于任意选择推理模型 $q_{\phi}(\mathbf z|\mathbf x)$，包括变分参数 $\phi$ 的选择，有:
+
+
+使用 Jenson 不等式：
 $$\begin{aligned}
 \log p_{\theta} (\mathbf x) &= \log \int  p_{\theta} (\mathbf x,\mathbf z) \,d \mathbf z\\
 &= \log \int \frac{p_{\theta}(\mathbf x,\mathbf z)q_{\phi}(\mathbf z| \mathbf x)}{q_{\phi}(\mathbf z| \mathbf x)} \, d \mathbf z\\
 &= \log \mathbb E_{q_{\phi}(\mathbf z |\mathbf x)}\left[ \frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)}\right]\\
-&\ge  \mathbb E_{q_{\phi}(\mathbf z|\mathbf x) }\left[\log\left[\frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)} \right ]\right]\\
+&\ge  \mathbb E_{q_{\phi}(\mathbf z|\mathbf x) }\left[\log\left[\frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z|\mathbf x)} \right ]\right] (\mathrm{Jessen's \, inequality} ) = \mathcal L_{\theta,\phi}(\mathbf x)\, (\text{ELBO})\\
 \end{aligned}$$
 
 ###### 2.2.1 Two for One

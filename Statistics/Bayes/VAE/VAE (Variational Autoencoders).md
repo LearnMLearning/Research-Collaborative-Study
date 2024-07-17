@@ -127,12 +127,12 @@ p(\mathbf x = \mathbf x' | \mathcal D) = \int p_{\theta} (\mathbf x = \mathbf x'
 $$
 #### A.2 Alternative methods for learning in DLVMs
 ###### A.2.1 Maximum A Posteriori
-From a Bayesian perspective, we can improve upon the maximum likelihood objective through maximum a posteriori (MAP) estimation, which maximizes the log-posterior w.r.t. $\theta$. With i.i.d. data $\mathcal D$, this is:
+从贝叶斯的角度来看，我们可以通过最大后验 (MAP) 估计来改进最大似然目标，从而最大化对数后验w.r.t。使用i.i.d data $\mathcal D$，这是:
 $$\begin{aligned}
 L^{MAP} (\theta) &= \log p (\theta|\mathcal D)\\
 &= \log p(\theta) + L^{ML}(\theta) + \text{constant}
 \end{aligned}$$
-The prior $p(\theta)$ in equation (A.5) has diminishing effect for increasingly large $N$. For this reason, in case of optimization with large datasets, we often choose to simply use the maximum likelihood criterion by omitting the prior from the objective, which is numerically equivalent to setting $p(\theta) = \text{constant}$.
+方程(A.5)中的先验 $p(\theta)$ 对于越来越大的 $N$ 的影响是递减的。因此，在对大型数据集进行优化的情况下，我们经常选择简单地使用最大似然准则，从目标中省略先验，这在数值上相当于设置$p(\theta) = \text{constant}$。
 ###### A.2.2 Variational EM with local variational parameters
 Expectation Maximization (EM) is a general strategy for learning parameters in partially observed models (Dempster et al., 1977). See section A.2.3 for a discussion of EM using MCMC. The method can be explained as coordinate ascent on the ELBO (Neal and Hinton, 1998). In case of of i.i.d. data, traditional variational EM methods estimate **local variational parameters** $\mathbf \phi^{(i)}$, i.e. a separate set of variational parameters per datapoint i in the dataset. In contrast, VAEs employ a strategy with **global variational parameters**.
 

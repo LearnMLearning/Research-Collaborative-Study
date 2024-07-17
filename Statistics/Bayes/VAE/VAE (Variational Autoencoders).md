@@ -134,6 +134,14 @@ L^{MAP} (\theta) &= \log p (\theta|\mathcal D)\\
 \end{aligned}$$
 The prior $p(\theta)$ in equation (A.5) has diminishing effect for increasingly large $N$. For this reason, in case of optimization with large datasets, we often choose to simply use the maximum likelihood criterion by omitting the prior from the objective, which is numerically equivalent to setting $p(\theta) = \text{constant}$.
 ###### A.2.2 Variational EM with local variational parameters
+Expectation Maximization (EM) is a general strategy for learning parameters in partially observed models (Dempster et al., 1977). See section A.2.3 for a discussion of EM using MCMC. The method can be explained as coordinate ascent on the ELBO (Neal and Hinton, 1998). In case of of i.i.d. data, traditional variational EM methods estimate **local variational parameters** $\mathbf \phi^{(i)}$, i.e. a separate set of variational parameters per datapoint i in the dataset. In contrast, VAEs employ a strategy with **global variational parameters**.
+
+EM starts out with some (random) initial choice of $\mathbf \theta$ and $\mathbf \phi^{(1:N)}$. It then iteratively applies updates:
+$$\begin{aligned}
+\forall i &= 1, \dots,N : \phi^{(i)} \leftarrow \mathop{\mathrm{argmax}}_{\phi} \,\mathcal L(\mathbf x^{(i)};\mathbf \theta,\mathbf \phi)\\
+\mathbf \theta & \leftarrow \mathop{\mathrm{argmax}}_{\theta} \sum_{i=1}^N \mathcal L(\mathbf x^{(i)};\mathbf \theta,\mathbf \phi)
+\end{aligned}$$
+
 
 
 ###### A.2.3 MCMC-EM

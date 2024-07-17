@@ -127,8 +127,17 @@ p(\mathbf x = \mathbf x' | \mathcal D) = \int p_{\theta} (\mathbf x = \mathbf x'
 $$
 #### A.2 Alternative methods for learning in DLVMs
 ###### A.2.1 Maximum A Posteriori
+From a Bayesian perspective, we can improve upon the maximum likelihood objective through maximum a posteriori (MAP) estimation, which maximizes the log-posterior w.r.t. $\theta$. With i.i.d. data $\mathcal D$, this is:
+$$\begin{aligned}
+L^{MAP} (\theta) &= \log p (\theta|\mathcal D)\\
+&= \log p(\theta) + L^{ML}(\theta) + \text{constant}
+\end{aligned}$$
+The prior $p(\theta)$ in equation (A.5) has diminishing effect for increasingly large $N$. For this reason, in case of optimization with large datasets, we often choose to simply use the maximum likelihood criterion by omitting the prior from the objective, which is numerically equivalent to setting $p(\theta) = \text{constant}$.
 ###### A.2.2 Variational EM with local variational parameters
+
+
 ###### A.2.3 MCMC-EM
+
 
 #### A.3 Stochastic Gradient Descent
 

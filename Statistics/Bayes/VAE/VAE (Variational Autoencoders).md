@@ -76,8 +76,8 @@ VAE 向多方向拓展
 | $\mathbf X,\mathbf Y,\mathbf Z$                       | With bold and capitalized letters we typically denote random *matrices*.                                                               |
 | $Pa(\mathbf z)$                                       | The parents of random variable $\mathbf z$ in a directed graph.                                                                        |
 | $\mathrm{diag}(\mathbf x)$                            | Diagonal matrix, with the values of vector $\mathbf x$ on the diagonal.                                                                |
-| $\mathbf x$                                           |                                                                                                                                        |
-| $\theta$                                              |                                                                                                                                        |
+| $\mathbf x \odot \mathbf y$                           | Element-wise multiplication of two vectors. The resulting vector is $(x_1y_1,\dots,x_Ky_K)^{\mathrm T}$.                               |
+| $\theta$                                              | Parameters of a (generative) model are typically denoted with the Greek lowercase letter $\theta$ (theta).                             |
 | $\phi$                                                |                                                                                                                                        |
 | $p(\mathbf x),p(\mathbf z)$                           |                                                                                                                                        |
 | $p(\mathbf x,\mathbf y,\mathbf z)$                    |                                                                                                                                        |

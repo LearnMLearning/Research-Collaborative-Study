@@ -37,28 +37,82 @@ VAE 向多方向拓展
 
 由于概率模型包含未知数，而数据很少描绘出未知的完整图景，我们通常需要在模型的各个方面假设某种程度的不确定性。这种不确定性的程度和性质是用(条件)概率分布来表示的。模型可以由连续值变量和离散值变量组成。在某种意义上，概率模型的最完整形式指定了模型中变量之间的所有相关性和高阶依赖性，以这些变量的**联合概率分布**的形式。
 
+我们用 $\mathbf x$ 作为向量来表示所有观察到的变量的集合我们要对这些变量的联合分布进行建模。请注意，为了简化符号并避免混乱，我们使用小写粗体(例如x)来表示观察到的随机变量的底层集合，即平面化和连接，以便该集合表示为单个向量。有关符号的更多信息，请参见A.1节。
 
+我们假设观察到的变量 $\mathbf x$ 是来自未知底层过程的随机样本，其真实(概率)分布 $p^∗(\mathbf x)$ 是未知的。我们尝试用一个选定的模型 $p_{\theta}(\mathbf x)$ 来近似这个潜在的过程，参数为 $\theta$:
+$$
+\mathbf x \sim p_\theta(\mathbf x)
+$$
+最常见的是，*Learning* 是寻找参数 $\theta$ 值的过程，使模型给出的概率分布函数 $p_\theta(\mathbf x)$ 近似于数据的真实分布，表示为 $p^*(\mathbf x)$，使得对于任何观测到的 $\mathbf x$:
+$$
+p_{\theta}(\mathbf x) \approx p^*(\mathbf x)
+$$
+自然，我们希望 $p_{\theta}(\mathbf x)$足够灵活，能够适应数据，这样我们就有机会获得一个足够精确的模型。同时，我们希望能够将关于数据分布的知识整合到已知的先验模型中。
+###### 1.3.1 Conditional Models
+通常，例如在分类或回归问题的情况下，我们对学习无条件模型 $p_{\theta}(\mathbf x)$ 不感兴趣，而是对近似潜在条件分布 $p^∗(\mathbf y|\mathbf x)$ 的条件模型 $p_{\theta}(\mathbf y|\mathbf x)$ 感兴趣:变量 $\mathbf y$ 值的分布，以观察到的变量 $\mathbf x$ 的值为条件。在这种情况下，$\mathbf x$ 通常被称为模型的输入。与无条件情况一样，选择一个模型 $p_{\theta}(\mathbf y|\mathbf x)$，并将其优化为接近未知的底层分布，这样对于任意 $\mathbf x$ 和 $\mathbf y$:
+$$
+p_{\mathbf \theta}(\mathbf y|\mathbf x) \approx p^*(\mathbf y | \mathbf x)
+$$
+条件建模的一个相对常见和简单的例子是图像分类，其中 $\mathbf x$ 是图像，$\mathbf y$ 是图像的类别，由我们希望预测的人标记。在这种情况下，$p_{\theta}(\mathbf y|\mathbf x)$ 通常被选择为分类分布，其参数由 $\mathbf x$ 计算。
+
+当预测的变量是**非常高维**的，如图像、视频或声音时，条件模型变得更加难以学习。一个例子是图像分类问题的反面:预测图像上的分布，以**类标签**为条件。另一个同时具有**高维输入**和**高维输出**的例子是时间序列预测，如文本或视频预测。
+
+为了避免符号混乱，我们通常会假设**无条件建模**，但应该始终记住，在这项工作中引入的方法在几乎所有情况下**都同样适用于条件模型**。模型所依赖的数据可以被视为模型的输入，类似于模型的参数，但**明显的区别**是，人们不会对它们的值进行优化。
 
 #### 1.4 Parameterizing Conditional Distributions with Neural Networks
+可微前馈神经网络，从这里就叫 *neural networks*，是一种特别灵活的计算可扩展的函数逼近器。基于具有多个“隐藏”人工神经元层的神经网络的模型学习通常被称为深度学习(Goodfellow et al.2016;LeCun et al.， 2015)。一个特别有趣的应用是概率模型，即在概率模型中使用神经网络的概率密度函数(PDFs)或概率质量函数(PMFs)。基于神经网络的概率模型在计算上是可扩展的，因为它们允许基于随机梯度的优化，正如我们将解释的那样，允许扩展到大型模型和大型数据集。我们将深度神经网络表示为一个向量函数: $\mathrm{NeuralNet}(\cdot)$。
+
+在撰写本文时，深度学习已被证明可以很好地解决各种分类和回归问题，如(LeCun et al.， 2015;Goodfellow et al.， 2016)。以神经网络为基础的图像分类为例，LeCun et al.， 1998，神经网络参数化类标签 $y$ 上的分类分布 $p_{\theta}(y|\mathbf x)$，以图像 $\mathbf x$ 为条件。
+$$\begin{aligned}
+\mathbf p &= \mathrm{NeuralNet} (\mathbf x)\\
+p_{\theta} (y|\mathbf x) &= \mathrm{Categorical} (y;\mathbf p)
+\end{aligned}$$
+其中 $\mathrm{NeuralNet}(\cdot)$的最后一次操作通常是一个 $\mathrm{softmax}()$ 函数，使得 $\sum_i p_i = 1$。
 #### 1.5 Directed Graphical Models and Neural Networks
+我们使用有向概率模型 (*directed* probabilistic models)，也称为 *probabilistic graphical models* (PGMs)，或贝叶斯网络 (*Bayesian networks*)。有向图模型是一种概率模型，其中所有的变量被拓扑组织成一个有向无环图。这些模型的变量的联合分布被分解为先验分布和条件分布的乘积:
+$$
+p_\theta(\mathbf x_1,\dots,\mathbf x_M) = \prod_{j=1}^M p_{\theta} (\mathbf x_j | )
+$$
 #### 1.6 Learning in Fully Observed Models with Neural Nets
+###### 1.6.1 Dataset
+###### 1.6.2 Maximum Likelihood and Minibatch SGD
+###### 1.6.3 Bayesian inference
 #### 1.7 Learning and Inference in Deep Latent Variable Models
+###### 1.7.1 Latent Variables
+###### 1.7.2 Deep Latent Variable Models
+###### 1.7.3 Example DLVM for multivariate Bernuolli data
 #### 1.8 Intractabilities
 
 ## 2 Variational Autoencoders
 #### 2.1 Encoder or Approximate Posterior
 #### 2.2 Evidence Lower Bound (ELBO)
+###### 2.2.1 Two for One
 
 #### 2.3 Stochastic Gradient-Based Optimization of the ELBO
-#### 2.4 Reparameterization Trick]
+#### 2.4 Reparameterization Trick
+###### 2.4.1 Change of variables
+###### 2.4.2 Gradient of expectation under change of variable
+###### 2.4.3 Gradient of ELBO
+###### 2.4.4 Computation of $\log_{q_{\phi}}(\mathbf z|\mathbf x)$
+
 #### 2.5 Factorized Gaussian posteriors
+###### 2.5.1 Full-covariance Gaussian posterior
+
 #### 2.6 Estimation of the Marginal Likelihood
+
 #### 2.7 Marginal Likelihood and ELBO as KL Divergences
 #### 2.8 Challenges
+###### 2.8.1 Optimization issues
+###### 2.8.2 Blurriness of generative model
+
 #### 2.9 Related prior and concurrent work
+###### 2.9.1 Score function estimator
 ## 3 Beyond Gaussian Posteriors
 #### 3.1 Requirements for Computational Tractability
 #### 3.2 Improving the Flexibility of Inference Models
+###### 3.2.1 Auxiliary Latent Variables
+###### 3.2.2 Normalizing Flows
+
 #### 3.3 Inverse Autoregressive Transformations
 #### 3.4 Inverse Autoregressive Flow (IAF)
 

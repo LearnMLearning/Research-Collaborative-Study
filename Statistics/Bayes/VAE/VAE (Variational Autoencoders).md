@@ -90,7 +90,11 @@ $$
 \mathcal D = \{\mathbf x^{(1)},\mathbf x^{(2)},\dots, \mathbf x^{(N)} \} \equiv \{\mathbf x^{(i)}\}_{i=1}^N \equiv \mathbf x^{(1:N)}
 $$
 假设数据点是来自**不变的底层分布**的独立样本。换句话说，假设数据集由来自**同一(不变)系统**的**不同的、独立的**测量数据组成。在这种情况下，观测值 $\mathcal D = \{x^{(i)}\}_N^{i=1}$ 被称为 $i.i.d$ (independently and identically distributed)，表示 **独立和同分布**。在 $i.i.d$ 假设下，给定参数的数据点的概率被分解为单个数据点概率的乘积。因此，模型赋予数据的对数概率为:
+$$
+\log p_{\theta} (\mathcal D) = \sum_{\mathbf x \in \mathcal D} \log p_{\theta} (\mathbf x)
+$$
 ###### 1.6.2 Maximum Likelihood and Minibatch SGD
+概率模型最常用的准则是 *maximum log-likelihood* 最大对数似然(ML)。正如我们将解释的那样，对数似然准则的**最大化**相当于数据和模型分布之间的 Kullback Leibler (KL) 散度的**最小化**。
 
 ###### 1.6.3 Bayesian inference
 

@@ -27,6 +27,9 @@ VAE 向多方向拓展
 
 作为一个社区，我们似乎已经接受了这样一个事实，即**生成模型**和**无监督学习**在构建智能机器方面发挥着重要作用。我们希望VAE能为这个难题提供一块有用的拼图。
 #### 1.2 Aim
+变分自编码器(VAEs)框架(Kingma and Welling, 2014;Rezende et al.， 2014)提供了一种利用**随机梯度下降**联合学习**深度潜变量模型**和相应推理模型的原则性方法。该框架具有广泛的应用，从**生成建模**、**半监督学习**到**表示学习**。
+
+
 #### 1.3 Probabilistic Models and Variational Inference
 #### 1.4 Parameterizing Conditional Distributions with Neural Networks
 #### 1.5 Directed Graphical Models and Neural Networks

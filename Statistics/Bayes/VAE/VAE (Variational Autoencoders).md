@@ -74,6 +74,13 @@ $$
 p_\theta(\mathbf x_1,\dots,\mathbf x_M) = \prod_{j=1}^M p_{\theta} (\mathbf x_j | Pa(\mathbf x_j))
 $$
 其中，$Pa(\mathbf x_j)$为有向图中节点 $j$ 的父变量集合。对于非根节点，我们以父节点为条件。对于根节点，父节点的集合是空集合，因此分布是无条件的。
+
+传统上，每个条件概率分布 $p_{\theta}(\mathbf x_j |Pa(\mathbf x_j))$ 被参数化为查找表或线性模型 (Koller和 Friedman, 2009)。正如我们上面所解释的，更灵活的**参数化条件分布**的方法是使用神经网络。在这种情况下，神经网络将有向图中一个变量的父变量作为输入，并产生该变量的分布参数 $\mathbf \eta$:
+$$\begin{aligned}
+\eta &= \mathrm{NeuralNet} (Pa(\mathbf x))\\
+
+\end{aligned}$$
+
 #### 1.6 Learning in Fully Observed Models with Neural Nets
 ###### 1.6.1 Dataset
 ###### 1.6.2 Maximum Likelihood and Minibatch SGD

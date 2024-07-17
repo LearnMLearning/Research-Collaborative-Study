@@ -149,6 +149,8 @@ $$
 
 同样，神经网络参数化的(有向模型) $p(\theta |\mathcal D)$ 的后验通常难以精确计算，需要近似推理技术。
 ## 2 Variational Autoencoders
+![[Pasted image 20240717164849.png]]
+图2.1:VAE 学习观察到的 $\mathbf x$ 空间(其经验分布 $q_{\mathcal D}(\mathbf x)$ 通常是复杂的)与潜在 $\mathbf z$ 空间(其分布可能相对简单(如球形，如图所示)之间的随机映射。**生成模型**学习一个**联合分布** $p_{\theta}(\mathbf x,\mathbf z)$，它通常(但并不总是)被分解为 $p_{\theta}(\mathbf x,\mathbf z) = p_{\theta}(\mathbf z)p_{\theta}(\mathbf x|\mathbf z)$，具有**潜在空间**上的先验分布 $p_{\theta}(\mathbf z)$ 和**随机解码器** $p_{\theta}(\mathbf x|\mathbf z)$。随机编码器 $q_{\phi}(\mathbf z|\mathbf x)$也称为推理模型 *Inference model* ，它近似于生成模型的真实但难以处理的后验 $p_{\phi}(\mathbf z|\mathbf x)$。
 #### 2.1 Encoder or Approximate Posterior
 在前一章中，我们介绍了深度潜变量模型(DLVM)，以及估计这种模型中的对数似然分布和后验分布的问题。变分自编码器(VAEs)框架提供了一种计算效率高的方法来优化 DLVM，并结合相应的推理模型使用SGD进行优化。
 
@@ -171,7 +173,10 @@ q_{\phi} (\mathbf z|\mathbf x) & = \mathcal N(\mathbf z;\mathbf \mu ;\mathrm{dia
 #### 2.2 Evidence Lower Bound (ELBO)
 与其他变分方法一样，变分自编码器的优化目标是**证据下界** *Evidence Lower Bound* ，简称为ELBO。这个目标的另一个术语是**变分下界** *variational lower bound*。典型地，ELBO是通过 Jensen 不等式推导出来的。这里，我们将使用另一种推导方法，避免使用 Jensen 不等式，从而更深入地了解它的**紧密性**。
 
-
+对于任意选择推理模型 $q_{\phi}(\mathbf z|\mathbf x)$，包括变分参数 $\phi$ 的选择，有:
+$$\begin{aligned}
+\log p_{\theta} (\mathbf x) &= \mathbb E_{q_{\phi}(\mathbf z|\mathbf x)} [\log]
+\end{aligned}$$
 ###### 2.2.1 Two for One
 
 

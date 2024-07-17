@@ -85,7 +85,11 @@ p_{\theta} (\mathbf x| Pa(\mathbf x)) & = p_{\theta} ( \mathbf x | \eta)
 #### 1.6 Learning in Fully Observed Models with Neural Nets
 如果在数据中观察到有向图模型中的所有变量，那么我们可以计算和微分模型下数据的对数概率，从而实现相对简单的优化。
 ###### 1.6.1 Dataset
-
+我们通常收集一个由 $N\ge 1$ 个数据点组成的数据集 $\mathcal D$:
+$$
+\mathcal D = \{\mathbf x^{(1)},\mathbf x^{(2)},\dots, \mathbf x^{(N)} \} \equiv \{\mathbf x^{(i)}\}_{i=1}^N \equiv \mathbf x^{(1:N)}
+$$
+假设数据点是来自**不变的底层分布**的独立样本。换句话说，假设数据集由来自**同一(不变)系统**的**不同的、独立的**测量数据组成。在这种情况下，观测值 $\mathcal D = \{x^{(i)}\}_N^{i=1}$ 被称为 $i.i.d$ (independently and identically distributed)，表示 **独立和同分布**。在 $i.i.d$ 假设下，给定参数的数据点的概率被分解为单个数据点概率的乘积。因此，模型赋予数据的对数概率为:
 ###### 1.6.2 Maximum Likelihood and Minibatch SGD
 
 ###### 1.6.3 Bayesian inference

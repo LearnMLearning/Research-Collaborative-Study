@@ -29,6 +29,8 @@ VAE 向多方向拓展
 #### 1.2 Aim
 变分自编码器(VAEs)框架(Kingma and Welling, 2014;Rezende et al.， 2014)提供了一种利用**随机梯度下降**联合学习**深度潜变量模型**和相应推理模型的原则性方法。该框架具有广泛的应用，从**生成建模**、**半监督学习**到**表示学习**。
 
+这项工作是我们早期工作的扩展版本(Kingma和Welling, 2014)，使我们能够更详细地解释这个主题，并讨论一系列重要的后续工作。这并非是对所有相关工作的全面审查。我们假定读者具有基本的**代数**、**微积分**和**概率论**知识。
+
 
 #### 1.3 Probabilistic Models and Variational Inference
 #### 1.4 Parameterizing Conditional Distributions with Neural Networks

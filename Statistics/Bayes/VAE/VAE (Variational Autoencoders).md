@@ -110,10 +110,11 @@ $$
 $$
 这些梯度可以插入到随机梯度优化器中;进一步讨论见A.3节。简而言之，我们可以通过在随机梯度的方向上重复采取小步骤来优化目标函数。
 ###### 1.6.3 Bayesian inference
-
+从贝叶斯的角度来看，我们可以通过最大后验(MAP)估计来改进机器学习(见第 A.2.1 节)，或者更进一步，对参数的完整近似后验分布进行推断(见第 A.1.4 节)。
 
 #### 1.7 Learning and Inference in Deep Latent Variable Models
 ###### 1.7.1 Latent Variables
+
 ###### 1.7.2 Deep Latent Variable Models
 ###### 1.7.3 Example DLVM for multivariate Bernuolli data
 #### 1.8 Intractabilities
@@ -233,7 +234,7 @@ p(\mathbf x = \mathbf x' | \mathcal D) = \int p_{\theta} (\mathbf x = \mathbf x'
 $$
 #### A.2 Alternative methods for learning in DLVMs
 ###### A.2.1 Maximum A Posteriori
-从贝叶斯的角度来看，我们可以通过最大后验 (MAP) 估计来改进最大似然目标，从而最大化对数后验w.r.t。使用i.i.d data $\mathcal D$，这是:
+从贝叶斯的角度来看，我们可以通过最大后验 (MAP) 估计来改进最大似然目标，从而最大化对数后验w.r.t $\theta$。使用i.i.d data $\mathcal D$，这是:
 $$\begin{aligned}
 L^{MAP} (\theta) &= \log p (\theta|\mathcal D)\\
 &= \log p(\theta) + L^{ML}(\theta) + \text{constant}

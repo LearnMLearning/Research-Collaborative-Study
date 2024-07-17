@@ -114,7 +114,7 @@ $$
 
 #### 1.7 Learning and Inference in Deep Latent Variable Models
 ###### 1.7.1 Latent Variables
-
+我们可以将前一节讨论的完全观察到的有向模型扩展为具有潜在变量的有向模型。潜在变量是模型的一部分，但我们没有观察到，因此不是数据集的一部分。我们通常用z来表示这样的潜在变量。在对观测变量x进行无条件建模的情况下，有向图形模型将表示观测变量x和潜在变量z上的联合分布pθ(x,z)。观测变量pθ(x)的边际分布由下式给出:
 ###### 1.7.2 Deep Latent Variable Models
 ###### 1.7.3 Example DLVM for multivariate Bernuolli data
 #### 1.8 Intractabilities

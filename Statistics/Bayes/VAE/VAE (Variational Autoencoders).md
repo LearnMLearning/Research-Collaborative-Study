@@ -150,9 +150,26 @@ $$
 同样，神经网络参数化的(有向模型) $p(\theta |\mathcal D)$ 的后验通常难以精确计算，需要近似推理技术。
 ## 2 Variational Autoencoders
 #### 2.1 Encoder or Approximate Posterior
+在前一章中，我们介绍了深度潜变量模型(DLVM)，以及估计这种模型中的对数似然分布和后验分布的问题。变分自编码器(VAEs)框架提供了一种计算效率高的方法来优化 DLVM，并结合相应的推理模型使用SGD进行优化。
 
+为了将 DLVM 的后验推理和学习问题转化为可处理的问题，我们引入了一个参数推理模型 *Inference Model* $q_{\phi}(\mathbf z|\mathbf x)$。这个模型也被称为**编码器** *Encoder* 或 识别模型 *Recoginition model* 。用 $\phi$ 表示该推理模型的参数，也称为**变分参数** *variational parameters*。我们优化变分参数 $\phi$ 使:
+$$
+q_{\phi} (\mathbf z|\mathbf x) \approx p_{\theta} (\mathbf z | \mathbf x)
+$$
+正如我们将解释的那样，这种对后验的近似帮助我们优化边际似然。
 
+像DLVM一样，推理模型可以是(几乎)任何有向图形模型:
+$$
+q_{\phi} (\mathbf z | \mathbf x) = q_{\phi} (\mathbf z_1,\dots,\mathbf z_M |\mathbf x) = \prod_{j=1}^M q_{\phi} (\mathbf z_j| Pa(\mathbf z_j),\mathbf x)
+$$
+其中 $Pa (\mathbf z_j)$ 是变量 $\mathbf z_j$ 在有向图中的父变量集合。与 DLVM 类似，分布 $q_{\phi}(\mathbf z|\mathbf x)$ 可以使用深度神经网络参数化。在这种情况下，变分参数 $\phi$ 包括神经网络的权重和偏差。例如:
+$$\begin{aligned}
+(\mathbf \mu ,\log \mathbf \sigma) &= \mathrm{EncoderNeural Net}_{\phi} (\mathbf x)\\
+q_{\phi} (\mathbf z|\mathbf x) & = \mathcal N(\mathbf z;\mathbf \mu ;\mathrm{diag}(\mathbf \sigma))
+\end{aligned}$$
+通常，我们使用单个编码器神经网络对数据集中的所有数据点执行**事后推理**。这可以与更**传统的变分推理方法形成对比**，其中变分参数不是共享的，而是每个数据点单独迭代优化的。在VAEs中使用**的跨数据点共享变分参数**的策略也称为**平摊变分推理** *amortized variational inference* (Gershman和Goodman, 2014)。通过平摊推理，我们可以避免每个数据点的优化循环，并利用SGD的效率。
 #### 2.2 Evidence Lower Bound (ELBO)
+与其他变分方法一样，变分自编码器的优化目标是**证据下界** *Evidence Lower Bound* ，简称为ELBO。这个目标的另一个术语是**变分下界** *variational lower bound*。典型地，ELBO是通过 Jensen 不等式推导出来的。这里，我们将使用另一种推导方法，避免使用 Jensen 不等式，从而更深入地了解它的**紧密性**。
 
 
 ###### 2.2.1 Two for One

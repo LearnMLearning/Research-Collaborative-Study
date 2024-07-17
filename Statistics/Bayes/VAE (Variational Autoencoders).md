@@ -67,6 +67,9 @@ VAE 向多方向拓展
 ## 5 Conclusion
 ## Appendix
 #### A.1 Notation and definitions
+###### A.1.1 Notation
+
+###### A.1.2 Definitions
 #### A.2 Alternative methods for learning in DLVMs
 #### A.3 Stochastic Gradient Descent
 

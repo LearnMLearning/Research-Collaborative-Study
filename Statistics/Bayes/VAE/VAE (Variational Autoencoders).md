@@ -78,13 +78,18 @@ $$
 传统上，每个条件概率分布 $p_{\theta}(\mathbf x_j |Pa(\mathbf x_j))$ 被参数化为查找表或线性模型 (Koller和 Friedman, 2009)。正如我们上面所解释的，更灵活的**参数化条件分布**的方法是使用神经网络。在这种情况下，神经网络将有向图中一个变量的父变量作为输入，并产生该变量的分布参数 $\mathbf \eta$:
 $$\begin{aligned}
 \eta &= \mathrm{NeuralNet} (Pa(\mathbf x))\\
-
+p_{\theta} (\mathbf x| Pa(\mathbf x)) & = p_{\theta} ( \mathbf x | \eta)
 \end{aligned}$$
+现在我们将讨论如果在数据中观察到所有变量，如何**学习这些模型的参数**。
 
 #### 1.6 Learning in Fully Observed Models with Neural Nets
+如果在数据中观察到有向图模型中的所有变量，那么我们可以计算和微分模型下数据的对数概率，从而实现相对简单的优化。
 ###### 1.6.1 Dataset
+
 ###### 1.6.2 Maximum Likelihood and Minibatch SGD
+
 ###### 1.6.3 Bayesian inference
+
 #### 1.7 Learning and Inference in Deep Latent Variable Models
 ###### 1.7.1 Latent Variables
 ###### 1.7.2 Deep Latent Variable Models

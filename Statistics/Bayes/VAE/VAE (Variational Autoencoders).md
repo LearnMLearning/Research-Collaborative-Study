@@ -95,8 +95,10 @@ $$
 $$
 ###### 1.6.2 Maximum Likelihood and Minibatch SGD
 概率模型最常用的准则是 *maximum log-likelihood* 最大对数似然(ML)。正如我们将解释的那样，对数似然准则的**最大化**相当于数据和模型分布之间的 Kullback Leibler (KL) 散度的**最小化**。
-
+![[Pasted image 20240717135847.png]]
+在ML准则下，我们试图找到参数 $θ$，使模型分配给数据的**对数概率**的**总和或平均值**最大化。对于大小为 $N_{\mathcal D}$ 的 $i.i.d$ 数据集 $\mathcal D$，最大似然目标是最大化式 $\log p_{\theta} (\mathcal D) = \sum_{\mathbf x \in \mathcal D} \log p_{\theta} (\mathbf x)$ 给出的对数概率。
 ###### 1.6.3 Bayesian inference
+
 
 #### 1.7 Learning and Inference in Deep Latent Variable Models
 ###### 1.7.1 Latent Variables

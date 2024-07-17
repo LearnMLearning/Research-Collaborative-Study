@@ -99,6 +99,16 @@ $$
 在ML准则下，我们试图找到参数 $θ$，使模型分配给数据的**对数概率**的**总和或平均值**最大化。对于大小为 $N_{\mathcal D}$ 的 $i.i.d$ 数据集 $\mathcal D$，最大似然目标是最大化式 $\log p_{\theta} (\mathcal D) = \sum_{\mathbf x \in \mathcal D} \log p_{\theta} (\mathbf x)$ 给出的对数概率。
 
 利用微积分的**链式法则**和自动微分工具，我们可以有效地计算出该目标的梯度，即目标的一阶导数w.r.t. 其参数 $\theta$。我们可以使用这样的梯度迭代爬坡到 ML 目标的局部最优。如果我们使用所有数据点来计算这样的梯度 $\nabla_\theta \log p_\theta(\mathcal D)$ ，那么这就是所谓的**批量梯度下降** (*batch* gradient descent)。然而，对于大数据集大小$N_{\mathcal D}$，计算这个导数是一个昂贵的操作，因为它随 $N_{\mathcal D}$ 线性扩展。
+
+一种更有效的优化方法是 **随机梯度下降(SGD)** (章节A.3)，它使用大小为$N_\mathcal M$的随机绘制的小批量数据$\mathcal M \subset \mathcal D$。有了这样的小批量，我们可以形成 ML 准则的无偏估计量:
+$$
+\frac{1}{N_{\mathcal D}} \log p_\theta (\mathcal D) \simeq \frac{1}{N_{\mathcal M}}\log p_{\theta} ( \mathcal M) = \frac{1}{N_{\mathcal M}} \sum_{\mathbf x \in \mathcal M} \log p_{\theta} (\mathbf x)
+$$
+这一标志意味着一方是另一方的无偏估计者 *unbiased estimator*。因此，一边(在本例中是右手边)是一个随机变量，由于某些噪声源，当**对噪声分布进行平均**时，两边是**相等**的。在这种情况下，噪声源是随机抽取的小批数据 $\mathcal M$ 。无偏估计量 $\log p_\theta(\mathcal M)$ 是可微的，得到无偏随机梯度:
+$$
+\frac{1}{N_\mathcal D} \nabla_{\theta} \log p_{\theta} (\mathcal D) \simeq \frac{1}{N_{\mathcal M}} \nabla_{\theta} \log p_{\theta} (\mathcal M) = \frac{1}{N_{\mathcal M}} \sum_{\mathbf x \in \mathcal M} \nabla_{\theta} \log p_{\theta} (\mathbf x)
+$$
+这些梯度可以插入到随机梯度优化器中;进一步讨论见A.3节。简而言之，我们可以通过在随机梯度的方向上重复采取小步骤来优化目标函数。
 ###### 1.6.3 Bayesian inference
 
 
@@ -236,7 +246,16 @@ EM从一些(随机的)初始选择 $\mathbf \theta$ 和 $\mathbf \phi^{(1:N)}$ �
 \forall i &= 1, \dots,N : \phi^{(i)} \leftarrow \mathop{\mathrm{argmax}}_{\phi} \,\mathcal L(\mathbf x^{(i)};\mathbf \theta,\mathbf \phi)\\
 \mathbf \theta & \leftarrow \mathop{\mathrm{argmax}}_{\theta} \sum_{i=1}^N \mathcal L(\mathbf x^{(i)};\mathbf \theta,\mathbf \phi)
 \end{aligned}$$
-直至收敛。为什么是这样？
+直至收敛。为什么是这样？注意在 E-step:
+$$
+\begin{aligned}
+&\mathop{\mathrm{argmax}}_{\phi} \, \mathcal L(\mathbf x;\mathbf \theta,\mathbf \phi)\\
+&= \mathop{\mathrm{argmax}}_{\phi} [\log p_{\theta} (\mathbf x) - D_{KL} (q_{\phi}(\mathbf z | \mathbf x)||p_{\theta} ( \mathbf z | \mathbf x))]\\
+&= \mathop{\mathrm{argmin}}_{\phi} \, D_{KL} (q_{\phi} 
+(\mathbf z | \mathbf x) ||p_{\mathbf \theta}(\mathbf z |\mathbf x))
+\end{aligned}
+$$
+因此，e步明显地最小化了qφ(z|x)与真实后验的KL散度。
 
 
 
@@ -244,7 +263,12 @@ EM从一些(随机的)初始选择 $\mathbf \theta$ 和 $\mathbf \phi^{(1:N)}$ �
 ###### A.2.3 MCMC-EM
 
 
-#### A.3 Stochastic Gradient Descent
+#### A.3 [[Stochastic Gradient Descent]] 随机梯度下降
+我们使用有向模型，其中每个数据点的目标是标量，并且由于组成它们的神经网络的可微性，目标是可微的，其参数 $\theta$。由于逆模自动微分(也称为**反向传播算法**(Rumelhart et al.， 1988))的显著效率，可微分标量目标的值和梯度(即偏导数向量)可以以相等的时间复杂度计算。在SGD中，我们迭代更新参数 $θ$:
+$$
+\theta_{t+1} \leftarrow \theta_t + \alpha_t \cdot \nabla_\theta \tilde L (\theta,\xi) 
+$$
+其中 $\alpha_t$ 是学习率或预条件，$\tilde L(\theta，\xi)$ 是目标 $L(\theta)$ 的无偏估计，即 $\mathbb E_{\xi \sim p(\xi)} \tilde L(\theta,\xi) = L(\theta)$。随机变量 $\xi$ 可以是一个数据点索引，从 $\{1,\cdots,N\}$，但也可以包含不同类型的噪声，例如 VAE 中的后验抽样噪声。在实验中，我们通常使用 Adam 和 Adamax 优化方法来选择 $\alpha_t$ (Kingma和Ba, 2015);这些方法不受目标的不断重新缩放和单个梯度的不断重新缩放的影响。因此，$L (\theta, \xi)$ 只需要达到比例的无偏性。我们迭代地应用 eq. (a .15)，直到满足停止条件。一个简单而有效的准则是，当一组数据出现的概率开始下降时，立即停止优化;这一标准被称为**早停** (*early stopping*)。
 
 
 ## Related Works

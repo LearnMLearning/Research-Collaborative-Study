@@ -71,8 +71,9 @@ p_{\theta} (y|\mathbf x) &= \mathrm{Categorical} (y;\mathbf p)
 #### 1.5 Directed Graphical Models and Neural Networks
 我们使用有向概率模型 (*directed* probabilistic models)，也称为 *probabilistic graphical models* (PGMs)，或贝叶斯网络 (*Bayesian networks*)。有向图模型是一种概率模型，其中所有的变量被拓扑组织成一个有向无环图。这些模型的变量的联合分布被分解为先验分布和条件分布的乘积:
 $$
-p_\theta(\mathbf x_1,\dots,\mathbf x_M) = \prod_{j=1}^M p_{\theta} (\mathbf x_j | )
+p_\theta(\mathbf x_1,\dots,\mathbf x_M) = \prod_{j=1}^M p_{\theta} (\mathbf x_j | Pa(\mathbf x_j))
 $$
+其中，$Pa(\mathbf x_j)$为有向图中节点 $j$ 的父变量集合。对于非根节点，我们以父节点为条件。对于根节点，父节点的集合是空集合，因此分布是无条件的。
 #### 1.6 Learning in Fully Observed Models with Neural Nets
 ###### 1.6.1 Dataset
 ###### 1.6.2 Maximum Likelihood and Minibatch SGD
@@ -119,10 +120,22 @@ $$
 #### 3.5 Related Work
 ## 4 Deeper Generative Models
 #### 4.1 Inference and Learning with Multiple latent Variables
+###### 4.1.1 Choice of ordering
 #### 4.2 Alternative methods for increasing expressivity
 #### 4.3 Autoregressive Models
 #### 4.4 Invertible transformations with tractable Jacobian determinant
 #### 4.5 Follow-Up Work
+###### 4.5.1 Representation Learning
+###### 4.5.2 Understanding of data, and artificial creativity
+**Chemical Design**
+
+**Natural Language Synthesis**
+
+**Astronomy**
+
+**Image (Re-)Synthesis**
+
+###### 4.5.3 Other relevant follow-up work
 ## 5 Conclusion
 ## Appendix
 #### A.1 Notation and definitions

@@ -68,10 +68,19 @@ VAE 向多方向拓展
 ## Appendix
 #### A.1 Notation and definitions
 ###### A.1.1 Notation
+![[Pasted image 20240717103424.png|]]
+![[Pasted image 20240717103448.png]]
 
 ###### A.1.2 Definitions
+###### A.1.3 Distributions
+###### A.1.4 Bayesian Inference
 #### A.2 Alternative methods for learning in DLVMs
+###### A.2.1 Maximum A Posteriori
+###### A.2.2 Variational EM with local variational parameters
+###### A.2.3 MCMC-EM
+
 #### A.3 Stochastic Gradient Descent
+
 
 ## Related Works
 [[Feature Unlearning for Pre-trained GANs and VAEs 2024]]

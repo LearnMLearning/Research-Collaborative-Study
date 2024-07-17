@@ -175,7 +175,9 @@ q_{\phi} (\mathbf z|\mathbf x) & = \mathcal N(\mathbf z;\mathbf \mu ;\mathrm{dia
 
 对于任意选择推理模型 $q_{\phi}(\mathbf z|\mathbf x)$，包括变分参数 $\phi$ 的选择，有:
 $$\begin{aligned}
-\log p_{\theta} (\mathbf x) &= \mathbb E_{q_{\phi}(\mathbf z|\mathbf x)} [\log]
+\log p_{\theta} (\mathbf x) &= \log \int  p_{\theta} (\mathbf x,\mathbf z) \,d \mathbf z\\
+&= \log \int \frac{p_{\theta}(\mathbf x,\mathbf z)q_{\phi}(\mathbf z| \mathbf x)}{q_{\phi}(\mathbf z| \mathbf x)} \, d \mathbf z\\
+
 \end{aligned}$$
 ###### 2.2.1 Two for One
 

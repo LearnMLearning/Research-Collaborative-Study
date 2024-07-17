@@ -23,7 +23,7 @@ VAE 向多方向拓展
 	[[Dynamical Models]] 动态模型 (Johnson et al., 2016)
 	[[Models with attention]] 注意力模型 (Gregor et al., 2015)
 	[[Models with Multiple Levels of Stochastic Latent Variables]] 具有多层随机潜在变量的模型 (Kingma et al., 2016)
-	**[[GAN]]** 生成对抗网络
+	**[[GAN]]** 生成对抗网络 (Goodfellow et al., 2014) 该种生成建模范式获得了极大的关注：VAEs 和 GANs 似乎有互补的特性：虽然GANs 可以生成高主观感知质量的图像，但与基于似然的生成模型相反。它们往往缺乏对数据的充分支持
 #### 1.2 Aim
 #### 1.3 Probabilistic Models and Variational Inference
 #### 1.4 Parameterizing Conditional Distributions with Neural Networks

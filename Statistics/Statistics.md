@@ -1,3 +1,6 @@
 [[Bayes]]
 
 [[Distributions]]
+
+[[Variance]]
+

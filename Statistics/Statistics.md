@@ -2,5 +2,5 @@
 
 [[Distributions]]
 
-[[Variance]]
+[[Partial Description]]
 

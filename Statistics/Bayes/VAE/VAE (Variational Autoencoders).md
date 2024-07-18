@@ -328,7 +328,7 @@ $$\begin{aligned}
 \end{aligned}$$
 当 $z = g(\epsilon,\phi, \mathbf x)$
 ###### 2.5.1 Full-covariance Gaussian posterior 全协方差高斯后验
-因式 高斯后验 可以推广为具有 全协方差 的高斯:
+**因式高斯后验** 可以推广为具有 **全协方差的高斯**:
 $$
 q_{\phi}(\mathbf z|\mathbf x) = \mathcal N (\mathbf z;\mu,\mathbf \Sigma)
 $$

@@ -313,7 +313,7 @@ $$\begin{aligned}
 (\mu,\log \sigma) &= \mathrm{EncoderNeuralNet}_\phi (\mathbf x)\\
 \mathbf z &= \mathbf \mu + \sigma \odot \epsilon 
 \end{aligned}$$
-其中 $\odot$ 是zhu的产物。$\mathbf \epsilon$ 到 $\mathbf z$ 变换的雅可比矩阵为:
+其中 $\odot$ 是元素积。$\mathbf \epsilon$ 到 $\mathbf z$ 变换的雅可比矩阵为:
 $$
 \frac{\partial \mathbf z}{\partial \epsilon} = \mathrm{diag} (\mathbf \sigma),
 $$

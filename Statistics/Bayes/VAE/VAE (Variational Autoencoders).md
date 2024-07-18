@@ -174,7 +174,30 @@ q_{\phi} (\mathbf z|\mathbf x) & = \mathcal N(\mathbf z;\mathbf \mu ;\mathrm{dia
 与其他变分方法一样，变分自编码器的优化目标是**证据下界** *Evidence Lower Bound* ，简称为ELBO。这个目标的另一个术语是**变分下界** *variational lower bound*。典型地，ELBO是通过 Jensen 不等式推导出来的。这里，我们将使用另一种推导方法，避免使用 Jensen 不等式，从而更深入地了解它的**紧密性**。
 
 对于任意选择推理模型 $q_{\phi}(\mathbf z|\mathbf x)$，包括变分参数 $\phi$ 的选择，有:
+$$\begin{aligned}
+\log p_{\theta} (\mathbf x) &= \mathbb E_{q_{\phi}(\mathbf z | \mathbf x)} \left[\log p_{\theta} (\mathbf x) \right]\\
+&= \mathbb E_{q_{\phi}(\mathbf z |\mathbf x)}\left[\log \left[ \frac{p_{\theta}(\mathbf x,\mathbf z)}{p_{\theta} (\mathbf z|\mathbf x)}\right] \right]\\
+&= \mathbb E_{q_{\phi}(\mathbf z | \mathbf x)}\left[\log \left[\frac{p_{\theta} (\mathbf x,\mathbf z)}{q_{\phi}(\mathbf z |\mathbf x)}\frac{q_{\phi} (\mathbf z|\mathbf x)}{p_{\theta}(\mathbf z |\mathbf x)} \right] \right]\\
+&= \underbrace{\mathbb E_{q_\phi (\mathbf z |\mathbf x)} \left[\log\left[\frac{p_{\theta} ( \mathbf x,\mathbf z)}{q_{\phi}(\mathbf z | \mathbf x)}\right] \right]}_{=\mathop{\mathcal L_{\theta,\phi}(\mathbf x)}}+ \underbrace{\mathbb E_{q_{\phi}(\mathbf z |\mathbf x)} \left[\log \left[\frac{q_{\phi} (\mathbf z | \mathbf x)}{p_{\theta} ( \mathbf z |\mathbf x)} \right] \right]}_{=D_{KL}(q_\phi)(\mathbf z | \mathbf x)||p_{\mathbf \theta} (\mathbf z | \mathbf x)}
+\end{aligned}$$
+KL 散度 (Kullback-Leibler divergence)，非负
+$$
+D_{KL} (q_\phi (\mathbf z | \mathbf x) || p_{\theta} (\mathbf z | \mathbf x)) \ge 0
+$$
+取等条件为当且仅当 $q_{\phi(\mathbf z | \mathbf x)}$ 等于真实后验分布
 
+第一个形式是 *variational lower bound* (*evidence lower bound*) (ELBO):
+$$
+\mathcal L_{\theta,\phi} (\mathbf x) = \mathbb E_{q_\phi(\mathbf z|\mathbf x)} [\log p_{\theta} (\mathbf x,\mathbf z) - \log q_{\phi} (\mathbf z|\mathbf x)]
+$$
+由于KL散度的非负性，ELBO是数据的对数似然的下界。
+$$\begin{aligned}
+\mathcal L_{\theta,\phi} (\mathbf x) &= \log p_{\theta} (\mathbf x) - D_{KL} (q_\phi(\mathbf z | \mathbf x) ||p_{\theta} (\mathbf z | \mathbf x))\\
+& \le \log p_{\theta} (\mathbf x)
+\end{aligned}$$
+有趣的是，KL 散度 $D_{KL}(q_{\phi}(\mathbf z|\mathbf x)||p_{\theta}(\mathbf z|\mathbf x))$ 决定了两个“距离”:
+1. 根据定义，近似后验与真实后验的 KL 散度; 
+2. ELBO $L_{\theta,\phi}(\mathbf x)$与边际似然 $\log p_\theta(\mathbf x)$ 之间的间隙; 这也被称为约束的紧密性。就 KL 散度而言，$q_{\phi}(\mathbf z|\mathbf x)$ 越接近真实(后验)分布 $p_{\theta}(\mathbf z|\mathbf x)$，则差距越小。
 
 使用 Jenson 不等式：
 $$\begin{aligned}
@@ -185,32 +208,129 @@ $$\begin{aligned}
 \end{aligned}$$
 通过最大化这个下界，我们可以逼近对数似然 $\log p_{\theta} (\mathbf x)$
 ###### 2.2.1 Two for One
-
+通过查看公式 $\mathcal L_{\theta,\phi}(\mathbf x) = \log p_{\theta} (\mathbf x) - D_{KL} (q_{\phi} (\mathbf z |\mathbf x)|| p_{\theta} (\mathbf z | \mathbf x))$，可以理解，最大化ELBO $L_{\theta,\phi}(\mathbf x)$ w.r.t.参数 $\theta$ 和 $\phi$，将同时优化我们关心的两件事:
+1. 它将近似最大化边际似然 $p_{\theta}(\mathbf x)$。这意味着我们的生成模型将变得更好。 
+2. 它将最小化近似 $q_{\phi}(\mathbf z|\mathbf x)$ 与真实后验 $p_{\theta}(\mathbf z|\mathbf x)$ 的KL散度，因此 $q_{\phi}(\mathbf z|\mathbf x)$ 变得更好。
 
 #### 2.3 Stochastic Gradient-Based Optimization of the ELBO
+ELBO 的一个重要性质是，它允许使用随机梯度下降(SGD)对所有参数($\phi$和 $\theta$)进行联合优化。我们可以从 $\phi$ 和 $\theta$ 的随机初始值开始，随机优化它们的值，直到收敛。
+给定具有i.i.d数据的数据集，ELBO 目标是单个数据点 ELBO 的总和(或平均值):
+$$
+\mathcal L_{\theta,\phi} (\mathcal D) = \sum_{\mathbf x \in \mathcal D} \mathcal L_{\theta,\phi} ( \mathbf x)
+$$
+一般来说，单个数据点 ELBO 及其梯度 $\nabla_{\theta,\phi}\mathcal L_{\theta,\phi}(\mathbf x)$ 是难以处理的。然而，有良好的无偏估计量 $\nabla_{\theta,\phi}\mathcal L_{\theta,\phi}(\mathbf x)$存在，我们将会证明，这样我们仍然可以执行小批量 SGD。
+生成模型参数 $\theta$ 下 ELBO 的无偏梯度很容易得到:
+$$\begin{aligned}
+\nabla_{\theta}\mathcal L_{\theta,\phi} (\mathbf x) &= \nabla_{\theta} \mathbb E_{q_\phi(\mathbf z | \mathbf x)} [\log p_{\theta} (\mathbf x,\mathbf z)-\log q_{\phi} (\mathbf z|\mathbf x)]\\
+&= \mathbb E_{q_\phi (\mathbf z | \mathbf x)} [\nabla_{\theta} (\log p_\theta(\mathbf x,\mathbf z)-\log q_{\phi}(\mathbf z | \mathbf x))]\\
+&\simeq \nabla_{\theta}(\log p_{\theta}(\mathbf x,\mathbf z) - \log q_{\phi}(\mathbf z | \mathbf x))\\
+&= \nabla_{\theta} (\log p_{\theta}(\mathbf x , \mathbf z))
+\end{aligned}$$
+最后一行 (eq.(2.17))是第二行(eq.(2.15))的简单蒙特卡罗估计量 (Monte Carlo estimator) ，其中最后两行 (eq.(2.16) 和 eq.(2.17)) 中的 $\mathbf z$ 是来自 $q_{\phi}(\mathbf z| \mathbf x)$ 的随机样本。
 
-#### 2.4 Reparameterization Trick
+变分参数 $\phi$ 的无偏梯度更难获得，因为 ELBO 的期望是在分布 $q_{\phi}(\mathbf z|\mathbf x)$ 的基础上取的，它是 $\phi$ 的函数。也就是说，一般来说:
+$$\begin{aligned}
+\nabla_{\phi} \mathcal L_{\theta,\phi} (\mathbf x) &= \nabla_{\phi} \mathbb E_{q_\phi(\mathbf z| \mathbf x)} [\log p_{\theta} (\mathbf x , \mathbf z) - \log q_\phi (\mathbf z|\mathbf x)]\\
+&\ne \mathbb E_{q_\phi (\mathbf z | \mathbf x)}[\nabla_{\phi}(\log p_{\theta} (\mathbf x , \mathbf z) - \log q_\phi (\mathbf z|\mathbf x))]
+\end{aligned}$$
+在连续潜变量的情况下，我们可以使用 reparameterization trick 来计算 $\nabla_{\theta,\phi} \mathcal L_{\theta,\phi}(\mathbf x)$ 的无偏估计，我们现在将讨论。这种随机估计允许我们使用 SGD 来优化 ELBO;参见算法1。关于离散潜在变量的变分方法的讨论，请参见第2.9.1节。
 
+ELBO的随机优化。由于噪声来源于小批量抽样和 $p(\epsilon)$ 抽样，这是一个双重随机优化过程。我们也把这个过程称为 *Auto-Encoding Variational Bayes* 自动编码变分贝叶斯(AEVB)算法。
+
+![[Pasted image 20240718141732.png]]
+
+#### 2.4 Reparameterization Trick 重参数化技巧
+对于连续潜变量和可微编码器和生成模型，可以通过变量的变化直接对 ELBO进行w.r.t. $\phi$ 和 $\theta$ 的微分，也称为重参数化技巧 (Kingma和Welling, 2014和Rezende等人，2014)。
 ###### 2.4.1 Change of variables
-
+首先，我们将随机变量 $\mathbf z \sim q_{\phi}(\mathbf z|\mathbf x)$ 表示为另一个随机变量 $\epsilon$ 的可微(可逆)变换，给定 $\mathbf z$ 和 $\phi$ :
+$$
+\mathbf z = \mathbf g(\mathbf \epsilon, \mathbf \phi,\mathbf x)
+$$
+$\epsilon$ 独立 $\phi,\mathbf x$ 分布
 ###### 2.4.2 Gradient of expectation under change of variable
-
+给定这样的变量变化，期望可以用 $\epsilon$ 来表示，
+$$
+\mathbb E_{q_\phi (\mathbf z |\mathbf x)}[f(\mathbf z)] = \mathbb E_{p(\epsilon)} [f(\mathbf z)]
+$$
+其中 $\mathbf z = \mathbf g(\epsilon, \phi,\mathbf  x)$，期望算子与梯度算子互换，我们可以得到一个简单的蒙特卡罗估计量:
+$$\begin{aligned}
+\nabla_{\phi} \mathbb E_{q_{\phi}(\mathbf z|\mathbf x)} [f(\mathbf z)] &= \nabla_{\phi} \mathbb E_{p(\epsilon)} [f(\mathbf z)]\\
+&= \mathbb E_{p(\epsilon)}[\nabla_{\phi}f(\mathbf z)]\\
+&\simeq \nabla_{\phi} f(\mathbf z)
+\end{aligned}$$
+其中最后一行，$\mathbf z = \mathbf g(\phi, \mathbf x,\epsilon)$，随机噪声样本 $\epsilon \sim p(\epsilon)$。见图2.3 的说明和进一步的说明，图3.2 为二维玩具问题的后验结果的说明。
+![[Pasted image 20240718143237.png]]
+图2.3: 重新参数化技巧的说明。变分参数 $\phi$ 通过随机变量 $\mathbf z \sim q_{\phi}(\mathbf z|\mathbf x)$ 影响目标$f$。我们希望通过计算梯度 $\nabla_\phi f$ 来利用 SGD 优化目标。在原始形式(左)中，我们不能微分 $f$ w.r.t. $\phi$，因为我们不能直接通过随机变量 $\mathbf z$ 反向传播梯度。我们可以通过将变量重新参数化为 $\phi$， $\mathbf x$和新引入的随机变量 $\epsilon$ 的确定性可微函数来“外部化” $\mathbf z$ 的随机性。这允许我们“反向通过 backprop through $\mathbf z$”，并计算梯度 $\nabla_{\phi} f$。
 ###### 2.4.3 Gradient of ELBO
+在重新参数化的情况下，我们可以用一个 w.r.t. $p (\epsilon)$ 代替期望w.r.t. $q_{\phi}(\mathbf z|\mathbf x)$。ELBO可以重写为:
+$$\begin{aligned}
+\mathcal L_{\theta,\phi} (\mathbf x) &= \mathbb E_{q_{\phi}(\mathbf z |\mathbf x)} [\log p_{\theta} (\mathbf x,\mathbf z) - \log q_{\phi} (\mathbf z | \mathbf x)]\\
+&= \mathbb E_{p(\epsilon)} [\log p_{\theta} (\mathbf x,\mathbf z)-\log q_\phi (\mathbf z|\mathbf x)]
+\end{aligned}$$
+因此，我们可以形成单个数据点 ELBO 的简单蒙特卡罗估计量 $\tilde {\mathcal L}_{\theta,\phi}(\mathbf x)$，其中我们使用来自 $p(\epsilon)$ 的单个噪声样本 $\epsilon$:
+$$\begin{aligned}
+\epsilon &\sim p(\epsilon)\\
+\mathbf z &= \mathbf g(\phi,\mathbf x,\epsilon)\\
+\tilde {\mathcal L}_{\theta,\phi} ( \mathbf x)& = \log p_{\theta}(\mathbf x,\mathbf z) - \log q_{\phi} (\mathbf z | \mathbf x)
+\end{aligned}$$
+这一系列操作可以在TensorFlow等软件中表示为符号图，并且可以毫不费力地区分参数 $\theta$ 和 $\phi$。得到的梯度 $\nabla_\phi \tilde {\mathcal L}_{\theta,\phi} (\mathbf x)$ 用于使用小批量 SGD 优化 ELBO。参见算法1。该算法最初被 Kingma 和 Welling(2014) 称为 Auto-Encoding Variational Bayes (AEVB)算法。更一般地说，可重构 ELBO 估计被称为随机梯度变分贝叶斯(SGVB)估计。这个估计器也可以用来估计模型参数的后验，如(Kingma和Welling, 2014)的附录中所解释的那样。
 
-###### 2.4.4 Computation of $\log_{q_{\phi}}(\mathbf z|\mathbf x)$
+**Unbiasedness 无偏性**
+该梯度是精确单数据点 ELBO 梯度的无偏估计;当对噪声 $\epsilon \sim p(\epsilon)$ 进行平均时，该梯度等于单数据点 ELBO 梯度:
+$$\begin{aligned}
+\mathbb E_{p(\epsilon)} \left[\nabla_{\theta,\phi} \tilde{\mathcal L}_{\theta,\phi}(\mathbf x;\epsilon) \right] &= \mathbb E_{p(\epsilon)} [\nabla_{\theta,\phi} (\log p_{\theta} (\mathbf x,\mathbf z) - \log q_{\phi} (\mathbf z|\mathbf x))]\\
+&= \nabla_{\theta,\phi} (\mathbb E_{p(\epsilon)}[\log p_{\theta} ( \mathbf x,\mathbf z) - \log q_{\phi} (\mathbf z | \mathbf x)])\\
+&= \nabla_{\theta,\phi} \mathcal L_{\theta,\phi} (\mathbf x)
+\end{aligned}$$
+###### 2.4.4 Computation of $\log q_{\phi}(\mathbf z|\mathbf x)$
+计算 ELBO 的(估计量)需要计算密度 $\log q_\phi(\mathbf z|\mathbf x)$，给定一个值 $\mathbf x$，并给定一个值$\mathbf z$ 或等效的 $\mathbf \epsilon$。这个对数密度是一个简单的计算，只要我们选择正确的变换 $\mathbf g()$。
+注意，我们通常知道密度 $p(\epsilon)$，因为这是所选噪声分布的密度。只要 $\mathbf g(\cdot)$ 是可逆函数，则 $\epsilon$ 和 $\mathbf z$ 的密度关系式为:
+$$
+\log q_{\phi} (\mathbf z|\mathbf x)  = \log p(\epsilon) - \log d_{\phi} (\mathbf x,\mathbf \epsilon)
+$$
+其中第二项是雅可比矩阵$(\partial \mathbf z/\partial \epsilon)$ 的行列式绝对值的对数:
+$$
+\log d_{\phi} (\mathbf x,\mathbf \epsilon) = \log \left| \det \left(\frac{\partial \mathbf z}{\partial \mathbf \epsilon} \right)\right|
+$$
+我们称它为 $\epsilon$ 到 $\mathbf z$ 变换的对数行列式。我们使用符号 $\log d_{\phi}(\mathbf x, \epsilon)$ 来表明这个对数行列式，类似于 $\mathbf g()$，是 $\mathbf x$， $\epsilon$ 和 $\phi$ 的函数。雅可比矩阵包含 $\epsilon$ 到 $\mathbf z$ 变换的所有一阶导数:
+$$
+\frac{\partial \mathbf z}{\partial \epsilon} = \frac{\partial (z_1,\dots,z_k)}{\partial (\epsilon_1,\dots,\epsilon_k)} = \begin{pmatrix}
+\frac{\partial z_1}{\partial \epsilon_1} & \cdots & \frac{\partial z_1}{\partial \epsilon_k}\\
+\vdots & \ddots & \vdots\\
+\frac{\partial z_k}{\partial \epsilon_1} & \cdots & \frac{\partial z_k}{\partial \epsilon_k}
+\end{pmatrix}
+$$
+正如我们将展示的，我们可以构建非常灵活的转换 $\mathbf g()$，其中 $\log d_{\phi}(\mathbf x,\epsilon)$ 很容易计算，从而产生高度灵活的推理模型 $q_{\phi}(\mathbf z|\mathbf x)$。
+#### 2.5 Factorized Gaussian posteriors 因式高斯后验
+一个常见的选择是一个简单的 因式高斯编码器 factorized Gaussian encoder $q_{\phi}(\mathbf z|\mathbf x) = \mathcal N (\mathbf z; \mathbf \mu,\mathrm{diag}(\mathbf \sigma^2))$:
+$$\begin{aligned}
+(\mu,\log \sigma) &= \mathrm{EncoderNeuralNet}_{\phi}(\mathbf x)\\
+q_{\phi}(\mathbf z| \mathbf x) & = \prod_i q_{\phi} (z_i |\mathbf x) = \prod_i \mathcal N(z_i;\mu_i;\sigma_i^2)
+\end{aligned}$$
+其中 $N (zi;μi, σ_i^2)$为单变量高斯分布的PDF。重新参数化后，我们可以写:
 
-#### 2.5 Factorized Gaussian posteriors
 ###### 2.5.1 Full-covariance Gaussian posterior
+
 
 #### 2.6 Estimation of the Marginal Likelihood
 
+
 #### 2.7 Marginal Likelihood and ELBO as KL Divergences
+
+
 #### 2.8 Challenges
 ###### 2.8.1 Optimization issues
+
+
 ###### 2.8.2 Blurriness of generative model
 
+
 #### 2.9 Related prior and concurrent work
+
+
 ###### 2.9.1 Score function estimator
+
+
 ## 3 Beyond Gaussian Posteriors
 #### 3.1 Requirements for Computational Tractability
 #### 3.2 Improving the Flexibility of Inference Models

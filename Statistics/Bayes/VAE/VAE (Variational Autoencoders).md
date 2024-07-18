@@ -307,10 +307,36 @@ $$\begin{aligned}
 (\mu,\log \sigma) &= \mathrm{EncoderNeuralNet}_{\phi}(\mathbf x)\\
 q_{\phi}(\mathbf z| \mathbf x) & = \prod_i q_{\phi} (z_i |\mathbf x) = \prod_i \mathcal N(z_i;\mu_i;\sigma_i^2)
 \end{aligned}$$
-其中 $N (zi;μi, σ_i^2)$为单变量高斯分布的PDF。重新参数化后，我们可以写:
-
-###### 2.5.1 Full-covariance Gaussian posterior
-
+其中 $\mathcal N (z_i; \mu_i, \sigma_i^2)$ 为单变量高斯分布 (univariate Gaussian distribution) 的 PDF。重新参数化 (reparameterization) 后，我们可以写:
+$$\begin{aligned}
+\epsilon & \sim \mathcal N (0,\mathbf I)\\
+(\mu,\log \sigma) &= \mathrm{EncoderNeuralNet}_\phi (\mathbf x)\\
+\mathbf z &= \mathbf \mu + \sigma \odot \epsilon 
+\end{aligned}$$
+其中 $\odot$ 是zhu的产物。$\mathbf \epsilon$ 到 $\mathbf z$ 变换的雅可比矩阵为:
+$$
+\frac{\partial \mathbf z}{\partial \epsilon} = \mathrm{diag} (\mathbf \sigma),
+$$
+即，一个元素 $\mathbf \sigma$ 在对角线上的对角矩阵。一个对角线 (或者更一般地说，三角形) 矩阵的行列式是它的对角线项的乘积。因此，雅可比矩阵的对数行列式是:
+$$
+\log d_{\phi}(\mathbf x,\mathbf \epsilon) = \log \left|\det \left(\frac{\partial \mathbf z}{\partial \epsilon} \right) \right| = \sum_{i}\log \sigma_i
+$$
+后验密度为:
+$$\begin{aligned}
+\log q_{\phi} (\mathbf z|\mathbf x) &= \log p(\epsilon)- \log d_{\phi}(\mathbf x,\epsilon)\\
+&= \sum_i \log \mathcal N(\epsilon_i;0,1) - \log \sigma_i
+\end{aligned}$$
+当 $z = g(\epsilon,\phi, \mathbf x)$
+###### 2.5.1 Full-covariance Gaussian posterior 全协方差高斯后验
+因式 高斯后验 可以推广为具有 全协方差 的高斯:
+$$
+q_{\phi}(\mathbf z|\mathbf x) = \mathcal N (\mathbf z;\mu,\mathbf \Sigma)
+$$
+该分布的重新参数化由下式给出:
+$$\begin{aligned}
+\epsilon &\sim \mathcal N(0,\mathbf I)\\
+\mathbf z &= \mu + \mathbf L \epsilon
+\end{aligned}$$
 
 #### 2.6 Estimation of the Marginal Likelihood
 

@@ -10,11 +10,11 @@ $$
 **性质：**
 1. $\mathrm{Var}[a] = 0$，where $a$ is a constant
 2. $\mathrm{Var}[a_1X+a_2]=a_1^2\mathrm{Var}[X]$，where $a_1,a_2$ are constants
-3. $\mathrm{var}[X_1+X_2] = \mathrm{var}[X_1] + \mathrm{var}[X_2]$，**如果** $X_1 \perp X_2$ (独立事件 方差计算)
-4. $\mathrm{var}[X] = E[X^2] - E[X]^2$ (简便计算)
+3. $\mathrm{Var}[X_1+X_2] = \mathrm{Var}[X_1] + \mathrm{Var}[X_2]$，**如果** $X_1 \perp X_2$ (独立事件 方差计算)
+4. $\mathrm{Var}[X] = E[X^2] - E[X]^2$ (简便计算)
 #### Standard Deviation (std) 标准差
 $$
-\sigma_X = \sqrt{\mathrm{var}[X]}
+\sigma_X = \sqrt{\mathrm{Var}[X]}
 $$
 #### Coefficient of Variation 方差系数
 没有量纲，归一化，用百分比表示，$\mu_X$ 为 0 的时候没有意义

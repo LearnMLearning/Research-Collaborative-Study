@@ -1,3 +1,21 @@
+#### 数学期望
+数学期望 $E[Y]$ 是函数 $Y=g(X)$ 根据概率 的 加权平均
+$$
+E[Y] = E[g(X)] = 
+\begin{cases}
+\sum_x g(x) p_X(x) & \text{if} \, X \text{ is discrete}\\
+\int_{-\infty}^{+\infty} g(x) f_X(x) \, dx & \text{if } X \text{ is continuous}
+\end{cases}
+$$
+**性质：**
+1. $E[a]=a$，$a$ 是一个常数
+2. $E[a\cdot g(X)] = a \cdot E[g(X)]$，$a$ 是一个常数
+3. $E[g_1(X) + g_2(X)] = E[g_1(X)] + E[g_2(X)]$
+**数学期望是一个线性操作**
+###### 推论：
+1. $\frac{d}{d\theta} E[g(X,\theta)] = E[\frac{d}{d\theta}g(X,\theta)]$
+2. 如果 $g(X) = g_1(X) g_2(X)$，且 $X_1$ 与 $X_2$ 是 independent 那么 $E[g(X)] = E[g_1(X_1)g_2(X_2)] =E[g_1(X_1)]E[g_2(X_2)]$
+
 #### Variance 方差
 $$
 \mathrm {Var} [X] = 

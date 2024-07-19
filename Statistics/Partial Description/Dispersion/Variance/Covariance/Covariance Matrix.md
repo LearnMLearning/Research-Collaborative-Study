@@ -60,4 +60,14 @@ $$
 $$
 \mathrm{cov} (x_i,x_i) =E[(x_i-\mu_i)^2] = \mathrm{var} (x_i)
 $$
+换句话说，$\mathrm \Sigma_X$ 的对角线由随机变量 $x_i$ 的方差所组成。据此，也有人把 $\mathbf {cov}(X,Y)$ 称为 **方差-协方差矩阵**。
 
+更有人因为方差和离差的相关性，含混的将 $\mathbf {cov}(X,Y)$ 称为离差矩阵。
+
+###### 性质
+$\mathbf \Sigma = \mathbf {cov} (X,X)$ 有以下的基本性质：
+1. $\mathbf \Sigma = E(\mathbf X \mathbf X^{\mathrm T}) - E(\mathbf X) [E(\mathbf X)]^{\mathrm T}$
+2. $\mathbf \Sigma$是半正定的和对称的矩阵。
+3. $\mathrm{var} (\mathbf a^{\mathrm T}\mathbf X) = \mathbf a^{\mathrm T} \mathrm{var} (\mathbf X) \mathbf a$
+4. $\mathbf \Sigma \ge 0$
+5. 

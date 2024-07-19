@@ -347,7 +347,13 @@ $$
 $$
 \log q_{\phi}(\mathbf z|\mathbf x) = \log p(\mathbf \epsilon) - \sum_i \log |L_{ii}|
 $$
-
+此参数化对应于 $\mathbf z$ 协方差的 Cholesky 分解 $\mathbf \Sigma = \mathbf L \mathbf L^{\mathrm T}$:
+$$\begin{aligned}
+\mathbf \Sigma &= \mathbb E \left[(\mathbf z - \mathbb E[\mathbf z])(\mathbf z -\mathbb E[\mathbf z])^{\mathrm T} \right]\\
+&= \mathbb E [\mathbf L \mathbf \epsilon (\mathbf L \epsilon)^{\mathrm{T}}] = \mathbf L \mathbb E[\mathbf \epsilon \mathbf \epsilon^{\mathrm T}] \mathbf L^{\mathrm T}\\
+&= \mathbf L \mathbf L^{\mathrm T}
+\end{aligned}$$
+注意 $\mathbb E[\epsilon \epsilon^{\mathrm T}] = \mathbf I$ 因为 $\epsilon \sim \mathcal N(0,\mathbf I)$。
 #### 2.6 Estimation of the Marginal Likelihood
 
 

@@ -8,9 +8,17 @@ $$
 $$
 **性质：**
 1. $\mathrm{Cov}[X,Y] = E[XY]-E[X]E[Y]$
+	**证明**
+	$$\begin{aligned}
+	\mathrm{Cov} (X,Y) &= E[(X-E[X])(Y-E[Y])]\\
+	&= E[XY-XE[Y]-YE[X] + E[X]E[Y]]\\
+	&= E[XY] - E[XE[Y]] - E[YE[X]] + E[E[X]E[Y]]\\
+	&= E[XY] - 2E[X]E[Y] + E[X]E[Y]\\
+	&= E[XY]-E[X]E[Y]
+	\end{aligned}$$ 
 2. $\mathrm{Cov}[X,Y] = 0$，如果 $X \perp Y$
 3. $\mathrm{Cov}[X,Y] = \mathrm{Cov}[Y,X]$
-4. $\mathrm{Cov}[aX,Y] = a\mathrm{Cov}[X,Y]$，$a$ 是一个常数
+4. $\mathrm{Cov}[aX,bY] = ab\mathrm{Cov}[X,Y]$，$a,b$ 是常数
 5. $\mathrm{Cov}[\sum_{i=1}^n X_i,\sum_{j=1}^mY_j]=\sum_{i=1}^n \sum_{j=1}^m \mathrm{Cov}[X_i,Y_j]$
 6. $\mathrm{Cov}[X,X] = \mathrm{Var}[X]$
 7. $\mathrm{Var} [X+Y] = \mathrm{Var}[X] + \mathrm{Var}[Y] + 2\mathrm{Cov}[X,Y]$

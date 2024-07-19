@@ -41,6 +41,11 @@ $\mu_X = E[x]$
 **性质：**
 1. $\mathrm{Var}[a] = 0$，where $a$ is a constant
 2. $\mathrm{Var}[a_1X+a_2]=a_1^2\mathrm{Var}[X]$，where $a_1,a_2$ are constants
+	**证明：**
+	$$\begin{aligned}
+	\mathrm{Var}[aX+b] &= E[aX+b - E(aX+b)]^2 = E[(aX+b - aE(aX)-b)]^2\\
+	&= E[aX-aE(X)]^2 = a^2 E(X-E(X))= a^2 \mathrm{Var}[X]
+	\end{aligned}$$
 3. $\mathrm{Var}[X_1+X_2] = \mathrm{Var}[X_1] + \mathrm{Var}[X_2]$，**如果** $X_1 \perp X_2$ (独立事件 方差计算)
 4. $\mathrm{Var}[X] = E[X^2] - E[X]^2$ (简便计算)
 	**证明：**

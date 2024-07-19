@@ -36,6 +36,7 @@ $$
 \int_{-\infty}^{\infty} (x-\mu_X)^2 f_X(x)\,dx & \text{if} \, X \, \text{is continuous}
 \end{cases}
 $$
+$\mu_X = E[x]$
 是 PMF 和 PDF 图像的 second central moment
 **性质：**
 1. $\mathrm{Var}[a] = 0$，where $a$ is a constant
@@ -43,9 +44,11 @@ $$
 3. $\mathrm{Var}[X_1+X_2] = \mathrm{Var}[X_1] + \mathrm{Var}[X_2]$，**如果** $X_1 \perp X_2$ (独立事件 方差计算)
 4. $\mathrm{Var}[X] = E[X^2] - E[X]^2$ (简便计算)
 	**证明：**
-	$$
-	
-	$$
+	$$\begin{aligned}
+	\mathrm{Var}[X] &= E \left[(X-E[X])^2 \right]\\
+	&= E [X^2 - 2XE[X] + E[X]^2]\\
+	&= E[X^2] - 2E[X]
+	\end{aligned}$$
 #### Standard Deviation (std) 标准差
 $$
 \sigma_X = \sqrt{\mathrm{Var}[X]}

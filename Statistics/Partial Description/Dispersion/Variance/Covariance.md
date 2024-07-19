@@ -16,8 +16,8 @@ $$
 	&= E[XY] - 2E[X]E[Y] + E[X]E[Y]\\
 	&= E[XY]-E[X]E[Y]
 	\end{aligned}$$ 
-2. $\mathrm{Cov}[X,Y] = 0$，如果 $X \perp Y$
-3. $\mathrm{Cov}[X,Y] = \mathrm{Cov}[Y,X]$
+2. $\mathrm{Cov}[X,Y] = 0$，如果 $X \perp Y$ **定理**
+3. $\mathrm{Cov}[X,Y] = \mathrm{Cov}[Y,X]$ 
 4. $\mathrm{Cov}[aX,bY] = ab\mathrm{Cov}[X,Y]$，$a,b$ 是常数
 5. $\mathrm{Cov}[\sum_{i=1}^n X_i,\sum_{j=1}^mY_j]=\sum_{i=1}^n \sum_{j=1}^m \mathrm{Cov}[X_i,Y_j]$
 6. $\mathrm{Cov}[X,X] = \mathrm{Var}[X]$

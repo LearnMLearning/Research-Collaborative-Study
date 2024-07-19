@@ -363,7 +363,19 @@ $$\begin{aligned}
 - $\mathrm{Cov}(\epsilon_i,\epsilon_j) = \delta_{ij}$，其中$\delta_{ij}$是克罗内克 delta 函数，当 $i=j$ 时 $\delta_{ij}=1$，否则 $\delta_{ij}=0$。这表示 $\epsilon_i$ 和 $\epsilon_j$ 在 $i\ne j$ 时相互独立，并且每个分量的方差是 1。
 ![[Pasted image 20240719153424.png]]
 ![[Pasted image 20240719153433.png]]
-
+![[Pasted image 20240719153730.png]]
+![[Pasted image 20240719153747.png]]
+构建矩阵 $\mathbf L$ 的一种方法是，它具有所需的性质，即三角形和非零对角线元素，是通过如下构造它:
+$$
+(\mathbf \mu, \log \mathbf \sigma,\mathbf L') \leftarrow \mathrm{EncoderNeuralNet}_{\phi}(\mathbf x)
+$$
+$$
+\mathbf L \leftarrow \mathbf L_{mask} \odot \mathbf L' + \mathrm{diag} (\mathbf \sigma)
+$$
+然后按照上面的描述进行 $\mathbf z = \mathbf \mu + \mathbf L \mathbf \epsilon$。$\mathbf L_{mask}$ 是一个掩模矩阵，对角线上和上面都是 $0$，对角线下都是 $1$ 。注意，由于屏蔽 $\mathbf L$ ，雅可比矩阵 $(\partial \mathbf z/\partial \mathbf \epsilon)$ 是三角形的，其对角线上的值为σ。因此，对数行列式与因式高斯情况相同:
+$$
+\log \left |\det \left(\frac{\partial \mathbf z}{\partial \mathbf \epsilon} \right) \right|
+$$
 #### 2.6 Estimation of the Marginal Likelihood
 
 

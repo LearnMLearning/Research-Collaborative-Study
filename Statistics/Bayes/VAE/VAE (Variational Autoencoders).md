@@ -148,7 +148,8 @@ $$
 近似推理技术 (参见A.2节) 允许我们在 DLVM 中近似后验 $p_{\theta}(\mathbf z|\mathbf x)$ 和边际似然$p_{\theta}(\mathbf x)$。传统的推理方法相对昂贵。例如，这种方法通常需要每个数据点的**优化循环**，或者产生不好的后验近似值。我们不想做这种昂贵的步骤。
 
 同样，神经网络参数化的(有向模型) $p(\theta |\mathcal D)$ 的后验通常难以精确计算，需要近似推理技术。
-## 2 Variational Autoencoders
+## 2 Variational Autoencoders 变分自编码器
+在本章中，我们将解释变分自编码器(VAEs)的基础知识。
 ![[Pasted image 20240717164849.png]]
 图2.1:VAE 学习观察到的 $\mathbf x$ 空间(其经验分布 $q_{\mathcal D}(\mathbf x)$ 通常是复杂的)与潜在 $\mathbf z$ 空间(其分布可能相对简单(如球形，如图所示)之间的随机映射。**生成模型**学习一个**联合分布** $p_{\theta}(\mathbf x,\mathbf z)$，它通常(但并不总是)被分解为 $p_{\theta}(\mathbf x,\mathbf z) = p_{\theta}(\mathbf z)p_{\theta}(\mathbf x|\mathbf z)$，具有**潜在空间**上的先验分布 $p_{\theta}(\mathbf z)$ 和**随机解码器** $p_{\theta}(\mathbf x|\mathbf z)$。随机编码器 $q_{\phi}(\mathbf z|\mathbf x)$也称为推理模型 *Inference model* ，它近似于生成模型的真实但难以处理的后验 $p_{\phi}(\mathbf z|\mathbf x)$。
 #### 2.1 Encoder or Approximate Posterior
@@ -374,19 +375,72 @@ $$
 $$
 然后按照上面的描述进行 $\mathbf z = \mathbf \mu + \mathbf L \mathbf \epsilon$。$\mathbf L_{mask}$ 是一个掩模矩阵，对角线上和上面都是 $0$，对角线下都是 $1$ 。注意，由于屏蔽 $\mathbf L$ ，雅可比矩阵 $(\partial \mathbf z/\partial \mathbf \epsilon)$ 是三角形的，其对角线上的值为σ。因此，对数行列式与因式高斯情况相同:
 $$
-\log \left |\det \left(\frac{\partial \mathbf z}{\partial \mathbf \epsilon} \right) \right|
+\log \left |\det \left(\frac{\partial \mathbf z}{\partial \mathbf \epsilon} \right) \right| = \sum_{i} \log \sigma_i
 $$
-#### 2.6 Estimation of the Marginal Likelihood
+更一般地说，我们可以用一系列(**可微**的和**非线性**的)变换代替 $\mathbf z = \mathbf L\mathbf \epsilon + \mathbf \mu$;只要链中每一步的雅可比矩阵是三角形且对角线项不为零，则对数行列式保持简单。这一原理被 Kingma 等人于2016年探索并在第3章讨论的逆自回归流 *inverse autoregressive flow* (IAF)所使用。
 
+用全协方差高斯推理模型和分解伯努利生成模型计算以VAE为例的单数据点ELBO的无偏估计。$\mathbf L_{mask}$是一个掩模矩阵，对角线上和上面都是0，对角线下都是1。
+![[Pasted image 20240719174827.png]]
+#### 2.6 Estimation of the Marginal Likelihood 边际似然估计
+在训练了一个VAE之后，我们可以使用Rezende et al.， 2014最初提出的重要抽样 *important sampling* 技术来估计模型下数据的概率。数据点的边际似然可以表示为:
+$$
+\log p_{\theta} ( \mathbf x) = \log \mathbb E_{q_\phi (\mathbf z | \mathbf x)} [p_{\theta}(\mathbf x,\mathbf z) / q_{\phi}(\mathbf z|\mathbf x)]
+$$
+取 $q_{\phi}(\mathbf z|\mathbf x)$ 的随机样本，其蒙特卡罗估计量为:
+$$
+\log p_{\theta} (\mathbf x) \approx \frac 1 L \sum_{l=1}^L p_\theta (\mathbf x,\mathbf z^{(l)})/q_\phi (\mathbf z^{(l)}|\mathbf x)
+$$
+其中每个 $\mathbf z^{(l)} \sim q_{\phi}(\mathbf z|\mathbf x)$ 是来自推理模型的随机样本。通过使 $L$ 变大，近似值成为更好的边际似然估计，事实上，由于这是一个蒙特卡罗估计，对于 $L\rightarrow \infty$，它收敛于实际的边际似然。
 
-#### 2.7 Marginal Likelihood and ELBO as KL Divergences
+注意，当设置 $L = 1$ 时，它等于 VAE 的 ELBO 估计。我们也可以使用 eq.(2.57) 的估计量作为我们的目标函数;这是重要性加权自编码器 *importance weighed autoencoders* (Burda et al.， 2015) (IWAE)中使用的目标。在那篇论文中，还表明目标随着 $L$ 值的增加而变得越来越紧密。后来由Cremer等人，2017表明，IWAE目标可以被重新解释为具有特定推理模型的 ELBO 目标。这些优化更紧密边界的方法的缺点是，**重要性加权估计对于高维潜在空间具有臭名昭著的糟糕缩放特性**。
+#### 2.7 Marginal Likelihood and ELBO as KL Divergences 边际似然和 ELBO 作为 KL 散度
+提高 ELBO 潜在紧密性的一种方法是**增加生成模型的灵活性**。这可以通过 ELBO 和 KL 散度之间的联系来理解。
+对于大小为 $N_{\mathcal D}$ 的 i.i.d. 数据集 $\mathcal D$，最大似然准则为:
+$$\begin{aligned}
+\log p_{\theta} (\mathcal D) &= \frac{1}{N_{\mathcal D}} \sum_{\mathbf x \in \mathcal D} \log p_{\theta} (\mathbf x)\\
+&= \mathbb E_{q_{\mathcal D}(\mathbf x)} [\log p_{\theta} (\mathbf x)]
+\end{aligned}$$
+式中，$q_{\mathcal D}(\mathbf x)$ 为经验(数据)分布，为**混合分布**:
+$$
+q_{\mathcal D} (\mathbf x) = \frac 1N \sum_{i=1}^{N} q_{\mathcal D}^{(i)}(\mathbf x)
+$$
+其中，对于连续数据，每个分量 $q_{\mathcal{D}}^{(i)}(\mathbf x)$ 通常对应于以值 $\mathbf x^{(i)}$为中心的 狄拉克 $δ$ Dirac delta 分布，对于离散数据，则对应于全概率质量集中在值 $\mathbf x^{(i)}$ 的离散分布。数据和模型分布之间的Kullback Leibler (KL)散度可以重写为负对数似然加上一个常数:
+$$\begin{aligned}
+D_{KL} (q_{\mathcal D} (\mathbf x) || p_{\theta} (\mathbf x)) &= -\mathbb E_{q_\mathcal D(\mathbf x)} [\log p_{\theta} (\mathbf x)] + \mathbb E_{q_\mathcal D (\mathbf x)} [\log q_{\mathcal D} (\mathbf x)]\\
+&= -\log p_{\theta} (\mathcal D) + \mathrm{constant}
+\end{aligned}$$
+其中 $\mathrm{constant} = - \mathcal H(q_{\mathcal D}(\mathbf x))$。所以上面 KL 散度的最小化等价于数据 log-likelihood $\log p_\theta (\mathcal D)$的最大化。
 
+将经验数据分布 $q_{\mathcal D}(\mathbf x)$ 与推理模型相结合，得到数据 $\mathbf x$ 与潜变量 $\mathbf z$ 的联合分布: $q_{\mathcal D,\phi}(\mathbf x, \mathbf z) = q_{\mathcal D}(\mathbf x)q(\mathbf z|\mathbf x)$。
 
+$q_{\mathcal D,\phi} (\mathbf x, \mathbf z)$ 与 $p_{\theta}(\mathbf x,\mathbf z)$ 的 KL 散度可以写成负的 ELBO，加上一个常数:
+$$\begin{aligned}
+&D_{KL} (q_{\mathcal D,\phi}(\mathbf x,\mathbf z)||p_{\theta}(\mathbf x,\mathbf z))\\
+&= -\mathbb E_{q_{\mathcal D}(\mathbf x)} \left[\mathbb E_{q_\phi(\mathbf z |\mathbf x)}[\log p_{\theta}(\mathbf x,\mathbf z) - \log q_{\phi}(\mathbf z |\mathbf x)]-\log q_{\mathcal D}(\mathbf x)] \right]\\
+&= -\mathcal L_{\theta,\phi}(\mathcal D) + \mathrm{constant}
+\end{aligned}$$
+其中 $\mathrm{constant} =−\mathcal H(q_{\mathcal D}(\mathbf x))$。所以 ELBO 的最大化，等价于 KL 散度的最小化 $D_{KL}(q_{\mathcal D,\phi}(\mathbf x, \mathbf z)||p_{\theta}(\mathbf x, \mathbf z))$ ML 和 ELBO 目标之间的关系可以用以下简单的公式来概括:
+$$\begin{aligned}
+&D_{KL}(q_{\mathcal D,\phi}(\mathbf x,\mathbf z) || p_{\theta} (\mathbf x,\mathbf z))\\
+&= D_{KL} (q_{\mathcal D}(\mathbf x) ||p_{\theta}(\mathbf x)) + \mathbb E_{q_{\mathcal D}(\mathbf x)} [D_{KL}(q_{\mathcal D,\phi}(\mathbf z|\mathbf x)||p_{\theta}(\mathbf z|\mathbf x))]\\
+&\ge D_{KL}(q_{\mathcal D}(\mathbf x)||p_{\theta}(\mathbf x))
+\end{aligned}$$
+另一个观点是，ELBO 可以被看作是增强空间中 *in an augmented space* 的最大似然目标。对于某些固定选择的编码器 $q_{\phi}(\mathbf z|\mathbf x)$，我们可以将联合分布 $p_{\theta}(\mathbf x,\mathbf z)$ 看作是原始数据 $\mathbf x$ 和与每个数据点相关的(随机)辅助特征 $\mathbf z$ 上的增量经验分布。然后，模型 $p_{\theta}(\mathbf x,\mathbf z)$ 定义了原始数据和辅助特征的联合模型。见图2.4。
+
+![[Pasted image 20240719221113.png]]
+图2.4:最大似然(ML)目标可以看作是 $D_{KL}(q_{\mathcal D},\phi(\mathbf x)||p_{\theta}(\mathbf x))$ 的最小化，而 ELBO 目标可以看作是$D_{KL}(q_{\mathcal D},\phi(\mathbf x,\mathbf z)||p_{\theta}(\mathbf x,\mathbf z))$ 的最小化，其上界是 $D_{KL}(q_\mathcal D,\phi(\mathbf x)||p_{\theta}(\mathbf x))$。如果不可能完美拟合，那么由于 KL 散度的方向，$p_{\theta} (\mathbf x,\mathbf z)$ 通常会比$q_{\mathcal D,\phi}(\mathbf x,\mathbf z)$具有更高的方差。
 #### 2.8 Challenges
 ###### 2.8.1 Optimization issues
+在我们的工作中，与(Bowman et al.，2015)和(Sønderby et al.， 2016a)的研究结果一致，我们发现具有未修改下界目标的随机优化可能陷入不希望的稳定平衡。在训练开始时，似然项$\log p (\mathbf x|\mathbf z)$ 相对较弱，因此初始吸引状态是 $q(\mathbf z|\mathbf x)\approx p(\mathbf z)$，从而导致难以逃脱的稳定平衡。在(Bowman et al.， 2015)和(Sønderby et al.， 2016a)中提出的解决方案是使用一个优化调度，其中潜在成本 $D_{KL}(q(\mathbf z|\mathbf x)||p(\mathbf z))$ 的权重在多个 epoch 中从 0 慢慢退火到 1
 
+(Kingma et al.， 2016)中提出的另一种方法是自由比特 *free bits* 方法:对ELBO目标的修改，确保平均而言，每个潜在变量或每组潜在变量编码一定最小数量的信息比特。
 
-###### 2.8.2 Blurriness of generative model
+潜在维度分为 $K$ 组。然后我们使用以下 minibatch 目标，它确保每个子集 $j$ (平均每个minibatch $\mathcal M$)使用少于 $\lambda$ nats的信息是不利的:
+$$
+\tilde {\mathcal L} \lambda = \mathbb E_{\mathbf x\sim \mathcal M}\left[\mathbb E_{q(\mathbf z|\mathbf x)}\left[\log p(\mathbf x|\mathbf z) \right] \right] - \sum_{j=1}^K \mathrm{maximum}(\lambda,\mathbb E_{\mathbf x\sim \mathcal M}[D_{KL}(q(z_j|\mathbf x)||p(z_j))])
+$$
+由于增加潜在信息通常有利于物镜的第一项(不受影响)(通常称为负重构误差 *negative reconstruction error*)，因此在实践中，对于所有 $j$，这导致 $\mathbb E_{\mathbf x \sim \mathcal M} [D_{KL}(q(\mathbf z_j|\mathbf x)| p(\mathbf z_j))]\ge \lambda$。Kingma等人在2016年发现，该方法在相当大的范围内( $\lambda \in [0.125,0.25,0.5,1,2]$)都能很好地工作，从而显著提高了基准结果的对数似然。
+###### 2.8.2 Blurriness of generative model 生成模型的模糊性
 
 
 #### 2.9 Related prior and concurrent work
@@ -395,14 +449,14 @@ $$
 ###### 2.9.1 Score function estimator
 
 
-## 3 Beyond Gaussian Posteriors
-#### 3.1 Requirements for Computational Tractability
-#### 3.2 Improving the Flexibility of Inference Models
+## 3 Beyond Gaussian Posteriors 超越高斯后验
+#### 3.1 Requirements for Computational Tractability 
+#### 3.2 Improving the Flexibility of Inference Models 
 ###### 3.2.1 Auxiliary Latent Variables
 ###### 3.2.2 Normalizing Flows
 
-#### 3.3 Inverse Autoregressive Transformations
-#### 3.4 Inverse Autoregressive Flow (IAF)
+#### 3.3 Inverse Autoregressive Transformations 
+#### 3.4 Inverse Autoregressive Flow (IAF) 
 
 #### 3.5 Related Work
 ## 4 Deeper Generative Models
@@ -424,6 +478,15 @@ $$
 
 ###### 4.5.3 Other relevant follow-up work
 ## 5 Conclusion
+有向概率模型是现代人工智能的一个重要方面。通过用可微的深度神经网络参数化条件分布，这种模型可以变得非常灵活。
+
+在完全观测的情况下，向**最大似然目标优化**这些模型是直截了当的。然而，人们通常对**具有潜在变量**的灵活模型更感兴趣，例如**深度潜在变量模型**或**具有随机参数的贝叶斯模型**。在这两种情况下，都需要**执行近似后验估计**，其中 **变分推理(VI)** 方法是合适的。在VI中，**推理**被视为对**新引入的变分参数的优化**问题，通常针对ELBO，**模型证据的下界**或数据的**边际似然**进行优化。现有的后验推理方法要么效率相对较低，要么不适用于以神经网络为组成部分的模型。我们的主要贡献是一个**高效和可扩展**的**基于梯度**的**变分后验推理**和**近似最大似然**学习的**框架**。
+
+本文描述了变分自编码器(VAE)及其一些扩展。VAE是具有连续潜变量的深度潜变量模型(DLVM)和关联推理模型的组合。DLVM是一种基于数据的生成模型。推理模型，也称为编码器或识别模型，近似生成模型的潜在变量的后验分布。生成模型和推理模型都是由深度神经网络全部或部分参数化的有向图形模型。通过对证据下界(ELBO)进行随机梯度上升，对模型参数(包括神经网络的权重和偏置等参数)进行联合优化。ELBO是数据的边际似然的下界，也称为变分下界。随机梯度，必要的执行SGD，通过一个基本的重参数化技巧获得。VAE框架现在是用于各种概率建模和人工创造力应用的常用工具，并且在大多数主要的深度学习软件库中都有基本的实现。
+
+为了学习灵活的推理模型，我们提出了逆自渐进流(IAF)，这是一种允许缩放到高维潜在空间的归一化流。进一步探索的一个有趣方向是与具有计算廉价逆的变换进行比较，例如NICE (Dinh等人，2014)和Real NVP (Dinh等人，2016)。在VAE框架中应用这样的转换可以潜在地导致相对简单的VAE，并结合了强大的后验、先验和解码器。这样的架构可以潜在地与纯粹的自回归架构竞争或超越(Van den Oord等人，2016)，同时允许更快的合成。
+
+所提出的VAE框架仍然是文献中唯一允许离散和连续观察变量的框架，允许有效的平摊潜在变量推理和快速合成，并且可以在数据的对数似然方面产生接近最先进的性能。
 ## Appendix
 #### A.1 Notation and definitions
 ###### A.1.1 Notation

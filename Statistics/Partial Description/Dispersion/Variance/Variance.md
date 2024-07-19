@@ -48,10 +48,9 @@ $\mu_X = E[x]$
 	\mathrm{Var}[X] &= E \left[(X-E[X])^2 \right]\\
 	&= E [X^2 - 2XE[X] + E[X]^2]\\
 	&= E[X^2] - 2E[XE[X]] + E[E[X]^2]\\
-	&= E[X^2] - 2E[X]E[X] + E[X]^2\\
+	&= E[X^2] - 2E[X]^2 + E[X]^2\\
 	&= E[X^2] - E[X]^2
 	\end{aligned}$$
-	
 #### Standard Deviation (std) 标准差
 $$
 \sigma_X = \sqrt{\mathrm{Var}[X]}

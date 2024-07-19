@@ -5,5 +5,6 @@
 若二者对应的期望分别为：
 $$\begin{aligned}
 E(x_i) &= \int_\Omega x_i \, d P = \mu_i\\
-E(y_i) &= \int_\Omega y_j \, d P = \
+E(y_i) &= \int_\Omega y_j \, d P = \nu_j
 \end{aligned}$$
+则这两列随机变量间的**协方差矩阵**为：

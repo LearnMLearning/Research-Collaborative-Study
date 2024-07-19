@@ -337,6 +337,16 @@ $$\begin{aligned}
 \epsilon &\sim \mathcal N(0,\mathbf I)\\
 \mathbf z &= \mu + \mathbf L \epsilon
 \end{aligned}$$
+其中 $\mathbf L$ 是一个下(或上)三角矩阵，在对角线上有非零结点。非对角线元素定义了 $\mathbf z$ 中元素的相关性(协方差)。
+
+**全协方差高斯函数参数化**的原因是**雅可比行列式非常简单**。这种情况下的雅可比矩阵是平凡的: $\frac{\partial \mathbf z}{\partial \epsilon} = \mathbf L$。注意，三角形矩阵的行列式是其对角元素的乘积。因此，在此参数化中:
+$$
+\log \left|\det \left(\frac{\partial \mathbf z}{\partial \epsilon} \right) \right| = \sum_i \log |L_{ii}|
+$$
+后验的对数密度是
+$$
+\log q_{\phi}(\mathbf z|\mathbf x) = \log p(\mathbf \epsilon) - \sum_i \log |L_{ii}|
+$$
 
 #### 2.6 Estimation of the Marginal Likelihood
 

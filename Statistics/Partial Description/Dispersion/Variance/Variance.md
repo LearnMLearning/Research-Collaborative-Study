@@ -14,7 +14,8 @@ $$
 	**证明：** $$\begin{aligned}
 	E(X+Y) &= \sum_i\sum_j (x_i+y_i)P(x_i)P(y_j) \\
 	&= \sum_i\sum_jx_i P(x_i)P(y_j) + \sum_i \sum_j y_j P(x_i)P(y_j)\\
-	&= \sum_i x_i P(x_i) \sum_j
+	&= \sum_i x_i P(x_i) \sum_j P(y_j) + \sum_i P(x_i) \sum_j y_j P(y_j)\\
+	&= \sum_i x_i P(x_i) + \sum_j y_j P(y_j) = E(X) + E(Y)
 	\end{aligned}$$
 **数学期望是一个线性操作**
 ###### 推论：

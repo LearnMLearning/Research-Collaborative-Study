@@ -51,3 +51,13 @@ $$
 $$
 所以协方差矩阵也可对 $\mathbf X$ 与 $\mathbf Y$ 来定义。
 
+###### 术语与符号分歧
+也有人把以下的 $\mathbf \Sigma_X$ 称为协方差矩阵：
+$$
+\mathbf \Sigma_X : = [\mathrm{cov}(x_i,x_j)_{m\times m}] = \mathrm{cov}(X,X)
+$$
+但这里沿用 威廉·费勒 的说法，把 $\mathbf \Sigma_X$ 称为 $X$ 的 **方差**，来跟 $\mathbf{cov}(X,Y)$。这是因为：
+$$
+\mathrm{cov} (x_i,x_i) =E[(x_i-\mu_i)^2] = \mathrm{var} (x_i)
+$$
+

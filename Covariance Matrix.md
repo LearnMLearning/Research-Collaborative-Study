@@ -7,4 +7,20 @@ $$\begin{aligned}
 E(x_i) &= \int_\Omega x_i \, d P = \mu_i\\
 E(y_i) &= \int_\Omega y_j \, d P = \nu_j
 \end{aligned}$$
-则这两列随机变量间的**协方差矩阵**为：
+则这两列随机变量间的**协方差矩阵**为一个 $m\times n$ 矩阵
+$$
+\mathbf {cov}(X,Y) := \begin{bmatrix}
+\mathrm{cov}(x_1,y_1) & \dots & \mathrm{\mathrm{cov}(x_1,y_1)}\\ 
+\vdots & \ddots & \vdots\\
+\mathrm{cov}(x_m,y_1) & \dots & \mathrm{cov}(x_m,y_n)
+\end{bmatrix} = 
+\begin{bmatrix}
+E(x_1y_1) - \mu_1\nu_1 & \dots & E(x_1y_n) - \mu_1 \nu_1 \\
+\vdots & \ddots & \vdots \\
+E(x_my_1) - \mu_m \nu_1 & \dots & E(x_my_n) - \mu_m \nu_n
+\end{bmatrix}
+$$
+根据 测度积分 的线性性质，协方差矩阵还可以进一步化简为：
+$$
+\mathbf{cov} (X,Y) = [E(x_iy_j) - \mu_i\nu_j]_{m\times n}
+$$

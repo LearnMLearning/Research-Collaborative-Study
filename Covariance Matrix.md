@@ -45,7 +45,9 @@ $$
 $$
 E[\mathbf A] : = [E(a_{ij})]_{m\times n}
 $$
-也就是说
+那上小节定义的协方差矩阵就可以记为：
 $$
-E[\mathbf A]
+\mathbf{cov}(\mathbf X, \mathbf Y) = E \left[(\mathbf X-E[\mathbf X])(\mathbf Y-E[\mathbf Y])^{\mathrm T} \right]
 $$
+所以协方差矩阵也可对 $\mathbf X$ 与 $\mathbf Y$ 来定义。
+

@@ -17,14 +17,17 @@ $$
 	&= \sum_i x_i P(x_i) \sum_j P(y_j) + \sum_i P(x_i) \sum_j y_j P(y_j)\\
 	&= \sum_i x_i P(x_i) + \sum_j y_j P(y_j) = E(X) + E(Y)
 	\end{aligned}$$
+	**推论：** $E(\sum_i X_i) = \sum_i E(X_i)$
 **数学期望是一个线性操作**
 ###### 推论：
 1. $\frac{d}{d\theta} E[g(X,\theta)] = E[\frac{d}{d\theta}g(X,\theta)]$
-2. $E(\sum_i X_i) = \sum_i E(X_i)$ 如果 $g(X) = g_1(X) g_2(X)$，且 $X_1 \perp X_2$ 那么 $E[g(X)] = E[g_1(X_1)g_2(X_2)] =E[g_1(X_1)]E[g_2(X_2)]$
+2. $E(\prod_i X_i) = \prod_i E(X_i)$ 如果 $g(X) = g_1(X) g_2(X)$，且 $X_1 \perp X_2$ 那么 $E[g(X)] = E[g_1(X_1)g_2(X_2)] =E[g_1(X_1)]E[g_2(X_2)]$
 	**证明**
-	$$
-	E(XY) = 
-	$$
+	$$\begin{aligned}
+	E(XY) &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} xy f(x,y) \, dx \, dy = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy g(x)h(y) \, dx \, dy\\
+	&= \int_{-\infty}^{\infty} x g(x) \, dx \int_{-\infty}^{\infty} yh(y)\,dy\\
+	&= E(Y) E(Y)
+	\end{aligned}$$
 #### Variance 方差
 $$
 \mathrm {Var} [X] = 
@@ -39,6 +42,10 @@ $$
 2. $\mathrm{Var}[a_1X+a_2]=a_1^2\mathrm{Var}[X]$，where $a_1,a_2$ are constants
 3. $\mathrm{Var}[X_1+X_2] = \mathrm{Var}[X_1] + \mathrm{Var}[X_2]$，**如果** $X_1 \perp X_2$ (独立事件 方差计算)
 4. $\mathrm{Var}[X] = E[X^2] - E[X]^2$ (简便计算)
+	**证明：**
+	$$
+	
+	$$
 #### Standard Deviation (std) 标准差
 $$
 \sigma_X = \sqrt{\mathrm{Var}[X]}

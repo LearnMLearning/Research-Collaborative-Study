@@ -70,4 +70,13 @@ $\mathbf \Sigma = \mathbf {cov} (X,X)$ 有以下的基本性质：
 2. $\mathbf \Sigma$是半正定的和对称的矩阵。
 3. $\mathrm{var} (\mathbf a^{\mathrm T}\mathbf X) = \mathbf a^{\mathrm T} \mathrm{var} (\mathbf X) \mathbf a$
 4. $\mathbf \Sigma \ge 0$
-5. 
+5. $\mathrm{var}(\mathbf A \mathbf X + \mathbf a) = \mathbf A \mathrm{var}(\mathbf X) \mathbf A^{\mathrm {T}}$
+6. $\mathrm{cov}(\mathbf X,\mathbf Y) = \mathrm{cov}(\mathbf Y,\mathbf X)^{\mathrm T}$
+7. $\mathrm{cov} (\mathbf X_1 + \mathbf X_2,\mathbf Y) = \mathrm{cov} (\mathbf X_1,\mathbf Y) + \mathrm{cov}(\mathbf X_2,\mathbf Y)$
+8. 若 $p=q$，则有 $\mathrm{var}(\mathbf X+ \mathbf Y) = \mathrm{var}(\mathbf X) + \mathrm{cov}(\mathbf X,\mathbf Y) + \mathrm{cov} (\mathbf Y,\mathbf X) + \mathrm{var} (\mathbf Y)$
+9. $\mathbf{cov} (\mathbf A \mathbf X,\mathbf B \mathbf X) = \mathbf A \mathrm{cov}(\mathbf X,\mathbf X) \mathbf B^{\mathrm T}$
+10. 若 $\mathbf X$ 与 $\mathbf Y$ 是独立的，则有 $\mathrm{cov}(\mathbf X,\mathbf Y) = 0$
+11. $\mathbf \Sigma = \mathbf \Sigma^{\mathrm T}$ 
+
+尽管协方差矩阵很简单，可它却是很多领域里的非常有力的工具。它能导出一个[变换矩阵](https://zh.wikipedia.org/wiki/%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5 "变换矩阵")，这个矩阵能使数据完全去相关(decorrelation)。从不同的角度看，也就是说能够找出一组最佳的基以紧凑的方式来表达数据。(完整的证明请参考[瑞利商](https://zh.wikipedia.org/wiki/%E7%91%9E%E5%88%A9%E5%95%86 "瑞利商"))。 这个方法在统计学中被称为[主成分分析](https://zh.wikipedia.org/wiki/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90 "主成分分析")(principal components analysis)，在图像处理中称为Karhunen-Loève 变换(KL-变换)
+

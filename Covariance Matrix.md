@@ -24,3 +24,28 @@ $$
 $$
 \mathbf{cov} (X,Y) = [E(x_iy_j) - \mu_i\nu_j]_{m\times n}
 $$
+###### 矩阵表示法
+以上定义所述的随机变量序列 $X$ 和 $Y$，也可以用行向量 $\mathbf X :=[x_i]_m$ 与 $\mathbf Y := [y_j]_n$ 表示，换句话说：
+$$
+\mathbf X:=
+\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_m
+\end{bmatrix},\mathbf Y:=
+\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{bmatrix}
+$$
+这样的话，对于 $m\times n$ 个定义在 $\Omega$ 上的随机变量 $a_{ij}$ 所组成的矩阵 $\mathbf A = [a_{ij}]_{m\times n}$，定义：
+$$
+E[\mathbf A] : = [E(a_{ij})]_{m\times n}
+$$
+也就是说
+$$
+E[\mathbf A]
+$$

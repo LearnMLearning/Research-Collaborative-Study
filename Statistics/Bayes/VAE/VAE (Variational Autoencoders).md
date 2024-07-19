@@ -354,6 +354,16 @@ $$\begin{aligned}
 &= \mathbf L \mathbf L^{\mathrm T}
 \end{aligned}$$
 注意 $\mathbb E[\epsilon \epsilon^{\mathrm T}] = \mathbf I$ 因为 $\epsilon \sim \mathcal N(0,\mathbf I)$。
+
+符号 $\epsilon \sim \mathcal N (0,\mathbf I)$ 表示随机变量 $\epsilon$ 服从均值为 0，协方差矩阵为单位矩阵 $\mathbf I$ 的多元正态分布。具体来说，这意味着：
+1. **均值为0**：$\mathbb E[\epsilon] = 0$。
+2. **协方差矩阵为单位矩阵 $\mathbf I$**
+用数学语言来说，如果 $\epsilon=[\epsilon_1,\epsilon_2,\dots,\epsilon_n]^{\mathrm T}$ 是一个 $n$ 维向量，那么：
+- $\mathbb E[\epsilon_i]=0$，表示每个变量 $\epsilon_i$ 的均值是 0.
+- $\mathrm{Cov}(\epsilon_i,\epsilon_j) = \delta_{ij}$，其中$\delta_{ij}$是克罗内克 delta 函数，当 $i=j$ 时 $\delta_{ij}=1$，否则 $\delta_{ij}=0$。这表示 $\epsilon_i$ 和 $\epsilon_j$ 在 $i\ne j$ 时相互独立，并且每个分量的方差是 1。
+![[Pasted image 20240719153424.png]]
+![[Pasted image 20240719153433.png]]
+
 #### 2.6 Estimation of the Marginal Likelihood
 
 

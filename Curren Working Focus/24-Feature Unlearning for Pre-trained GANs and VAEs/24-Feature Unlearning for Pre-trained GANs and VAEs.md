@@ -71,7 +71,7 @@ $\mathrm{sim}(\mathbf z,\mathbf z_e)=1$: 需要改变生成过程，实现 unlea
 	$$
 	\mathbf z-(\|\mathrm {proj}_{\mathbf z_e} (\mathbf z)\|-t)\mathbf z_e
 	$$
-	其中 $t$ 是预定义的阈值。转换后的向量用作产生目标擦除输出的原始生成器的输入。然后
+	其中 $t$ 是预定义的阈值 (Recall: $t = \frac{1}{N}\sum_{i=1}^N[\mathrm{proj}_{\mathbf z_e}(\mathbf z_i)]$)。转换后的向量用作产生目标擦除输出的原始生成器的输入。然后
 	使用修改后的输出来训练 $g$，使其具有以下的 unlearning 目标
 	$$
 	\mathcal L_{\mathrm{unlearn}}(\theta) = \mathrm{sim} (\mathbf z,\mathbf z_e) \|g_{\theta}(\mathbf z) - f(\mathbf z-(\mathrm{proj_{\mathbf z_e}(\mathbf z)-t})\mathbf z_e) \|_1

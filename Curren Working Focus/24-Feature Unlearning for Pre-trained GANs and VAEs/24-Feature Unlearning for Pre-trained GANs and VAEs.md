@@ -96,10 +96,15 @@ $\alpha$ 是调节 unlearning 和 reconstruction 误差平衡的超参数。
 
 
 #### 实验
-###### 数据集
 ![[Pasted image 20240720162121.png]]
 
 从每个数据集中选择两个特征，每个特征约占数据集的10%。非二值化特征 选取 前 10 % 作为正数据集。
+**Training details**: Use Adam optimizer (Adaptive momentum)
+###### Evaluating Metric
+1. How well the **unlearning is done**
+2. How good the **sample qualities** are 常用指标 (IS|high) (FID|low) Studio GAN
+ 
+
 
 #### Thinking
 ![[Pasted image 20240720160842.png]]

@@ -51,3 +51,6 @@ $$L(\theta|x_1,\dots,x_n)=f_{\theta}(x_1,\dots,x_n)$$
 ###### 注意
 - 这里的似然函数是指 $x_1,x_2,\dots,x_n$ 不变时，关于 $\theta$ 的一个函数。
 - 最大似然估计不一定存在，也不一定唯一。
+
+###### 推导
+最大似然估计可以从 [KLD] KL 散度 相对熵推导而来。[相对熵](https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%AF%B9%E7%86%B5 "相对熵")衡量了使用一个给定分布Q![{\displaystyle Q}](https://wikimedia.org/api/rest_v1/media/math/render/svg/8752c7023b4b3286800fe3238271bbca681219ed)来近似另一个分布P![{\displaystyle P}](https://wikimedia.org/api/rest_v1/media/math/render/svg/b4dc73bf40314945ff376bd363916a738548d40a)时的信息损失，对于离散型随机变量，可以用以下公式：

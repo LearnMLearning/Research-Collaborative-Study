@@ -594,7 +594,7 @@ $$
 
 
 ## Related Works
-[[Feature Unlearning for Pre-trained GANs and VAEs 2024]]
+[[24-Feature Unlearning for Pre-trained GANs and VAEs]]
 
 
 inference

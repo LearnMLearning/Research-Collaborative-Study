@@ -76,6 +76,8 @@ $\mathrm{sim}(\mathbf z,\mathbf z_e)=1$: 需要改变生成过程，实现 unlea
 	$$
 	\mathcal L_{\mathrm{unlearn}}(\theta) = \mathrm{sim} (\mathbf z,\mathbf z_e) \|g_{\theta}(\mathbf z) - f(\mathbf z-(\mathrm{proj_{\mathbf z_e}(\mathbf z)-t})\mathbf z_e) \|_1
 	$$
+$^1$ **将多层潜在变量连接起来以应用Unlearn算法。**
+
 ![[Pasted image 20240720153929.png]]
 
 强制 $g_{\theta}(\cdot)$ 产生与 $f(\cdot)$ 相似的输出，去除 target feature 。如果投影能够正确地测量 latent space 中target feature 的存在，同时解除其他特征的纠缠，则 $g_{\theta}$ 可以成功地忘记 latent space 中的 target feature。
@@ -92,6 +94,12 @@ $$
 $$
 $\alpha$ 是调节 unlearning 和 reconstruction 误差平衡的超参数。
 
+
+#### 实验
+###### 数据集
+![[Pasted image 20240720162121.png]]
+
+从每个数据集中选择两个特征，每个特征约占数据集的10%。非二值化特征 选取 前 10 % 作为正数据集。
 
 #### Thinking
 ![[Pasted image 20240720160842.png]]

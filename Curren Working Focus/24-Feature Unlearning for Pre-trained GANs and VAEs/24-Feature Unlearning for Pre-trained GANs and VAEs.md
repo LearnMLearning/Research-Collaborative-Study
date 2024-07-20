@@ -114,6 +114,7 @@ $\alpha$ 是调节 unlearning 和 reconstruction 误差平衡的超参数。
 ###### More Datasets?
 
 ####  Adversarial Attack
+![[Pasted image 20240720164107.png]]
 
 
 [[VAE (Variational Autoencoders)]]

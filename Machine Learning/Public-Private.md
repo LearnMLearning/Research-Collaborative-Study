@@ -1,3 +1,1 @@
 [[Random Forest]]
-
-[[Deep Learning]]

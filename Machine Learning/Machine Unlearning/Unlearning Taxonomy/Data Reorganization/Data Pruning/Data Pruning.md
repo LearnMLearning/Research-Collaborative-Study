@@ -1,1 +1,5 @@
 [[SISA]]
+
+[[HedgeCut]]
+
+[[DaRe]]

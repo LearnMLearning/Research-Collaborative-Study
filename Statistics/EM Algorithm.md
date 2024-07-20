@@ -18,3 +18,4 @@ EM 是一个在已知部分相关变量的情况下，估计未知变量的迭�
 $$
 p(\mathbf x|\mathbf y,\theta) = \frac{p(\mathbf y,\mathbf x|\theta)}{p(\mathbf y|\theta)} = \frac{p(\mathbf y|\mathbf x,\theta)p(\mathbf x|\theta)}{\int p(\mathbf y|\mathbf x,\theta)p(\mathbf x|\theta) \, d\mathbf x}
 $$
+

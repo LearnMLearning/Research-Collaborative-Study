@@ -63,7 +63,24 @@ D_{KL}(p_{\theta}(x)||p_{\hat \theta} (x)) = \sum_{x\in E}p_{\theta} (x) \log \f
 $$
 根据期望的定义，我们可以将上式改写为：
 $$\begin{aligned}
-D_{KL}(p_{\theta}(x)\| p_{\hat \theta}(x)) = \mathbb E_{\theta} \left[\log \left(\frac{p_{\theta}(x)}{p_{\hat \theta}(x)} \right) \right]\\
-
-
+D_{KL}(p_{\theta}(x)\| p_{\hat \theta}(x)) &= \mathbb E_{\theta} \left[\log \left(\frac{p_{\theta}(x)}{p_{\hat \theta}(x)} \right) \right]\\
+&= \mathbb E_{\theta} [\log p_{\theta}(x)] - \mathbb E_{\theta} [\log p_{\hat \theta}(x)]
 \end{aligned}$$
+KL值越大，参数估计越坏，因此，需要通过改变估计参数$\hat \theta$ 的值来获得最小的值，所对应的参数极为最佳估计参数。即：
+$$
+\hat \theta_{\mathrm{best}} = \arg \min_{\hat \theta} D_{KL} (p_{\theta}(x)\| p_{\hat \theta} (x))
+$$
+假设有n![{\displaystyle n}](https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b)个样本，根据[大数定理](https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%95%B8%E6%B3%95%E5%89%87 "大数定律")，可以进行替换：
+$$
+\mathbb {E}_{\theta }[\log p_{\hat{\theta}}(x)]\rightsquigarrow \frac 1n \sum_{i=1}^{n} \log p_{\hat \theta}(x)
+$$
+即，可以通过下式评估：
+$$
+D_{KL}(p_{\theta}(x)\| p_{\hat \theta}(x)) = \mathbb E_{\theta} [\log p_{\theta} (x)] - \frac 1n \sum_{i=1}^n \log p_{\hat \theta}(x_i)
+$$
+对于一个已知的分布，其参数 $\theta$ 是确定的。因此，$\mathbb {E} _{\theta }[\log p_{\theta }(x)]$为常数。因此，我们可以通过最小化KL值获得最佳估计参数：
+$$\begin{aligned}{\hat {\theta }}&=\arg \min _{\hat {\theta }}\mathbb {E} _{\theta }[\log p_{\theta }(X)]-{\frac {1}{n}}\sum _{i=1}^{n}\log p_{\hat {\theta }}(x_{i})\\&\Rightarrow \arg \min _{\hat {\theta }}-{\frac {1}{n}}\sum _{i=1}^{n}\log p_{\hat {\theta }}(x_{i})\\&\Rightarrow \arg \max _{\hat {\theta }}{\frac {1}{n}}\sum _{i=1}^{n}\log p_{\hat {\theta }}(x_{i})\\&\Rightarrow \arg \max _{\hat {\theta }}\sum _{i=1}^{n}\log p_{\hat {\theta }}(x_{i})\\&\Rightarrow \arg \max _{\hat {\theta }}\log \left[\prod _{i=1}^{n}p_{\hat {\theta }}(x_{i})\right]\\&\Rightarrow \arg \max _{\hat {\theta }}\prod _{i=1}^{n}p_{\hat {\theta }}(x_{i})\\\end{aligned}$$
+因此，要得到最佳参数估计值，只需要最大化$\prod _{i=1}^{n}p_{\hat {\theta }}(x_{i})$，这就是最大似然函数。对于连续型随机变量，有相同的结论。
+
+###### 例子
+https://zh.wikipedia.org/wiki/最大似然估计

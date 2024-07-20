@@ -58,6 +58,7 @@ $$
 
 ###### Unlearning Process
 $g_\theta$ 作为需要被unlearned 的model，先从 pre-trained generator $f$ 初始化得到。
+$\mathrm{sim}(\mathbf z,\mathbf z_e) = 0$: $g_{\theta}$ 应该给出 $f$ 相同的 output
 
 
 [[VAE (Variational Autoencoders)]]

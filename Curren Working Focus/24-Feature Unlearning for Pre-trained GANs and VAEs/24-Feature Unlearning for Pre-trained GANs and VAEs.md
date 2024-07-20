@@ -84,8 +84,17 @@ $\mathrm{sim}(\mathbf z,\mathbf z_e)=1$: 需要改变生成过程，实现 unlea
 $$
 \mathcal L_{\mathrm{percep}}(\theta) = \mathrm{sim} (\mathbf z,\mathbf z_e) (1-\text{MS-SSIM} (g_{\theta}(\mathbf z),f(\mathbf z - (\mathrm{proj}_{\mathbf z_e}(\mathbf z) -t)\mathbf z_e)))
 $$
+其中 MS-SSIM 函数指的是多尺度结构相似度(Zhao et al. 2016)，它通过比较亮度、对比度和结构信息来衡量两幅图像之间的感知相似度。
+
+最后合并
+$$
+\mathcal L(\theta) = \alpha (\mathcal L_{\mathrm{unlearn}}(\theta) + \mathcal L_{\mathrm{percep}}(\theta)) + \mathcal L_{\mathrm{recon}}(\theta)
+$$
+$\alpha$ 是调节 unlearning 和 reconstruction 误差平衡的超参数。
 
 
+#### Thinking
+![[Pasted image 20240720160842.png]]
 
 
 [[VAE (Variational Autoencoders)]]

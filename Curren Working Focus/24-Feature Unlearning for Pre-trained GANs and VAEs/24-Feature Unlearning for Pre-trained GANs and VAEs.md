@@ -104,7 +104,9 @@ $\alpha$ 是调节 unlearning 和 reconstruction 误差平衡的超参数。
 1. How well the **unlearning is done**
 2. How good the **sample qualities** are 常用指标 (IS|high) (FID|low) Studio GAN
  
-
+###### 用户研究
+我们进行了一项用户研究，以评估我们的遗忘框架在更现实的情况下的有效性。本研究旨在考察未学习模型与原始模型在不同维度上的表现。我们招募了13名参与者，并要求他们选择包含“眼镜”的图片，因为这个功能很容易被用户识别。每个参与者使用图2所示的界面对500个样本进行注释。注释过程平均花费大约5分钟。然后，我们对每个参与者在FFHQ上训练的预训练StyleGAN进行学习。用户研究的详细信息和截图在章节中提供。
+![[Pasted image 20240720163534.png]]
 
 #### Thinking
 ###### Loss Function

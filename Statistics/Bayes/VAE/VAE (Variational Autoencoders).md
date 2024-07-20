@@ -3,7 +3,6 @@ Latent space: preserve the information of data within a low- dimensional space
 
 在了解VAE之前，先了解 **[[Autoencoder (AE)]]**
 
-
 ## 1 Introduction
 #### 1.1 Motivation
 生成建模有吸引力的原因有很多

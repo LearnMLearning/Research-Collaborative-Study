@@ -1,9 +1,9 @@
 ## 1 Introduction
 #### 1.1 Motivation
-Many reasons why generative modeling is attractive
-	1. Express physical laws and constraints while the details that we don't know or care about
-	2. Naturally expresses **causal relations** of the world.
-The VAE can be viewed as two coupled, but independently parameterized models:
+生成建模有吸引力的原因有很多
+	1. 表达物理定律和约束，同时表达我们不知道或不关心的细节
+	2. 自然地表达了世界的因果关系。
+VAE可以看作是两个耦合但独立的参数化模型:
 	1. The encoder or recognition model
 	2. The decoder or generative model
 	1. 识别模型向生成模型提供其对**潜在随机变量的后验近似值**，它需要在“期望最大化”学习的迭代中更新其参数。

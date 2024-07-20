@@ -1,1 +1,1 @@
-[[Perceptual loss]]
+[[Perceptual Loss]]

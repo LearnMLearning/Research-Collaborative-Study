@@ -41,7 +41,7 @@ $$
 \end{cases}
 $$
 $$
-\mathrm{proj_{\mathbf z_e}}(\mathbf z) = \frac{\mathbf z_e^{\mathrm T}\mathbf z}{\|\mathbf z_e\|},
+\mathrm{proj_{\mathbf z_e}}(\mathbf z) = \frac{\mathbf z_e^{\mathrm T}\mathbf z}{\|\mathbf z_e\|}, t = \frac{1}{N}\sum_{i=1}^N[\mathrm{proj}_{\mathbf z_e}(\mathbf z_i)]
 $$
 
 ###### 实验数据集准备
@@ -58,7 +58,28 @@ $$
 
 ###### Unlearning Process
 $g_\theta$ 作为需要被unlearned 的model，先从 pre-trained generator $f$ 初始化得到。
+
 $\mathrm{sim}(\mathbf z,\mathbf z_e) = 0$: $g_{\theta}$ 应该给出 $f$ 相同的 output
+	制定 *reconstruction* objective 重建目标以最小化输出变化
+	$$
+	\mathcal L_{\mathrm{recon}} (\theta) = (1-\mathrm{sim}(\mathbf z,\mathbf z_e))\|g_{\theta} (\mathbf z) - f(\mathbf z)\|_1
+	$$
+	$\mathbf z$ 是随机向量。因此，当 *latent vector* 不包含目标特征时，$g_{\theta}$ 试图模仿 $f$。
+
+$\mathrm{sim}(\mathbf z,\mathbf z_e)=1$: 需要改变生成过程，实现 unlearn
+	给定随机向量 $\mathbf z$，将该向量投影到目标向量 $\mathbf z_e$ 上，然后将原始随机向量投影到投影向量上
+	$$
+	\mathbf z-(\|\mathrm {proj}_{\mathbf z_e} (\mathbf z)\|-t)\mathbf z_e
+	$$
+	其中 $t$ 是预定义的阈值。转换后的向量用作产生目标擦除输出的原始生成器的输入。然后
+	使用修改后的输出来训练 $g$，使其具有以下的 unlearning 目标
+	$$
+	\mathcal L_{\mathrm{unlearn}}(\theta) = \mathrm{sim} (\mathbf z,\mathbf z_e) \|g_{\theta}(\mathbf z) - f(\mathbf z-(\mathrm{proj_{\mathbf z_e}(\mathbf z)-t})\mathbf z_e) \|_1
+	$$
+![[Pasted image 20240720153929.png]]
+
+目标强制未学习的生成器产生与原始生成器相似的输出，没有目标特征。如果投影能够正确地测量潜在空间中目标特征的存在，同时解除其他特征的纠缠，则gθ可以成功地忘记潜在空间中的目标特征。
+
 
 
 [[VAE (Variational Autoencoders)]]

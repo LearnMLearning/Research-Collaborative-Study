@@ -14,7 +14,7 @@ EM 是一个在已知部分相关变量的情况下，估计未知变量的迭�
 我们用 $\mathbf y$ 表示能够观察到的不完整的变量值，用$\mathbf x$表示无法观察到的变量值，这样$\mathbf x$和$\mathbf y$一起组成了完整的数据。$\mathbf x$可能是实际测量丢失的数据，也可能是能够简化问题的隐藏变量，如果它的值能够知道的话。例如，在[混合模型](https://zh.wikipedia.org/wiki/%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B "混合模型")中，如果“产生”样本的混合元素成分已知的话最大似然公式将变得更加便利（参见下面的例子）。
 
 **估计无法观测的数据**
-让 $p$ 代表矢量 $\theta:p(\mathbf y,\mathbf x|\theta)$ 定义的参数的全部数据的[几率密度函数](https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8 "几率密度函数")（连续情况下）或者[几率质量函数](https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E8%B3%AA%E9%87%8F%E5%87%BD%E6%95%B8 "几率质量函数")（离散情况下），那么从这个函数就可以得到全部数据的[最大似然值](https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1 "最大似然估计")，另外，在给定的观察到的数据条件下未知数据的[条件分布](https://zh.wikipedia.org/wiki/%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83 "条件分布")可以表示为：
+让 $p$ 代表矢量 $\theta:p(\mathbf y,\mathbf x|\theta)$ 定义的参数的全部数据的[几率密度函数](https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8 "几率密度函数")（连续情况下）或者[几率质量函数](https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E8%B3%AA%E9%87%8F%E5%87%BD%E6%95%B8 "几率质量函数")（离散情况下），那么从这个函数就可以得到全部数据的[最大似然值](https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1 "最大似然估计") [MLE]，另外，在给定的观察到的数据条件下未知数据的[条件分布](https://zh.wikipedia.org/wiki/%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83 "条件分布")可以表示为：
 $$
-p(\mathbf x|\mathbf y,\theta) = \frac{}{}
+p(\mathbf x|\mathbf y,\theta) = \frac{p(\mathbf y,\mathbf x|\theta)}{p(\mathbf y|\theta)} = \frac{p(\mathbf y|\mathbf x,\theta)p(\mathbf x|\theta)}{\int p(\mathbf y|\mathbf x,\theta)p(\mathbf x|\theta) \, d\mathbf x}
 $$

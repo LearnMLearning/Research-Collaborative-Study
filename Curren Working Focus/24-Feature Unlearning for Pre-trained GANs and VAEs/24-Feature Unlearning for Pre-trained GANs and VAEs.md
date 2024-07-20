@@ -107,7 +107,9 @@ $\alpha$ 是调节 unlearning 和 reconstruction 误差平衡的超参数。
 
 
 #### Thinking
+###### Loss Function
 ![[Pasted image 20240720160842.png]]
+###### More Datasets?
 
 
 [[VAE (Variational Autoencoders)]]

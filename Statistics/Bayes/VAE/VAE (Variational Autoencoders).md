@@ -124,7 +124,7 @@ $$
 当作为 $\theta$ 的函数时，这也称为(单数据点)边际似然 *marginal likelihood* 或模型证据 *model evidence*。
 这种关于 $\mathbf x$ 的隐式分布是非常灵活的。如果 $\mathbf z$ 是离散的，且 $p_{\theta}(\mathbf x|\mathbf z)$ 是高斯分布，则 $p_{\theta}(\mathbf x)$ 是混合高斯分布。对于连续的 $\mathbf z$, $p_{\theta}(\mathbf x)$可以看作是一个无限的混合，它比离散的混合可能更强大。这种边际分布也称为**复合概率分布**。
 ###### 1.7.2 Deep Latent Variable Models
-我们使用术语深潜变量模型 *deep latent variable model* (DLVM)来表示其分布由神经网络参数化的潜在变量模型 $p_{\theta}(\mathbf x,\mathbf z)$。这样的模型可以以某些上下文为条件，如$p_{\theta}(\mathbf x,\mathbf z|\mathbf y)$。DLVM 的一个重要优点是，即使有向模型中的每个因素(先验分布或条件分布)相对简单(例如条件高斯分布)，边际分布 $p_{\theta}(\mathbf x)$ 也可以非常复杂，即包含几乎任意的依赖关系。这种表达性使得深层潜变量模型对于近似复杂的底层分布 $p^*(\mathbf x)$具有吸引力。 
+我们使用术语深潜变量模型 *deep latent variable model* (DLVM)来表示其分布由神经网络参数化的潜在变量模型 $p_{\theta}(\mathbf x,\mathbf z)$。这样的模型可以以某些上下文为条件，如$p_{\theta}(\mathbf x,\mathbf z|\mathbf y)$。DLVM 的一个重要优点是，即使有向模型中的**每个因素**(先验分布或条件分布)**相对简单**(例如条件高斯分布)，边际分布 $p_{\theta}(\mathbf x)$ 也可以非常复杂，即包含几乎任意的依赖关系。这种表达性使得深层潜变量模型对于近似复杂的底层分布 $p^*(\mathbf x)$具有吸引力。 
 
 也许最简单、最常见的DLVM是一个被指定为分解的DLVM，它的结构如下:
 $$

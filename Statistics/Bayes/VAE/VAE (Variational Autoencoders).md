@@ -82,7 +82,7 @@ p_{\theta} (\mathbf x| Pa(\mathbf x)) & = p_{\theta} ( \mathbf x | \eta)
 \end{aligned}$$
 现在我们将讨论如果在数据中观察到所有变量，如何**学习这些模型的参数**。
 
-#### 1.6 Learning in Fully Observed Models with Neural Nets
+#### 1.6 Learning in Fully Observed Models with Neural Nets 用神经网络在完全观察模型中学习
 如果在数据中观察到有向图模型中的所有变量，那么我们可以计算和微分模型下数据的对数概率，从而实现相对简单的优化。
 ###### 1.6.1 Dataset
 我们通常收集一个由 $N\ge 1$ 个数据点组成的数据集 $\mathcal D$:
@@ -103,7 +103,7 @@ $$
 
 利用微积分的**链式法则**和自动微分工具，我们可以有效地计算出该目标的梯度，即目标的一阶导数w.r.t. 其参数 $\theta$。我们可以使用这样的梯度迭代爬坡到 ML 目标的局部最优。如果我们使用所有数据点来计算这样的梯度 $\nabla_\theta \log p_\theta(\mathcal D)$ ，那么这就是所谓的**批量梯度下降** (*batch* gradient descent)。然而，对于大数据集大小$N_{\mathcal D}$，计算这个导数是一个昂贵的操作，因为它随 $N_{\mathcal D}$ 线性扩展。
 
-一种更有效的优化方法是 **随机梯度下降(SGD)** (章节A.3)，它使用大小为$N_\mathcal M$的随机绘制的小批量数据$\mathcal M \subset \mathcal D$。有了这样的小批量，我们可以形成 ML 准则的无偏估计量:
+一种更有效的优化方法是 **随机梯度下降(SGD)** (章节A.3)，它使用大小为$N_\mathcal M$的随机绘制的小批量数据$\mathcal M \subset \mathcal D$。有了这样的小批量，我们可以形成 ML 准则的**无偏估计** (指在大量重复抽样的情况下，估计量的值 (数学期望)等于未知参数的真值) 量:
 $$
 \frac{1}{N_{\mathcal D}} \log p_\theta (\mathcal D) \simeq \frac{1}{N_{\mathcal M}}\log p_{\theta} ( \mathcal M) = \frac{1}{N_{\mathcal M}} \sum_{\mathbf x \in \mathcal M} \log p_{\theta} (\mathbf x)
 $$
@@ -111,11 +111,11 @@ $$
 $$
 \frac{1}{N_\mathcal D} \nabla_{\theta} \log p_{\theta} (\mathcal D) \simeq \frac{1}{N_{\mathcal M}} \nabla_{\theta} \log p_{\theta} (\mathcal M) = \frac{1}{N_{\mathcal M}} \sum_{\mathbf x \in \mathcal M} \nabla_{\theta} \log p_{\theta} (\mathbf x)
 $$
-这些梯度可以插入到随机梯度优化器中;进一步讨论见A.3节。简而言之，我们可以通过在随机梯度的方向上重复采取小步骤来优化目标函数。
+这些梯度可以插入到**随机梯度优化器**中;进一步讨论见A.3节。简而言之，我们可以通过在随机梯度的方向上重复采取小步骤来优化目标函数。
 ###### 1.6.3 Bayesian inference
 从贝叶斯的角度来看，我们可以通过最大后验(MAP)估计来改进机器学习(见第 A.2.1 节)，或者更进一步，对参数的完整近似后验分布进行推断(见第 A.1.4 节)。
 
-#### 1.7 Learning and Inference in Deep Latent Variable Models
+#### 1.7 Learning and Inference in Deep Latent Variable Models 深度潜在变量模型的学习与推理
 ###### 1.7.1 Latent Variables
 我们可以将前一节讨论的完全观察到的**有向模型**扩展为**具有潜在变量**的**有向模型**。潜在变量是模型的一部分，但我们没有观察到，因此不是数据集的一部分。我们通常用 $\mathbf z$ 来表示这样的**潜在变量**。在对观测变量 $\mathbf x$ 进行无条件建模的情况下，有向图形模型将表示观测变量 $\mathbf x$ 和潜在变量 $\mathbf z$ 上的联合分布 $p_{\theta}(\mathbf x,\mathbf z)$。观测变量 $p_{\theta}(\mathbf x)$的 **边际分布** 由下式给出:
 $$

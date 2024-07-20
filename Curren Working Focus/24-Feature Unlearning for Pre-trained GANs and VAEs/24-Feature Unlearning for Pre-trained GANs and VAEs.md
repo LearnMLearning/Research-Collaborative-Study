@@ -57,7 +57,7 @@ $$
 ![[Pasted image 20240720143655.png]]
 
 ###### Unlearning Process
-
+$g_\theta$ 作为需要被unlearned 的model，先从 pre-trained generator $f$ 初始化得到。
 
 
 [[VAE (Variational Autoencoders)]]

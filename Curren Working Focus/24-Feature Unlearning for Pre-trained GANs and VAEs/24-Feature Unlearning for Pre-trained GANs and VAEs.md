@@ -56,6 +56,9 @@ $$
 ###### 框架
 ![[Pasted image 20240720143655.png]]
 
+###### Unlearning Process
+
+
 
 [[VAE (Variational Autoencoders)]]
 

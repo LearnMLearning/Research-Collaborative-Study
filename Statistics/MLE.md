@@ -53,4 +53,17 @@ $$L(\theta|x_1,\dots,x_n)=f_{\theta}(x_1,\dots,x_n)$$
 - 最大似然估计不一定存在，也不一定唯一。
 
 ###### 推导
-最大似然估计可以从 [KLD] KL 散度 相对熵推导而来。[相对熵](https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%AF%B9%E7%86%B5 "相对熵")衡量了使用一个给定分布Q![{\displaystyle Q}](https://wikimedia.org/api/rest_v1/media/math/render/svg/8752c7023b4b3286800fe3238271bbca681219ed)来近似另一个分布P![{\displaystyle P}](https://wikimedia.org/api/rest_v1/media/math/render/svg/b4dc73bf40314945ff376bd363916a738548d40a)时的信息损失，对于离散型随机变量，可以用以下公式：
+最大似然估计可以从 [KLD] KL 散度 相对熵推导而来。[相对熵](https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%AF%B9%E7%86%B5 "相对熵")衡量了使用一个给定分布 $Q$ 来近似另一个分布 $P$ 时的信息损失，对于离散型随机变量，可以用以下公式：
+$$
+D_{KL}(P\|Q) = \sum_i P(i) \log \frac{P(i)}{Q(i)}
+$$
+其中，$P$ 是真实分布，$Q$ 是近似分布。在最大似然估计的情景下，假设分布拥有一系列参数 $\theta$，我们希望通过样本得到参数的估计值 $\hat \theta$。我们可以利用[相对熵](https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%AF%B9%E7%86%B5 "相对熵")来评判估计的好坏：
+$$
+D_{KL}(p_{\theta}(x)||p_{\hat \theta} (x)) = \sum_{x\in E}p_{\theta} (x) \log \frac{p_{\theta}(x)}{p_{\hat \theta}(x)}
+$$
+根据期望的定义，我们可以将上式改写为：
+$$\begin{aligned}
+D_{KL}(p_{\theta}(x)\| p_{\hat \theta}(x)) = \mathbb E_{\theta} \left[\log \left(\frac{p_{\theta}(x)}{p_{\hat \theta}(x)} \right) \right]\\
+
+
+\end{aligned}$$

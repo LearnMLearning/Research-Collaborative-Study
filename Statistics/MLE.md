@@ -84,3 +84,5 @@ $$\begin{aligned}{\hat {\theta }}&=\arg \min _{\hat {\theta }}\mathbb {E} _{\the
 
 ###### 例子
 https://zh.wikipedia.org/wiki/最大似然估计
+
+[[EM Algorithm]]

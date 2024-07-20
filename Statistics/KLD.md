@@ -43,3 +43,4 @@ $$
   
 [交叉熵](https://zh.wikipedia.org/wiki/%E4%BA%A4%E5%8F%89%E7%86%B5 "交叉熵")和KL散度
 $$ \mathrm {H} (p,q)=\mathrm {E} _{p}[-\log q]=\mathrm {H} (p)+D_{\mathrm {KL} }(p\|q)$$
+[[MLE]]

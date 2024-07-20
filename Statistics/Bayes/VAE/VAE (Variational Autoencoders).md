@@ -148,7 +148,7 @@ p_{\theta} (\mathbf z | \mathbf x) = \frac{p_{\theta} (\mathbf x,\mathbf z)}{p_{
 $$
  由于 $p_{\theta}(\mathbf x,\mathbf z)$ 是易于计算的，一个易于处理的边际似然 $p_{\theta}(\mathbf x)$ 导致一个易于处理的后验 $p_{\theta} (\mathbf z|\mathbf x)$，反之亦然。这两个问题在 DLVM 中都很难解决。
  
-近似推理技术 (参见A.2节) 允许我们在 DLVM 中近似后验 $p_{\theta}(\mathbf z|\mathbf x)$ 和边际似然$p_{\theta}(\mathbf x)$。传统的推理方法相对昂贵。例如，这种方法通常需要每个数据点的**优化循环**，或者产生不好的后验近似值。我们不想做这种昂贵的步骤。
+近似推理技术 (参见A.2节) 允许我们在 DLVM 中近似后验 $p_{\theta}(\mathbf z|\mathbf x)$ 和边际似然 $p_{\theta}(\mathbf x)$。传统的推理方法相对昂贵。例如，这种方法通常需要每个数据点的**优化循环**，或者产生不好的后验近似值。我们不想做这种昂贵的步骤。
 
 同样，神经网络参数化的(有向模型) $p(\theta |\mathcal D)$ 的后验通常难以精确计算，需要近似推理技术。
 ## 2 Variational Autoencoders 变分自编码器

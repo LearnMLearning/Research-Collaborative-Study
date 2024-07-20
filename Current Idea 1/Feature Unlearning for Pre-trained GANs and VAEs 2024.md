@@ -2,4 +2,4 @@
 
 [[GAN]]
 
-[[Amnesiac Machine Learning, 2020]]
+[[Feature Unlearning]]

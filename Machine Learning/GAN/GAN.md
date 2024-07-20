@@ -51,4 +51,4 @@ $$
 #### 2.2 DCGAN
 
 
-[[Idea - Feature Unlearning for Pre-trained GANs and VAEs 2024]]
+[[Feature Unlearning for Pre-trained GANs and VAEs 2024]]

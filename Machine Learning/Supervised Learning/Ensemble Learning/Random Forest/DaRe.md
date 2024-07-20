@@ -1,1 +1,1 @@
-[[Machine Unlearning]]
+[[Data Pruning]]

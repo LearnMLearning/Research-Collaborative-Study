@@ -20,7 +20,16 @@ Unlearn Target: dataset 的一个subset $\times$  $\longrightarrow$  specific fe
 2. **识别**目标特征的**潜在表示** *latent representation*
 3. 使用该表示对训练模型进行 *fine-tuning*
 
-识别与目标特征对应的潜在表征 $\mathbf z$
+**Latent Space Analysis**
+GANs & VAEs 在低维空间内很好地保存在数据的信息，称为潜在空间 *Latent Space*。人们提出了各种遍历潜在空间和提取代表视觉特征的潜在向量的技术。这在我现阶段 Review 的 VAE 的 Tutorial 里面就有详细涉及 (通过 重参数化 reparameterization 实现降维映射)。
 
+**前提**： 
+1. 假设我们已经掌握了 **识别并提取** 与目标特征对应的潜在表征 $\mathbf z$ 的方法 (不是这篇work的重点)
+2. Radford, Metz, and Chintala (2015) 提到了一种很好的方法：
+	**含特征的图像的 平均特征潜向量 $\tilde {\mathbf z}_1$** 和 **不含特征的图像的 平均特征潜向量 $\tilde{\mathbf z}_2$**
+	**目标视觉特征向量：**
+	$$
+	\mathbf z_e = \tilde{\mathbf z}_1 -\tilde{\mathbf z}_2
+	$$
+###### 实验数据集准备
 
-###### 使用的实验数据集

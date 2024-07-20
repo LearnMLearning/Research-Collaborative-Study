@@ -31,8 +31,18 @@ GANs & VAEs 在低维空间内很好地保存在数据的信息，称为潜在�
 3. 假设一旦训练完成，由于各种原因，例如有限的存储或隐私问题，训练数据集不可访问。
 
 *2. 特征 是否包含？*
-White(2016) 表明，投影可以表示潜在向量与目标特征之间的相似性。将其潜在向量投影到目标向量。对于实验，我们将阈值 $t$ 设置为正、负样本在潜在空间中的平均投影值。令sim(z, ze)∈{0,1}表示二值分类结果，即
-
+White(2016) 表明，**投影**可以表示潜在向量与目标特征之间的相似性。将其潜在向量投影到目标向量。对于实验，我们将阈值 $t$ 设置为正、负样本在潜在空间中的**平均投影值**。
+令 $\mathrm{sim}(\mathbf z, \mathbf z_e)\in\{0,1\}$ 表示二值分类结果，即
+$$
+\mathrm{sim}(\mathbf z,\mathbf z_e) = 
+\begin{cases}
+0, & \mathrm{if} \,\mathrm{proj}_{\mathbf z_e}(\mathbf z) < t,\\
+1, & \mathrm{otherwise},
+\end{cases}
+$$
+$$
+\mathrm{proj_{\mathbf z_e}}(\mathbf z) = \frac{\mathbf z_e^{\mathrm T}\mathbf z}{\|\mathbf z_e\|},
+$$
 
 ###### 实验数据集准备
 特征学习旨在从预训练的生成模型中删除特定特征：

@@ -78,7 +78,9 @@ $\mathrm{sim}(\mathbf z,\mathbf z_e)=1$: 需要改变生成过程，实现 unlea
 	$$
 ![[Pasted image 20240720153929.png]]
 
-目标强制未学习的生成器产生与原始生成器相似的输出，没有目标特征。如果投影能够正确地测量潜在空间中目标特征的存在，同时解除其他特征的纠缠，则gθ可以成功地忘记潜在空间中的目标特征。
+强制 $g_{\theta}(\cdot)$ 产生与 $f(\cdot)$ 相似的输出，去除 target feature 。如果投影能够正确地测量 latent space 中target feature 的存在，同时解除其他特征的纠缠，则 $g_{\theta}$ 可以成功地忘记 latent space 中的 target feature。
+
+众所周知，$L_2$ 和 $L_1$ loss 发生在图像生成 image generation 和 恢复任务 restorations tasks 的模糊效果中(Pathak et al. 2016;Zhang, Isola, and Efros 2016;Isola et al. 2017;Zhao et al. 2016)。先前的研究通过引入不同的技术来解决**模糊效应**，例如在训练过程中添加 感知 perceptual 或 对抗 adversarial loss (Johnson, Alahi, and Fei-Fei 2016;Zhao et al. 2016)。为了克服模糊效应，我们在目标函数中加入了**感知损失** (*perceptual loss*)。
 
 
 

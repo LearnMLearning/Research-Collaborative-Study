@@ -2,6 +2,6 @@
 
 [[GNN]]
 
-[[CNN]]
+[[CNN (Convolutional Neural Network)]]
 
-[[DNN]]
+[[Deep Neural Network (DNN)]]

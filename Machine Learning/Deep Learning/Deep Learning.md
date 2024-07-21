@@ -1,13 +1,12 @@
-[[FNN (Feedforward Neural Network)]]
-
-[[CNN]]
-
-[[RNN]]
+[[Linear Factor Models]]
 
 [[Sequence-to-Sequence]]
-
-[[GAN]]
 
 [[SNN]]
 
 [[GNN]]
+
+[[Deep Generative Models]]
+
+[[Deep Neural Network]]
+

@@ -2,6 +2,9 @@ Latent space: preserve the information of data within a low- dimensional space
 潜在空间：在一个低维空间内很好的保存了数据的信息
 
 在了解VAE之前，先了解 **[[Autoencoder (AE)]]**
+## 0 前导知识 辅助理解
+#### 目标：生成模型
+VAE 是一个生成模型，我们的最终目标是如何构建一个生成模型。**生成模型其实就是一个联合概率分布 $P(X)$ 或 $P(X,Y)$**。当有了这个联合概率分布后，我们就可以从中采样生成不同的样本。
 
 ## 1 Introduction
 #### 1.1 Motivation

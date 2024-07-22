@@ -116,11 +116,15 @@ Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.ed
 
 ## HedgeCut
 #### Income ("Adult income")
-The same as the "Adult" in DaRe
+The same as the "Adult" in DaRe.
+This dataset contains 390K data points in 32,560 records of demographic and financial data, with four numerical and eight categorical attributes, and the target variable denotes whether a person earns more than 50,000 dollars per year or not.
+ https://archive.ics.uci.edu/ml/datasets/Adult
 #### Heart Disease
-
+This dataset contains 770K data points in 70,000 patient records comprised of five numerical and six categorical measurements with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
+https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 #### Credit ("Credit Card")
-The same as "Credit Card" in DaRe
+
+https://www.kaggle.com/c/GiveMeSomeCredit
 #### Recidivism 
 
-#### Purchase Data
+#### Purchase Data ("Online purchase behavior data")

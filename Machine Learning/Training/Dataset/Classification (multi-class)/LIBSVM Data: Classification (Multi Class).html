@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link href="style.css" rel="stylesheet" type="text/css"/><title>LIBSVM Data: Classification (Multi Class)</title><meta charset="UTF-8"/></head><body><a name="#top"/><h1><a href="../../libsvm">LIBSVM</a> Data: Classification (Multi-class)</h1><p><font size="+1">
+    This page contains many classification, regression,
+    multi-label and string data sets stored in LIBSVM format. For some sets
+    raw materials (e.g., original texts) are also available. These data sets
+    are from UCI, Statlog, StatLib and other collections. We
+    thank their efforts. For most sets, we linearly scale each attribute to [-1,1] or [0,1].  The testing data (if provided)
+    is adjusted accordingly. Some training data are further separated 
+    to "training" (tr) and "validation" (val) sets. Details can be
+    found in the description of each data set. To read data via MATLAB, you can use "libsvmread" in LIBSVM package.
+  </font></p><hr/><a name="aloi"><h2>aloi</h2></a><ul><li>Source:
+            <a href="http://ic.unicamp.br/~rocha/pub/downloads/2014-tnnls/">aloi</a>
+              [<a href="ref.html#AR14a">AR14a</a>]
+            </li><li># of classes: 1,000</li><li># of data:
+            108,000</li><li># of features:
+            128</li><li>Files:
+            <ul><li><a href="multiclass/aloi.bz2">aloi.bz2</a></li><li><a href="multiclass/aloi.scale.bz2">aloi.scale.bz2</a> (scaled to [0,1])</li></ul></li></ul><a name="cifar10"><h2>cifar10</h2></a><ul><li>Source:
+            <a href="https://www.cs.toronto.edu/~kriz/cifar.html">The CIFAR-10 dataset</a>
+              [<a href="ref.html#AK09a">AK09a</a>]
+            </li><li>Preprocessing:
+               We combine five training batches in CIFAR-10 Matlab version from the cifar10 website to produce the training data. For every image, in the RGB order, by rows we convert 32x32 pixels to feature values. That is, (row 1, R), (row 2, R), ..., (row 1, G), ...</li><li># of classes: 10</li><li># of data:
+            50,000
+                  / 10,000 (testing)
+                </li><li># of features:
+            3,072</li><li>Files:
+            <ul><li><a href="multiclass/cifar10.bz2">cifar10.bz2</a></li><li><a href="multiclass/cifar10.t.bz2">cifar10.t.bz2</a> (testing)</li><li><a href="multiclass/cifar10.mat">cifar10.mat</a> (dense matlab format)</li><li><a href="multiclass/cifar10.t.mat">cifar10.t.mat</a> (testing, dense matlab format)</li></ul></li></ul><a name="connect-4"><h2>connect-4</h2></a><ul><li>Source:
+            <a href="http://archive.ics.uci.edu/ml/machine-learning-databases/connect-4/">UCI</a>
+              / Connect-4</li><li>Preprocessing:
+              We used binary encoding for each feature (o, b, x), so the number of features is 42*3 = 126.</li><li># of classes: 3</li><li># of data:
+            67,557</li><li># of features:
+            126</li><li>Files:
+            <ul><li><a href="multiclass/connect-4">connect-4</a></li></ul></li></ul><a name="covtype"><h2>covtype</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Covertype</li><li># of classes: 7</li><li># of data:
+            581,012</li><li># of features:
+            54</li><li>Files:
+            <ul><li><a href="multiclass/covtype.bz2">covtype.bz2</a></li><li><a href="multiclass/covtype.scale01.bz2">covtype.scale01.bz2</a> (scaled to [0,1])</li><li><a href="multiclass/covtype.scale.bz2">covtype.scale.bz2</a> (scaled to mean zero and standard deviation one (first 10 attributes))</li></ul></li></ul><a name="dna"><h2>dna</h2></a><ul><li>Source:
+            <a href="http://www.liacc.up.pt/ML/old/statlog/datasets.html">Statlog</a>
+              / Dna</li><li>Preprocessing:
+              Training data is further separated into two sets, tr and val.
+                [<a href="ref.html#CWH01a">CWH01a</a>]
+              </li><li># of classes: 3</li><li># of data:
+            2,000
+                  / 1,186 (testing)
+                
+                  / 1,400 (tr)
+                
+                  / 600 (val)
+                </li><li># of features:
+            180</li><li>Files:
+            <ul><li><a href="multiclass/dna.scale">dna.scale</a></li><li><a href="multiclass/dna.scale.t">dna.scale.t</a> (testing)</li><li><a href="multiclass/dna.scale.tr">dna.scale.tr</a> (tr)</li><li><a href="multiclass/dna.scale.val">dna.scale.val</a> (val)</li></ul></li></ul><a name="glass"><h2>glass</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Glass Identification</li><li># of classes: 6</li><li># of data:
+            214</li><li># of features:
+            9</li><li>Files:
+            <ul><li><a href="multiclass/glass.scale">glass.scale</a></li></ul></li></ul><a name="imdb-rating"><h2>imdb-rating</h2></a><ul><li>Source:
+            <a href="https://dl.acm.org/doi/10.1145/2623330.2623758">
+      Jointly Modelling Aspects, Ratings and Sentiments for Movie Recommendation
+    </a></li><li>Preprocessing:
+              
+      The original dataset can be downloaded from <a href="https://zenodo.org/record/5257310">Zenodo</a>.
+      We replaced any sequence of whitespace characters \s (a shorthand for [ \t\n\r\f\v]) with a space.
+    </li><li># of classes: 10</li><li># of data:
+            348,415</li><li># of features:
+            </li><li>Files:
+            <ul><li><a href="multiclass/generate_imdb_rating.py">generate_imdb_rating.py</a></li><li><a href="multiclass/imdb_rating_raw_texts.txt.bz2">imdb_rating_raw_texts.txt.bz2</a></li></ul></li></ul><a name="iris"><h2>iris</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Iris Plant</li><li># of classes: 3</li><li># of data:
+            150</li><li># of features:
+            4</li><li>Files:
+            <ul><li><a href="multiclass/iris.scale">iris.scale</a></li></ul></li></ul><a name="LEDGAR (LexGLUE)"><h2>LEDGAR (LexGLUE)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC22b">IC22b</a>]
+            </li><li>Preprocessing:
+              The procedure is the same as that for <a href="multilabel.html#ECtHR (A) (LexGLUE)">ECtHR (A) (LexGLUE)</a>.
+</li><li># of classes: 100</li><li># of data:
+            60,000
+                  / 10,000 (valid)
+                
+                  / 10,000 (testing)
+                </li><li># of features:
+            19,996</li><li>Files:
+            <ul><li><a href="multiclass/lexglue_code.tar.gz">lexglue_code.tar.gz</a></li><li><a href="multiclass/ledgar_lexglue_raw_texts_train.txt.bz2">ledgar_lexglue_raw_texts_train.txt.bz2</a></li><li><a href="multiclass/ledgar_lexglue_raw_texts_val.txt.bz2">ledgar_lexglue_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multiclass/ledgar_lexglue_raw_texts_test.txt.bz2">ledgar_lexglue_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multiclass/ledgar_lexglue_tfidf_train.svm.bz2">ledgar_lexglue_tfidf_train.svm.bz2</a></li><li><a href="multiclass/ledgar_lexglue_tfidf_test.svm.bz2">ledgar_lexglue_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="letter"><h2>letter</h2></a><ul><li>Source:
+            <a href="http://www.liacc.up.pt/ML/old/statlog/datasets.html">Statlog</a>
+              / Letter</li><li>Preprocessing:
+              Training data is further separated into two sets, tr and val.
+                [<a href="ref.html#CWH01a">CWH01a</a>]
+              </li><li># of classes: 26</li><li># of data:
+            15,000
+                  / 5,000 (testing)
+                
+                  / 10,500 (tr)
+                
+                  / 4,500 (val)
+                </li><li># of features:
+            16</li><li>Files:
+            <ul><li><a href="multiclass/letter.scale">letter.scale</a></li><li><a href="multiclass/letter.scale.t">letter.scale.t</a> (testing)</li><li><a href="multiclass/letter.scale.tr">letter.scale.tr</a> (tr)</li><li><a href="multiclass/letter.scale.val">letter.scale.val</a> (val)</li></ul></li></ul><a name="mnist"><h2>mnist</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#YL98a">YL98a</a>]
+            </li><li>Preprocessing:
+              Feature values are stored by rows of each image</li><li># of classes: 10</li><li># of data:
+            60,000
+                  / 10,000 (testing)
+                </li><li># of features:
+            780
+                  / 778 (testing)
+                </li><li>Files:
+            <ul><li><a href="multiclass/mnist.bz2">mnist.bz2</a></li><li><a href="multiclass/mnist.t.bz2">mnist.t.bz2</a> (testing)</li><li><a href="multiclass/mnist.scale.bz2">mnist.scale.bz2</a> (scaled to [0,1] by dividing each feature by 255)</li><li><a href="multiclass/mnist.scale.t.bz2">mnist.scale.t.bz2</a> (testing) (scaled to [0,1] by dividing each feature by 255)</li><li><a href="multiclass/mnist.mat">mnist.mat</a> (dense matlab format)</li><li><a href="multiclass/mnist.t.mat">mnist.t.mat</a> (testing, dense matlab format)</li></ul></li></ul><a name="mnist8m"><h2>mnist8m</h2></a><ul><li>Source:
+            <a href="http://leon.bottou.org/papers/loosli-canu-bottou-2006">Invariant SVM</a>
+              [<a href="ref.html#GL07b">GL07b</a>]
+            </li><li># of classes: 10</li><li># of data:
+            8,100,000</li><li># of features:
+            784</li><li>Files:
+            <ul><li><a href="multiclass/mnist8m.xz">mnist8m.xz</a></li><li><a href="multiclass/mnist8m.scale.xz">mnist8m.scale.xz</a> (scaled to [0,1] by dividing each feature by 255)</li></ul></li></ul><a name="news20"><h2>news20</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#KL95a">KL95a</a>]
+            </li><li>Preprocessing:
+              First 80/20 training/testing split. Also see
+<a href="http://people.csail.mit.edu/jrennie/20Newsgroups">this page</a>
+
+                [<a href="ref.html#JR01a">JR01a</a>]
+              </li><li># of classes: 20</li><li># of data:
+            15,935
+                  / 3,993 (testing)
+                </li><li># of features:
+            62,061
+                  / 62,060 (testing)
+                </li><li>Files:
+            <ul><li><a href="multiclass/news20.bz2">news20.bz2</a></li><li><a href="multiclass/news20.t.bz2">news20.t.bz2</a> (testing)</li><li><a href="multiclass/news20.scale.bz2">news20.scale.bz2</a> (scaled to binary encoding; then unit length for each instance)</li><li><a href="multiclass/news20.t.scale.bz2">news20.t.scale.bz2</a> (testing) (scaled to binary encoding; then unit length for each instance)</li></ul></li></ul><a name="news20 (18,846)"><h2>news20 (18,846)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#KL95a">KL95a</a>]
+            </li><li>Preprocessing:
+              The data are downloaded from sklearn. We have made sure the data provided by sklearn is the same as the 18,846 set at <a href="http://qwone.com/~jason/20Newsgroups/">this page</a>. All newlines are replaced with white spaces in addition. The raw data are in the format of labels&lt;TAB&gt;texts. We do a random 80/20 split to generate the validation set from the whole training set (raw texts only). We also provide data with tf-idf features, which are calculated from the raw texts provided here using TfidfVectorizer from sklearn with default configurations. The code used to generate the raw texts and tf-idf features is provided.
+</li><li># of classes: 20</li><li># of data:
+            9,051
+                  / 2,263 (valid)
+                
+                  / 7,532 (testing)
+                </li><li># of features:
+            130,107</li><li>Files:
+            <ul><li><a href="multiclass/news20_code.tar.gz">news20_code.tar.gz</a></li><li><a href="multiclass/news20_raw_texts_train.txt.bz2">news20_raw_texts_train.txt.bz2</a></li><li><a href="multiclass/news20_raw_texts_val.txt.bz2">news20_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multiclass/news20_raw_texts_test.txt.bz2">news20_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multiclass/news20_tfidf_train.svm.bz2">news20_tfidf_train.svm.bz2</a></li><li><a href="multiclass/news20_tfidf_test.svm.bz2">news20_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="pendigits"><h2>pendigits</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Pen-Based Recognition of Handwritten Digits Data Set</li><li># of classes: 10</li><li># of data:
+            7,494
+                  / 3,498 (testing)
+                </li><li># of features:
+            16</li><li>Files:
+            <ul><li><a href="multiclass/pendigits">pendigits</a></li><li><a href="multiclass/pendigits.t">pendigits.t</a> (testing)</li></ul></li></ul><a name="poker"><h2>poker</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Poker Hand</li><li># of classes: 10</li><li># of data:
+            25,010
+                  / 1,000,000 (testing)
+                </li><li># of features:
+            10</li><li>Files:
+            <ul><li><a href="multiclass/poker.bz2">poker.bz2</a></li><li><a href="multiclass/poker.t.bz2">poker.t.bz2</a></li></ul></li></ul><a name="protein"><h2>protein</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#JYW02a">JYW02a</a>]
+            </li><li># of classes: 3</li><li># of data:
+            17,766
+                  / 6,621 (testing)
+                
+                  / 14,895 (training)
+                
+                  / 2,871 (validation)
+                </li><li># of features:
+            357</li><li>Files:
+            <ul><li><a href="multiclass/protein.bz2">protein.bz2</a></li><li><a href="multiclass/protein.t.bz2">protein.t.bz2</a> (testing)</li><li><a href="multiclass/protein.tr.bz2">protein.tr.bz2</a> (tr)</li><li><a href="multiclass/protein.val.bz2">protein.val.bz2</a> (val)</li></ul></li></ul><a name="rcv1.multiclass"><h2>rcv1.multiclass</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#DL04b">DL04b</a>]
+            </li><li>Preprocessing:
+              First, label hierarchy is reorganized by mapping the data set to the second level of RCV1 topic hierarchy. The documents that have labels of the third or forth level only are mapped to their parent category of the second level. The documents that only have labels of the first level are not mapped onto any category. Second, we remove multi-labeled instances.
+                [<a href="ref.html#RB08a">RB08a</a>]
+              </li><li># of classes: 53</li><li># of data:
+            15,564
+                  / 518,571 (testing)
+                </li><li># of features:
+            47,236</li><li>Files:
+            <ul><li><a href="multiclass/rcv1_train.multiclass.bz2">rcv1_train.multiclass.bz2</a></li><li><a href="multiclass/rcv1_test.multiclass.bz2">rcv1_test.multiclass.bz2</a> (testing)</li></ul></li></ul><a name="SCOTUS (LexGLUE)"><h2>SCOTUS (LexGLUE)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC22b">IC22b</a>]
+            </li><li>Preprocessing:
+              The procedure is the same as that for <a href="multilabel.html#ECtHR (A) (LexGLUE)">ECtHR (A) (LexGLUE)</a>.
+</li><li># of classes: 13</li><li># of data:
+            5,000
+                  / 1,400 (validation)
+                
+                  / 1,400 (testing)
+                </li><li># of features:
+            126,405</li><li>Files:
+            <ul><li><a href="multiclass/lexglue_code.tar.gz">lexglue_code.tar.gz</a></li><li><a href="multiclass/scotus_lexglue_raw_texts_train.txt.bz2">scotus_lexglue_raw_texts_train.txt.bz2</a></li><li><a href="multiclass/scotus_lexglue_raw_texts_val.txt.bz2">scotus_lexglue_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multiclass/scotus_lexglue_raw_texts_test.txt.bz2">scotus_lexglue_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multiclass/scotus_lexglue_tfidf_train.svm.bz2">scotus_lexglue_tfidf_train.svm.bz2</a></li><li><a href="multiclass/scotus_lexglue_tfidf_test.svm.bz2">scotus_lexglue_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="satimage"><h2>satimage</h2></a><ul><li>Source:
+            <a href="http://www.liacc.up.pt/ML/old/statlog/datasets.html">Statlog</a>
+              / Satimage</li><li>Preprocessing:
+              Training data is further separated into two sets, tr and val.
+                [<a href="ref.html#CWH01a">CWH01a</a>]
+              </li><li># of classes: 6</li><li># of data:
+            4,435
+                  / 2,000 (testing)
+                
+                  / 3,104 (tr)
+                
+                  / 1,331 (val)
+                </li><li># of features:
+            36</li><li>Files:
+            <ul><li><a href="multiclass/satimage.scale">satimage.scale</a></li><li><a href="multiclass/satimage.scale.t">satimage.scale.t</a> (testing)</li><li><a href="multiclass/satimage.scale.tr">satimage.scale.tr</a> (tr)</li><li><a href="multiclass/satimage.scale.val">satimage.scale.val</a> (val)</li></ul></li></ul><a name="sector"><h2>sector</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#AM98a">AM98a</a>]
+            </li><li>Preprocessing:
+              
+The scaled data was used in our KDD 08 paper.
+For unknown reason we could now only generate 
+something close to it. The sources are
+from 
+ <a href="http://people.csail.mit.edu/jrennie/ecoc-svm">this page</a>. 
+We select train-0.tc and test-0.tc from 
+ecoc-svm-data.tar.gz.
+A 2/1 training/testing split gives 
+training and testing sets below. They
+are in the original
+format instead of the libsvm format: in each
+row the 2nd value
+gives the class label and subsequent numbers give
+pairs of feature IDs and values.
+We then do a kind of
+tf-idf transformation: ln(1+tf)*log_2(#docs/#coll_freq_of_term) and normalize each instance to unit length.
+	
+                [<a href="ref.html#JR01b,SSK08a">JR01b,SSK08a</a>]
+              </li><li># of classes: 105</li><li># of data:
+            6,412
+                  / 3,207 (testing)
+                </li><li># of features:
+            55,197
+                  / 55,197 (testing)
+                </li><li>Files:
+            <ul><li><a href="multiclass/sector/sector.bz2">sector.bz2</a></li><li><a href="multiclass/sector/sector.t.bz2">sector.t.bz2</a> (testing)</li><li><a href="multiclass/sector/sector.scale.bz2">sector.scale.bz2</a></li><li><a href="multiclass/sector/sector.t.scale.bz2">sector.t.scale.bz2</a> (testing)</li></ul></li></ul><a name="segment"><h2>segment</h2></a><ul><li>Source:
+            <a href="http://www.liacc.up.pt/ML/old/statlog/datasets.html">Statlog</a>
+              / Segment</li><li># of classes: 7</li><li># of data:
+            2,310</li><li># of features:
+            19</li><li>Files:
+            <ul><li><a href="multiclass/segment.scale">segment.scale</a></li></ul></li></ul><a name="Sensorless"><h2>Sensorless</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Dataset for Sensorless Drive Diagnosis</li><li>Preprocessing:
+              
+        The original data does not have test instances. For the [0,1]-scaled version we have a random split (.tr and .val) used in our paper.
+    
+                [<a href="ref.html#CCW16a">CCW16a</a>]
+              </li><li># of classes: 11</li><li># of data:
+            58,509</li><li># of features:
+            48</li><li>Files:
+            <ul><li><a href="multiclass/Sensorless">Sensorless</a></li><li><a href="multiclass/Sensorless.scale">Sensorless.scale</a> (scaled to [0,1])</li><li><a href="multiclass/Sensorless.scale.tr">Sensorless.scale.tr</a></li><li><a href="multiclass/Sensorless.scale.val">Sensorless.scale.val</a></li></ul></li></ul><a name="shuttle"><h2>shuttle</h2></a><ul><li>Source:
+            <a href="http://www.liacc.up.pt/ML/old/statlog/datasets.html">Statlog</a>
+              / Shuttle</li><li>Preprocessing:
+              Training data is further separated into two sets, tr and val.
+                [<a href="ref.html#CWH01a">CWH01a</a>]
+              </li><li># of classes: 7</li><li># of data:
+            43,500
+                  / 14,500 (testing)
+                
+                  / 30,450 (tr)
+                
+                  / 13,050 (val)
+                </li><li># of features:
+            9</li><li>Files:
+            <ul><li><a href="multiclass/shuttle.scale">shuttle.scale</a></li><li><a href="multiclass/shuttle.scale.t">shuttle.scale.t</a> (testing)</li><li><a href="multiclass/shuttle.scale.tr">shuttle.scale.tr</a> (tr)</li><li><a href="multiclass/shuttle.scale.val">shuttle.scale.val</a> (val)</li></ul></li></ul><a name="smallNORB"><h2>smallNORB</h2></a><ul><li>Source:
+            <a href="https://cs.nyu.edu/~ylclab/data/norb-v1.0-small/">The Small NORB Dataset</a>
+              [<a href="ref.html#YL04b">YL04b</a>]
+            </li><li>Preprocessing:
+              
+      For each instance, from two cameras, it contains a pair of 96x96 grayscale images for two different channels. We downsample each channel of the origin data from 96x96 to 32x32 by selecting the maximum pixel value within every 3x3 disjoint region. Feature values are generated by (row 1, channel 1), (row 2, channel 1), ..., (row 1, channel 2), ...
+    
+                [<a href="ref.html#CCW18a">CCW18a</a>]
+              </li><li># of classes: 5</li><li># of data:
+            24,300
+                  / 24,300 (testing)
+                </li><li># of features:
+            18,432
+                  / 2,048 (downsampled)
+                </li><li>Files:
+            <ul><li><a href="multiclass/smallNORB.xz">smallNORB.xz</a></li><li><a href="multiclass/smallNORB.t.xz">smallNORB.t.xz</a> (testing)</li><li><a href="multiclass/smallNORB-32x32.xz">smallNORB-32x32.xz</a> (downsampled)</li><li><a href="multiclass/smallNORB-32x32.t.xz">smallNORB-32x32.t.xz</a> (downsampled, testing)</li><li><a href="multiclass/smallNORB-32x32.mat">smallNORB-32x32.mat</a> (dense matlab format)</li><li><a href="multiclass/smallNORB-32x32.t.mat">smallNORB-32x32.t.mat</a> (testing, dense matlab format)</li></ul></li></ul><a name="SVHN"><h2>SVHN</h2></a><ul><li>Source:
+            <a href="http://ufldl.stanford.edu/housenumbers/">SVHN</a>
+              [<a href="ref.html#YN11a">YN11a</a>]
+            </li><li>Preprocessing:
+              We consider format 2 (cropped digits) of the data set. For every image, in the RGB order, by rows we convert 32x32 pixels to feature values. That is, (row 1, R), (row 2, R), ..., (row 1, G), ...
+                [<a href="ref.html#YN11a">YN11a</a>]
+              </li><li># of classes: 10</li><li># of data:
+            73,257
+                  / 26,032 (testing)
+                
+                  / 531,131 (extra)
+                </li><li># of features:
+            3,072</li><li>Files:
+            <ul><li><a href="multiclass/SVHN.xz">SVHN.xz</a></li><li><a href="multiclass/SVHN.t.xz">SVHN.t.xz</a> (testing)</li><li><a href="multiclass/SVHN.extra.xz">SVHN.extra.xz</a> (extra data from the original source)</li><li><a href="multiclass/SVHN.scale.xz">SVHN.scale.xz</a> (scaled to [0,1] by dividing each feature by 255)</li><li><a href="multiclass/SVHN.scale.t.xz">SVHN.scale.t.xz</a> (testing) (scaled to [0,1] by dividing each feature by 255)</li><li><a href="multiclass/SVHN.scale.extra.xz">SVHN.scale.extra.xz</a> (scaled to [0,1] by dividing each feature by 255)</li><li><a href="multiclass/SVHN.mat">SVHN.mat</a> (dense matlab format)</li><li><a href="multiclass/SVHN.t.mat">SVHN.t.mat</a> (testing, dense matlab format)</li></ul></li></ul><a name="svmguide2"><h2>svmguide2</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#CWH03a">CWH03a</a>]
+            </li><li>Preprocessing:
+              Original data: a bioinformatics application from Simon Fraser University, Canada. 
+                [<a href="ref.html#JLG03a">JLG03a</a>]
+              </li><li># of classes: 3</li><li># of data:
+            391</li><li># of features:
+            20</li><li>Files:
+            <ul><li><a href="multiclass/svmguide2">svmguide2</a></li></ul></li></ul><a name="svmguide4"><h2>svmguide4</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#CWH03a">CWH03a</a>]
+            </li><li>Preprocessing:
+              Original data: 
+an application on traffic light 
+signals from
+Georges Bonga at
+University of Applied Sciences, Berlin.
+</li><li># of classes: 6</li><li># of data:
+            300
+                  / 312 (testing)
+                </li><li># of features:
+            10</li><li>Files:
+            <ul><li><a href="multiclass/svmguide4">svmguide4</a></li><li><a href="multiclass/svmguide4.t">svmguide4.t</a> (testing)</li></ul></li></ul><a name="usps"><h2>usps</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#JJH94a">JJH94a</a>]
+            </li><li># of classes: 10</li><li># of data:
+            7,291
+                  / 2,007 (testing)
+                </li><li># of features:
+            256</li><li>Files:
+            <ul><li><a href="multiclass/usps.bz2">usps.bz2</a></li><li><a href="multiclass/usps.t.bz2">usps.t.bz2</a> (testing)</li></ul></li></ul><a name="SensIT Vehicle (acoustic)"><h2>SensIT Vehicle (acoustic)</h2></a><ul><li>Source:
+            <a href="http://www.ece.wisc.edu/~sensit/">Sensit</a>
+              [<a href="ref.html#MD04a">MD04a</a>]
+            </li><li>Preprocessing:
+              Regenerate features by the authors' matlab
+      scripts (see Sec. C of Appendix A), then randomly select 10% instances
+      from the noise class so that the class proportion is 1:1:2 (AAV:DW:noise).
+      The training/testing sets are from a random 80% and 20% split of the data.
+                [<a href="ref.html#MD04a">MD04a</a>]
+              </li><li># of classes: 3</li><li># of data:
+            78,823
+                  / 19,705 (testing)
+                </li><li># of features:
+            50</li><li>Files:
+            <ul><li><a href="multiclass/vehicle/acoustic.bz2">acoustic</a></li><li><a href="multiclass/vehicle/acoustic.t.bz2">acoustic.t</a> (testing)</li><li><a href="multiclass/vehicle/acoustic_scale.bz2">acoustic_scale</a> (scaled to [-1,1])</li><li><a href="multiclass/vehicle/acoustic_scale.t.bz2">acoustic_scale.t</a> (testing)</li></ul></li></ul><a name="SensIT Vehicle (seismic)"><h2>SensIT Vehicle (seismic)</h2></a><ul><li>Source:
+            <a href="http://www.ece.wisc.edu/~sensit/">Sensit</a>
+              [<a href="ref.html#MD04a">MD04a</a>]
+            </li><li>Preprocessing:
+              Regenerate features by the authors' matlab
+      scripts (see Sec. C of Appendix A), then randomly select 10% instances
+      from the noise class so that the class proportion is 1:1:2 (AAV:DW:noise).
+      The training/testing sets are from a random 80% and 20% split of the data.
+                [<a href="ref.html#MD04a">MD04a</a>]
+              </li><li># of classes: 3</li><li># of data:
+            78,823
+                  / 19,705 (testing)
+                </li><li># of features:
+            50</li><li>Files:
+            <ul><li><a href="multiclass/vehicle/seismic.bz2">seismic</a></li><li><a href="multiclass/vehicle/seismic.t.bz2">seismic.t</a> (testing)</li><li><a href="multiclass/vehicle/seismic_scale.bz2">seismic_scale</a> (scaled to [-1,1])</li><li><a href="multiclass/vehicle/seismic_scale.t.bz2">seismic_scale.t</a> (testing)</li></ul></li></ul><a name="SensIT Vehicle (combined)"><h2>SensIT Vehicle (combined)</h2></a><ul><li>Source:
+            <a href="http://www.ece.wisc.edu/~sensit/">Sensit</a>
+              [<a href="ref.html#MD04a">MD04a</a>]
+            </li><li>Preprocessing:
+              Regenerate features by the authors' matlab
+      scripts (see Sec. C of Appendix A), then randomly select 10% instances
+      from the noise class so that the class proportion is 1:1:2 (AAV:DW:noise).
+      The training/testing sets are from a random 80% and 20% split of the data. The first 50 features are acoustic, while the rest are seismic. Due to the random selection, files here are not the direct concatenation of the "SensIT Vehicle (acoustic)" and "SensIT Vehicle (seismic)" sets.
+                [<a href="ref.html#MD04a">MD04a</a>]
+              </li><li># of classes: 3</li><li># of data:
+            78,823
+                  / 19,705 (testing)
+                </li><li># of features:
+            100</li><li>Files:
+            <ul><li><a href="multiclass/vehicle/combined.bz2">combined</a></li><li><a href="multiclass/vehicle/combined.t.bz2">combined.t</a> (testing)</li><li><a href="multiclass/vehicle/combined_scale.bz2">combined_scale</a> (scaled to [-1,1])</li><li><a href="multiclass/vehicle/combined_scale.t.bz2">combined_scale.t</a> (testing)</li></ul></li></ul><a name="vehicle"><h2>vehicle</h2></a><ul><li>Source:
+            <a href="http://www.liacc.up.pt/ML/old/statlog/datasets.html">Statlog</a>
+              / Vehicle</li><li># of classes: 4</li><li># of data:
+            846</li><li># of features:
+            18</li><li>Files:
+            <ul><li><a href="multiclass/vehicle.original">vehicle.original</a> (original)</li><li><a href="multiclass/vehicle.scale">vehicle.scale</a> (scaled to [-1,1])</li></ul></li></ul><a name="vowel"><h2>vowel</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Vowel</li><li>Preprocessing:
+              First 528 instances are used as training and the remaining instances are for testing. Scaling training data first and adjust testing data accordingly.</li><li># of classes: 11</li><li># of data:
+            528
+                  / 462 (testing)
+                </li><li># of features:
+            10</li><li>Files:
+            <ul><li><a href="multiclass/vowel">vowel</a></li><li><a href="multiclass/vowel.t">vowel.t</a> (testing)</li><li><a href="multiclass/vowel.scale">vowel.scale</a> (scaled to [-1,1])</li><li><a href="multiclass/vowel.scale.t">vowel.scale.t</a> (testing)</li></ul></li></ul><a name="wine"><h2>wine</h2></a><ul><li>Source:
+            <a href="http://www.ics.uci.edu/~mlearn/MLRepository.html">UCI</a>
+              / Wine Recognition</li><li># of classes: 3</li><li># of data:
+            178</li><li># of features:
+            13</li><li>Files:
+            <ul><li><a href="multiclass/wine.scale">wine.scale</a></li></ul></li></ul></body></html>

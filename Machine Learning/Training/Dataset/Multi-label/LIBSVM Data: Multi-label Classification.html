@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link href="style.css" rel="stylesheet" type="text/css"/><title>LIBSVM Data: Multi-label Classification</title><meta charset="UTF-8"/></head><body><a name="#top"/><h1><a href="../../libsvm">LIBSVM</a> Data: Multi-label Classification</h1><p><font size="+1">Recently multi-label classification has been an important topic. Currently there are very few publicly available data sets. We tried hard to collect the following sets. Labels are in the beginning of each line and separated by commas.</font></p><hr/><a name="Amazon-670K"><h2>Amazon-670K</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#JM13a">JM13a</a>]
+            </li><li>Preprocessing:
+              Since part of the original data from Amazon is no longer available, the raw texts are downloaded from <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>. We concatenate "title" and "content" once as our raw texts, instead of concatenating "title" twice and "content" once like in <a href="https://github.com/yourh/AttentionXML">AttentionXML</a>. We use "\t" for each instance to separate labels and raw texts. The tf-idf features are calculated from the raw texts provided here by using sklearn's TfidfVectorizer with default configurations except for the options "vocabulary", "stop_words" and "strip_accents". The option "vocabulary" is set to be the given vocabulary in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>. The option "stop_words" is set to be "english" to ignore some uninformative words, like "and", "or". The option "strip_accents" is set to be "unicode" to remove accents and perform other character NFKD normalization. Our resulting tf-idf feature set is slightly different from the set provided in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a> because of the following reasons. First, we set "stop_words" to be "english", which causes some features to be not in ours. Second, accents are handled differently in the tokenization process. For instance, "AragÃ³n" is tokenized as "arag" in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>, but is tokenized as "aragan" in ours. The last reason is that in the tf-idf provided in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>, some instances' features do not appear in their raw text. The second version is downloaded BoW features provided by <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>. To satisfy the LibSVM format, we remove the first header line and change the feature indices to start from 1 instead of 0. We then normalize each instance to a unit vector. The code used to get raw texts, calculate tf-idf features, and modify the format of downloaded BoW features is provided.
+      </li><li># of classes: 670,091</li><li># of data:
+            490,449
+                  / 153,025 (testing)
+                </li><li># of features:
+            135,909 (ver1) 135,909 (ver2)</li><li>Files:
+            <ul><li><a href="multilabel/Amazon-670K_code.tar.gz">Amazon-670K_code.tar.gz</a></li><li><a href="multilabel/Amazon-670K_raw_texts_train.txt.bz2">Amazon-670K_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/Amazon-670K_raw_texts_test.txt.bz2">Amazon-670K_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/Amazon-670K_tfidf_train_ver1.svm.bz2">Amazon-670K_tfidf_train_ver1.svm.bz2</a></li><li><a href="multilabel/Amazon-670K_tfidf_test_ver1.svm.bz2">Amazon-670K_tfidf_test_ver1.svm.bz2</a> (testing)</li><li><a href="multilabel/Amazon-670K_tfidf_train_ver2.svm.bz2">Amazon-670K_tfidf_train_ver2.svm.bz2</a></li><li><a href="multilabel/Amazon-670K_tfidf_test_ver2.svm.bz2">Amazon-670K_tfidf_test_ver2.svm.bz2</a> (testing)</li></ul></li></ul><a name="AmazonCat-13K"><h2>AmazonCat-13K</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#JM13a">JM13a</a>]
+            </li><li>Preprocessing:
+              Since part of the original data from Amazon is no longer available, the raw texts are downloaded from <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>. We extract "title" and "content" as our raw texts. A comparison with raw texts given in <a href="https://github.com/yourh/AttentionXML">AttenionXML</a> shows that one instance given in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a> is missing. We add this instance so our raw texts are the same as those from <a href="https://github.com/yourh/AttentionXML">AttenionXML</a>. We use "\t" for each instance to separate labels and raw texts. We provide two versions of tf-idf features. Both are calculated from the raw texts provided here by using sklearn's TfidfVectorizer but have different configurations. The first version considers default configurations except the options "vocabulary", "stop_words" and "strip_accents". The option "vocabulary" is set to be the given vocabulary in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>. The option "stop_words" is set to be "english" to ignore some uninformative words, like "and", "or". The option "strip_accents" is set to be "unicode" to remove accents. Configurations of the second version are the same as the default. Note that these two tf-idf sets are very different from the tf-idf set provided in <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a> but with higher performance. The third version is downloaded BoW features provided by <a href="http://manikvarma.org/downloads/XC/XMLRepository.html#julian13">The Extreme Classification Repository</a>. To satisfy the LibSVM format, we remove the first header line and change the feature indices to start from 1 instead of 0. We then normalize each instance to a unit vector. The code used to get raw texts, calculate tf-idf features, and modify the format of downloaded BoW features is provided.
+      </li><li># of classes: 13,330</li><li># of data:
+            1,186,239
+                  / 306,782 (testing)
+                </li><li># of features:
+            203,882 (ver1) 1,293,747 (ver2) 203,882 (ver3)</li><li>Files:
+            <ul><li><a href="multilabel/AmazonCat-13K_code.tar.gz">AmazonCat-13K_code.tar.gz</a></li><li><a href="multilabel/AmazonCat-13K_raw_texts_train.txt.bz2">AmazonCat-13K_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/AmazonCat-13K_raw_texts_test.txt.bz2">AmazonCat-13K_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/AmazonCat-13K_tfidf_train_ver1.svm.bz2">AmazonCat-13K_tfidf_train_ver1.svm.bz2</a></li><li><a href="multilabel/AmazonCat-13K_tfidf_test_ver1.svm.bz2">AmazonCat-13K_tfidf_test_ver1.svm.bz2</a> (testing)</li><li><a href="multilabel/AmazonCat-13K_tfidf_train_ver2.svm.bz2">AmazonCat-13K_tfidf_train_ver2.svm.bz2</a></li><li><a href="multilabel/AmazonCat-13K_tfidf_test_ver2.svm.bz2">AmazonCat-13K_tfidf_test_ver2.svm.bz2</a> (testing)</li><li><a href="multilabel/AmazonCat-13K_tfidf_train_ver3.svm.bz2">AmazonCat-13K_tfidf_train_ver3.svm.bz2</a></li><li><a href="multilabel/AmazonCat-13K_tfidf_test_ver3.svm.bz2">AmazonCat-13K_tfidf_test_ver3.svm.bz2</a> (testing)</li></ul></li></ul><a name="bibtex"><h2>bibtex</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#GT08a">GT08a</a>]
+            </li><li>Preprocessing:
+              The original set was at
+    <a href="http://mulan.sourceforge.net/datasets-mlc.html">Mulan: A Java Library for Multi-Label Learning</a>. Here we slightly modify the sparse form at <a href="http://manikvarma.org/downloads/XC/XMLRepository.html">The Extreme Classification Repository</a> so feature indices start from 1 instead of 0.
+    </li><li># of classes: 159</li><li># of data:
+            7,395</li><li># of features:
+            1,836</li><li>Files:
+            <ul><li><a href="multilabel/bibtex.bz2">bibtex.bz2</a></li></ul></li></ul><a name="BlogCatalog"><h2>BlogCatalog</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#LT09a">LT09a</a>]
+            </li><li>Preprocessing:
+              This is a node classification problem where each node is associated with multiple labels and features are embedding vectors learned from graphs. The original graph data was at
+    <a href="http://leitang.net/social_dimension.html">Social-Dimension Approach to Classification in Large-Scale Networks</a>. Embedding vectors are generated by the following representation-learning methods: <a href="https://github.com/phanein/deepwalk">DeepWalk</a>, <a href="https://github.com/tangjianpku/LINE">LINE</a> and <a href="https://github.com/aditya-grover/node2vec">Node2Vec</a>. For more details (e.g., the parameters used for generating embedding vectors and the five training/test splits), please see <a href="https://www.csie.ntu.edu.tw/~cjlin/papers/multilabel-embedding/">the supplementary materials and the experimental code/data</a> used in the paper 
+                [<a href="ref.html#LCL22a">LCL22a</a>]
+              </li><li># of classes: 39</li><li># of data:
+            10,312</li><li># of features:
+            128</li><li>Files:
+            <ul><li><a href="multilabel/blogcatalog_deepwalk.svm.bz2">blogcatalog_deepwalk.svm.bz2</a></li><li><a href="multilabel/blogcatalog_line.svm.bz2">blogcatalog_line.svm.bz2</a></li><li><a href="multilabel/blogcatalog_node2vec.svm.bz2">blogcatalog_node2vec.svm.bz2</a></li></ul></li></ul><a name="delicious"><h2>delicious</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#GT08a">GT08a</a>]
+            </li><li>Preprocessing:
+              The original set was at
+    <a href="http://mulan.sourceforge.net/datasets-mlc.html">Mulan: A Java Library for Multi-Label Learning</a>. Here we slightly modify the sparse form at <a href="http://manikvarma.org/downloads/XC/XMLRepository.html">The Extreme Classification Repository</a> so feature indices start from 1 instead of 0.
+    </li><li># of classes: 983</li><li># of data:
+            16,105</li><li># of features:
+            500</li><li>Files:
+            <ul><li><a href="multilabel/delicious.bz2">delicious.bz2</a></li></ul></li></ul><a name="ECtHR (A) (LexGLUE)"><h2>ECtHR (A) (LexGLUE)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC22b">IC22b</a>]
+            </li><li>Preprocessing:
+              The data are downloaded from <a href="https://huggingface.co/datasets/lex_glue">Hugging Face</a>. If a list of texts is provided, we follow <a href="https://github.com/coastalcph/lex-glue">lex-glue</a> to concatenate them with a white space. All newlines are replaced with white spaces in addition. The raw data are in the format of labels&lt;TAB&gt;texts. We also provide data with tf-idf features, which are calculated from the raw texts provided here using TfidfVectorizer from sklearn with default configurations. The training and validation sets are combined as one bigger training file. Note that the resulting tf-idf features are different from the one provided by lex-glue. The code used to generate the raw texts and tf-idf features is provided.
+</li><li># of classes: 10</li><li># of data:
+            9,000
+                  / 1,000 (validation)
+                
+                  / 1,000 (testing)
+                </li><li># of features:
+            92,401</li><li>Files:
+            <ul><li><a href="multilabel/lexglue_code.tar.gz">lexglue_code.tar.gz</a></li><li><a href="multilabel/ecthr_a_lexglue_raw_texts_train.txt.bz2">ecthr_a_lexglue_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/ecthr_a_lexglue_raw_texts_val.txt.bz2">ecthr_a_lexglue_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multilabel/ecthr_a_lexglue_raw_texts_test.txt.bz2">ecthr_a_lexglue_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/ecthr_a_lexglue_tfidf_train.svm.bz2">ecthr_a_lexglue_tfidf_train.svm.bz2</a></li><li><a href="multilabel/ecthr_a_lexglue_tfidf_test.svm.bz2">ecthr_a_lexglue_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="ECtHR (B) (LexGLUE)"><h2>ECtHR (B) (LexGLUE)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC22b">IC22b</a>]
+            </li><li>Preprocessing:
+              The procedure is the same as that for <a href="multilabel.html#ECtHR (A) (LexGLUE)">ECtHR (A) (LexGLUE)</a>.
+</li><li># of classes: 10</li><li># of data:
+            9,000
+                  / 1,000 (validation)
+                
+                  / 1,000 (testing)
+                </li><li># of features:
+            92,401</li><li>Files:
+            <ul><li><a href="multilabel/lexglue_code.tar.gz">lexglue_code.tar.gz</a></li><li><a href="multilabel/ecthr_b_lexglue_raw_texts_train.txt.bz2">ecthr_b_lexglue_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/ecthr_b_lexglue_raw_texts_val.txt.bz2">ecthr_b_lexglue_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multilabel/ecthr_b_lexglue_raw_texts_test.txt.bz2">ecthr_b_lexglue_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/ecthr_b_lexglue_tfidf_train.svm.bz2">ecthr_b_lexglue_tfidf_train.svm.bz2</a></li><li><a href="multilabel/ecthr_b_lexglue_tfidf_test.svm.bz2">ecthr_b_lexglue_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="EUR-LEX (LexGLUE)"><h2>EUR-LEX (LexGLUE)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC22b">IC22b</a>]
+            </li><li>Preprocessing:
+              The procedure is the same as that for <a href="multilabel.html#ECtHR (A) (LexGLUE)">ECtHR (A) (LexGLUE)</a>.
+</li><li># of classes: 100</li><li># of data:
+            55,000
+                  / 5,000 (validation)
+                
+                  / 5,000 (testing)
+                </li><li># of features:
+            147,464</li><li>Files:
+            <ul><li><a href="multilabel/lexglue_code.tar.gz">lexglue_code.tar.gz</a></li><li><a href="multilabel/eurlex_lexglue_raw_texts_train.txt.bz2">eurlex_lexglue_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/eurlex_lexglue_raw_texts_val.txt.bz2">eurlex_lexglue_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multilabel/eurlex_lexglue_raw_texts_test.txt.bz2">eurlex_lexglue_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/eurlex_lexglue_tfidf_train.svm.bz2">eurlex_lexglue_tfidf_train.svm.bz2</a></li><li><a href="multilabel/eurlex_lexglue_tfidf_test.svm.bz2">eurlex_lexglue_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="EUR-Lex"><h2>EUR-Lex</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#LM10a">LM10a</a>]
+            </li><li>Preprocessing:
+              Both the tokenized texts and tf-idf features provided here are the same as those used by <a href="https://github.com/yourh/AttentionXML">AttentionXML</a> (except tiny numerical differences in the tf-idf features). The texts are extracted from the source documents obtained from the original <a href="http://www.ke.tu-darmstadt.de/resources/eurlex/eurlex.html">EUR-Lex dataset</a>. Before tokenization, symbols like '&gt;', '&lt;', '&quot;' and '&amp;' are replaced with their textual representatons 'gt', 'lt', 'quot' and 'amp', respectively. Then, the text is further processed using LetterTokenizer, LowerCaseFilter, StopFilter (with stopwords taken from the original dataset) and PorterStemFilter provided by PyLucene in the mentioned order. To reproduce the text used by AttentionXML, words without any english letter in it are removed and the greek letter 'σ' at the end of words is transformed to 'ς' (except the formula dH/dσ appeared in one document). The EUROVOC labels for each instance are taken from the original dataset directly. Finally, the tokenized texts are outputted in the format of labels&lt;TAB&gt;texts, where the labels and texts are respectively separated by white spaces. The tf-idf features are not calculated from the text provided here. Instead, they are calculated from the <a href="http://www.ke.tu-darmstadt.de/resources/eurlex/eurlex.html#section-6">tokenized texts provided by the original EUR-Lex dataset</a>. The tf-idf features are then generated using TfidfVectorizer from sklearn with the idf formula modified to be log(N/df). The code for generating the dataset is provided.
+      </li><li># of classes: 3,956</li><li># of data:
+            15,449
+                  / 3,865 (testing)
+                </li><li># of features:
+            186,104</li><li>Files:
+            <ul><li><a href="multilabel/eurlex_code.tar.gz">eurlex_code.tar.gz</a></li><li><a href="multilabel/eurlex_raw_texts_train.txt.bz2">eurlex_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/eurlex_raw_texts_test.txt.bz2">eurlex_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/eurlex_tfidf_train.svm.bz2">eurlex_tfidf_train.svm.bz2</a></li><li><a href="multilabel/eurlex_tfidf_test.svm.bz2">eurlex_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="EURLEX57K"><h2>EURLEX57K</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC19a">IC19a</a>]
+            </li><li>Preprocessing:
+              The data for generating the raw text are downloaded from <a href="http://nlp.cs.aueb.gr/software_and_datasets/EURLEX57K/datasets.zip">this website</a>. Following <a href="https://github.com/iliaschalkidis/lmtc-eurlex57k">lmtc-eurlex57k</a>, we concatenated header, recitals, main_body, and attachments with space. Whitespace characters "\s" including tabs and newlines and non-breaking spaces "\xa0" are replaced with space. The code used to generate the sets is also provided. The data is in the format of
+ID&lt;TAB&gt;labels&lt;TAB&gt;raw texts.
+</li><li># of classes: 4,271</li><li># of data:
+            45,000
+                  / 6,000 (validation)
+                
+                  / 6,000 (testing)
+                </li><li># of features:
+            N/A</li><li>Files:
+            <ul><li><a href="multilabel/eurlex57k_code.py">eurlex57k_code.py</a></li><li><a href="multilabel/eurlex57k_raw_texts_train.txt.bz2">eurlex57k_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/eurlex57k_raw_texts_val.txt.bz2">eurlex57k_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multilabel/eurlex57k_raw_texts_test.txt.bz2">eurlex57k_raw_texts_test.txt.bz2</a> (testing)</li></ul></li></ul><a name="Flickr"><h2>Flickr</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#LT09a">LT09a</a>]
+            </li><li>Preprocessing:
+              This is a node classification problem where each node is associated with multiple labels and features are embedding vectors learned from graphs. The original graph data was at
+    <a href="http://leitang.net/social_dimension.html">Social-Dimension Approach to Classification in Large-Scale Networks</a>. Embedding vectors are generated by the following representation-learning methods: <a href="https://github.com/phanein/deepwalk">DeepWalk</a>, <a href="https://github.com/tangjianpku/LINE">LINE</a> and <a href="https://github.com/aditya-grover/node2vec">Node2Vec</a>. For more details (e.g., the parameters used for generating embedding vectors and the five training/test splits), please see <a href="https://www.csie.ntu.edu.tw/~cjlin/papers/multilabel-embedding/">the supplementary materials and the experimental code/data</a> used in the paper 
+                [<a href="ref.html#LCL22a">LCL22a</a>]
+              </li><li># of classes: 195</li><li># of data:
+            80,513</li><li># of features:
+            128</li><li>Files:
+            <ul><li><a href="multilabel/flickr_deepwalk.svm.bz2">flickr_deepwalk.svm.bz2</a></li><li><a href="multilabel/flickr_line.svm.bz2">flickr_line.svm.bz2</a></li><li><a href="multilabel/flickr_node2vec.svm.bz2">flickr_node2vec.svm.bz2</a></li></ul></li></ul><a name="mediamill (exp1)"><h2>mediamill (exp1)</h2></a><ul><li>Source:
+            <a href="http://www.mediamill.nl/challenge/">Mediamill</a>
+              / The Mediamill Challenge Problem</li><li>Preprocessing:
+              We combine all binary classification problems into a multi-label one.</li><li># of classes: 101</li><li># of data:
+            30,993
+                  / 12,914 (testing)
+                </li><li># of features:
+            120</li><li>Files:
+            <ul><li><a href="multilabel/mediamill/train-exp1.svm.bz2">train-exp1.svm.bz2</a></li><li><a href="multilabel/mediamill/test-exp1.svm.bz2">test-exp1.svm.bz2</a> (testing)</li></ul></li></ul><a name="PPI"><h2>PPI</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#WLH17a">WLH17a</a>]
+            </li><li>Preprocessing:
+              This is a node classification problem where each node is associated with multiple labels and features are embedding vectors learned from graphs. The original graph data was at
+    <a href="http://snap.stanford.edu/graphsage/">GraphSAGE: Inductive Representation Learning on Large Graphs</a>. Embedding vectors are generated by the following representation-learning methods: <a href="https://github.com/phanein/deepwalk">DeepWalk</a>, <a href="https://github.com/tangjianpku/LINE">LINE</a> and <a href="https://github.com/aditya-grover/node2vec">Node2Vec</a>. After embedding vectors are generated, nodes with no labels are discarded. For more details (e.g., the parameters used for generating embedding vectors and the five training/test splits), please see <a href="https://www.csie.ntu.edu.tw/~cjlin/papers/multilabel-embedding/">the supplementary materials and the experimental code/data</a> used in the paper 
+                [<a href="ref.html#LCL22a">LCL22a</a>]
+              </li><li># of classes: 121</li><li># of data:
+            54,958</li><li># of features:
+            128</li><li>Files:
+            <ul><li><a href="multilabel/ppi_deepwalk.svm.bz2">ppi_deepwalk.svm.bz2</a></li><li><a href="multilabel/ppi_line.svm.bz2">ppi_line.svm.bz2</a></li><li><a href="multilabel/ppi_node2vec.svm.bz2">ppi_node2vec.svm.bz2</a></li></ul></li></ul><a name="rcv1v2 (topics; subsets)"><h2>rcv1v2 (topics; subsets)</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#DL04b">DL04b</a>]
+            </li><li># of classes: 101</li><li># of data:
+            3,000
+                  / 3,000 (testing)
+                </li><li># of features:
+            47,236</li><li>Files:
+            <ul><li><a href="multilabel/rcv1subset_topics_train_1.svm.bz2">rcv1subset_topics_train_1.svm.bz2</a></li><li><a href="multilabel/rcv1subset_topics_train_2.svm.bz2">rcv1subset_topics_train_2.svm.bz2</a></li><li><a href="multilabel/rcv1subset_topics_train_3.svm.bz2">rcv1subset_topics_train_3.svm.bz2</a></li><li><a href="multilabel/rcv1subset_topics_train_4.svm.bz2">rcv1subset_topics_train_4.svm.bz2</a></li><li><a href="multilabel/rcv1subset_topics_train_5.svm.bz2">rcv1subset_topics_train_5.svm.bz2</a></li><li><a href="multilabel/rcv1subset_topics_test_1.svm.bz2">rcv1subset_topics_test_1.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1subset_topics_test_2.svm.bz2">rcv1subset_topics_test_2.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1subset_topics_test_3.svm.bz2">rcv1subset_topics_test_3.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1subset_topics_test_4.svm.bz2">rcv1subset_topics_test_4.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1subset_topics_test_5.svm.bz2">rcv1subset_topics_test_5.svm.bz2</a> (testing)</li></ul></li></ul><a name="rcv1v2 (topics; full sets)"><h2>rcv1v2 (topics; full sets)</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#DL04b">DL04b</a>]
+            </li><li>Preprocessing:
+              The four test sets correspond to the four testing files from the RCV1 site (appendix B.13). A combined file is also provided. In the test set, the number of classes is 103. We further provide files of original labels and tokenized texts (B.12 of RCV1 site) in the format of
+ID&lt;TAB&gt;labels&lt;TAB&gt;tokens,
+where labels and tokens are respectively separated by spaces.</li><li># of classes: 101</li><li># of data:
+            23,149
+                  / 781,265 (testing)
+                </li><li># of features:
+            47,236</li><li>Files:
+            <ul><li><a href="multilabel/rcv1_topics_train.svm.bz2">rcv1_topics_train.svm.bz2</a></li><li><a href="multilabel/rcv1_topics_test_0.svm.bz2">rcv1_topics_test_0.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_topics_test_1.svm.bz2">rcv1_topics_test_1.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_topics_test_2.svm.bz2">rcv1_topics_test_2.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_topics_test_3.svm.bz2">rcv1_topics_test_3.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_topics_combined_test.svm.bz2">rcv1_topics_combined_test.svm.bz2</a> (testing; combined from the above four files)</li><li><a href="multilabel/rcv1_topics_train.txt.bz2">rcv1_topics_train.txt.bz2</a> (ID, original labels and tokenized texts)</li><li><a href="multilabel/rcv1_topics_test.txt.bz2">rcv1_topics_test.txt.bz2</a> (ID, original labels and tokenized texts (testing))</li></ul></li></ul><a name="rcv1v2 (industries; full sets)"><h2>rcv1v2 (industries; full sets)</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#DL04b">DL04b</a>]
+            </li><li>Preprocessing:
+              The four testing sets correspond to the four testing files from the RCV1 site. In the testing set, the number of classes is 350.</li><li># of classes: 313</li><li># of data:
+            23,149
+                  / 781,265 (testing)
+                </li><li># of features:
+            47,236</li><li>Files:
+            <ul><li><a href="multilabel/rcv1_industries_train.svm.bz2">rcv1_industries_train.svm.bz2</a></li><li><a href="multilabel/rcv1_industries_test_0.svm.bz2">rcv1_industries_test_0.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_industries_test_1.svm.bz2">rcv1_industries_test_1.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_industries_test_2.svm.bz2">rcv1_industries_test_2.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_industries_test_3.svm.bz2">rcv1_industries_test_3.svm.bz2</a> (testing)</li></ul></li></ul><a name="rcv1v2 (regions; full sets)"><h2>rcv1v2 (regions; full sets)</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#DL04b">DL04b</a>]
+            </li><li>Preprocessing:
+              The four testing sets correspond to the four testing files from the RCV1 site. In the testing set, the number of classes is 296.</li><li># of classes: 228</li><li># of data:
+            23,149
+                  / 781,265 (testing)
+                </li><li># of features:
+            47,236</li><li>Files:
+            <ul><li><a href="multilabel/rcv1_regions_train.svm.bz2">rcv1_regions_train.svm.bz2</a></li><li><a href="multilabel/rcv1_regions_test_0.svm.bz2">rcv1_regions_test_0.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_regions_test_1.svm.bz2">rcv1_regions_test_1.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_regions_test_2.svm.bz2">rcv1_regions_test_2.svm.bz2</a> (testing)</li><li><a href="multilabel/rcv1_regions_test_3.svm.bz2">rcv1_regions_test_3.svm.bz2</a> (testing)</li></ul></li></ul><a name="scene-classification"><h2>scene-classification</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#MB04a">MB04a</a>]
+            </li><li># of classes: 6</li><li># of data:
+            1,211
+                  / 1,196 (testing)
+                </li><li># of features:
+            294</li><li>Files:
+            <ul><li><a href="multilabel/scene_train.bz2">scene_train.bz2</a></li><li><a href="multilabel/scene_test.bz2">scene_test.bz2</a> (testing)</li></ul></li></ul><a name="siam-competition2007"><h2>siam-competition2007</h2></a><ul><li>Source:
+            <a href="http://www.cs.utk.edu/tmw07/">SIAM Text Mining Competition 2007</a>
+              / SIAM Text Mining Competition 2007</li><li>Preprocessing:
+               We remove "." before transforming data to vectors. We use
+binary term frequencies and normalize each instance to unit
+length.</li><li># of classes: 22</li><li># of data:
+            21,519
+                  / 7,077 (testing)
+                </li><li># of features:
+            30,438</li><li>Files:
+            <ul><li><a href="multilabel/tmc2007_train.svm.bz2">tmc2007_train.svm.bz2</a></li><li><a href="multilabel/tmc2007_test.svm.bz2">tmc2007_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="UNFAIR-ToS (LexGLUE)"><h2>UNFAIR-ToS (LexGLUE)</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#IC22b">IC22b</a>]
+            </li><li>Preprocessing:
+              The procedure is the same as that for <a href="multilabel.html#ECtHR (A) (LexGLUE)">ECtHR (A) (LexGLUE)</a>.
+</li><li># of classes: 8</li><li># of data:
+            5,532
+                  / 2,275 (validation)
+                
+                  / 1,607 (testing)
+                </li><li># of features:
+            6,290</li><li>Files:
+            <ul><li><a href="multilabel/lexglue_code.tar.gz">lexglue_code.tar.gz</a></li><li><a href="multilabel/unfair_tos_lexglue_raw_texts_train.txt.bz2">unfair_tos_lexglue_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/unfair_tos_lexglue_raw_texts_val.txt.bz2">unfair_tos_lexglue_raw_texts_val.txt.bz2</a> (validation)</li><li><a href="multilabel/unfair_tos_lexglue_raw_texts_test.txt.bz2">unfair_tos_lexglue_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/unfair_tos_lexglue_tfidf_train.svm.bz2">unfair_tos_lexglue_tfidf_train.svm.bz2</a></li><li><a href="multilabel/unfair_tos_lexglue_tfidf_test.svm.bz2">unfair_tos_lexglue_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="Wiki10-31K"><h2>Wiki10-31K</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#AZ09a">AZ09a</a>]
+            </li><li>Preprocessing:
+              The raw texts are extracted from the <a href="https://www.zubiaga.org/datasets/wiki10+/">original html documents</a> by concatenating all the &lt;p&gt; tags within the block &lt;div id="bodyContent"&gt; ... &lt;/div&gt; in each file with white spaces between them. We tried to generate the raw texts and also the split as close as possible to those used in <a href="https://github.com/yourh/AttentionXML">AttentionXML</a>, which is based on those provided by <a href="http://manikvarma.org/downloads/XC/XMLRepository.html">the Extreme Classification Repository</a>. It seems that due to the update of the source pages, eight instances are slightly different from those in AttentionXML. Other instances are exactly the same except that tabs in the texts are replaced with white spaces. The raw text data is in the format of labels&lt;TAB&gt;raw texts, where the labels are separated by spaces. The tf-idf features are calculated from the raw texts provided here using sklearn's TfidfVectorizer with default configurations except that "min_df" is set to be 3 to avoid too many features. Note that the resulting tf-idf features are different from the one provided by the Extreme Classification Repository. The code used to generate the raw texts and tf-idf features are both provided. </li><li># of classes: 30,938</li><li># of data:
+            14,146
+                  / 6,616 (testing)
+                </li><li># of features:
+            104,374</li><li>Files:
+            <ul><li><a href="multilabel/wiki10_31k_code.tar.gz">wiki10_31k_code.tar.gz</a></li><li><a href="multilabel/wiki10_31k_raw_texts_train.txt.bz2">wiki10_31k_raw_texts_train.txt.bz2</a></li><li><a href="multilabel/wiki10_31k_raw_texts_test.txt.bz2">wiki10_31k_raw_texts_test.txt.bz2</a> (testing)</li><li><a href="multilabel/wiki10_31k_tfidf_train.svm.bz2">wiki10_31k_tfidf_train.svm.bz2</a></li><li><a href="multilabel/wiki10_31k_tfidf_test.svm.bz2">wiki10_31k_tfidf_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="yeast"><h2>yeast</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#AE02a">AE02a</a>]
+            </li><li># of classes: 14</li><li># of data:
+            1,500
+                  / 917 (testing)
+                </li><li># of features:
+            103</li><li>Files:
+            <ul><li><a href="multilabel/yeast_train.svm.bz2">yeast_train.svm.bz2</a></li><li><a href="multilabel/yeast_test.svm.bz2">yeast_test.svm.bz2</a> (testing)</li></ul></li></ul><a name="YouTube"><h2>YouTube</h2></a><ul><li>Source:
+            
+              [<a href="ref.html#LT09a">LT09a</a>]
+            </li><li>Preprocessing:
+              This is a node classification problem where each node is associated with multiple labels and features are embedding vectors learned from graphs. The original graph data was at
+    <a href="http://leitang.net/social_dimension.html">Social-Dimension Approach to Classification in Large-Scale Networks</a>. Embedding vectors are generated by the following representation-learning methods: <a href="https://github.com/phanein/deepwalk">DeepWalk</a>, <a href="https://github.com/tangjianpku/LINE">LINE</a> and <a href="https://github.com/aditya-grover/node2vec">Node2Vec</a>. After embedding vectors are generated, nodes with no labels are discarded. For more details (e.g., the parameters used for generating embedding vectors and the five training/test splits), please see <a href="https://www.csie.ntu.edu.tw/~cjlin/papers/multilabel-embedding/">the supplementary materials and the experimental code/data</a> used in the paper 
+                [<a href="ref.html#LCL22a">LCL22a</a>]
+              </li><li># of classes: 46</li><li># of data:
+            31,703</li><li># of features:
+            128</li><li>Files:
+            <ul><li><a href="multilabel/youtube_deepwalk.svm.bz2">youtube_deepwalk.svm.bz2</a></li><li><a href="multilabel/youtube_line.svm.bz2">youtube_line.svm.bz2</a></li><li><a href="multilabel/youtube_node2vec.svm.bz2">youtube_node2vec.svm.bz2</a></li></ul></li></ul></body></html>

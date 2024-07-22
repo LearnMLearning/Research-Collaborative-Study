@@ -139,7 +139,8 @@ https://archive.ics.uci.edu/ml/datasets/covertype. Accessed: 2022-10-02.
 https://archive.ics.uci.edu/ml/datasets/Gisette. Accessed: 2022-10-02.
 ##### Cadata
 https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/regression.html#cadata. Accessed: 2022-10-02.
-##### Msd
+##### Msd (285GB)
+http://millionsongdataset.com 
 Thierry Bertin-Mahieux, Daniel P.W. Ellis, Brian Whitman, and Paul Lamere. The million song dataset. In Proceedings of the 12th International Conference on Music Information Retrieval (ISMIR 2011), 2011.
 
 ### Baselines

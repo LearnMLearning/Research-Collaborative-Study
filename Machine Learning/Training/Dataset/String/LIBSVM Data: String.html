@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link href="style.css" rel="stylesheet" type="text/css"/><title>LIBSVM Data: String</title><meta charset="UTF-8"/></head><body><a name="#top"/><h1><a href="../../libsvm">LIBSVM</a> Data: String</h1><p><font size="+1">
+    This page contains many classification, regression,
+    multi-label and string data sets stored in LIBSVM format. For some sets
+    raw materials (e.g., original texts) are also available. These data sets
+    are from UCI, Statlog, StatLib and other collections. We
+    thank their efforts. For most sets, we linearly scale each attribute to [-1,1] or [0,1].  The testing data (if provided)
+    is adjusted accordingly. Some training data are further separated 
+    to "training" (tr) and "validation" (val) sets. Details can be
+    found in the description of each data set. To read data via MATLAB, you can use "libsvmread" in LIBSVM package.
+  </font></p><hr/><a name="mnist (string format)"><h2>mnist (string format)</h2></a><ul><li>Source:
+             
+              [<a href="ref.html#SL96a">SL96a</a>]
+            </li><li>Preprocessing:
+              The dataset uses 4-way and 8-way chain-coding to convert each image in the MNIST database into a string. If an image contains several distinct blocks, chain codes are concatenated together. The original files can be found at <a href="http://algoval.essex.ac.uk/data/sequence/mnist/">here</a>.</li><li># of data:
+            60,000
+                  / 10,000 (testing)
+                </li><li># of features:
+            string
+                  / string (testing)
+                </li><li>Files:
+            <ul><li><a href="string/mnist-str4.bz2">mnist-str4.bz2</a></li><li><a href="string/mnist-str4.t.bz2">mnist-str4.t.bz2</a> (testing)</li><li><a href="string/mnist-str8.bz2">mnist-str8.bz2</a></li><li><a href="string/mnist-str8.t.bz2">mnist-str8.t.bz2</a> (testing)</li></ul></li></ul></body></html>

@@ -6,8 +6,6 @@ A summary of the datasets is in Table 1, and additional dataset details are in t
 
 ![[Pasted image 20240722102223.png]]
 
-![[Pasted image 20240722102432.png]]
-
 
 #### Surgical
 Kaggle. Dataset surgical binary classification. https://www.kaggle.com/omnamahshivai/surgical-dataset-binary-classification/version/1#, 2018c. [Online; accessed 29-July-2020].
@@ -93,13 +91,18 @@ Criteo. Criteo click-through rate prediction. https://ailab.criteo.com/download-
 
 - Click-Through Rate (CTR) (Criteo, 2015) contains the first 1,000,000 instances of the Criteo 1TB Click Logs dataset, in which each row represents an ad that was displayed and whether or not it had been clicked on (29,040 ads clicked). The dataset contains 13 numeric attributes and 26 categorical attributes. However, due to the extremely large number of values for the categorical attributes, we restrict our use of the dataset to the 13 numeric attributes. The aim is to predict whether or not an ad is clicked on.
 
+*Failed to download*
+
 #### Twitter
 Sedhai, S. and Sun, A. Hspam14: A collection of 14 million tweets for hashtag-oriented spam research. In SIGIR, 2015.
 
 - Twitter uses the first 1,000,000 tweets (169,471 spam) of the HSpam14 dataset (Sedhai & Sun, 2015). Each instance contains the tweet ID and label. After retrieving the text and user ID for each tweet, we derive the following attributes: no. chars, no. hashtags, no. mentions, no. links, no. retweets, no. unicode chars., and no. messages per user. The aim is to predict whether a tweet is spam or not.
 
+https://personal.ntu.edu.sg/axsun/datasets.html
+
+*Contact the author to get a smaller version*
 #### Synthetic
-Pedregosa, F., Varoquaux, G., Gramfort, A., et al. Scikit- learn: Machine learning in Python. JMLR, 2011.
+Pedregosa, F., Varoquaux, G., Gramfort, A., et al. Scikit-learn: Machine learning in Python. JMLR, 2011.
 
 - Synthetic (Pedregosa et al., 2011) contains 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 5 informative attributes, 5 redundant attributes, and 30 useless attributes. There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
 

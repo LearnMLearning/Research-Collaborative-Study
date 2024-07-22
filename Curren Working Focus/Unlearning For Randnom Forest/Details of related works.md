@@ -169,6 +169,7 @@ The same as the "Higgs" in DaRe.
 ##### Optdigits (multi-class)
 The same as the "optDigits" in SecureCut.
 ##### Pendigits (multi-class)
+https://github.com/bschlief/pendigits?tab=readme-ov-file
 
 -------
 ### Baselines

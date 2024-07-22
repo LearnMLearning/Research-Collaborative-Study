@@ -160,8 +160,8 @@ https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits
 ![[Pasted image 20240722150859.png]]
 ##### AdultIncome (bin-class)
 The same as the "Adult" in DaRe.
-##### SUSY (bin-clas)
-
+##### SUSY (bin-class) (799MB)
+https://www.kaggle.com/datasets/janus137/supersymmetry-dataset
 ##### Higgs (bin-class)
 The same as the "Higgs" in DaRe.
 ##### Letter (multi-class)

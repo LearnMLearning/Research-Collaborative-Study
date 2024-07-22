@@ -100,9 +100,11 @@ Baldi, P., Sadowski, P., and Whiteson, D. Searching for exotic particles in high
 Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
 
 - Higgs (Baldi et al., 2014; Dua & Graff, 2019) contains 11,000,000 signal processes (5,829,123 Higgs bosons) characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. The goal is to distinguish between a background signal process and a Higgs bosons process.
-
+-----
 ### Baselines
 - Retrain
+-----
+-----
 # HedgeCut
 ### Datasets
 ![[Pasted image 20240722131604.png]]
@@ -122,12 +124,14 @@ This dataset contains 110K data points in four numerical and 6 categorical attri
 ##### Purchase Data ("Online purchase behavior data")
 This dataset contains 210K data points in ten numerical and seven categorical attributes about browsing behavior in 12,330 individual sessions of an online shop, and the target variable denotes whether the session ended in a purchase or not.
 https://archive.ics.uci.edu/ml/datasets/Online+Shoppers+Purchasing+Intention+Dataset
-
+-----
 ### Baselines
 From the popular library scikit-learn
 ##### Decision Tree (CART)
 ##### Random Forest
 ##### ERT
+-----
+-----
 # DeltaBoost
 ![[Pasted image 20240722135140.png]]
 ### Datasets
@@ -160,6 +164,7 @@ https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/regression.html#cadata. 
 http://millionsongdataset.com 
 Thierry Bertin-Mahieux, Daniel P.W. Ellis, Brian Whitman, and Paul Lamere. The million song dataset. In Proceedings of the 12th International Conference on Music Information Retrieval (ISMIR 2011), 2011.
 
+-----
 ### Baselines
 ##### HedgeCut (bin-cls)
 ##### DaRe (bin-cls)
@@ -169,18 +174,41 @@ https://github.com/Xtra-Computing/FedTree/tree/main
 Tianqi Chen and Carlos Guestrin. Xgboost: A scalable tree boosting system. In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining, pages 785–794, 2016.
 ##### sklearn decision tree
 ##### sklearn random forest
-
+-----
+-----
 # SecureCut
 ### Datasets
 ##### credit
-
+https://www.kaggle.com/datasets/brycecf/give-me-some-credit-dataset
 ##### optDigits
 https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits
 ##### Epsilon (2G)
 [epsilon_normalized.bz2](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/epsilon_normalized.bz2)
 [epsilon_normalized.t.bz2](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/epsilon_normalized.t.bz2) (testing)
+
+-----
 ### Baselines
 ##### Retrain
 ##### DaRe
 ##### HedgeCut
 ##### DeltaBoost
+--------
+-------
+# GBDT
+### Datasets
+![[Pasted image 20240722150022.png]]
+##### AdultIncome
+The same as the "Adult" in DaRe.
+###### SUSY
+
+###### Higgs
+The same as the "Higgs" in DaRe.
+##### Letter
+
+##### Optdigits
+The same as the "optDigits" in SecureCut.
+##### Pendigits
+-------
+### Baselines
+##### Retrain
+##### DeRe

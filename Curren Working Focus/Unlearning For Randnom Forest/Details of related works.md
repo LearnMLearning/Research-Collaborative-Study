@@ -125,28 +125,37 @@ https://archive.ics.uci.edu/ml/datasets/Online+Shoppers+Purchasing+Intention+Dat
 
 ### Baselines
 From the popular library scikit-learn
-- Decision Tree (CART)
-- Random Forest
-- ERT
+##### Decision Tree (CART)
+##### Random Forest
+##### ERT
 # DeltaBoost
 ![[Pasted image 20240722135140.png]]
 ### Datasets
-##### codrna
-##### covtype
+##### Codrna
+https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html#cod-rna. Accessed: 2022-10-02.
+##### Covtype
+https://archive.ics.uci.edu/ml/datasets/covertype. Accessed: 2022-10-02.
+##### Isette
+https://archive.ics.uci.edu/ml/datasets/Gisette. Accessed: 2022-10-02.
+##### Cadata
+https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/regression.html#cadata. Accessed: 2022-10-02.
+##### Msd
 
-##### gisette
-##### cadata
-##### msd
 ### Baselines
-- HedgeCut
-- DaRe
-- 
+##### HedgeCut (bin-cls)
+##### DaRe (bin-cls)
+##### ThunderGPM-CPU
+https://github.com/Xtra-Computing/FedTree/tree/main
+##### XGBoost
+Tianqi Chen and Carlos Guestrin. Xgboost: A scalable tree boosting system. In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining, pages 785–794, 2016.
+##### sklearn decision tree
+##### sklearn random forest
 
 # SecureCut
 ### Datasets
 
 ### Baselines
-- Retrain
-- DaRe
-- HedgeCut
-- DeltaBoost
+##### Retrain
+##### DaRe
+##### HedgeCut
+##### DeltaBoost

@@ -129,9 +129,18 @@ From the popular library scikit-learn
 - Random Forest
 - ERT
 # DeltaBoost
+![[Pasted image 20240722135140.png]]
 ### Datasets
+##### codrna
+##### covtype
 
+##### gisette
+##### cadata
+##### msd
 ### Baselines
+- HedgeCut
+- DaRe
+- 
 
 # SecureCut
 ### Datasets

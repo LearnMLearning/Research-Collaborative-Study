@@ -124,8 +124,10 @@ This dataset contains 210K data points in ten numerical and seven categorical at
 https://archive.ics.uci.edu/ml/datasets/Online+Shoppers+Purchasing+Intention+Dataset
 
 ### Baselines
-
-
+From the popular library scikit-learn
+- Decision Tree (CART)
+- Random Forest
+- ERT
 # DeltaBoost
 ### Datasets
 

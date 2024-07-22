@@ -1,4 +1,5 @@
 ## DaRe
+http://proceedings.mlr.press/v139/brophy21a.html
 13 publicly-available datasets, 1 synthetic dataset we call Synthetic.
 For each dataset, we generate **one-hot encodings** for any categorical variable and leave all numeric and binary variables as is. For any dataset without a designated train and test split, we **randomly** sample **80%** of the data for training and use the rest for testing.
 
@@ -112,4 +113,14 @@ Baldi, P., Sadowski, P., and Whiteson, D. Searching for exotic particles in high
 Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
 
 - Higgs (Baldi et al., 2014; Dua & Graff, 2019) contains 11,000,000 signal processes (5,829,123 Higgs bosons) characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. The goal is to distinguish between a background signal process and a Higgs bosons process.
+
+## HedgeCut
+#### Income ("Adult income", the same as the "Adult" in DaRe)
+Becker,Barry and Kohavi,Ronny. (1996). Adult. UCI Machine Learning Repository. https://doi.org/10.24432/C5XW20.
+
+Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
+
+- Adult (Dua & Graff, 2019) contains 48,842 instances (11,687 positive) of 14 demographic attributes to determine if a person’s personal income level is more than $50K per year.
+
+https://archive.ics.uci.edu/dataset/2/adult
 

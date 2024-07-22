@@ -101,7 +101,7 @@ Sedhai, S. and Sun, A. Hspam14: A collection of 14 million tweets for hashtag-or
 #### Synthetic
 Pedregosa, F., Varoquaux, G., Gramfort, A., et al. Scikit- learn: Machine learning in Python. JMLR, 2011.
 
-- Synthetic (Pedregosa et al., 2011) contains 1,000,000 instances normally distributed about the vertices of a 5- dimensional hypercube into 2 clusters per class. There are 5 informative attributes, 5 redundant attributes, and 30 useless attributes. There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
+- Synthetic (Pedregosa et al., 2011) contains 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 5 informative attributes, 5 redundant attributes, and 30 useless attributes. There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
 
 #### Higgs
 Baldi, P., Sadowski, P., and Whiteson, D. Searching for exotic particles in high-energy physics with deep learning. Nature Communications, 2014.

@@ -39,7 +39,7 @@ Research and Administration, I. T. Airline on-time performance and causes of fli
 - Flight Delays (Research & Administration, 2019) consists of 100,000 actual arrival and departure times of flights by certified U.S. air carriers; the data was collected by the Bureau of Transportation Statistics’ (BTS) Office of Airline Information. The data contains 8 attributes and 19,044 delays. The task is to predict if a flight will be delayed.
 
 ###### Diabetes
-Strack, B., DeShazo, J. P., et al. Impact of HbA1c measure- ment on hospital readmission rates: Analysis of 70,000 clinical database patient records. BioMed research inter- national, 2014, 2014.
+Strack, B., DeShazo, J. P., et al. Impact of HbA1c measurement on hospital readmission rates: Analysis of 70,000 clinical database patient records. BioMed research international, 2014, 2014.
 
 Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
 

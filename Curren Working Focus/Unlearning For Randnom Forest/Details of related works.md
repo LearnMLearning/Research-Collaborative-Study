@@ -67,7 +67,7 @@ Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.ed
 - Retrain
 -----
 -----
-# HedgeCut
+# 21-SIGMOD-HedgeCut
 ### Datasets
 ![[Pasted image 20240722131604.png]]
 ##### Income ("Adult income")
@@ -94,7 +94,7 @@ From the popular library scikit-learn
 ##### ERT
 -----
 -----
-# DeltaBoost
+# 23-SIGMOD-DeltaBoost
 ![[Pasted image 20240722135140.png]]
 ### Datasets
 ##### Codrna
@@ -137,7 +137,7 @@ Tianqi Chen and Carlos Guestrin. Xgboost: A scalable tree boosting system. In Pr
 ##### sklearn random forest
 -----
 -----
-# SecureCut
+# 23-SecureCut
 ### Datasets
 ##### credit
 https://www.kaggle.com/datasets/brycecf/give-me-some-credit-dataset
@@ -155,7 +155,7 @@ https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits
 ##### DeltaBoost
 --------
 -------
-# GBDT
+# 23-KDD-GBDT
 ### Datasets
 ![[Pasted image 20240722150859.png]]
 ##### AdultIncome (bin-class)

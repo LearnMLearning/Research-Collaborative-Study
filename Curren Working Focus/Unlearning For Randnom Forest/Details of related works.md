@@ -165,7 +165,7 @@ https://www.kaggle.com/datasets/janus137/supersymmetry-dataset
 ##### Higgs (bin-class)
 The same as the "Higgs" in DaRe.
 ##### Letter (multi-class)
-
+Hard to find... there are too many data sets with the same name...
 ##### Optdigits (multi-class)
 The same as the "optDigits" in SecureCut.
 ##### Pendigits (multi-class)

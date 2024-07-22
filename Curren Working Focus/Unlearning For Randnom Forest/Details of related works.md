@@ -173,10 +173,12 @@ Tianqi Chen and Carlos Guestrin. Xgboost: A scalable tree boosting system. In Pr
 # SecureCut
 ### Datasets
 ##### credit
+
 ##### optDigits
 https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits
-##### Epsilon
-
+##### Epsilon (2G)
+[epsilon_normalized.bz2](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/epsilon_normalized.bz2)
+[epsilon_normalized.t.bz2](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/epsilon_normalized.t.bz2) (testing)
 ### Baselines
 ##### Retrain
 ##### DaRe

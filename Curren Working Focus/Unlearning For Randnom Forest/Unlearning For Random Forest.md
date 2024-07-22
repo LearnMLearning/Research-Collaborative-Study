@@ -22,16 +22,23 @@ DrivenData. Flu shot learning: Predict h1n1 and seasonal flu vaccines. https://w
 - Vaccine (Bull et al., 2016; DrivenData, 2019) consists of 26,707 survey responses collected between October 2009 and June 2010 asking people a range of 36 behavioral and personal questions, and ultimately asking whether or not they got an H1N1 and/or seasonal flu vaccine. Our aim is to predict whether or not a person received a seasonal flu vaccine.
 
 #### Adult
+Becker,Barry and Kohavi,Ronny. (1996). Adult. UCI Machine Learning Repository. https://doi.org/10.24432/C5XW20.
+
 Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
 
 - Adult (Dua & Graff, 2019) contains 48,842 instances (11,687 positive) of 14 demographic attributes to determine if a person’s personal income level is more than $50K per year.
+
+https://archive.ics.uci.edu/dataset/2/adult
 
 #### Bank Marketing
 Moro, S., Cortez, P., et al. A data-driven approach to predict the success of bank telemarketing. Decision Support Systems, 2014.
 
 Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
-
+\
 - Bank Marketing (Moro et al., 2014; Dua & Graff, 2019) consists of 41,188 marketing phone calls (4,640 positive) from a Portuguese banking institution. There are 20 attributes, and the aim is to figure out if a client will subscribe.
+
+https://archive.ics.uci.edu/dataset/222/bank+marketing
+
 
 #### Flight Delays
 Research and Administration, I. T. Airline on-time performance and causes of flight delays. https://catalog.data.gov/dataset/airline-on-time-performance-and-causes-of-flight-delays-on-time-data, 2019. [Online; accessed 16-April-2020].
@@ -39,7 +46,7 @@ Research and Administration, I. T. Airline on-time performance and causes of fli
 - Flight Delays (Research & Administration, 2019) consists of 100,000 actual arrival and departure times of flights by certified U.S. air carriers; the data was collected by the Bureau of Transportation Statistics’ (BTS) Office of Airline Information. The data contains 8 attributes and 19,044 delays. The task is to predict if a flight will be delayed.
 
 #### Diabetes
-Strack, B., DeShazo, J. P., et al. Impact of HbA1c measurement on hospital readmission rates: Analysis of 70,000 clinical database patient records. BioMed research international, 2014, 2014.
+Beata Strack, Jonathan P. DeShazo, Chris Gennings, Juan L. Olmo, Sebastian Ventura, Krzysztof J. Cios, and John N. Clore, “Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records,” BioMed Research International, vol. 2014, Article ID 781670, 11 pages, 2014.
 
 Dua, D. and Graff, C. UCI machine learning repository. http://archive.ics.uci.edu/ml, 2019.
 

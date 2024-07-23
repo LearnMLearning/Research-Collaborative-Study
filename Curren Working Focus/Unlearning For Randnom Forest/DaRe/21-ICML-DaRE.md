@@ -74,10 +74,17 @@ Store and update
 1. $|D|$  
 2. $|D_{.,1}|$ (Positive instances)
 3. A list of training instances
+![[Pasted image 20240723154759.png]]
+------
 ##### When deleting a training instance $(x,y) \in D$
 1. Statistics are updated and used to check if a particular subtree needs retraining.
-2. 
+2. Recompute the split criterion for each attribute-threshold pair. 
+3. If a different threshold obtains an improved split criterion, then retrain the subtree rooted at this node.
+4. If not retrain (no improvement), update label counts and instance list, make deletion.
+
+![[Pasted image 20240723154909.png]]
 ### Sampling Valid Thresholds 采样有效阈值
-
-
+Premise: The optimal threshold for a continuous attribute will always lie between two training instances with adjacent feature values containing opposite labels.
+1. If the two training instances have the same label, the split criterion improves by increasing or decreasing $v$, called **valid threshold** 有效阈值
+	$\exists (x_1,y_1),(x_2,y_2):x_{1,a}=v_1,x_{2,a} = v_2,y_1\ne y_2$ 
 

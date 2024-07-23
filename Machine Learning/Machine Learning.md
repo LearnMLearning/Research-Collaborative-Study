@@ -11,8 +11,6 @@
 
 [[Machine Unlearning]]
 
-[[Training]]
-
 [[Generalization]]
 
 [[Gradient]]

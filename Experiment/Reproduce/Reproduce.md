@@ -35,7 +35,10 @@ virtualenv venv
 source venv/bin/active
 ```
 ![[Pasted image 20240723131827.png]]
-
+```
+conda create -n 名字 python=3.10
+conda activate 名字
+```
 #### Step 3: 克隆目标仓库
 ``` bash
 git clone https://github.com/jjbrophy47/dare_rf git clone https://github.com/schelterlabs/hedgecut

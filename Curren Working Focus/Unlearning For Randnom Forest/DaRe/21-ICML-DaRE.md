@@ -95,3 +95,8 @@ $d_{max}$ as the number of layers of the random nodes.
 R-DaRE (Random DaRE) $d_{\mathrm{rmax}}=0$
 G-DaRe (Greedy DaRE) $d_{\mathrm{rmax}}\ne 0$
 
+### Metric
+##### AP (average precision)
+
+##### AUC 
+

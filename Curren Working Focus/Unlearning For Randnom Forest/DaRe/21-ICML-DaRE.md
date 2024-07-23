@@ -85,6 +85,13 @@ Store and update
 ![[Pasted image 20240723154909.png]]
 ### Sampling Valid Thresholds 采样有效阈值
 Premise: The optimal threshold for a continuous attribute will always lie between two training instances with adjacent feature values containing opposite labels.
-1. If the two training instances have the same label, the split criterion improves by increasing or decreasing $v$, called **valid threshold** 有效阈值
+	If the two training instances have the same label, the split criterion improves by increasing or decreasing $v$, called **valid threshold** 有效阈值
 	$\exists (x_1,y_1),(x_2,y_2):x_{1,a}=v_1,x_{2,a} = v_2,y_1\ne y_2$ 
+
+### Random Splits
+Retrain when $|D_l|=0$ or $|D_r|=0$. But low dependence on data because top of the tree.
+$d_{max}$ as the number of layers of the random nodes.
+
+R-DaRE (Random DaRE) $d_{\mathrm{rmax}}=0$
+G-DaRe (Greedy DaRE) $d_{\mathrm{rmax}}\ne 0$
 

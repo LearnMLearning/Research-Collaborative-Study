@@ -24,6 +24,8 @@ __all__ = {
 ```python
 class Forest(object):
 ```
+
+**`__init__`**
 ![[Pasted image 20240723162338.png]]
 ```python
 a = Forest (k=a,b,c)

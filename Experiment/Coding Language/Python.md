@@ -31,3 +31,7 @@ class Forest(object):
 a = Forest (k=a,b,c)
 ```
 
+**`__str__`**
+![[Pasted image 20240723162645.png]]
+
+![[Pasted image 20240723162707.png]]

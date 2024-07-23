@@ -106,6 +106,65 @@ $$
 $$
 ##### AUC (Area Under Curve)  $[1\%,20\%]$
 被定义为 ROC 曲线下的面积
-https://zh.wikipedia.org/wiki/ROC曲线
+**什么是 ROC 曲线？**
+**ROC曲线**（Receiver Operating Characteristic Curve）是用来评估二分类模型表现的工具。它展示了不同阈值下，模型的**真阳性率**（True Positive Rate，TPR）和**假阳性率**（False Positive Rate，FPR）的变化关系。
+**真阳性率（TPR）** 也称为敏感度或召回率，是模型正确识别出正类样本的比例，公式为：
+$$
+\mathrm{TPR} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}}
+$$
+其中，$\mathrm{TP}$ 是真阳性数，$\mathrm{FN}$ 是假阴性数。
+**假阳性率（FPR）** 是模型将负类样本错误识别为正类样本的比例，公式为：
+$$
+\mathrm{FPR} = \frac{\mathrm{FP}}{\mathrm{FP} + \mathrm{TN}}
+$$
+其中，$\mathrm{FP}$ 是假阳性数，$\mathrm{TN}$ 是真阴性数。
 
+**什么是AUC?**
+**AUC**（Area Under the Curve）指的是ROC曲线下面积。AUC值介于0到1之间，反映了模型在区分正负样本方面的能力。
+- **AUC = 1**：完美分类器，能够完美区分正负样本。
+- **AUC = 0.5**：随机分类器，表现与随机猜测无异。
+- **AUC < 0.5**：模型表现不如随机猜测，通常表示模型存在问题。
+###### 为什么使用AUC of ROC来比较模型？
+1. **阈值独立性**：ROC曲线展示了模型在所有可能的分类阈值下的表现，而不是仅仅在一个特定阈值下，因此AUC提供了对模型性能的综合评估。
+2. **不平衡数据**：在处理类别不平衡的数据时，AUC比准确率更有优势，因为它考虑了真阳性率和假阳性率，而准确率可能会被主要类别的样本数所掩盖。
+3. **直观性**：AUC的数值范围为0到1，简单明了，数值越接近1，模型性能越好。
 
+##### 教程
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, auc
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+# 示例数据（请替换为你的数据）
+X = np.array([[0.1, 0.2], [0.2, 0.3], [0.3, 0.4], [0.4, 0.5], [0.5, 0.6]])
+y = np.array([0, 0, 1, 1, 0])
+
+# 划分训练集和测试集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# 训练模型
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# 预测概率
+y_prob = model.predict_proba(X_test)[:, 1]
+
+# 计算ROC曲线和AUC值
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+roc_auc = auc(fpr, tpr)
+
+# 绘制ROC曲线
+plt.figure()
+plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.0])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic')
+plt.legend(loc="lower right")
+plt.show()
+```
+每个实验重复五次。

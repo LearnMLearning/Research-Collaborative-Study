@@ -96,7 +96,7 @@ R-DaRE (Random DaRE) $d_{\mathrm{rmax}}=0$
 G-DaRe (Greedy DaRE) $d_{\mathrm{rmax}}\ne 0$
 
 ### Metric
-##### AP (average precision)
+##### AP (average precision) positive label $< 1 \%$
 如前所述，recall 召回率和 precision 精度之间的权衡意味着当我们评估和比较不同的检测算法时，必须同时考虑它们。一种同时考虑召回率和精确率的常用方法是average precision 平均精确率。引理1 清楚地表明，precision 精确度和 recall 召回率是相关的。我们可以将 precision 精度表示为 recall 召回率的函数，用 $p(r)$ 表示。
 
 **Definition** 
@@ -104,7 +104,7 @@ $p(r)$ 在 $r = 0$ 到 $r = 1$ 的整个区间内的平均值，就是 average p
 $$
 \frac{1}{1-0} \int_0^1 p(r) \, dr = \int_0^1 p(r) \, dr
 $$
-##### AUC (Area Under Curve)
+##### AUC (Area Under Curve)  $[1\%,20\%]$
 被定义为 ROC 曲线下的面积
 https://zh.wikipedia.org/wiki/ROC曲线
 

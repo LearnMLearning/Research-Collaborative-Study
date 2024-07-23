@@ -104,5 +104,6 @@ $p(r)$ 在 $r = 0$ 到 $r = 1$ 的整个区间内的平均值，就是 average p
 $$
 \frac{1}{1-0} \int_0^1 p(r) \, dr = \int_0^1 p(r) \, dr
 $$
-##### AUC 
+##### AUC (Area Under Curve)
+被定义为 ROC 曲线下的面积
 

@@ -21,5 +21,11 @@ __all__ = {
 
 
 ###### `__classes__.py`
-
+```python
+class Forest(object):
+```
+![[Pasted image 20240723162338.png]]
+```python
+a = Forest (k=a,b,c)
+```
 

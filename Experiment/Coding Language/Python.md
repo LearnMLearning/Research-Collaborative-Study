@@ -11,3 +11,10 @@ dare 是一个module，被导入时 [[__init__.py]] 优先被执行
 from dare._classes import Tree,Forest
 ```
 
+这个文件里有一个特殊变量
+```python
+__all__ = {
+	'Tree',
+	'Forest'
+}
+```

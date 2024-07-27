@@ -32,3 +32,6 @@ $K\times M$ regression tree $f_{i,k}$
 ![[Pasted image 20240727090703.png]]
 [[softmax]]
 ![[Pasted image 20240727090850.png]]
+
+###### Discretize features into integers as a preprocessing
+![[Pasted image 20240727091026.png]]

@@ -52,6 +52,7 @@ Thinking of HedgeCut
 
 #### Incremental Update
 ###### Split Gain
+![[Pasted image 20240727093306.png]]
 
 ###### Derivatives
 

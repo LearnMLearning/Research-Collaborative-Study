@@ -53,6 +53,14 @@ Thinking of HedgeCut
 #### Incremental Update
 ###### Split Gain
 ![[Pasted image 20240727093306.png]]
-
+To remove the term $D_{tr}$ from the time complexity: incremental computation method: *Can we save the summation of the derivatives when we train the data, then we only need to compute the derivatives for $D_{un}$ and subtract them from the saved derivative sum?*
+all derivatives with the same feature value (feature value is in $\{0,1,\dots,B-1\}$)
+$J$ is the number of terminal nodes
+$|x_i|$ is the number of non-empty features for training instances
 ###### Derivatives
 
+### Random Sampled Split Candidates
+HedgeCut
+
+### Random Layers
+DaRE

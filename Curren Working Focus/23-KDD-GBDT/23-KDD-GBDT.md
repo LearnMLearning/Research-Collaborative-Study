@@ -88,4 +88,8 @@ $J = 20,$$D_{un} = 0.1\%,$$lazy\_update\_freq = 20,$$sample\_rate = 0.1,$$L_r = 
 ###### Data
 ![[Pasted image 20240727100533.png]]
 #### Model Functionality After Unlearning
+C2W: 在再训练中正确预测而在学习中错误预测的测试实例的比率
+W2C: 在再训练中被错误预测的测试实例，并通过遗忘来纠正\
+W2W: 
 ![[Pasted image 20240727100608.png]]
+#### Unlearning Cost

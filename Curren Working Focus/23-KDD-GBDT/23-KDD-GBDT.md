@@ -7,7 +7,6 @@
 3. **Tree generation**
 	RandF: independently
 	GBDT: depend on the residual of the trees of all previous iterations
-
 ###### Baseline
 Retrain
 
@@ -64,7 +63,7 @@ If a split change and subtree is retrained, the derivatives for all data in the 
 [[Amnesiac Machine Learning, 2020]]
 
 此外，根据这种直觉，我们进一步以惰性更新方式更积极地减少导数计算成本:我们只在每次迭代时更新导数。这导致使用更陈旧的导数进行增益计算，但实质上节省了导数更新的成本 $\frac{1}{\lambda}$。我们在第3.5节中对提议的松弛和延迟更新进行了经验评估。
-### Random Sampled Split Candidates
+#### Random Sampled Split Candidates
 [[21-SIGMOD-HedgeCut]]
 ![[Pasted image 20240727095046.png]]
 我们必须评估更好的贴合所带来的优势是否值得花费昂贵的再培训。一种可能的解决方案是启发式 (heuristically) 地为增益差设置一个(相对)阈值。然而，由于增益的分布是未知的，并且随不同的数据集而变化，因此找到这样一个通用阈值并不是微不足道的。
@@ -73,6 +72,7 @@ If a split change and subtree is retrained, the derivatives for all data in the 
 
 随机抽样的分割候选的空间开销是最小的:我们只需要将抽样的分割候选存储为辅助数据。此外，作为随机抽样分割可候选优化的副产品，我们大大减少了用于增量分割增益计算的辅助数据的内存占用(在2.3节中讨论)，从 $O(J\cdot |x_i|\cdot B)$ 到 $O(J\cdot |x_i| \cdot \alpha B)$——我们有更少的分割候选，因此需要维护的求和也更少。
 
-### Random Layers
+#### Random Layers
 [[21-ICML-DaRE]]
 ![[Pasted image 20240727095056.png]]
+##

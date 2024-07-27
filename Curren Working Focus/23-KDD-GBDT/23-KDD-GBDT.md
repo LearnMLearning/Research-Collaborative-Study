@@ -29,3 +29,4 @@ $$
 ![[Pasted image 20240727090435.png]]
 ###### Inference
 $K\times M$ regression tree $f_{i,k}$
+![[Pasted image 20240727090703.png]]

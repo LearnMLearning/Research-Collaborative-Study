@@ -75,4 +75,17 @@ If a split change and subtree is retrained, the derivatives for all data in the 
 #### Random Layers
 [[21-ICML-DaRE]]
 ![[Pasted image 20240727095056.png]]
-##
+## Experimental Evaluation
+实验评估的目的是调查我们的遗忘框架的整体性能以及我们提出的优化的影响。具体来说，实验的目标是回答以下问题:
+- 建议的遗忘框架有多有效?未学习的模型与从头开始训练的模型是否有本质上的分歧? 
+- 当有不同大小的数据需要遗忘时，遗忘的成本是多少? 
+- 所提出的取消学习方法能否取消非随机抽样的训练姿态，即用于添加后门的对抗性姿态? 
+- 建议的优化对遗忘时间和测试精度有何影响?
+
+###### 默认参数设置
+$J = 20,$$D_{un} = 0.1\%,$$lazy\_update\_freq = 20,$$sample\_rate = 0.1,$$L_r = 0$
+
+###### Data
+![[Pasted image 20240727100533.png]]
+#### Model Functionality After Unlearning
+![[Pasted image 20240727100608.png]]

@@ -58,9 +58,13 @@ all derivatives with the same feature value (feature value is in $\{0,1,\dots,B-
 $J$ is the number of terminal nodes
 $|x_i|$ is the number of non-empty features for training instances
 ###### Derivatives
+If a split change and subtree is retrained, the derivatives for all data in the retrained subtree will be changed.重新计算这些导数的成本不再仅仅取决于 $D_{un}$ —— 如果需要在树的根部重新训练，它可能会像 $D_{tr} \backslash D_{un}$ 一样大，重新计算所有的导数是十分耗时的。
+
+注意，我们放宽了学习问题(第1节)-不需要从头构建与重新训练的树完全相同的树。我们可以在训练中把更新的导数和保存的导数和合并起来吗?从GBDT训练的角度来看，每棵树都是基于之前所有迭代中学习到的残差来构建的。修改一棵树意味着它将在接下来的迭代中连锁地影响其他树。然而，在遗忘情景中，所有的树都已经被训练得很好了。我们的目标是去除 $D_{un}$ 的影响，这是训练数据集 $D_{tr}$ 的一个小子集。直观地说，$D_{tr}\backslash D_{un}$ 中数据的导数变化应该是最小的，因为我们只稍微改变树来忘记 $D_{un}$ - 树应该仍然可以很好地工作在 $D_{tr} \backslash D_{un}$上。因此，我们可以从保存的和中减去更新的导数，以在增益计算中近似更新的和。通过这种松弛，我们能够增量地计算分离增益和导数。
+[[Amnesiac Machine Learning, 2020]]
 
 ### Random Sampled Split Candidates
-HedgeCut
+[[21-SIGMOD-HedgeCut]]
 
 ### Random Layers
-DaRE
+[[21-ICML-DaRE]]

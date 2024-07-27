@@ -11,7 +11,7 @@
 ###### Baseline
 Retrain
 
-#### GBDT
+#### Training
 $D_{tr} = \{y_i,\mathbf x_i\}_{i=1}^N,N$ is the number of training instances.
 For the $i^{th}$ instance: $\mathbf x_i$ is the feature vector
 $y_i \in \{1,2,\dots,K\}$
@@ -35,3 +35,14 @@ $K\times M$ regression tree $f_{i,k}$
 
 ###### Discretize features into integers as a preprocessing
 ![[Pasted image 20240727091026.png]]
+PingLi, Christopher J.C.Burges, and Qiang Wu. Mcrank: Learning to rank using multiple classification and gradient boosting. In Advances in Neural Information Processing Systems (NIPS), pages 897–904, Vancouver, Canada, 2007.
+
+Ping Li and Weijie Zhao. Package for fast abc-boost. CoRR, abs/2207.08770, 2022.
+
+#### Unlearning
+###### Unlearning in GBDT
+![[Pasted image 20240727091517.png]]
+###### Unlearning in one tree
+![[Pasted image 20240727091624.png]]
+
+![[Pasted image 20240727091636.png]]

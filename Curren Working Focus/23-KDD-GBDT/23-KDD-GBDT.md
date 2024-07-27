@@ -9,7 +9,7 @@
 	GBDT: depend on the residual of the trees of all previous iterations
 ###### Baseline
 Retrain
-
+DaRE
 #### Training
 $D_{tr} = \{y_i,\mathbf x_i\}_{i=1}^N,N$ is the number of training instances.
 For the $i^{th}$ instance: $\mathbf x_i$ is the feature vector

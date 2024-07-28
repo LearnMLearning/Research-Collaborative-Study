@@ -1,7 +1,7 @@
 Latent space: preserve the information of data within a low- dimensional space
 潜在空间：在一个低维空间内很好的保存了数据的信息
 
-在了解VAE之前，先了解 **[[Autoencoder (AE)]]**
+在了解 VAE 之前，先了解 **[[Autoencoder (AE)]]**
 
 打开了但是还没看的网页们
 

@@ -32,8 +32,15 @@
 #### 2.1 长短期记忆网络
 ###### 2.1.1 模型定义
 ![[Pasted image 20240801234548.png]]
+![[Pasted image 20240801234603.png]]
+![[Pasted image 20240801234616.png]]
+![[Pasted image 20240801234631.png]]
+![[Pasted image 20240801234641.png]]
+![[Pasted image 20240801234649.png]]
 
 ###### 2.1.2 模型特点
+![[Pasted image 20240801234703.png]]
+![[Pasted image 20240801234713.png]]
 
 #### 2.2 门控循环单元网格
 ###### 2.2.1 模型定义

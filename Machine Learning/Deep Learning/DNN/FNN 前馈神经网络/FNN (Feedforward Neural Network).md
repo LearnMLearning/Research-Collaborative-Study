@@ -491,11 +491,17 @@ $$
 $$
 称为在第 $t$ 层的“误差”。求解式 $\frac{\partial L}{\partial w_{ji}^{(t)}} = \frac{\partial L}{\partial z_{j}^{(t)}} \frac{\partial z_j^{(t)}}{\partial w_{ji}^{(t)}}$ 和 式 $\frac{\partial L}{\partial b_j^{(t)}} = \frac{\partial L}{\partial z_j^{(t)}} \frac{\partial z_j^{(t)}}{\partial b_{j}^{(t)}}$，并代入式子 $\delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}},j= 1,2,\cdots,m$，得到：
 $$
-
+\frac{\partial L}{\partial w_{ji}^{(t)}} = \delta_j^{(t)} h_i^{(t-1)}
 $$
+$$
+\frac{\partial L}{\partial b_j^{(t)}} = \delta_j^{(t)}
+$$
+其中，$h_i^{(t-1)}$ 是 $t-1$ 层的输出，从正向传播得到；$\delta_j^{(t)}$ 是第 $t$ 层的误差，从反向传播得到。所以，可以根据式 $\frac{\partial L}{\partial w_{ji}^{(t)}} = \delta_j^{(t)} h_i^{(t-1)}$，$\frac{\partial L}{\partial b_j^{(t)}} = \delta_j^{(t)}$ 计算对第 $t$ 层的权重与偏置的梯度。
 
+正向传播是指输入从输入层到输出层的信号传递。给定神经网络参数，根据神经网络的函数计算。反向传播是指“误差”从输出层到输入层的传递。给定神经网络参数，以及正向传播的结果，通过以下方法计算。
 
-![[Pasted image 20240715175248.png]]
+对于第 
+
 ![[Pasted image 20240715180349.png]]
 ![[Pasted image 20240715180402.png]]
 ![[Pasted image 20240715180410.png]]

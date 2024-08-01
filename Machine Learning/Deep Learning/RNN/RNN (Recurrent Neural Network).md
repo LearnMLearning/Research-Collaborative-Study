@@ -41,29 +41,49 @@
 ###### 2.1.2 模型特点
 ![[Pasted image 20240801234703.png]]
 ![[Pasted image 20240801234713.png]]
-
 #### 2.2 门控循环单元网格
 ###### 2.2.1 模型定义
-
+![[Pasted image 20240801234856.png]]
+![[Pasted image 20240801234909.png]]
+![[Pasted image 20240801234916.png]]
+![[Pasted image 20240801234927.png]]
+![[Pasted image 20240801234937.png]]
 ###### 2.2.2 模型特点
+![[Pasted image 20240801234954.png]]
 #### 2.3 深度循环神经网络
-
+![[Pasted image 20240801235010.png]]
+![[Pasted image 20240801235022.png]]
+![[Pasted image 20240801235032.png]]
 #### 2.4 双向循环神经网络
-
+![[Pasted image 20240801235057.png]]
+![[Pasted image 20240801235119.png]]
 ## 3 自然语言生成中的应用
+![[Pasted image 20240801235144.png]]
 #### 3.1 词向量
-
 ###### 3.1.1 词向量的定义
-
+![[Pasted image 20240801235200.png]]
+![[Pasted image 20240801235221.png]]
+![[Pasted image 20240801235233.png]]
+![[Pasted image 20240801235247.png]]
+![[Pasted image 20240801235301.png]]
 ###### 3.1.2 词向量的学习
-
+![[Pasted image 20240801235318.png]]
+![[Pasted image 20240801235334.png]]
+![[Pasted image 20240801235354.png]]
+![[Pasted image 20240801235408.png]]
 #### 3.2 语言模型与语言生成
-
 ###### 3.2.1 语言模型
+![[Pasted image 20240801235427.png]]
 
 ###### 3.2.2 RNN 语言模型
-
+![[Pasted image 20240801235442.png]]
+![[Pasted image 20240801235455.png]]
+![[Pasted image 20240801235506.png]]
 ###### 3.2.3 语言生成
-
+![[Pasted image 20240801235532.png]]
+![[Pasted image 20240801235550.png]]
+![[Pasted image 20240801235604.png]]
+![[Pasted image 20240801235619.png]]
 ###### 3.2.4 模型训练
+![[Pasted image 20240801235628.png]]
 

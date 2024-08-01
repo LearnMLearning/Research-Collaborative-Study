@@ -546,12 +546,14 @@ $$
 当 $j=k$ 时，
 $$\begin{aligned}
 \frac{\partial p_k}{\partial z_j} &= \frac{\partial }{\partial z_j} \left(\frac{e^{z_j}}{\sum_{i=1}^l e^{z_i}} \right) = \frac{e^{z_j} \left(\sum_{i=1}^l e^{z_i}\right)-e^{z_j}e^{z_j}}{\left({\sum_{i=1}^{l}e^{z_i}} \right)^2}\\
-&= \frac{e^{z_j}}{}
+&= \frac{e^{z_j}}{\sum_{i=1}^l} \left(1-\frac{e^{z_j}}{\sum_{i=1}^{l}e^{z_i}} \right) = p_j (1-p_j)
 \end{aligned}$$
 当 $j\ne k$ 时，
-$$
+$$\begin{aligned}
+\frac{\partial p_k}{\partial z_j} &= \frac{\partial}{\partial z_j} \left(\frac{e^{z_k}}{\sum_{i=1}^l e^{z_i}} \right) = \frac{0-e^{z_j}e^{z_k}}{\left(\sum_{i=1}^l e^{z_i} \right)^2}\\
+&= -\frac{e^{z_j}}{\sum_{i=1}^le^{z_i}} \frac{e^{z_k}}{\sum_{i=1}^le^{z_i}} = -p_jp_k
+\end{aligned}$$
 
-$$
 
 2. 交叉熵损失函数的偏导数
 

@@ -541,7 +541,15 @@ $$
 
 求其偏导数
 $$
-\frac{\partial p_k}{\partial z_j} = \frac{\partial}{\partial z_j} \left(\frac{}{} \right)
+\frac{\partial p_k}{\partial z_j} = \frac{\partial}{\partial z_j} \left(\frac{e^{z_k}}{\sum_{i=1}^l e^{z_i}} \right),\,k,j=1,2,\cdots,l
+$$
+当 $j=k$ 时，
+$$
+\frac{}{}
+$$
+当 $j\ne k$ 时，
+$$
+
 $$
 
 2. 交叉熵损失函数的偏导数

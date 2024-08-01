@@ -553,10 +553,25 @@ $$\begin{aligned}
 \frac{\partial p_k}{\partial z_j} &= \frac{\partial}{\partial z_j} \left(\frac{e^{z_k}}{\sum_{i=1}^l e^{z_i}} \right) = \frac{0-e^{z_j}e^{z_k}}{\left(\sum_{i=1}^l e^{z_i} \right)^2}\\
 &= -\frac{e^{z_j}}{\sum_{i=1}^le^{z_i}} \frac{e^{z_k}}{\sum_{i=1}^le^{z_i}} = -p_jp_k
 \end{aligned}$$
-
-
+可统一表示为
+$$
+\frac{\partial p_k}{\partial z_j} = 
+\begin{cases}
+p_j (1-p_j) , & j=k,\\
+-p_j p_k, & j\ne k
+\end{cases}, \, j,k = 1,2,\cdots,l
+$$
 2. 交叉熵损失函数的偏导数
+交叉熵损失函数的定义是
+$$
+L = -\sum_{k=1}^l y_k \log p_k
+$$
+其中，$y_k \in \{0,1\},k=1,2,\cdots,l$，满足 $\sum_{k=1}^l y_k=1: p_k \in (0,1),k=1,2,\cdots,l$，满足 $\sum_{k=1}^l p_k=1$。
+这里 $y_k$ 是常量，$p_k$ 是变量，由式 $p_k = \frac{e^{z_k}}{\sum_{i=1}^{l}e^{z_i}}\, k=1,2,\dots,l$ 定义。
+求其对变量 $z_j$ 对偏导数：
+$$
 
+$$
 
 可以看出无论是回归还是分类，由于特殊的激活函数与损失函数的使用，使得 $\delta^{(s)}$ 表示预测与真实值的差。这也是损失函数 $L$ 对净输入 $z$ 的梯度 $\frac{\partial L}{\partial z}$ 被称为误差的原因。
 

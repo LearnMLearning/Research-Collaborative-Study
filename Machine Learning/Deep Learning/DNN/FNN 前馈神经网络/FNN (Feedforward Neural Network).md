@@ -537,7 +537,12 @@ $$
 $$
 p_k = \frac{e^{z_k}}{\sum_{i=1}^{l}e^{z_i}}\, k=1,2,\dots,l
 $$
-其中，$z_k\in(-\infty,+\infty),p_k\in(0,1)$，满足
+其中，$z_k\in(-\infty,+\infty),p_k\in(0,1)$，满足 $\sum_{k=1}^l p_k = 1$。
+
+求其偏导数
+$$
+\frac{\partial p_k}{\partial z_j} = \frac{\partial}{\partial z_j} \left(\frac{}{} \right)
+$$
 
 2. 交叉熵损失函数的偏导数
 

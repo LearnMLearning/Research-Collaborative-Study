@@ -489,7 +489,7 @@ $$
 $$
 \delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}},j= 1,2,\cdots,m
 $$
-称为在第 $t$ 层的“误差”。求解式 $\frac{\partial L}{\partial w_{ji}^{(t)}} = \frac{\partial L}{\partial z_{j}^{(t)}} \frac{\partial z_j^{(t)}}{\partial w_{ji}^{(t)}}$ 和 式 $\frac{\partial L}{\partial b_j^{(t)}} = \frac{\partial L}{\partial z_j^{(t)}} \frac{\partial z_j^{(t)}}{\partial b_{j}^{(t)}}$，并代入式子 $\delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}},j= 1,2,\cdots,m$，得到：
+称为在第 $t$ 层的“误差”。求解 式 $\frac{\partial L}{\partial w_{ji}^{(t)}} = \frac{\partial L}{\partial z_{j}^{(t)}} \frac{\partial z_j^{(t)}}{\partial w_{ji}^{(t)}}$ 和式 $\frac{\partial L}{\partial b_j^{(t)}} = \frac{\partial L}{\partial z_j^{(t)}} \frac{\partial z_j^{(t)}}{\partial b_{j}^{(t)}}$，并代入式子 $\delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}},j= 1,2,\cdots,m$，得到：
 $$
 \frac{\partial L}{\partial w_{ji}^{(t)}} = \delta_j^{(t)} h_i^{(t-1)}
 $$

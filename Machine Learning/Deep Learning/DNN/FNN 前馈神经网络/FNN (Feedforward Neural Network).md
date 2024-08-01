@@ -618,7 +618,29 @@ $$\begin{aligned}
 
 
 ## 3 前馈神经网络学习的正则化
+![[Pasted image 20240801193438.png]]
+
 
 #### 3.1 深度学习中的正则化
+![[Pasted image 20240801193449.png]]
+
+
 #### 3.2 早停法
+![[Pasted image 20240801193502.png]]
+![[Pasted image 20240801193511.png]]
+![[Pasted image 20240801193522.png]]
+![[Pasted image 20240801193535.png]]
+
+
 #### 3.3 暂退法
+![[Pasted image 20240801193548.png]]
+
+![[Pasted image 20240801193557.png]]
+
+![[Pasted image 20240801193609.png]]
+
+![[Pasted image 20240801193625.png]]
+![[Pasted image 20240801193634.png]]
+![[Pasted image 20240801193649.png]]
+
+![[Pasted image 20240801193658.png]]

@@ -3,20 +3,29 @@
 
 [[Supervised Learning]]
 
+
 [[Reinforcement Learning]]
+
 
 [[Deep Learning]]
 
+
 [[Unsupervised learning]]
+
 
 [[Machine Unlearning]]
 
+
 [[Generalization]]
+
 
 [[Gradient]]
 
+
 [[LLM]]
 
+
 [[Privacy]]
+
 
 [[Loss]]

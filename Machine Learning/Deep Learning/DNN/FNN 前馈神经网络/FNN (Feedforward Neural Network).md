@@ -478,6 +478,23 @@ $$
 $$
 z_k^{(t)} = \sum_{j=1}^m w_{kj}^{(t+1)}h_{j}^{(t)} + b_k^{(t+1)}
 $$
+梯度下降需要计算损失函数对所有参数的梯度。损失函数对第 $t$ 层的权重和偏置的梯度分别是 $\frac{\partial L}{\partial w_{ji}^{(t)}}$ 和 $\frac{\partial L}{\partial b_{j}^{(t)}}$。根据链式规则，可以分别展开：
+$$
+\frac{\partial L}{\partial w_{ji}^{(t)}} = \frac{\partial L}{\partial z_{j}^{(t)}} \frac{\partial z_j^{(t)}}{\partial w_{ji}^{(t)}}
+$$
+$$
+\frac{\partial L}{\partial b_j^{(t)}} = \frac{\partial L}{\partial z_j^{(t)}} \frac{\partial z_j^{(t)}}{\partial b_{j}^{(t)}}
+$$
+考虑损失函数对第 $t$ 层的净输入 $z_j^{(t)}$ 的梯度：
+$$
+\delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}},j= 1,2,\cdots,m
+$$
+称为在第 $t$ 层的“误差”。求解式 $\frac{\partial L}{\partial w_{ji}^{(t)}} = \frac{\partial L}{\partial z_{j}^{(t)}} \frac{\partial z_j^{(t)}}{\partial w_{ji}^{(t)}}$ 和 式 $\frac{\partial L}{\partial b_j^{(t)}} = \frac{\partial L}{\partial z_j^{(t)}} \frac{\partial z_j^{(t)}}{\partial b_{j}^{(t)}}$，并代入式子 $\delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}},j= 1,2,\cdots,m$，得到：
+$$
+
+$$
+
+
 ![[Pasted image 20240715175248.png]]
 ![[Pasted image 20240715180349.png]]
 ![[Pasted image 20240715180402.png]]

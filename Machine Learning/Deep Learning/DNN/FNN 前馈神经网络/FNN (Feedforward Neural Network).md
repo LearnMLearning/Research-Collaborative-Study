@@ -500,7 +500,16 @@ $$
 
 正向传播是指输入从输入层到输出层的信号传递。给定神经网络参数，根据神经网络的函数计算。反向传播是指“误差”从输出层到输入层的传递。给定神经网络参数，以及正向传播的结果，通过以下方法计算。
 
-对于第 
+对于第 $t$ 层第误差 $\delta_j^{(t)}$，根据链式规则展开：
+$$
+\delta_j^{(t)} = \frac{\partial L}{\partial z_j^{(t)}} = \sum_{k=1}^l \frac{\partial L}{\partial z_k^{(t+1)}}\frac{\partial z_k^{(t+1)}}{\partial z_j^{(t)}}, j =1,2,\cdots,m
+$$
+求解得到：
+$$
+\delta_j^{(t)} = \frac{\mathrm da}{\mathrm dz_j^{(t)}} \sum_{k=1}^{l} w_{kj}^{(t+1)} \delta_k^{(t+1)}
+$$
+这里 $\delta_k^{(t+1)}$ 是第 $t+1$ 层的误差，$w_{kj}^{(t+1)}$ 是第 $t+1$ 层的权重，$\frac{\mathrm d a}{\mathrm d z_j^{(t)}}$ 是第 $t$ 层的激活函数的导数。也就是说可以根据式 $\delta_j^{(t)} = \frac{\mathrm da}{\mathrm dz_j^{(t)}} \sum_{k=1}^{l} w_{kj}^{(t+1)} \delta_k^{(t+1)}$，从第 $t+1$ 层的误差 $\delta_k^{(t+1)}$ 计算第 $t$ 层的误差 $\delta_j^{(t)}$。
+
 
 ![[Pasted image 20240715180349.png]]
 ![[Pasted image 20240715180402.png]]

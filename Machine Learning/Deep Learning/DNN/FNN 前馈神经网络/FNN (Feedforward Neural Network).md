@@ -569,9 +569,17 @@ $$
 其中，$y_k \in \{0,1\},k=1,2,\cdots,l$，满足 $\sum_{k=1}^l y_k=1: p_k \in (0,1),k=1,2,\cdots,l$，满足 $\sum_{k=1}^l p_k=1$。
 这里 $y_k$ 是常量，$p_k$ 是变量，由式 $p_k = \frac{e^{z_k}}{\sum_{i=1}^{l}e^{z_i}}\, k=1,2,\dots,l$ 定义。
 求其对变量 $z_j$ 对偏导数：
-$$
+$$\begin{aligned}
+\frac{\partial L}{\partial z_j} &= \sum_{k=1}^l y_k \frac{\partial \log p_k}{\partial z_j}\\
+&= -\sum_{k=1}^l \frac{y_k}{p_k} \frac{\partial p_k}{\partial z_j}, \, j =1,2,\cdots,l
+\end{aligned}$$
+代入式 $\frac{\partial p_k}{\partial z_j} = \begin{cases}p_j (1-p_j) , & j=k,\\-p_j p_k, & j\ne k\end{cases}, \, j,k = 1,2,\cdots,l$，得到
+$$\begin{aligned}
+\frac{\partial L}{\partial z_{j}} &= -y_j (1-p_j) + \sum_{k=1,k\ne j}^l y_k p_j\\
+&= p_j \sum_{k=1}^l y_k - y_j\\
+&= p_j -y_j, \, j=1,2,\cdots,l
+\end{aligned}$$
 
-$$
 
 可以看出无论是回归还是分类，由于特殊的激活函数与损失函数的使用，使得 $\delta^{(s)}$ 表示预测与真实值的差。这也是损失函数 $L$ 对净输入 $z$ 的梯度 $\frac{\partial L}{\partial z}$ 被称为误差的原因。
 

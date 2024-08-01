@@ -545,7 +545,7 @@ $$
 $$
 当 $j=k$ 时，
 $$
-\frac{}{}
+\frac{\partial p_k}{\partial z_j} = \frac{\partial }{\partial z_j} \left(\frac{}{\sum_{i=1}^l e^{z_i}} \right)
 $$
 当 $j\ne k$ 时，
 $$

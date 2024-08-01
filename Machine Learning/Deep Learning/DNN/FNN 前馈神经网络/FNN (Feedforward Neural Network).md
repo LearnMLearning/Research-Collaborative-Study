@@ -544,9 +544,10 @@ $$
 \frac{\partial p_k}{\partial z_j} = \frac{\partial}{\partial z_j} \left(\frac{e^{z_k}}{\sum_{i=1}^l e^{z_i}} \right),\,k,j=1,2,\cdots,l
 $$
 当 $j=k$ 时，
-$$
-\frac{\partial p_k}{\partial z_j} = \frac{\partial }{\partial z_j} \left(\frac{}{\sum_{i=1}^l e^{z_i}} \right)
-$$
+$$\begin{aligned}
+\frac{\partial p_k}{\partial z_j} &= \frac{\partial }{\partial z_j} \left(\frac{e^{z_j}}{\sum_{i=1}^l e^{z_i}} \right) = \frac{e^{z_j} \left(\sum_{i=1}^l e^{z_i}\right)-e^{z_j}e^{z_j}}{\left({\sum_{i=1}^{l}e^{z_i}} \right)^2}\\
+&= \frac{e^{z_j}}{}
+\end{aligned}$$
 当 $j\ne k$ 时，
 $$
 

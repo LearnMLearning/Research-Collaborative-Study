@@ -88,5 +88,35 @@
 
 
 ## 3 图像分类中的应用
+![[Pasted image 20240801224901.png]]
+
 #### 3.1 AlexNet
-#### 3.2 残差网络
+![[Pasted image 20240801224926.png]]
+![[Pasted image 20240801224940.png]]
+
+
+#### 3.2 残差网络 ResNet
+###### 3.2.1 基本想法
+![[Pasted image 20240801224956.png]]
+![[Pasted image 20240801225008.png]]
+###### 3.2.2 模型架构
+![[Pasted image 20240801225041.png]]
+![[Pasted image 20240801225050.png]]
+![[Pasted image 20240801225103.png]]
+![[Pasted image 20240801225115.png]]
+![[Pasted image 20240801225131.png]]
+![[Pasted image 20240801225140.png]]
+###### 3.2.3 模型特点
+![[Pasted image 20240801225202.png]]
+![[Pasted image 20240801225212.png]]
+![[Pasted image 20240801225224.png]]
+###### 3.2.4 图像分类
+![[Pasted image 20240801225245.png]]
+![[Pasted image 20240801225255.png]]
+![[Pasted image 20240801225304.png]]
+![[Pasted image 20240801225314.png]]
+![[Pasted image 20240801225324.png]]
+![[Pasted image 20240801225342.png]]
+![[Pasted image 20240801225352.png]]
+![[Pasted image 20240801225400.png]]
+

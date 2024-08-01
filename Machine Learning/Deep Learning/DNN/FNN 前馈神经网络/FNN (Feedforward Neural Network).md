@@ -510,8 +510,26 @@ $$
 $$
 这里 $\delta_k^{(t+1)}$ 是第 $t+1$ 层的误差，$w_{kj}^{(t+1)}$ 是第 $t+1$ 层的权重，$\frac{\mathrm d a}{\mathrm d z_j^{(t)}}$ 是第 $t$ 层的激活函数的导数。也就是说可以根据式 $\delta_j^{(t)} = \frac{\mathrm da}{\mathrm dz_j^{(t)}} \sum_{k=1}^{l} w_{kj}^{(t+1)} \delta_k^{(t+1)}$，从第 $t+1$ 层的误差 $\delta_k^{(t+1)}$ 计算第 $t$ 层的误差 $\delta_j^{(t)}$。
 
+第 $s$ 层 (输出层) 的误差通过以下方法计算。一般形式是
+$$
+\delta_k^{(s)} = \frac{\partial L}{\partial z_k^{(s)}}, k= 1,2,\cdots,l
+$$
+求解得到：
+$$
+\delta_k^{(s)} = \frac{\mathrm dg}{\mathrm dz_k^{(s)}} \frac{\partial L}{\partial h_k^{(s)}},k=1,2,\cdots,l
+$$
+这里 $\frac{\partial L}{\partial h_k^{(s)}}$ 是损失函数对输出的梯度，$\frac{\mathrm d g}{\mathrm d z_k^{(s)}}$ 是第 $s$ 层的激活函数的导数。注意第 $s$ 层第输出表示为 $h^{(s)}$。
 
-![[Pasted image 20240715180349.png]]
+回归时，输入层只有一个神经元，有一个输出取实数值。损失函数是平房损失 $\frac 12 (h^{(s)} -y)^2$，激活函数是恒等函数 $g(z) = z$ ，这时误差是
+$$
+\delta^{(s)} = h^{(s)} - y
+$$
+表示第 $s$ 层的输出 $h^{(s)}$ 与训练样本输出 $y$ 的差。
+
+多类分类（包含二类分类）时，输出层只有一个神经元，有 $l$ 个输出表示 $l$ 个类别的概率。
+
+
+
 ![[Pasted image 20240715180402.png]]
 ![[Pasted image 20240715180410.png]]
 ![[Pasted image 20240715180419.png]]

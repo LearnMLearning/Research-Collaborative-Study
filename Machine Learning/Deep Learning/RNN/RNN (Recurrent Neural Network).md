@@ -6,15 +6,28 @@
 ###### 1.1.1 模型定义
 ![[Pasted image 20240801225656.png]]
 ![[Pasted image 20240801231443.png]]
-
-
+![[Pasted image 20240801233709.png]]
+![[Pasted image 20240801233721.png]]
+![[Pasted image 20240801233735.png]]
 ###### 1.1.2 模型特点
-
+![[Pasted image 20240801233755.png]]
+![[Pasted image 20240801233814.png]]
 #### 1.2 学习算法
-
 ###### 1.2.1 反向传播算法
-
+![[Pasted image 20240801233833.png]]
+![[Pasted image 20240801233926.png]]
+![[Pasted image 20240801233939.png]]
+![[Pasted image 20240801233955.png]]
+![[Pasted image 20240801234008.png]]
+![[Pasted image 20240801234027.png]]
+![[Pasted image 20240801234043.png]]
+![[Pasted image 20240801234055.png]]
+![[Pasted image 20240801234110.png]]
+![[Pasted image 20240801234127.png]]
+![[Pasted image 20240801234140.png]]
 ###### 1.2.2 梯度消失与爆炸
+![[Pasted image 20240801234155.png]]
+
 
 ## 2 常用循环神经网络
 

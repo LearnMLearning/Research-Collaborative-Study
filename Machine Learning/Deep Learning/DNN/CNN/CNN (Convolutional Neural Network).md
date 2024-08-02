@@ -431,7 +431,25 @@ $$
 $$
 \mathbf X^{(l)} = a(\mathbf Z^{(l)})
 $$
-这里 $\mathbf X^{(l-1)}$ 是输入的 $I \times J \times K$ 张量，$\mathbf X^{(l)}$ 是输出的 $I'\times J' \times K'$ 张量，$\mathbf W^{(l)}$ 是卷积核的 $M\times N\times K\times K'$ 张量，$\mathbf b^{(l)}$ 是偏置的 $I' \times J' \times K'$ 张量，$\mathbf Z^{(l)}$ 是净输入的 $I' \times J' \times K'$ 张量，$a(\cdot)$ 是激活函数。可以认为式 $\mathbf Z^{(l)} = \mathbf W^{(l)} * \mathbf X^{(l-1)} +\mathbf b^{(l)}$ 
+这里 $\mathbf X^{(l-1)}$ 是输入的 $I \times J \times K$ 张量，$\mathbf X^{(l)}$ 是输出的 $I'\times J' \times K'$ 张量，$\mathbf W^{(l)}$ 是卷积核的 $M\times N\times K\times K'$ 张量，$\mathbf b^{(l)}$ 是偏置的 $I' \times J' \times K'$ 张量，$\mathbf Z^{(l)}$ 是净输入的 $I' \times J' \times K'$ 张量，$a(\cdot)$ 是激活函数。可以认为式 $\mathbf Z^{(l)} = \mathbf W^{(l)} * \mathbf X^{(l-1)} +\mathbf b^{(l)}$ 和 $\mathbf X^{(1)} = a(\mathbf Z^{(l)})$ 表示的变换由一组函数决定，也就是第 $l$ 层的神经元，一个神经元对应输出张量 $\mathbf X^{(l)}$ 的一个元素。另一方面，输入张量 $\mathbf X^{(l-1)}$ 也就是第 $l-1$ 层的输出张量由第 $l-1$ 层的神经元决定。当 $\mathbf X^{(l-1)}$ 的元素到 $\mathbf X^{(l)}$ 的元素之间存在映射关系时，对应的神经元之间存在连接。
+
+汇聚层进行汇聚运算。假设第 $l$ 层是汇聚层，则第 $l$ 层的计算如下：
+$$
+\mathbf X = \mathrm{pooling} \left(\mathbf X^{(l-1)} \right)
+$$
+这里 $\mathbf X^{(l-1)}$ 是输入的 $I \times J \times K$ 张量，$\mathbf X^{(l)}$ 是输出的 $I' \times J' \times K$ 张量，$\mathrm{pooling}(\cdot)$ 是汇聚运算。
+
+可以认为式 $\mathbf X = \mathrm{pooling} \left(\mathbf X^{(l-1)} \right)$ 表示的是基于神经元的变换 (汇聚加恒等)。输入张量 $\mathbf X^{(l-1)}$ 由第 $l-1$ 层的神经元决定，输出张量 $\mathbf X^{(l)}$ 由第 $l$ 层的神经元决定。当 $\mathbf X^{(l-1)}$ 的元素到 $\mathbf X^{(l)}$ 的元素之间存在映射关系时，对应的神经元之间存在连接。
+
+全连接的第 $l$ 层是前馈神经网络的一层，进行仿射变换和非线性变换。
+$$
+\mathbf z^{(l)} = \mathbf W^{(l)} \mathbf x^{(l-1)} + \mathbf b^{(l)}
+$$
+$$
+\mathbf x^{(l)} = a \left(\mathbf z^{(l)} \right)
+$$
+这里 $\mathbf x^{(l-1)}$ 是 $N$ 维输入向量，是由张量展开得到的；$\mathbf x^{(l)}$ 是 $M$ 维输出向量；$\mathbf W^{(l)}$ 是 $M\times N$ 权重矩阵；$\mathbf b^{(l)}$ 是 $M$ 维偏置向量；$\mathbf z^{(l)}$ 是 $M$ 维净输入向量
+
 
 
 ![[Pasted image 20240802134347.png]]

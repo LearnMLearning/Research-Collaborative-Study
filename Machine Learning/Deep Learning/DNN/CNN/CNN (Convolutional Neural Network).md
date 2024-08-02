@@ -461,7 +461,7 @@ $$
 $$
 \mathbf X_{k'}^{(l)} = a \left(\mathbf Z_{k'}^{(l)} \right)
 $$
-这里 $\mathbf X_k^{(l-1)}$ 是输入的第 $k$ 个 $I\times J$ 矩阵，$\mathbf X_{k'}^{(l)}$ 是输出的第 $k'$ 个 $I' \times J'$ 矩阵，$\mathbf W_{k,k'}^{(l)}$ 是二维卷积核的第 $k\times k'$ 个 $M \times N$ 矩阵，$\mathbf b_{k'}^{(l)}$ 是偏置的第 $k'$ 个 $I'\times J'$ 矩阵
+这里 $\mathbf X_k^{(l-1)}$ 是输入的第 $k$ 个 $I\times J$ 矩阵，$\mathbf X_{k'}^{(l)}$ 是输出的第 $k'$ 个 $I' \times J'$ 矩阵，$\mathbf W_{k,k'}^{(l)}$ 是二维卷积核的第 $k\times k'$ 个 $M \times N$ 矩阵，$\mathbf b_{k'}^{(l)}$ 是偏置的第 $k'$ 个 $I'\times J'$ 矩阵，$\mathbf Z_{k'}^{(l)}$ 是净输入
 
 
 

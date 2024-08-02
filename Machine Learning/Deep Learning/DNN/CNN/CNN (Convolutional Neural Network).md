@@ -520,16 +520,24 @@ $$
 **(3) 缩放变换**
 $$
 \begin{bmatrix}
-x'
+x'\\
+y'\\
+1
+\end{bmatrix} = 
+\begin{bmatrix}
+s_x & 0 & 0\\
+0 & s_y & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+1
 \end{bmatrix}
 $$
 其中，$s_x$ 和 $s_y$ 分别表示点在 $x$ 轴和 $y$ 轴方向缩放的尺度。
-
-![[Pasted image 20240802112344.png]]
-
-
 ###### 1.5.3 感受野
-![[Pasted image 20240802145827.png]]
+卷积神经网络利用卷积实现了图像处理需要的特征的表示。前端端神经元表示的是局部的特征，如物体的轮廓；后端的神经元表示的是全局的特征，如物体的部件，可以更好地对图像数据进行预测。
 
 ![[Pasted image 20240802145839.png]]
 ![[Pasted image 20240802145850.png]]

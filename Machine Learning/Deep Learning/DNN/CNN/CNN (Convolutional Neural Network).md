@@ -461,22 +461,22 @@ $$
 $$
 \mathbf X_{k'}^{(l)} = a \left(\mathbf Z_{k'}^{(l)} \right)
 $$
-这里 $\mathbf X_k^{(l-1)}$ 是输入的第 $k$ 个 $I\times J$ 矩阵，$\mathbf X_{k'}^{(l)}$ 是输出的第 $k'$ 个 $I' \times J'$ 矩阵，$\mathbf W_{k,k'}^{(l)}$ 是二维卷积核的第 $k\times k'$ 个 $M \times N$ 矩阵，$\mathbf b_{k'}^{(l)}$ 是偏置的第 $k'$ 个 $I'\times J'$ 矩阵，$\mathbf Z_{k'}^{(l)}$ 是净输入
-
-
-
+这里 $\mathbf X_k^{(l-1)}$ 是输入的第 $k$ 个 $I\times J$ 矩阵，$\mathbf X_{k'}^{(l)}$ 是输出的第 $k'$ 个 $I' \times J'$ 矩阵，$\mathbf W_{k,k'}^{(l)}$ 是二维卷积核的第 $k\times k'$ 个 $M \times N$ 矩阵，$\mathbf b_{k'}^{(l)}$ 是偏置的第 $k'$ 个 $I'\times J'$ 矩阵，$\mathbf Z_{k'}^{(l)}$ 是净输入的第 $k'$ 个 $I' \times J'$ 矩阵。图 24.12 显示卷积层的输入和输出张量 (特征图)。
 ![[Pasted image 20240802134347.png]]
+每次对 $K$ 个 $I\times J$ 矩阵同时进行卷积运算得到 $1$ 个 $I'\times J'$ 矩阵，整体计算 $K'$ 次得到 $K'$ 个 $I' \times J'$ 矩阵，卷积核是 $K'$ 个 $M\times N \times K$ 张量。输入和输出张量的深度分别是 $K$ 和 $K'$。
 
+可以将 $I\times J\times K$ 张量展开成 $K$ 个 $I \times J$ 矩阵，将 $I'\times J' \times K$ 张量展开成 $K$ 个 $I' \times J'$ 矩阵。汇聚层计算也可以写作
+$$
+\mathbf X_{k}^{(l)} = \mathrm{pooling} \left(\mathbf X_k^{(l-1)} \right)
+$$
+这里 $\mathbf X_{k}^{(l-1)}$ 是输入的是第 $k$ 个 $I\times J$ 矩阵分别进行，得到 $K$ 个 $I'\times J'$ 矩阵，汇聚核是 $K$ 个 $M\times N$ 矩阵。输入和输出张量的深度都是 $K$。
+
+卷积神经网络的特点可以由每一层的输入和输出张量体现，所以习惯上用输入和输出张量表示其架构。
 ![[Pasted image 20240802134356.png]]
-
-
-
 ###### 1.4.2 模型例子
+下面是一个简单的卷积神经网络的例子。这个 CNN 模型与 LeCun 提出的 LeNet 模型有相近的架构和规模。该模型在手写数字识别上达到很高的准确率，是卷积神经网络最基本的模型。整个网络由两个卷积层、两个汇聚层、两个全连接层、一个输出层组成 (图 24.14)。表 24.1 列出了卷积层、汇聚层、全连接层、输出层的超参数，输出特征图的大小，其中 $F$ 表示卷积核或汇聚核的大小，$S$ 表示步幅，$W$ 表示权重矩阵的大小，$B$ 表示偏置向量的长度。
 ![[Pasted image 20240802134411.png]]
 ![[Pasted image 20240802134427.png]]
-
-
-
 #### 1.5 卷积神经网络性质
 
 ###### 1.5.1 表示效率

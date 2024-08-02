@@ -112,6 +112,7 @@ $$
 $$
 核矩阵 $\mathbf W$ 不变，求卷积 $\mathbf Y = \mathbf W * \hat{\mathbf X}$。
 
+**解** $\mathbf W$ 作用在 0 填充
 
 ![[Pasted image 20240801222950.png]]
 ![[Pasted image 20240801223003.png]]

@@ -123,9 +123,28 @@ $$
 \end{bmatrix}
 $$
 输入矩阵通过填充由 $4\times 4$ 变为 $6\times 6$ 的矩阵，核矩阵是 $3\times 3$ 矩阵，输出矩阵是 $4\times 4$ 矩阵。
+图 24.3 显示这个卷积计算的一步。
+![[Pasted image 20240802113717.png]]
+在卷积计算中，卷积核每次向右或向下移动的列数或行数被称为步幅 (stride)。以上的卷积运算例中步幅均为 1。下面是步幅为 2 的卷积运算的例子。
 
+**例 24.4** 给定输入矩阵 $\mathbf X$ 和核矩阵 $\mathbf W$：
+$$
+\mathbf X = 
+\begin{bmatrix} 
+3 & 2 & 0 & 1 & 0 & 2 & 1 \\
+0 & 2 & 1 & 2 & 1 & 2 & 1\\
+2 & 0 & 0 & 3 & 0 & 0 & 2\\
+2 & 3 & 1 & 0 & 1 & 1 & 3\\
+2 & 2 & 1 & 1 & 0 & 3 & 1\\
+1 & 1 & 0 & 0 & 1 & 2 & 2\\
+2 & 1 & 0 & 3 & 2 & 1 & 1
+\end{bmatrix},
+\mathbf W = \begin{bmatrix}2 & 1 & 2 \\ 0 & 0 & 3 \\ 0 & 0 & 2 \end{bmatrix}
+$$
+设卷积步幅为 2，求卷积 $\mathbf Y = \mathbf W * \mathbf X$。
 
-![[Pasted image 20240801223003.png]]
+**解** $\mathbf W$ 作用在 $\mathbf X$ 上，每次计算向右
+
 ![[Pasted image 20240801223017.png]]
 ![[Pasted image 20240801223029.png]]
 ![[Pasted image 20240801223041.png]]

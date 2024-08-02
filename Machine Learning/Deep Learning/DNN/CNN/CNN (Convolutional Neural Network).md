@@ -52,14 +52,67 @@ $$
 y_{kl} = \sum_{m=1}^M \sum_{n=1}^N w_{m,n}x_{k+m-1,l+n-1}
 $$
 其中，$k=1,2,\cdots,K,l=1,2,\cdots,L,K=I-M+1,L=J-N+1$。
+以上是基本卷积的定义，还有多种扩展。注意式 $\mathbf Y = \mathbf W * \mathbf X$ 中的卷积符号是 $*$，$\mathbf X$ 和 $\mathbf W$ 的顺序是有意义的，本书将卷积核矩阵放在前面。卷积核又被称为滤波器 (filter)。
 
-![[Pasted image 20240801222802.png]]
-**例 24.2** 
+比较定义式 $h(t) = (f \circledast g)(t) = \int_{-\infty}^{\infty} f(\tau) g(t-\tau) \, \mathrm d\tau$ 和式 $(f*g) (t) = \int_{-\infty}^{+\infty} f(\tau) g(t+\tau) \, \mathrm d\tau$ 可知数学的卷积和互相关并不等价。卷积神经网络采用互相关作为“卷积”，主要是为了处理方便。如果数学的卷积和互相关的和矩阵都是从数据中学到的，那么效果是一样的。本书中的卷积除特别声明外均指互相关。
 
-![[Pasted image 20240801222827.png]]
-![[Pasted image 20240801222846.png]]
+**例 24.2** 给定输入矩阵 $\mathbf X$ 和核矩阵 $\mathbf W$：
+$$
+\mathbf X = 
+\begin{bmatrix}
+3 & 2 & 0 & 1\\
+0 & 2 & 1 & 2\\
+2 & 0 & 0 & 3\\
+2 & 3 & 1 & 2
+\end{bmatrix}, \mathbf W = 
+\begin{bmatrix}
+2 & 1 & 2\\
+0 & 0 & 3\\
+0 & 0 & 2
+\end{bmatrix}
+$$
+求卷积 $\mathbf Y = \mathbf W * \mathbf X$。
+**解** $\mathbf W$ 作用在 $\mathbf X$ 上，并不超出 $\mathbf X$ 的范围。按照式 $y_{kl} = \sum_{m=1}^M \sum_{n=1}^N w_{m,n}x_{k+m-1,l+n-1}$ ，计算
+$$
+y_{11} = \sum_{m=1}^3 \sum_{n=1}^3 w_{mn} x_{mn} = 11
+$$
+$$
+y_{12} =\sum_{m=1}^3 \sum_{n=1}^3 w_{mn}x_{m,n+1} = 18
+$$
+同样可计算 $y_{21},y_{22}$，得到输出矩阵 $\mathbf Y$：
+$$
+\mathbf Y = \begin{bmatrix}
+2 & 1 & 2\\
+0 & 0 & 3\\
+0 & 0 & 2
+\end{bmatrix} * \begin{bmatrix}
+3 & 2 & 0 & 1\\
+0 & 2 & 1 & 2\\
+2 & 0 & 0 & 3\\
+2 & 3 & 1 & 2
+\end{bmatrix} = \begin{bmatrix}11 & 18 \\ 6 & 22 \end{bmatrix}
+$$
+输入矩阵是 $4\times 4$ 矩阵，核矩阵是 $3\times 3$ 矩阵，输出矩阵是 $2\times 2$ 矩阵。图24.2 显示这个卷积计算的过程。
+
 ![[Pasted image 20240801222907.png]]
 ###### 1.2.3 填充和步幅
+卷积运算的扩展可以通过增加填充和步幅实现。在输入矩阵的周边添加元素为 0 的行和列，使卷积核能更充分地作用于输入矩阵边缘的元素，这样的处理称为填充 (padding) 或 零填充 (zero padding)。 下面是含有填充的卷积运算的例子。
+
+**例 24.3** 对 例 24.2 的输入矩阵进行填充，得到矩阵
+$$
+\hat {\mathbf X} = 
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0\\
+0 & 3 & 2 & 0 & 1 & 0\\
+0 & 0 & 2 & 1 & 2 & 0\\
+0 & 2 & 0 & 0 & 3 & 0\\
+0 & 2 & 3 & 1 & 2 & 0\\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+$$
+核矩阵 $\mathbf W$ 不变，求卷积 $\mathbf Y = \mathbf W * \hat{\mathbf X}$。
+
+
 ![[Pasted image 20240801222950.png]]
 ![[Pasted image 20240801223003.png]]
 ![[Pasted image 20240801223017.png]]
@@ -98,9 +151,13 @@ $$
 #### 1.5 卷积神经网络性质
 
 ###### 1.5.1 表示效率
-
+![[Pasted image 20240802112242.png]]
 
 ###### 1.5.2 不变性
+![[Pasted image 20240802112258.png]]
+![[Pasted image 20240802112310.png]]
+![[Pasted image 20240802112328.png]]
+![[Pasted image 20240802112344.png]]
 
 
 ###### 1.5.3 感受野

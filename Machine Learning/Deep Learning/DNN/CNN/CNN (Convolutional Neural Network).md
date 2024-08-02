@@ -139,11 +139,31 @@ $$
 1 & 1 & 0 & 0 & 1 & 2 & 2\\
 2 & 1 & 0 & 3 & 2 & 1 & 1
 \end{bmatrix},
-\mathbf W = \begin{bmatrix}2 & 1 & 2 \\ 0 & 0 & 3 \\ 0 & 0 & 2 \end{bmatrix}
+\mathbf W = 
+\begin{bmatrix}
+2 & 1 & 2 \\ 
+0 & 0 & 3 \\ 
+0 & 0 & 2 
+\end{bmatrix}
 $$
 设卷积步幅为 2，求卷积 $\mathbf Y = \mathbf W * \mathbf X$。
 
-**解** $\mathbf W$ 作用在 $\mathbf X$ 上，每次计算向右
+**解** $\mathbf W$ 作用在 $\mathbf X$ 上，每次计算向右或向下移动两列或两行。按照式 $y_{kl} = \sum_{m=1}^M \sum_{n=1}^N w_{m,n}x_{k+m-1,l+n-1}$ 可以计算每一个卷积的值，得到输出矩阵 $\mathbf Y$：
+$$
+\mathbf Y  = \begin{bmatrix}
+2 & 1 & 2 \\ 
+0 & 0 & 3 \\ 
+0 & 0 & 2 
+\end{bmatrix} * \begin{bmatrix} 
+3 & 2 & 0 & 1 & 0 & 2 & 1 \\
+0 & 2 & 1 & 2 & 1 & 2 & 1\\
+2 & 0 & 0 & 3 & 0 & 0 & 2\\
+2 & 3 & 1 & 0 & 1 & 1 & 3\\
+2 & 2 & 1 & 1 & 0 & 3 & 1\\
+1 & 1 & 0 & 0 & 1 & 2 & 2\\
+2 & 1 & 0 & 3 & 2 & 1 & 1
+\end{bmatrix} = 
+$$
 
 ![[Pasted image 20240801223017.png]]
 ![[Pasted image 20240801223029.png]]

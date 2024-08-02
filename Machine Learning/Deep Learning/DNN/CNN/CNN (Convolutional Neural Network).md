@@ -220,25 +220,128 @@ $$
 图 24.5 显示卷积进行特征检测的情况。输入矩阵 $\mathbf X$ 表示一个 $4 \times 4$ 图片，取值为 $0$ 或 $2$，图片中有一个 $L$ 字。核矩阵 $\mathbf W$ 表示一个特征，取值也是 $0$ 或 $2$，也包含一个 $L$ 字。输出矩阵表示特征检测值，当卷积滑动到图片中的 $L$ 字型边时，检测值最大。
 ![[Pasted image 20240801223103.png]]
 ###### 1.2.4 三维卷积
-三维卷积的输入和输出一般是由张量 (tensor) 表示的特征图 (注意矩阵表示的特征图可以看作是一张特征图，张量表示的特征图可以看作是多张特征图，本书都称为特征图)。这样的特征图有高度、宽度、深度。这里，将
-![[Pasted image 20240801223139.png]]
+三维卷积的输入和输出一般是由张量 (tensor) 表示的特征图 (注意矩阵表示的特征图可以看作是一张特征图，张量表示的特征图可以看作是多张特征图，本书都称为特征图)。这样的特征图有高度、宽度、深度。这里，将彩色图像数据也看作是一种特殊的特征图。
+
+图像处理常使用彩色图像，由红、绿、蓝三个通道的数据组成。每一个通道的数据由一个矩阵表示，矩阵的每一个元素对应一个像素，代表颜色的深度。三个矩阵排列起来构成一个张量。三维卷积作用于这样的张量数据 (特征图)。彩色图像三个通道的矩阵的行数和列数是特征图的高度和宽度，也就是彩色图像看上去的高度和宽度，通道数是特征图的深度 (见图 24.6 左侧)。
 ![[Pasted image 20240801223150.png]]
-![[Pasted image 20240801223159.png]]
-![[Pasted image 20240801223210.png]]
-![[Pasted image 20240801223219.png]]
-![[Pasted image 20240801223228.png]]
+通过卷积或汇聚运算也得到由张量表示的特征图。张量由多个大小相同的矩阵组成。矩阵的行数和列数是特征图的高度和宽度，矩阵的个数是特征图的深度 (见图 24.6 右侧)。三维卷积作用于这样的特征图。一个三维卷积的输出是一个矩阵。多个三维卷积的输出矩阵排列起来得到一个张量特征图。
+
+下面，以彩色图像数据为例介绍三维卷积的计算方法。输入是三通道数据，用张量表示 $\mathbf X = (\mathbf X_{\mathrm R},\mathbf X_{\mathrm G}, \mathbf X_{\mathrm B})$。其中 $\mathbf X_{\mathrm R},\mathbf X_{\mathrm{R}},\mathbf X_{\mathrm B}$ 是三个通道的数据，各自用矩阵表示。卷积核也用张量表示 $\mathbf W = (\mathbf W_{\mathrm R},\mathbf W_{\mathrm G},\mathbf W_{\mathrm B})$，其中 $\mathbf W_{\mathrm R},\mathbf W_{\mathrm G},\mathbf W_{\mathrm B}$ 是三个通道的 (二维) 卷积核，也各自由矩阵表示。那么，三维卷积可以通过以下等价关系计算。
+$$
+\mathbf Y = \mathbf X * \mathbf W = \mathbf X_{\mathrm R} * \mathbf W_{\mathrm{R}} + \mathbf X_\mathrm G * \mathbf W_{\mathrm G} + \mathbf X_{\mathrm B} * \mathbf W_{\mathrm B}
+$$
+也就是说以上的三维卷积计算首先使用三个不同的二维卷积对三个通道的输入矩阵分别进行二维卷积计算，然后将得到的三个输出矩阵相加，最终得到一个三维卷积的输出矩阵。注意这时二维卷积核的个数和通道的个数相等。
+
+**例 24.6** 输入张量由三个通道的矩阵组成 $\mathbf X = (\mathbf X_{\mathrm R},\mathbf X_{\mathrm G},\mathbf X_{\mathrm B})$，
+$$
+\mathbf X_{\mathrm R} = 
+\begin{bmatrix}
+3 & 2 & 0 & 1\\
+0 & 2 & 1 & 2\\
+2 & 0 & 0 & 3\\
+2 & 3 & 1 & 2
+\end{bmatrix},\mathbf X_{\mathrm G}=
+\begin{bmatrix}
+3 & 2 & 0 & 1\\
+2 & 1 & 0 & 1\\
+1 & 0 & 2 & 1\\
+2 & 1 & 0 & 0
+\end{bmatrix}, \mathbf X_{\mathrm B}=
+\begin{bmatrix}
+4 & 2 & 0 & 1\\
+0 & 3 & 1 & 0\\
+3 & 1 & 0 & 2\\
+2 & 2 & 0 & 1
+\end{bmatrix}
+$$
+卷积核张量由三个矩阵组成 $\mathbf W = (\mathbf W_{\mathrm R},\mathbf W_{\mathrm G},\mathbf W_{\mathrm B})$，
+$$
+\mathbf W_{\mathrm R} = 
+\begin{bmatrix} 
+2 & 1 & 2\\
+0 & 0 & 3\\
+0 & 0 & 2
+\end{bmatrix}, \mathbf W_{\mathrm G} = 
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & 0\\
+1 & 0 & 1
+\end{bmatrix}, \mathbf W_{\mathrm B} =
+\begin{bmatrix} 
+1 & 0 & -1\\
+1 & 0 & -1\\
+1 & 0 & -1
+\end{bmatrix}
+$$
+求在其上的三维卷积 $\mathbf Y$。
+
+**解** 按照式 $\mathbf Y = \mathbf X * \mathbf W = \mathbf X_{\mathrm R} * \mathbf W_{\mathrm{R}} + \mathbf X_\mathrm G * \mathbf W_{\mathrm G} + \mathbf X_{\mathrm B} * \mathbf W_{\mathrm B}$ 计算，可得输出矩阵 $\mathbf Y$：
+$$
+\mathbf Y = 
+\begin{bmatrix} 
+2 & 1 & 2\\
+0 & 0 & 3\\
+0 & 0 & 2
+\end{bmatrix} * 
+\begin{bmatrix}
+3 & 2 & 0 & 1\\
+0 & 2 & 1 & 2\\
+2 & 0 & 0 & 3\\
+2 & 3 & 1 & 2
+\end{bmatrix} + 
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & 0\\
+1 & 0 & 1
+\end{bmatrix} * 
+\begin{bmatrix}
+3 & 2 & 0 & 1\\
+2 & 1 & 0 & 1\\
+1 & 0 & 2 & 1\\
+2 & 1 & 0 & 0
+\end{bmatrix} + 
+\begin{bmatrix} 
+1 & 0 & -1\\
+1 & 0 & -1\\
+1 & 0 & -1
+\end{bmatrix} * 
+\begin{bmatrix}
+4 & 2 & 0 & 1\\
+0 & 3 & 1 & 0\\
+3 & 1 & 0 & 2\\
+2 & 2 & 0 & 1
+\end{bmatrix}
+$$
+输出矩阵是一个 $2\times2$ 矩阵。图 24.7 示意三维卷积计算的一步。
 ![[Pasted image 20240801223243.png]]
-
-
 #### 1.3 汇聚
 卷积神经网络还是用汇聚 (pooling) 运算。
 ###### 1.3.1 二维汇聚
+**定义 24.2 (二维汇聚)** 给定一个 $I\times J$ 输入矩阵 $\mathbf X = [x_{ij}]_{I\times J}$，一个虚设的 $M\times N$ 核矩阵，$M \ll I$，$N\ll J$。让核矩阵在输入矩阵上从左到右再从上到下滑动，将输入矩阵分成若干大小为 $M\times N$ 的子矩阵，这些子矩阵相互不重叠且完全覆盖整个输入矩阵。对每一个子矩阵求最大值或平均值，产生一个 $K\times L$ 输出矩阵 $\mathbf Y = [y_{kl}]_{K\times L}$，称此运算为汇聚或二位汇聚。对子矩阵取最大值的称为最大汇聚 (max pooling)，取平均值的称为平均汇聚 (mean pooling)，即有
+$$
+y_{kl} = \max_{\begin{aligned}m &\in \{1,2,\cdots,M\}\\ n &\in\{1,2,\cdots,N\} \end{aligned}} x_{k+m-1,l+n-1}
+$$
+或
+$$
+y_{kl} = \frac{1}{MN} \sum_{m=1}^M \sum_{n=1}^N x_{k+m-1,l+n-1}
+$$
+其中，$k=1,2,\cdots,K,l=1,2,\cdots,L$，$K$ 和 $L$ 满足
+$$
+K = \frac{I}{M} , L = \frac JN
+$$
+这里假设 $I$ 和 $J$ 分别可以被 $M$ 和 $N$ 整除。
+
+以上是基本汇聚的定义，
+
 ![[Pasted image 20240801223533.png]]
+
 ![[Pasted image 20240801223548.png]]
 ![[Pasted image 20240801223556.png]]
 ![[Pasted image 20240801223604.png]]
 ![[Pasted image 20240801223616.png]]
+
 ###### 1.3.2 三维汇聚
+
 ![[Pasted image 20240801223703.png]]
 ![[Pasted image 20240801223714.png]]
 ![[Pasted image 20240801223723.png]]

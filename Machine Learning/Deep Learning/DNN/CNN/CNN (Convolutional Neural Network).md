@@ -456,7 +456,7 @@ $$
 
 可以将 $I \times J \times K$ 张量展开成 $K$ 个 $I\times J$ 矩阵，将 $I' \times J' \times K'$ 张量展开成 $K'$ 个 $I'\times J'$ 矩阵。卷积层计算也可以写作
 $$
-\mathbf Z_{\mathbf k'}^{(l)} = \sum_{k} \mathbf W_{\mathbf k,\mathbf k'}
+\mathbf Z_{\mathbf k'}^{(l)} = \sum_{k} \mathbf W_{\mathbf k,\mathbf k'}^{(l)}
 $$
 
 

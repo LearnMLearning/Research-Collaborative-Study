@@ -112,9 +112,19 @@ $$
 $$
 核矩阵 $\mathbf W$ 不变，求卷积 $\mathbf Y = \mathbf W * \hat{\mathbf X}$。
 
-**解** $\mathbf W$ 作用在 0 填充
+**解** $\mathbf W$ 作用在 0 填充后的 $\mathbf X$ 上。按照式 $y_{kl} = \sum_{m=1}^M \sum_{n=1}^N w_{m,n}x_{k+m-1,l+n-1}$ 可以计算每一个卷积的值，得到输出矩阵 $\mathbf Y$：
+$$
+\mathbf Y = \begin{bmatrix}2 & 1 & 2 \\ 0 & 0 & 3 \\ 0 & 0 & 2\end{bmatrix} * \begin{bmatrix}0 & 0 & 0 & 0 & 0 & 0\\ 0 & 3 & 2 & 0 & 1 & 0 \\ 0 & 0 & 2 & 1 & 2 & 0\\ 0 & 2 & 0 & 0 & 3 & 0 \\ 0 & 2 & 3 & 1 & 2 & 0\\ 0 & 0 & 0 & 0 & 0 & 0  \end{bmatrix} = 
+\begin{bmatrix}
+10 & 2 & 7 & 0\\
+13 & 11 & 18 & 1\\
+10 & 6 & 22 & 4\\
+11 & 7 & 12 & 3
+\end{bmatrix}
+$$
+输入矩阵通过填充由 $4\times 4$ 变为 $6\times 6$ 的矩阵，核矩阵是 $3\times 3$ 矩阵，输出矩阵是 $4\times 4$ 矩阵。
 
-![[Pasted image 20240801222950.png]]
+
 ![[Pasted image 20240801223003.png]]
 ![[Pasted image 20240801223017.png]]
 ![[Pasted image 20240801223029.png]]

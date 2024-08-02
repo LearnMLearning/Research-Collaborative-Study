@@ -548,7 +548,10 @@ $$
 ## 2 卷积神经网络的学习算法
 卷积神经网络的学习算法也是反向传播算法，与前馈神经网络学习的反向传播算法相似，不同点在于正向和反向传播基于卷积函数。
 #### 2.1 卷积导数
-设有函数 $f(\mathbf Z)$，$\mathbf Z=\mathbf W * \mathbf X$，其中 $\mathbf X = [x_{ij}]_{I\times J}$ 是输入矩阵，$\mathbf W = [] 
+设有函数 $f(\mathbf Z)$，$\mathbf Z=\mathbf W * \mathbf X$，其中 $\mathbf X = [x_{ij}]_{I\times J}$ 是输入矩阵，$\mathbf W = [w_{mn}]_{M\times N}$ 是卷积核，$\mathbf Z = [z_{kl}]_{K\times L}$ 是净输入矩阵，则 $f(\mathbf Z)$ 对 $\mathbf W$ 的偏导数如下：
+$$
+\frac{}{}
+$$
 ![[Pasted image 20240801224153.png]]
 ![[Pasted image 20240801224206.png]]
 

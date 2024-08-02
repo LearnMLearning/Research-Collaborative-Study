@@ -170,7 +170,15 @@ $$
 8 & 10 & 13
 \end{bmatrix}
 $$
+输入矩阵是 $7\times 7$ 矩阵，核矩阵是 $3\times 3$ 矩阵，输出矩阵是 $3\times 3$ 矩阵。图 24.4 显示这个卷积计算的两步。
 
+卷积运算依赖于卷积核的大小、填充的大小、步幅。这些是卷积运算的超参数。假设输入矩阵的大小是 $I\times J$，卷积核的大小是 $M \times N$，两个方向填充的大小是 $P$ 和 $Q$，步幅的大小是 $S$，则卷积的输出矩阵的大小 $I \times J$ 满足
+$$
+K \times L =\left \lfloor \frac{I + 2P - M}{S} + 1\right \rfloor\times \left \lfloor \frac{J+2Q-N}{S} + 1 \right \rfloor
+$$
+这里 $\lfloor a \rfloor$ 表示不超过 $a$ 的最大整数。填充 $P$ 和 $Q$ 的最大值分别是 $M-1$ 和 $N-1$，这时的填充称为全填充 (full padding)。
+
+在图像处理中，卷积实现的是特征检测。最基本的情况是二维卷积，卷积的输入矩阵表示灰度图像，矩阵的一个元素对应图像的一个像素，代表像素上的灰度 (权重)，一个卷积核表示
 ![[Pasted image 20240801223029.png]]
 ![[Pasted image 20240801223041.png]]
 ![[Pasted image 20240801223052.png]]

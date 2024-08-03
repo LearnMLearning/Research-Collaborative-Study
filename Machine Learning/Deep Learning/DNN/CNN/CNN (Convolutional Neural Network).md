@@ -550,15 +550,24 @@ $$
 #### 2.1 卷积导数
 设有函数 $f(\mathbf Z)$，$\mathbf Z=\mathbf W * \mathbf X$，其中 $\mathbf X = [x_{ij}]_{I\times J}$ 是输入矩阵，$\mathbf W = [w_{mn}]_{M\times N}$ 是卷积核，$\mathbf Z = [z_{kl}]_{K\times L}$ 是净输入矩阵，则 $f(\mathbf Z)$ 对 $\mathbf W$ 的偏导数如下：
 $$
-\frac{}{}
+\frac{\partial f(\mathbf Z)}{\partial w_{mn}} = \sum_{k=1}^K \sum_{l=1}^L\frac{\partial z_{kl}}{\partial w_{mn}} \frac{\partial f(\mathbf Z)}{\partial z_{kl}} = \sum_{k=1}^{K} \sum_{l=1}^L x_{k+m-1,l+n-1} \frac{\partial f(\mathbf Z)}{\partial z_{kl}}
 $$
-![[Pasted image 20240801224153.png]]
-![[Pasted image 20240801224206.png]]
-
-
+整体可以写作
+$$
+\frac{\partial f(\mathbf Z)}{\partial \mathbf W} = \frac{\partial f(\mathbf Z)}{\partial Z} * \mathbf X
+$$
+$f(\mathbf Z)$ 对 $\mathbf X$ 的偏导数如下：
+$$
+\frac{f(\mathbf Z)}{\partial x_{ij}} = \sum_{k=1}^{K} \sum_{l=1}^{L} \frac{z_{kl}}{\partial x_{ij}} \frac{\partial f(\mathbf Z)}{\partial z_{kl}} = \sum_{k=1}^{K} \sum_{l=1}^L w_{i-k+1,j-1+1} \frac{\partial f(\mathbf Z)}{\partial z_{kl}}
+$$
+整体可以写作
+$$
+\frac{\partial f(\mathbf Z)}{\partial \mathbf X} = \mathrm{rot180}\left(\frac{\partial f(\mathbf Z)}{\partial \mathbf Z} \right) * \mathbf W = \mathrm{rot180}(\mathbf W)*\frac{\partial f(\mathbf Z)}{\partial \mathbf Z}
+$$其中，$\mathrm{rot 180}()$ 表示矩阵 180 度旋转，这里的卷积 $*$ 是对输入矩阵进行全填充后的卷积。
 #### 2.2 反向传播算法
-![[Pasted image 20240801224223.png]]
+卷积神经网络和前馈神经网络一样，也是通过反向传播算法求出损失函数对各层参数的梯度，利用随机梯度下降法更新模型参数。对于每次迭代，首先通过正向传播从前往后传递信号，然后通过反向传播从后往前传递误差，最后求损失函数对每层的参数的梯度，对每层的参数进行更新。对于卷积神经网络，特殊的是卷积层和汇聚层的参数更新。
 ###### 2.2.1 卷积层
+设第 $l$ 层为卷积层。由式 
 ![[Pasted image 20240801224250.png]]
 ![[Pasted image 20240801224310.png]]
 ###### 2.2.2 汇聚层

@@ -572,6 +572,7 @@ $$
 \mathbf Z_{k'}^{(l)} = \sum_{k=1}^{K} \mathbf W_{k,k'}^{(l)} * \mathbf X_{k}^{(l-1)} + \mathbf b_{k'}^{(l)}
 $$
 其中，$\mathbf X_{k}^{(l-1)}$ 是第 $l$ 层的第 $k$ 个输入矩阵，$\mathbf W_{k,k'}^{(l)}$ 是第 $l$ 层的第 $k\times k'$ 个卷积核矩阵，$\mathbf b_{k'}^{(l)}$ 是第 $l$ 层的第 $k'$ 个偏置矩阵。第 $k'$ 个输出矩阵 $\mathbf X_{k'}^{(l)}$ 为
+
 $$
 \mathbf X_{k'}^{(l)} = a\left(\mathbf Z_{k'}^{(l)} \right)
 $$

@@ -567,7 +567,15 @@ $$其中，$\mathrm{rot 180}()$ 表示矩阵 180 度旋转，这里的卷积 $*$
 #### 2.2 反向传播算法
 卷积神经网络和前馈神经网络一样，也是通过反向传播算法求出损失函数对各层参数的梯度，利用随机梯度下降法更新模型参数。对于每次迭代，首先通过正向传播从前往后传递信号，然后通过反向传播从后往前传递误差，最后求损失函数对每层的参数的梯度，对每层的参数进行更新。对于卷积神经网络，特殊的是卷积层和汇聚层的参数更新。
 ###### 2.2.1 卷积层
-设第 $l$ 层为卷积层。由式 $\mathbf Z_{\mathbf k'}^{(l)} = \sum_{k} \mathbf W_{k,k'}^{(l)} * \mathbf X_k ^{(l-1)} + \mathbf b_{k'}^{(l)}$ 和式 $\mathbf X_{k'}^{(l)} = a \left(\mathbf Z_{k'}^{(l)} \right)$ 得知
+设第 $l$ 层为卷积层。由式 $\mathbf Z_{\mathbf k'}^{(l)} = \sum_{k} \mathbf W_{k,k'}^{(l)} * \mathbf X_k ^{(l-1)} + \mathbf b_{k'}^{(l)}$ 和式 $\mathbf X_{k'}^{(l)} = a \left(\mathbf Z_{k'}^{(l)} \right)$ 可知，第 $l$ 层的第 $k'$ 个净输入矩阵 $\mathbf Z_{k'}^{(l)}$ 为
+$$
+\mathbf Z_{k'}^{(l)} = \sum_{k=1}^{K} \mathbf W_{k,k'}^{(l)} * \mathbf X_{k}^{(l-1)} + \mathbf b_{k'}^{(l)}
+$$
+其中，$\mathbf X_{k}^{(l-1)}$ 是第 $l$ 层的第 $k$ 个输入矩阵，$\mathbf W_{k,k'}^{(l)}$ 是第 $l$ 层的第 $k\times k'$ 个卷积核矩阵，$\mathbf b_{k'}^{(l)}$ 是第 $l$ 层的第 $k'$ 个偏置矩阵。第 $k'$ 个输出矩阵 $\mathbf X_{k'}^{(l)}$ 为
+$$
+\mathbf X_{k'}^{(l)} = a\left(\mathbf Z_{k'}^{(l)} \right)
+$$
+
 ![[Pasted image 20240801224250.png]]
 
 ###### 2.2.2 汇聚层

@@ -569,7 +569,7 @@ $$其中，$\mathrm{rot 180}()$ 表示矩阵 180 度旋转，这里的卷积 $*$
 ###### 2.2.1 卷积层
 设第 $l$ 层为卷积层。由式 $\mathbf Z_{\mathbf k'}^{(l)} = \sum_{k} \mathbf W_{k,k'}^{(l)} * \mathbf X_k ^{(l-1)} + \mathbf b_{k'}^{(l)}$ 和式 $\mathbf X_{k'}^{(l)} = a \left(\mathbf Z_{k'}^{(l)} \right)$ 得知
 ![[Pasted image 20240801224250.png]]
-![[Pasted image 20240801224310.png]]
+
 ###### 2.2.2 汇聚层
 ![[Pasted image 20240801224333.png]]
 ![[Pasted image 20240801224344.png]]

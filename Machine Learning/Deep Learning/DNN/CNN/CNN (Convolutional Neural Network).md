@@ -607,10 +607,9 @@ $$
 ![[Pasted image 20240801224421.png]]
 ![[Pasted image 20240801224433.png]]
 ## 3 图像分类中的应用
-图像分类是将
-![[Pasted image 20240801224901.png]]
-
+图像分类是将图片自动分配到已有类别的任务。ImageNet 是著名的图像分类比赛。本节介绍卷积神经网络在图像分类中的应用，特别是有代表性的 AlexNet 和残差网络 ResNet
 #### 3.1 AlexNet
+
 ![[Pasted image 20240801224926.png]]
 ![[Pasted image 20240801224940.png]]
 

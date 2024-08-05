@@ -660,11 +660,14 @@ $$
 $$
 \mathbf y = \mathrm{relu}(\mathbf x + f(\mathbf x))
 $$
-这里的实现是基于想法
+这里的实现是基于想法 (式 $\mathbf x_i = \mathbf x_{i-1} + f_i(\mathbf x_{i-1}), \, i = 1,2,\cdots,n$) 的变种。后续残差网络有改进版，更直接的实现了基本想法。
 
-![[Pasted image 20240801225140.png]]
+当需要让输入 $\mathbf x$ 和输出 $\mathbf y$ 有不同的维度时，不能简单进行输入和残差的求和。这时可以对输入 $\mathbf x$ 进行一个线性变化，使用另一个权重矩阵 $\mathbf W_3$：
+$$
+\mathbf W_3 \mathbf x + f(\mathbf x)
+$$
 ###### 3.2.3 模型特点
-
+残差网络可以展开成为多个神经网络
 ![[Pasted image 20240801225202.png]]
 ![[Pasted image 20240801225212.png]]
 ![[Pasted image 20240801225224.png]]

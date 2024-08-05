@@ -639,10 +639,29 @@ $$
 ###### 3.2.2 模型架构
 残差网络可以是基于前馈神经网络的，也可以是基于卷积神经网络的，先考虑前者。残差网络由很多个残差单元 (residual unit) 串联组成 (见式 $\mathbf x_i = \mathbf x_{i-1} + f_i(\mathbf x_{i-1}), \, i = 1,2,\cdots,n$)。每一个残差单元相当于一般的前馈网络的两层，每一层由线性变换和非线性变换组成，还有一个残差连接 (residual connection)，如图24.19所示。这里为了简单，省略仿射变换的配置，所以是线性变换。
 ![[Pasted image 20240801225050.png]]
-假设残差单元输入是向量 $\mathbf x$，输出是向量 $\mathbf y$。首先，在第一层通过基于权重矩阵 $\mathbf W_1$ 的线性变换将输入 $\mathbf x$ 转换为 $\mathbf z_1$ (式 $\mathbf z_1 = \mathbf W_1\mathbf x$)，再通过非线性变换 relu 将 $\mathbf z_1$ 转换为 $\mathbf x_1$ (式 $\mathbf x_1 = \mathrm{relu} (\mathbf z_1))$。然后，在第二层通过基于权重矩阵 $\mathbf W_2$ 的线性变换将 $\mathbf x_1$ 转换为 $\mathbf z_2$ (式 $\mathbf z_2 = \mathbf W_2\mathbf x_1$)，求 $\mathbf z_2$ 与输入 $\mathbf x$ 之和，再通过非线性变换 relu 对这个
-![[Pasted image 20240801225103.png]]
-![[Pasted image 20240801225115.png]]
-![[Pasted image 20240801225131.png]]
+假设残差单元输入是向量 $\mathbf x$，输出是向量 $\mathbf y$。首先，在第一层通过基于权重矩阵 $\mathbf W_1$ 的线性变换将输入 $\mathbf x$ 转换为 $\mathbf z_1$ (式 $\mathbf z_1 = \mathbf W_1\mathbf x$)，再通过非线性变换 relu 将 $\mathbf z_1$ 转换为 $\mathbf x_1$ (式 $\mathbf x_1 = \mathrm{relu} (\mathbf z_1))$。然后，在第二层通过基于权重矩阵 $\mathbf W_2$ 的线性变换将 $\mathbf x_1$ 转换为 $\mathbf z_2$ (式 $\mathbf z_2 = \mathbf W_2\mathbf x_1$)，求 $\mathbf z_2$ 与输入 $\mathbf x$ 之和，再通过非线性变换 relu 对这个和进行转换得到输出 $\mathbf y$ (式 $\mathbf y =\mathrm{relu}(\mathbf x + \mathbf z+2)$)，其中 $\mathbf z_2$ 与 $\mathbf x$ 之和计算通过残差连接实现。
+$$
+\mathbf z_1 = \mathbf W_1 \mathbf x
+$$
+$$
+\mathbf x_1 = \mathrm{relu} (\mathbf z_1)
+$$
+$$
+\mathbf z_2 = \mathbf W_2 \mathbf x_1
+$$
+$$
+\mathbf y = \mathrm{relu} (\mathbf x + \mathbf z_2)
+$$
+可以看出残差单元的前一层半 (上四式) 通过前馈神经网络实现了残差单元的函数：
+$$
+\mathbf f(x) = \mathbf W_2 \mathrm{relu} (\mathbf W_1 x)
+$$
+对输入 $\mathbf x$ 和残差 $f(\mathbf x)$ 的和再通过 $\mathrm{relu}$ 就得出输出 $\mathbf y$。
+$$
+\mathbf y = \mathrm{relu}(\mathbf x + f(\mathbf x))
+$$
+这里的实现是基于想法
+
 ![[Pasted image 20240801225140.png]]
 ###### 3.2.3 模型特点
 

@@ -637,7 +637,7 @@ $$
 
 考虑到 $\mathbf x$ 到 $h(\mathbf x)$ 的映射，如果主体是恒等部分 $\mathbf x$ 的话，那么残差部分 $h(\mathbf x)-\mathbf x$ 应该更容易学习，这样可以增加残差单元的个数（网络的层数），更好地对真实模型进行近似。而事实也证明了这个想法的正确性。
 ###### 3.2.2 模型架构
-
+残差网络可以是基于前馈神经网络的，也可以是基于卷积神经网络的，先考虑前者。残差网络由很多个残差单元 (residual unit) 串联组成 (见式 $\mathbf x_i = \mathbf x_{i-1} + f_i(\mathbf x_{i-1}), \, i = 1,2,\cdots,n$)
 ![[Pasted image 20240801225041.png]]
 ![[Pasted image 20240801225050.png]]
 ![[Pasted image 20240801225103.png]]

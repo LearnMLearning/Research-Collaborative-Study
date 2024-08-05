@@ -601,10 +601,9 @@ $$
 $$
 \delta_k^{(l-1)} = \frac{\partial L}{\partial \mathbf Z_k^{(l-1)}} = \frac{\partial \mathbf X_k^{(l-1)}}{\partial \mathbf Z_k^{(l-1)}} \frac{\partial L}{\partial \mathbf X_k^{(l-1)}} = \frac{\partial \mathbf X_{k}^{(l-1)}}{\partial \mathbf Z_{k}^{(l-1)}} \frac{\partial \mathbf Z_k^{(l)}}{\partial \mathbf X_k^{(l-1)}} \frac{\partial L}{\partial \mathbf Z_k^{(l)}} = \frac{\partial a}{\partial \mathbf Z_k^{(l-1)}} \odot \mathrm{up\_sample} \left(\delta_k^{ (l)} \right)
 $$
-这里 $\odot$ 表示矩阵的
-
-![[Pasted image 20240801224344.png]]
+这里 $\odot$ 表示矩阵的逐元素积：$\mathrm{up\_sample} \left(\mathbf \delta_k^{(l)} \right)$ 是误差矩阵 $\mathbf \delta_k^{(l)}$ 的上采样，是汇聚（下采样）的反向运算。最大汇聚时，$\delta_k^{(l)}$ 从第 $l$ 层的神经元传递到第 $l-1$ 层的输出最大的相连神经元：平均汇聚时，$\delta_{k}^{(l)}$ 从第 $l$ 层的神经元平均分配到第 $l-1$ 层的相连神经元。以上计算可以扩展到第 $l-1$ 层的所有 $K$ 个误差矩阵上。 
 ###### 2.2.3 算法
+算法 24.1 给
 ![[Pasted image 20240801224406.png]]
 ![[Pasted image 20240801224421.png]]
 ![[Pasted image 20240801224433.png]]

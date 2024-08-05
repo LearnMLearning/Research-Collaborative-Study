@@ -577,11 +577,32 @@ $$
 \mathbf X_{k'}^{(l)} = a\left(\mathbf Z_{k'}^{(l)} \right)
 $$
 由此可以进行从第 $l-1$ 层到第 $l$ 层的正向传播，$\mathbf X_{k}^{(l-1)}$ 从第 $l-1$ 层的神经元传递到第 $l$ 层的相连神经元，得到 $\mathbf X_{k'}^{(l)}$。以上计算可以扩展到第 $l$ 层的所有 $K'$ 个输出矩阵上，
-再考虑第 $l$ 层的梯度更新。第 $l$ 层的第 $k$ 个输入矩阵是 $\mathbf X_{k}^{(l-1)}$
-![[Pasted image 20240801224250.png]]
-
+再考虑第 $l$ 层的梯度更新。第 $l$ 层的第 $k$ 个输入矩阵是 $\mathbf X_{k}^{(l-1)}$。设第 $l$ 层的第 $k'$ 个误差矩阵 $\delta_{k'}^{(l)}$ 是
+$$
+\delta_{k'}^{(l)} = \frac{\partial L}{\partial \mathbf Z_{k'}^{(l)}}
+$$
 ###### 2.2.2 汇聚层
-![[Pasted image 20240801224333.png]]
+设第 $l$ 层为汇聚层。由式 $\mathbf X_{k}^{(l)} = \mathrm{pooling} \left(\mathbf X_k^{(l-1)} \right)$ 可知，第 $l$ 层的第 $k$ 个输出矩阵 $\mathbf X_{k}^{(l)}$ 为
+$$
+\mathbf X_k^{(l)} = \mathbf Z_k^{(l)} = \mathrm{pooling} \left(\mathbf X_k^{(l-1)}\right)
+$$
+这里 $\mathbf X_k^{(l-1)}$ 是第 $l$ 层的第 $k$ 个输入矩阵。引入第 $l$ 层的第 $k$ 个净输入矩阵 $\mathbf Z_k^{(l)}$，净输入 $\mathbf Z_k^{(l)}$ 和输出 $\mathbf X_k^{(l)}$ 之间是恒等变换。由此可以进行从第 $l-1$ 层到第 $l$ 层的正向传播，$\mathbf X_{k}^{(l-1)}$ 从第 $l-1$ 层的神经元传递到第 $l$ 层的相连神经元，得到 $\mathbf X_k^{(l)}$。以上计算可以扩展到第 $l$ 层的所有 $K$ 个输出矩阵上。
+
+汇聚层没有参数，所以在学习过程中没有参数更新。
+再考虑从第 $l$ 层到第 $l-1$ 层的误差反向传播。设第 $l$ 层的第 $k$ 个误差矩阵是
+$$
+\delta_{k}^{(l)} = \frac{\partial L}{\partial \mathbf Z_{k}^{(l)}}
+$$
+第 $l-1$ 层的第 $k$ 个误差矩阵 $\delta_k^{(l-1)}$ 是
+$$
+\delta_k^{(l-1)} = \frac{\partial L}{\partial \mathbf Z_k^{(l-1)}}
+$$
+通过 $\delta_{k}^{(l)}$ 计算 $\delta_k^{(l-1)}$ 。由链式法则可得：
+$$
+\delta_k^{(l-1)} = \frac{\partial L}{\partial \mathbf Z_k^{(l-1)}} = \frac{\partial \mathbf X_k^{(l-1)}}{\partial \mathbf Z_k^{(l-1)}} \frac{\partial L}{\partial \mathbf X_k^{(l-1)}} = \frac{\partial \mathbf X_{k}^{(l-1)}}{\partial \mathbf Z_{k}^{(l-1)}} \frac{\partial \mathbf Z_k^{(l)}}{\partial \mathbf X_k^{(l-1)}} \frac{\partial L}{\partial \mathbf Z_k^{(l)}} = \frac{\partial a}{\partial \mathbf Z_k^{(l-1)}} \odot \mathrm{up\_sample} \left(\delta_k^{ (l)} \right)
+$$
+这里 $\odot$ 表示矩阵的
+
 ![[Pasted image 20240801224344.png]]
 ###### 2.2.3 算法
 ![[Pasted image 20240801224406.png]]

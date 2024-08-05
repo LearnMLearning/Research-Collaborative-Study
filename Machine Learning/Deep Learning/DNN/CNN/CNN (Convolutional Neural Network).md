@@ -637,9 +637,9 @@ $$
 
 考虑到 $\mathbf x$ 到 $h(\mathbf x)$ 的映射，如果主体是恒等部分 $\mathbf x$ 的话，那么残差部分 $h(\mathbf x)-\mathbf x$ 应该更容易学习，这样可以增加残差单元的个数（网络的层数），更好地对真实模型进行近似。而事实也证明了这个想法的正确性。
 ###### 3.2.2 模型架构
-残差网络可以是基于前馈神经网络的，也可以是基于卷积神经网络的，先考虑前者。残差网络由很多个残差单元 (residual unit) 串联组成 (见式 $\mathbf x_i = \mathbf x_{i-1} + f_i(\mathbf x_{i-1}), \, i = 1,2,\cdots,n$)
-![[Pasted image 20240801225041.png]]
+残差网络可以是基于前馈神经网络的，也可以是基于卷积神经网络的，先考虑前者。残差网络由很多个残差单元 (residual unit) 串联组成 (见式 $\mathbf x_i = \mathbf x_{i-1} + f_i(\mathbf x_{i-1}), \, i = 1,2,\cdots,n$)。每一个残差单元相当于一般的前馈网络的两层，每一层由线性变换和非线性变换组成，还有一个残差连接 (residual connection)，如图24.19所示。这里为了简单，省略仿射变换的配置，所以是线性变换。
 ![[Pasted image 20240801225050.png]]
+假设残差单元输入是向量 $\mathbf x$，输出是向量 $\mathbf y$。首先，在第一层通过基于权重矩阵 $\mathbf W_1$ 的线性变换将输入 $\mathbf x$ 转换为 $\mathbf z_1$ (式 $\mathbf z_1 = \mathbf W_1\mathbf x$)，再通过
 ![[Pasted image 20240801225103.png]]
 ![[Pasted image 20240801225115.png]]
 ![[Pasted image 20240801225131.png]]

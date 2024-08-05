@@ -667,10 +667,17 @@ $$
 \mathbf W_3 \mathbf x + f(\mathbf x)
 $$
 ###### 3.2.3 模型特点
-残差网络可以展开成为多个神经网络
-![[Pasted image 20240801225202.png]]
+残差网络可以展开成为多个神经网络模块的集成，如图 24.20 所示。假设有由三个单元组成的残差神经网络，输入是 $\mathbf x_0$，输出是 $\mathbf x_3$。这个网络可以展开写作
+$$\begin{aligned}
+\mathbf x_3 &= \mathbf x_2 + f_3(\mathbf x_2) = (\mathbf x_1 + f_{2}(\mathbf x_1))+f_3 (\mathbf x_1 + f_2(\mathbf x_1))\\
+&= (\mathbf x_0 + f_1(\mathbf x_0)) + f_2(\mathbf x_0 +f_1(\mathbf x_0)) +f_3 [(\mathbf x_0 + f_1(\mathbf x_0))+f_2(\mathbf x_0 + f_1(\mathbf x_0))]
+\end{aligned}$$
+其中，$f_1,f_2,f_3$ 是式 $\mathbf f(x) = \mathbf W_2 \mathrm{relu} (\mathbf W_1 x)$ 定义的残差单元函数。
 ![[Pasted image 20240801225212.png]]
+![[Pasted image 20240806003744.png]]
+
 ![[Pasted image 20240801225224.png]]
+
 ###### 3.2.4 图像分类
 
 ![[Pasted image 20240801225245.png]]

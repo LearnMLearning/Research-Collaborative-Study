@@ -603,14 +603,11 @@ $$
 $$
 这里 $\odot$ 表示矩阵的逐元素积：$\mathrm{up\_sample} \left(\mathbf \delta_k^{(l)} \right)$ 是误差矩阵 $\mathbf \delta_k^{(l)}$ 的上采样，是汇聚（下采样）的反向运算。最大汇聚时，$\delta_k^{(l)}$ 从第 $l$ 层的神经元传递到第 $l-1$ 层的输出最大的相连神经元：平均汇聚时，$\delta_{k}^{(l)}$ 从第 $l$ 层的神经元平均分配到第 $l-1$ 层的相连神经元。以上计算可以扩展到第 $l-1$ 层的所有 $K$ 个误差矩阵上。 
 ###### 2.2.3 算法
-算法 24.1 给
-![[Pasted image 20240801224406.png]]
+算法 24.1 给出反向传播法的一次迭代的算法。不失一般性，假设卷积神经网络全部由卷积层组成，因为汇聚层和全连接层都可以看作是特殊的卷积层。网络有 $s$ 层，正向传播各层的输出的张量 $\mathbf X^{(1)},\mathbf X^{(2)},\cdots,\mathbf X^{(s)}$，反向传播各层传递的误差是张量 $\delta^{(s)},\cdots,\delta^{(2)},\delta^{(1)}$。各层的参数是张量 $\mathbf W^{(1)}, \mathbf W^{(2)},\cdots,\mathbf W^{(s)}$ 和 $\mathbf b^{(1)},\mathbf b^{(2)},\cdots, \mathbf b^{(s)}$。
 ![[Pasted image 20240801224421.png]]
 ![[Pasted image 20240801224433.png]]
-
-
-
 ## 3 图像分类中的应用
+图像分类是将
 ![[Pasted image 20240801224901.png]]
 
 #### 3.1 AlexNet

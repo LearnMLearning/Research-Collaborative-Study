@@ -629,6 +629,11 @@ h(\mathbf x) = \mathbf x + (h(\mathbf x) - \mathbf x)
 $$
 也就是恒等变换 $\mathbf x$ 和残差 $h(\mathbf x)-\mathbf x$ 之和的形式。残差网络的想法是用一个神经网络 $f(\mathbf x)$ 近似残差 $h(\mathbf x) - \mathbf x$，用 $\mathbf x + f(\mathbf x)$ 近似真实模型 $h(\mathbf x)$，整个过程以递归的方式进行。
 
+残差网络进行以下递归计算：
+$$
+\mathbf x_i = \mathbf x_{i-1} + f_i(\mathbf x_{i-1}), \, i = 1,2,\cdots,n
+$$
+其中，$\mathbf x_i$ 表示第 $i$ 次递归计算结果，设 $\mathbf x_0 = \mathbf x$；$f_i(\mathbf x)$ 表示第 $i$ 次计算的计算单元，称为残差单元，每一个残差单元都有相同的结构、不同的参数。
 
 ![[Pasted image 20240801225008.png]]
 ###### 3.2.2 模型架构

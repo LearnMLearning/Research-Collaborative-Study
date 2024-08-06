@@ -617,9 +617,17 @@ $$
 
 图 23.21 是一个含有加法运算的计算图例。起点 $u,b$ 是输入变量，终点 $L$ 是输出变量，中间结点 $z$ 是中间变量，变量 $z$ 由加法运算 $z=u+b$ 决定，变量 $L$ 由函数 $L=l(z)$ 决定。计算图整体表示的是复合函数 $L=l(u+b)$。在计算图上的正向传播就是计算复合函数 $L=l(u+b)$ 的过程。从起点 $u,b$ 开始，顺着有向边，在结点 $z,L$ 依次进行计算，先后得到函数值 $z,L$；其中先将 $u$ 和 $b$ 相加得到 $z$，然后对 $z$ 计算 $l(z)$ 得到 $L$。反向传播就是计算复合函数 $L=l(u+b)$ 对变量的梯度的过程。从终点 $L$ 开始，逆着有向边，在结点 $z,u,b$ 依次进行计算，先后得到梯度 $\frac{\mathrm d L}{\mathrm dz},\frac{\mathrm d L}{\mathrm d u},\frac{\mathrm d L}{\mathrm d b}$；其中先根据定义计算 $\frac{\mathrm d L}{\mathrm d z}$，再利用链式规则计算 $\frac{\mathrm d L}{\mathrm d u},\frac{\mathrm d L}{\mathrm d b}$：
 $$
-
+\frac{\mathrm dL}{\mathrm du}  = \frac{\mathrm d L}{\mathrm d z}\cdot \frac{\mathrm d z}{\mathrm d u} = \frac{\mathrm d L}{\mathrm d z}\cdot 1
 $$
-![[Pasted image 20240715180507.png]]
+$$
+\frac{\mathrm dL}{\mathrm db}  = \frac{\mathrm d L}{\mathrm d z}\cdot \frac{\mathrm d z}{\mathrm d b} = \frac{\mathrm d L}{\mathrm d z}\cdot 1
+$$
+梯度 $\frac{\mathrm d L}{\mathrm d z}$ 在加法结点 $z$ 的反向传播保持不变传到输入结点 $u,b$。
+![[Pasted image 20240806142859.png]]
+图 23.22 给出含有 $\mathrm S$ 型函数的计算图例。起点 $z,y$ 是输入变量，终点 $L$ 是输出变量，中间结点 $f$ 是中间变量。变量 $f$ 由 $\mathrm S$ 型函数 $f = \sigma(z)$ 决定，变量 $L$ 由损失函数 $L=l(f,y)$ 决定。计算图整体表示的是复合函数 $L=l(\sigma(z),y)$。在计算图上进行的正向传播就是计算复合函数 $L=l(\sigma(z),y)$ 的过程。从起点 $z,y$ 开始，顺着有向边，在结点 $f,L$ 依次进行计算，先后
+![[Pasted image 20240806142948.png]]
+得到函数值 
+
 ![[Pasted image 20240715180516.png]]
 ![[Pasted image 20240715180524.png]]
 

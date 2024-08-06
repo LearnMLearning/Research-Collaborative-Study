@@ -607,9 +607,12 @@ $$
 
 下面通过具体例子来说明计算图的原理。图 23.20 是一个含有乘法运算的计算图例，上图显示正向传播，下图显示反向传播。起点 $x,w$ 是输入变量，终点 $L$ 是输出变量，中间结点 $u$ 是中间变量。变量 $u$ 由乘法运算 $u=w\cdot x$ 决定，变量 $L$ 由函数 $L=l(u)$ 决定。计算图整体表示的是复合函数 $L=l(w\cdot x)$。在计算图上的正向传播就是计算复合函数 $L = l(w\cdot x)$ 的过程。从起点 $x,w$ 开始，顺着有向边，在结点 $u,L$ 依次进行计算，先后得到函数值 $u,L$；其中先将 $x$ 和 $w$ 相乘得到 $u$，然后对 $u$ 计算 $l(u)$ 得到 $L$。反向传播就是计算复合函数 $L=l(w\cdot x)$ 对变量的梯度的过程。从终点 $L$ 开始，逆着有向边，在结点 $u,x,w$ 依次进行计算，先后得到梯度 $\frac{\mathrm dL}{\mathrm d u},\frac{\mathrm dL}{\mathrm d x},\frac{\mathrm dL}{\mathrm d w}$；其中先根据定义计算 $\frac{\mathrm d L}{\mathrm d u}$，再利用链式规则计算 $\frac{\mathrm d L}{\mathrm d x},\frac{\mathrm d L}{\mathrm d w}$：
 $$\begin{aligned}
-\frac{\mathrm d L}{\mathrm d w} = \frac{\mathrm d L}{\mathrm du} \cdot \frac{}{\mathrm d w}
+\frac{\mathrm d L}{\mathrm d w} = \frac{\mathrm d L}{\mathrm du} \cdot \frac{\mathrm d u}{\mathrm d w} = \frac{\mathrm d L}{\mathrm d u} \cdot x
 \end{aligned}$$
-
+$$
+\frac{\mathrm d L}{\mathrm dx} = \frac{\mathrm d L}{\mathrm d u} \cdot \frac{\mathrm du}{\mathrm d x} = \frac{\mathrm dL}{\mathrm du}\cdot w
+$$
+梯度在乘法结点 $u$ 的反向传播呈现 “翻转“ 现象，正向传播
 
 ![[Pasted image 20240715180455.png]]
 ![[Pasted image 20240715180507.png]]

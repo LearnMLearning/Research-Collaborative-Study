@@ -603,7 +603,7 @@ $$
 $$
 \frac{\partial y}{\partial x_i}  = \sum_j \frac{\partial y}{\partial z_j} \frac{\partial z_j}{\partial x_i}
 $$
-
+train
 ![[Pasted image 20240715180444.png]]
 ![[Pasted image 20240715180455.png]]
 ![[Pasted image 20240715180507.png]]

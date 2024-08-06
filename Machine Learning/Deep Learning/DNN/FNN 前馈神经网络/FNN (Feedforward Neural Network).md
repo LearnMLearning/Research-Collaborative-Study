@@ -603,10 +603,8 @@ $$
 $$
 \frac{\partial y}{\partial x_i}  = \sum_j \frac{\partial y}{\partial z_j} \frac{\partial z_j}{\partial x_i}
 $$
-train
+前馈神经网络学习的随机梯度下降法和梯度下降法可以在计算图上实现。整个图对应的是包含神经网络函数的损失函数。计算图用基本函数 (如加减乘除) 的组合来表示这个复杂的损失函数，通常是一个很大的图。计算图
 
-
-![[Pasted image 20240715180444.png]]
 ![[Pasted image 20240715180455.png]]
 ![[Pasted image 20240715180507.png]]
 ![[Pasted image 20240715180516.png]]

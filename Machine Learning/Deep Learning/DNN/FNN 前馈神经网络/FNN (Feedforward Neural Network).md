@@ -595,7 +595,14 @@ $$\begin{aligned}
 
 反向传播是从终点的梯度 (数值、向量、矩阵或张量) 开始，逆着有向边，依次对结点的基本函数进行计算，直到得到终点的输出 (数值、向量、矩阵或张量) 的过程。这里一个结点的梯度是指图整体函数对该结点变量的梯度。梯度计算使用链式规则。这个过程可以看作是梯度在图上的反向传播，在各个结点对梯度进行了展开。
 
-链式法则是
+链式法则是复合函数的求导法则，即一个复合函数的导数可以由构成这个复合函数的各个函数的导数表示。一元复合函数 $y=f(x),z=g(x)$ 的导数是
+$$
+\frac{\mathrm d y}{\mathrm d x} = \frac{\mathrm d y}{\mathrm d z} \frac{\mathrm dz}{\mathrm dx}
+$$
+多元复合函数 $y=f(x), z=g(x)$ 的导数是
+$$
+\frac{\partial y}{\partial x_i}  = \sum_j \frac{\partial y}{\partial z_j} \frac{\partial z_j}{\partial x_i}
+$$
 
 ![[Pasted image 20240715180444.png]]
 ![[Pasted image 20240715180455.png]]

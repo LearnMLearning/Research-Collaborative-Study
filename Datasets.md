@@ -12,7 +12,7 @@ https://archive.ics.uci.edu/dataset/2/adult
 - Bank (Moro et.al., 2014; Dua & Graff, 2019) contains 41,188 phone calls and answers for the 20 questions. It's from direct marketing campaigns of a Portuguese banking institution dated from May 2008 to November 2010. The classification goal is to predict if the client will subscribe a term deposit.
 https://archive.ics.uci.edu/dataset/222/bank+marketing
 
-- Heart (.) This dataset contains 770K data points in 70,000 patient records comprised of five numerical and six categorical measurements with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
+- Heart (Ulianova, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
 https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 
 - Diabetes (Strack et al., 2014; Dua & Graff, 2019) consists of 101,766 instances of patient and hospital readmission outcomes (46,902 readmitted) characterized by 55 attributes.

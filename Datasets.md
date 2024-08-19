@@ -15,10 +15,10 @@ https://archive.ics.uci.edu/dataset/222/bank+marketing
 - Heart (Ulianova, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
 https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 
-- Diabetes (Strack et.al., 2014; Dua & Graff, 2019) consists of 101,766 instances represent hospitalized patient records diagnosed with diabetes of patient and hospital readmission outcomes comprised of 55 attributes.
-
-- Diabetes (Strack et al., 2014; Dua & Graff, 2019) consists of 101,766 instances of patient and hospital readmission outcomes (46,902 readmitted) characterized by 55 attributes.
+- Diabetes (Strack et.al., 2014; Dua & Graff, 2019) consists of 101,766 instances represent hospitalized patient records diagnosed with diabetes comprised of 55 attributes and the target variable denotes the early readmission of the patient within 30 days of discharge
 https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
+
+- NoShow (Kaggle, 2016) consists of 110,527 intances of 
 
 - NoShow (Kaggle, 2016) contains 110,527 instances of patient attendances for doctors’ appointments (22,319 no shows) characterized by 14 attributes. The aim is to predict whether or not a patient shows up to their doctors’ appointment. 
 https://www.kaggle.com/joniarroba/noshowappointments

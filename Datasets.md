@@ -15,7 +15,7 @@ https://archive.ics.uci.edu/dataset/222/bank+marketing
 - Heart (Ulianova, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
 https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 
-- Diabetes (Strack et.al., 2014; Dua & Graff, 2019) consists of 101,766 instances of patient and hospital readmission outcomes comprised of 55 attributes.
+- Diabetes (Strack et.al., 2014; Dua & Graff, 2019) consists of 101,766 instances represent hospitalized patient records diagnosed with diabetes of patient and hospital readmission outcomes comprised of 55 attributes.
 
 - Diabetes (Strack et al., 2014; Dua & Graff, 2019) consists of 101,766 instances of patient and hospital readmission outcomes (46,902 readmitted) characterized by 55 attributes.
 https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008

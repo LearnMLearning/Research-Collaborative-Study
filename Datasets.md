@@ -12,6 +12,7 @@ https://www.drivendata.org/competitions/66/flu-shot-learning/data/
 - Adult (Dua & Graff, 2019) contains 48,842 instances (11,687 positive) of 14 demographic attributes to determine if a person’s personal income level is more than $50K per year.
 https://archive.ics.uci.edu/dataset/2/adult
 
+
 - Bank (Moro et al., 2014; Dua & Graff, 2019) consists of 41,188 marketing phone calls (4,640 positive) from a Portuguese banking institution. There are 20 attributes, and the aim is to figure out if a client will subscribe.
 https://archive.ics.uci.edu/dataset/222/bank+marketing
 

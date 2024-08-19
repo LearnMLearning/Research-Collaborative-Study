@@ -1,6 +1,6 @@
 ![[Pasted image 20240819152254.png]]
 
-- Purchase (Sakar & Kastro, 2018; Dua & Graff, 2019) consists of 
+- Purchase (Sakar & Kastro, 2018; Dua & Graff, 2019) consists of 12,330 instances of 17 attributes (ten numerical and seven categorical) about browsing behavior of an online shop to determine if the session ended in a purchase of not.
 This dataset contains 210K data points in ten numerical and seven categorical attributes about browsing behavior in 12,330 individual sessions of an online shop, and the target variable denotes whether the session ended in a purchase or not.
 https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset 
 

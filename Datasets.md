@@ -1,5 +1,3 @@
-![[Pasted image 20240819152254.png]]
-
 - Purchase (Sakar & Kastro, 2018; Dua & Graff, 2019) consists of 12,330 instances of 17 attributes (ten numerical and seven categorical) about browsing behavior of an online shop to determine if the session ended in a purchase of not.
 https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset 
 
@@ -21,7 +19,8 @@ https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999
 - NoShow (Kaggle, 2016) consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.
 https://www.kaggle.com/joniarroba/noshowappointments
 
-- Synthetic (Pedregosa et al., 2011) contains 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 5 informative attributes, 5 redundant attributes, and 30 useless attributes. There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
+- Synthetic (Pedregosa et al., 2011) consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (
+  five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
 
-- Higgs (Baldi et al., 2014; Dua & Graff, 2019) contains 11,000,000 signal processes (5,829,123 Higgs bosons) characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. The goal is to distinguish between a background signal process and a Higgs bosons process. http://archive.ics.uci.edu/ml
+- Higgs (Baldi et al., 2014; Dua & Graff, 2019) consists of 11,000,000 signal processes characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. Our aim is to distinguish between a background signal process and a Higgs bosons process.
 

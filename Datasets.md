@@ -9,7 +9,7 @@ https://archive.ics.uci.edu/dataset/2/adult
 - Bank \citep{MORO201422, Dua:2019}(Moro et.al., 2014; Dua & Graff, 2019) contains 41,188 phone calls and answers for the 20 questions. It's from direct marketing campaigns of a Portuguese banking institution dated from May 2008 to November 2010. The classification goal is to predict if the client will subscribe a term deposit.
 https://archive.ics.uci.edu/dataset/222/bank+marketing
 
-- Heart (Ulianova, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
+- Heart (Kaggle, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
 https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 
 - Diabetes \citep{https://doi.org/10.1155/2014/781670, Dua:2019} consists of 101,766 instances represent hospitalized patient records diagnosed with diabetes comprised of 55 attributes and the target variable denotes the early readmission of the patient within 30 days of discharge.
@@ -22,5 +22,5 @@ https://www.kaggle.com/joniarroba/noshowappointments
 - Synthetic (Pedregosa et al., 2011) consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (
   five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
 
-- Higgs (Baldi et al., 2014; Dua & Graff, 2019) consists of 11,000,000 signal processes characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. Our aim is to distinguish between a background signal process and a Higgs bosons process.
+- Higgs \citep{, Dua:2019} (Baldi et al., 2014; Dua & Graff, 2019) consists of 11,000,000 signal processes characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. Our aim is to distinguish between a background signal process and a Higgs bosons process.
 

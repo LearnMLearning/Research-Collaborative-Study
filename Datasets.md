@@ -1,7 +1,6 @@
-- Purchase (Sakar & Kastro, 2018; Dua & Graff, 2019) consists of 12,330 instances of 17 attributes (ten numerical and seven categorical) about browsing behavior of an online shop to determine if the session ended in a purchase of not.
-https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset 
+Purchase (Sakar & Kastro, 2018; Dua & Graff, 2019) is primarily used to predict online shopping intentions. The goal of this dataset is to build a binary classification model to determine whether users have the intention to complete a transaction. The dataset includes two types of features: numerical features and categorical features which are used to analyze user behavior and predict their purchasing intentions.
 
-- Vaccine (Bull et.al., 2016; DrivenData, 2019) contains 26,707 survey responses, which were collected between October 2009 and June 2010. The survey asked people 36 behavioral and personal questions, indicating 36 attributes, and ultimately asking them whether or not they got an H1N1 and/or seasonal flue vaccine. We aim to determine whether a person received a seasonal flu vaccine.
+Vaccine (Bull et.al., 2016; DrivenData, 2019) contains 26,707 survey responses, which were collected between October 2009 and June 2010. The survey asked people 36 behavioral and personal questions, indicating 36 attributes, and ultimately asking them whether or not they got an H1N1 and/or seasonal flue vaccine. We aim to determine whether a person received a seasonal flu vaccine.
 https://www.drivendata.org/competitions/66/flu-shot-learning/data/
 
 - Adult (Dua & Graff, 2019) consists of 48,842 instances of 14 attributes and the target variable denotes whether the a person's personal income level is more than $50K per year or not.

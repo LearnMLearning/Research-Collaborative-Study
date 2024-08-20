@@ -16,7 +16,7 @@ https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 
 https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
-- NoShow (Kaggle, 2016) consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.
+- NoShow \cite{Kaggle2016} consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.
 https://www.kaggle.com/joniarroba/noshowappointments
 
 - Synthetic \cite{pedregosa2011scikit} consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.

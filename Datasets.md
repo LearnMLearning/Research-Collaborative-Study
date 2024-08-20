@@ -1,12 +1,12 @@
 Purchase \citep {misc_online_shoppers_purchasing_intention_dataset_468, Dua:2019} is primarily used to predict online shopping intentions. The goal of this dataset is to build a binary classification model to determine whether users have the intention to complete a transaction. The dataset includes two types of features: numerical features and categorical features which are used to analyze user behavior and predict their purchasing intentions.
 
-Vaccine \citep (Bull et.al., 2016; DrivenData, 2019) contains 26,707 survey responses, which were collected between October 2009 and June 2010. The survey asked people 36 behavioral and personal questions, indicating 36 attributes, and ultimately asking them whether or not they got an H1N1 and/or seasonal flue vaccine. We aim to determine whether a person received a seasonal flu vaccine.
+Vaccine \citep{Bull2016, DrivenData2019} contains 26,707 survey responses, which were collected between October 2009 and June 2010. The survey asked people 36 behavioral and personal questions, indicating 36 attributes, and ultimately asking them whether or not they got an H1N1 and/or seasonal flue vaccine. We aim to determine whether a person received a seasonal flu vaccine.
 https://www.drivendata.org/competitions/66/flu-shot-learning/data/
 
-- Adult (Dua & Graff, 2019) consists of 48,842 instances of 14 attributes and the target variable denotes whether the a person's personal income level is more than $50K per year or not.
+- Adult \citep{misc_adult_2, Dua:2019} consists of 48,842 instances of 14 attributes and the target variable denotes whether the a person's personal income level is more than $50K per year or not.
 https://archive.ics.uci.edu/dataset/2/adult
 
-- Bank (Moro et.al., 2014; Dua & Graff, 2019) contains 41,188 phone calls and answers for the 20 questions. It's from direct marketing campaigns of a Portuguese banking institution dated from May 2008 to November 2010. The classification goal is to predict if the client will subscribe a term deposit.
+- Bank \citep{, Dua:2019}(Moro et.al., 2014; Dua & Graff, 2019) contains 41,188 phone calls and answers for the 20 questions. It's from direct marketing campaigns of a Portuguese banking institution dated from May 2008 to November 2010. The classification goal is to predict if the client will subscribe a term deposit.
 https://archive.ics.uci.edu/dataset/222/bank+marketing
 
 - Heart (Ulianova, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.

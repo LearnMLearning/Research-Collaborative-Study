@@ -6,13 +6,13 @@ https://www.drivendata.org/competitions/66/flu-shot-learning/data/
 - Adult \citep{misc_adult_2, Dua:2019} consists of 48,842 instances of 14 attributes and the target variable denotes whether the a person's personal income level is more than $50K per year or not.
 https://archive.ics.uci.edu/dataset/2/adult
 
-- Bank \citep{, Dua:2019}(Moro et.al., 2014; Dua & Graff, 2019) contains 41,188 phone calls and answers for the 20 questions. It's from direct marketing campaigns of a Portuguese banking institution dated from May 2008 to November 2010. The classification goal is to predict if the client will subscribe a term deposit.
+- Bank \citep{MORO201422, Dua:2019}(Moro et.al., 2014; Dua & Graff, 2019) contains 41,188 phone calls and answers for the 20 questions. It's from direct marketing campaigns of a Portuguese banking institution dated from May 2008 to November 2010. The classification goal is to predict if the client will subscribe a term deposit.
 https://archive.ics.uci.edu/dataset/222/bank+marketing
 
 - Heart (Ulianova, 2018) contains 70,000 patient records comprised of 11 attributes (five numerical and six categorical measurements) with respect to cardiovascular diseases, and the target variable denotes the presence of a heart disease.
 https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 
-- Diabetes (Strack et.al., 2014; Dua & Graff, 2019) consists of 101,766 instances represent hospitalized patient records diagnosed with diabetes comprised of 55 attributes and the target variable denotes the early readmission of the patient within 30 days of discharge
+- Diabetes \citep{ Dua:2019} (Strack et.al., 2014; Dua & Graff, 2019) consists of 101,766 instances represent hospitalized patient records diagnosed with diabetes comprised of 55 attributes and the target variable denotes the early readmission of the patient within 30 days of discharge
 https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
 - NoShow (Kaggle, 2016) consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.

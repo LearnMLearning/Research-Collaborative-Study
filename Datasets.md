@@ -10,10 +10,9 @@ Heart \cite{Kaggle2018} is the data provided by Svetlana Ulianova on Kaggle. It 
 
 Diabetes \citep{[https://doi.org/10.1155/2014/781670](https://doi.org/10.1155/2014/781670), Dua:2019} encompasses a decade (1999-2008) of clinical care information from 130 hospitals across the United States. This dataset includes records of patients diagnosed with diabetes, covering laboratory results, medications, and hospital stays of up to 14 days. The primary goal is to predict whether a patient will be readmitted within 30 days of discharge.
 
-- NoShow \cite{Kaggle2016} consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.
-https://www.kaggle.com/joniarroba/noshowappointments
+NoShow \cite{Kaggle2016} focuses on how patients receive all the instructions and no-show after making an appointment with a doctor. It consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.
 
-- Synthetic \cite{pedregosa2011scikit} consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
+Synthetic \cite{pedregosa2011scikit} consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
 
 Higgs \citep{Baldi2014, Dua:2019} consists of 11,000,000 signal processes characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. Our aim is to distinguish between a background signal process and a Higgs bosons process.
 

@@ -19,8 +19,7 @@ https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999
 - NoShow (Kaggle, 2016) consists of 110,527 intances of patient attendences formedical appointments comprised of 14 attributes and the target variable denotes whether or not a patient shows up to their doctors' appointment.
 https://www.kaggle.com/joniarroba/noshowappointments
 
-- Synthetic (Pedregosa et al., 2011) consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (
-  five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
+- Synthetic \cite(Pedregosa et al., 2011) consists 1,000,000 instances normally distributed about the vertices of a 5-dimensional hypercube into 2 clusters per class. There are 40 attributes (five informative, five redundant, and thirty useless). There is interdependence between these attributes, and a randomly selected 5% of the labels are flipped to increase the difficulty of the classification task.
 
-- Higgs \citep{, Dua:2019} (Baldi et al., 2014; Dua & Graff, 2019) consists of 11,000,000 signal processes characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. Our aim is to distinguish between a background signal process and a Higgs bosons process.
+- Higgs \citep{Baldi2014, Dua:2019} consists of 11,000,000 signal processes characterized by 22 kinematic properties measured by detectors in a particle accelerator and 7 attributes derived from those properties. Our aim is to distinguish between a background signal process and a Higgs bosons process.
 
